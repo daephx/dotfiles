@@ -1,0 +1,5 @@
+[description:"add WSL Bypass for TaskWarrior" end:"1580959201" entry:"1580959144" modified:"1580959201" parent:"3" project:"Terminal" status:"completed" uuid:"ede2245f-04a2-4a68-9f13-43896d116b0b"]
+[description:"System Distinct Splashscreens \/ SSH" end:"1580904538" entry:"1580904462" modified:"1580904540" project:"Networking" status:"deleted" uuid:"af03ae87-0ae5-4a30-a506-cc5d2c9f7c08"]
+[description:"RPI - Fix SSH keys" end:"1580903760" entry:"1577001320" modified:"1580903762" status:"deleted" uuid:"8fa6d4ee-edbb-440a-9d28-7b1493aa4807"]
+[description:"custom zsh theme" end:"1580903742" entry:"1580903647" modified:"1580903743" status:"deleted" uuid:"1aa67dd3-f4b8-41f9-bca7-9ff6355e0382"]
+[description:"WSL - Backup & Configure" end:"1580901390" entry:"1577001502" modified:"1580901512" status:"deleted" uuid:"ce75afe1-b592-43e4-8cbc-286f106fc35e"]
