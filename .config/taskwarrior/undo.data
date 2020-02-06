@@ -1,0 +1,355 @@
+time 1577001320
+new [description:"fix raspberrypi ssh keys" entry:"1577001320" modified:"1577001320" status:"pending" uuid:"8fa6d4ee-edbb-440a-9d28-7b1493aa4807"]
+---
+time 1577001502
+new [description:"WSL backup and configure" entry:"1577001502" modified:"1577001502" status:"pending" uuid:"ce75afe1-b592-43e4-8cbc-286f106fc35e"]
+---
+time 1577001597
+old [description:"fix raspberrypi ssh keys" entry:"1577001320" modified:"1577001320" status:"pending" uuid:"8fa6d4ee-edbb-440a-9d28-7b1493aa4807"]
+new [description:"RPI - Fix SSH keys" entry:"1577001320" modified:"1577001597" status:"pending" uuid:"8fa6d4ee-edbb-440a-9d28-7b1493aa4807"]
+---
+time 1577001629
+old [description:"WSL backup and configure" entry:"1577001502" modified:"1577001502" status:"pending" uuid:"ce75afe1-b592-43e4-8cbc-286f106fc35e"]
+new [description:"WSL - Backup & Configure" entry:"1577001502" modified:"1577001629" status:"pending" uuid:"ce75afe1-b592-43e4-8cbc-286f106fc35e"]
+---
+time 1580901390
+old [description:"WSL - Backup & Configure" entry:"1577001502" modified:"1577001629" status:"pending" uuid:"ce75afe1-b592-43e4-8cbc-286f106fc35e"]
+new [description:"WSL - Backup & Configure" end:"1580901390" entry:"1577001502" modified:"1580901390" status:"completed" uuid:"ce75afe1-b592-43e4-8cbc-286f106fc35e"]
+---
+time 1580901512
+old [description:"WSL - Backup & Configure" end:"1580901390" entry:"1577001502" modified:"1580901390" status:"completed" uuid:"ce75afe1-b592-43e4-8cbc-286f106fc35e"]
+new [description:"WSL - Backup & Configure" end:"1580901390" entry:"1577001502" modified:"1580901512" status:"deleted" uuid:"ce75afe1-b592-43e4-8cbc-286f106fc35e"]
+---
+time 1580903554
+new [description:"Fix PS1 reload function" entry:"1580903554" modified:"1580903554" status:"pending" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+---
+time 1580903572
+old [description:"Fix PS1 reload function" entry:"1580903554" modified:"1580903554" status:"pending" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+new [description:"Fix PS1 reload function" entry:"1580903554" modified:"1580903572" project:"powershell" status:"pending" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+---
+time 1580903647
+new [description:"custom zsh theme" entry:"1580903647" modified:"1580903647" status:"pending" uuid:"1aa67dd3-f4b8-41f9-bca7-9ff6355e0382"]
+---
+time 1580903743
+old [description:"custom zsh theme" entry:"1580903647" modified:"1580903647" status:"pending" uuid:"1aa67dd3-f4b8-41f9-bca7-9ff6355e0382"]
+new [description:"custom zsh theme" end:"1580903742" entry:"1580903647" modified:"1580903743" status:"deleted" uuid:"1aa67dd3-f4b8-41f9-bca7-9ff6355e0382"]
+---
+time 1580903762
+old [description:"RPI - Fix SSH keys" entry:"1577001320" modified:"1577001597" status:"pending" uuid:"8fa6d4ee-edbb-440a-9d28-7b1493aa4807"]
+new [description:"RPI - Fix SSH keys" end:"1580903760" entry:"1577001320" modified:"1580903762" status:"deleted" uuid:"8fa6d4ee-edbb-440a-9d28-7b1493aa4807"]
+---
+time 1580903854
+new [description:"p:CustomZSH platform distinct ZSH theme" entry:"1580903854" modified:"1580903854" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580903882
+old [description:"p:CustomZSH platform distinct ZSH theme" entry:"1580903854" modified:"1580903854" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+new [description:"description" entry:"1580903854" modified:"1580903882" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580903981
+old [description:"description" entry:"1580903854" modified:"1580903882" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+new [description:"System Destinction Win =\/= WSL" entry:"1580903854" modified:"1580903981" project:"ZSH-Custom" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580904083
+new [description:"WSL Command Aliases" entry:"1580904083" modified:"1580904083" project:"Powershell" status:"pending" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580904113
+old [description:"Fix PS1 reload function" entry:"1580903554" modified:"1580903572" project:"powershell" status:"pending" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+new [description:"Fix PS1 reload function" entry:"1580903554" modified:"1580904113" project:"Powershell" status:"pending" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+---
+time 1580904234
+old [description:"System Destinction Win =\/= WSL" entry:"1580903854" modified:"1580903981" project:"ZSH-Custom" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+new [description:"System Destinction Win =\/= WSL" entry:"1580903854" modified:"1580904234" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580904297
+old [description:"System Destinction Win =\/= WSL" entry:"1580903854" modified:"1580904234" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+new [description:"System Destinction (Win, WSL, Ect.)" entry:"1580903854" modified:"1580904297" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580904313
+old [description:"System Destinction (Win, WSL, Ect.)" entry:"1580903854" modified:"1580904297" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+new [description:"System Destinction (Win, Wsl, Ect.)" entry:"1580903854" modified:"1580904313" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580904335
+old [description:"System Destinction (Win, Wsl, Ect.)" entry:"1580903854" modified:"1580904313" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+new [description:"ZSH System Destinction (Win, Wsl, Ect.)" entry:"1580903854" modified:"1580904335" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580904462
+new [description:"System Distinct Splashscreens \/ SSH" entry:"1580904462" modified:"1580904462" project:"Networking" status:"pending" uuid:"af03ae87-0ae5-4a30-a506-cc5d2c9f7c08"]
+---
+time 1580904503
+old [description:"ZSH System Destinction (Win, Wsl, Ect.)" entry:"1580903854" modified:"1580904335" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+new [description:"ZSH | System Distinct shell (Win, Wsl, Ect.)" entry:"1580903854" modified:"1580904503" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580904518
+new [description:"SSH | System Distinct Splashscreens" entry:"1580904518" modified:"1580904518" project:"Networking" status:"pending" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+---
+time 1580904540
+old [description:"System Distinct Splashscreens \/ SSH" entry:"1580904462" modified:"1580904462" project:"Networking" status:"pending" uuid:"af03ae87-0ae5-4a30-a506-cc5d2c9f7c08"]
+new [description:"System Distinct Splashscreens \/ SSH" end:"1580904538" entry:"1580904462" modified:"1580904540" project:"Networking" status:"deleted" uuid:"af03ae87-0ae5-4a30-a506-cc5d2c9f7c08"]
+---
+time 1580904902
+old [description:"WSL Command Aliases" entry:"1580904083" modified:"1580904083" project:"Powershell" status:"pending" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+new [description:"ADD | WSL Command Aliases 2 PS" entry:"1580904083" modified:"1580904902" project:"Powershell" status:"pending" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580904930
+old [description:"Fix PS1 reload function" entry:"1580903554" modified:"1580904113" project:"Powershell" status:"pending" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+new [description:"FIX | PS Reload Function" entry:"1580903554" modified:"1580904930" project:"Powershell" status:"pending" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+---
+time 1580904995
+new [description:"FIX | Taskwarrior color theme" entry:"1580904995" modified:"1580904995" project:"Linux" status:"pending" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+---
+time 1580905526
+new [description:"FIX | Move .taskrc 2 ~\/.config\/" entry:"1580905526" modified:"1580905526" project:"Linux" status:"pending" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+---
+time 1580905555
+old [description:"ZSH | System Distinct shell (Win, Wsl, Ect.)" entry:"1580903854" modified:"1580904503" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+new [description:"ADD | System Distinct ZSH shell (Win, Wsl, Ect.)" entry:"1580903854" modified:"1580905555" project:"Networking" status:"pending" uuid:"b039b9eb-3ffd-41c7-beb4-d69322ed71fb"]
+---
+time 1580905603
+old [description:"SSH | System Distinct Splashscreens" entry:"1580904518" modified:"1580904518" project:"Networking" status:"pending" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+new [description:"ADD | System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580905603" project:"Networking" status:"pending" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+---
+time 1580905729
+new [description:"Priority:H ADD | Backup WSL .dotfiles including .tasks" entry:"1580905729" modified:"1580905729" project:"Linux" status:"pending" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+---
+time 1580905749
+old [description:"Priority:H ADD | Backup WSL .dotfiles including .tasks" entry:"1580905729" modified:"1580905729" project:"Linux" status:"pending" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+new [description:"ADD | Backup WSL .dotfiles including .tasks" entry:"1580905729" modified:"1580905749" project:"Linux" status:"pending" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+---
+time 1580905791
+old [description:"ADD | Backup WSL .dotfiles including .tasks" entry:"1580905729" modified:"1580905749" project:"Linux" status:"pending" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+new [description:"ADD | Backup WSL .dotfiles including .tasks" entry:"1580905729" modified:"1580905791" priority:"H" project:"Linux" status:"pending" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+---
+time 1580945478
+new [description:"Add _Paths to Dot-Hide.ps1" entry:"1580945478" modified:"1580945478" project:"Network" status:"pending" tags:"Windows" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+---
+time 1580945544
+old [description:"Add _Paths to Dot-Hide.ps1" entry:"1580945478" modified:"1580945478" project:"Network" status:"pending" tags:"Windows" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+new [description:"ADD | _Paths to Dot-Hide.ps1" entry:"1580945478" modified:"1580945544" project:"Network" status:"pending" tags:"Windows" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+---
+time 1580956800
+new [description:"Cmder replacer script doesn't move between v-Desktops" entry:"1580956800" modified:"1580956800" project:"Terminal" status:"pending" tags:"ahk" uuid:"83ce4c7c-989d-4a2a-bf68-3d4e078a82ff"]
+---
+time 1580957365
+new [description:"WinClose managment algorithm" entry:"1580957365" modified:"1580957365" project:"Myriadth" status:"pending" tags:"ahk" uuid:"251fa4df-90b2-4a90-9274-652e9e47d55a"]
+---
+time 1580957476
+old [description:"FIX | PS Reload Function" entry:"1580903554" modified:"1580904930" project:"Powershell" status:"pending" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+new [description:"Fix PS Reload Function" entry:"1580903554" modified:"1580957476" project:"Powershell" status:"pending" tags:"PS1" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+---
+time 1580957589
+new [description:"Fullscreen mode is not persistant" entry:"1580957589" modified:"1580957589" project:"Terminal" status:"pending" uuid:"30048848-565e-4813-8891-c04d74b64833"]
+---
+time 1580957760
+new [description:"ESC key should clear command input" entry:"1580957760" modified:"1580957760" project:"Terminal" status:"pending" tags:"linux" uuid:"0e84cf82-e573-460d-bbcf-326fbafc0350"]
+---
+time 1580958838
+old [description:"ADD | WSL Command Aliases 2 PS" entry:"1580904083" modified:"1580904902" project:"Powershell" status:"pending" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+new [description:"Add WSL Command Aliases 2 PS" entry:"1580904083" modified:"1580958838" project:"Terminal" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580958969
+old [description:"Add WSL Command Aliases 2 PS" entry:"1580904083" modified:"1580958838" project:"Terminal" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+new [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580958969" project:"Terminal" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580959144
+new [depends:"ff0b39cc-30c6-4776-afce-b682285a2560" description:"add WSL Bypass for TaskWarrior" entry:"1580959144" modified:"1580959144" project:"Terminal" status:"pending" uuid:"ede2245f-04a2-4a68-9f13-43896d116b0b"]
+---
+time 1580959186
+old [depends:"ff0b39cc-30c6-4776-afce-b682285a2560" description:"add WSL Bypass for TaskWarrior" entry:"1580959144" modified:"1580959144" project:"Terminal" status:"pending" uuid:"ede2245f-04a2-4a68-9f13-43896d116b0b"]
+new [description:"add WSL Bypass for TaskWarrior" entry:"1580959144" modified:"1580959186" parent:"3" project:"Terminal" status:"pending" uuid:"ede2245f-04a2-4a68-9f13-43896d116b0b"]
+---
+time 1580959201
+old [description:"Fullscreen mode is not persistant" entry:"1580957589" modified:"1580957589" project:"Terminal" status:"pending" uuid:"30048848-565e-4813-8891-c04d74b64833"]
+new [description:"Fullscreen mode is not persistant" entry:"1580957589" modified:"1580959201" project:"Terminal" status:"pending" uuid:"30048848-565e-4813-8891-c04d74b64833"]
+---
+time 1580959201
+old [description:"add WSL Bypass for TaskWarrior" entry:"1580959144" modified:"1580959186" parent:"3" project:"Terminal" status:"pending" uuid:"ede2245f-04a2-4a68-9f13-43896d116b0b"]
+new [description:"add WSL Bypass for TaskWarrior" end:"1580959201" entry:"1580959144" modified:"1580959201" parent:"3" project:"Terminal" status:"completed" uuid:"ede2245f-04a2-4a68-9f13-43896d116b0b"]
+---
+time 1580959227
+old [description:"ADD | System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580905603" project:"Networking" status:"pending" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+new [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580959227" project:"Networking" status:"pending" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+---
+time 1580959253
+old [description:"FIX | Taskwarrior color theme" entry:"1580904995" modified:"1580904995" project:"Linux" status:"pending" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+new [description:"Fix Taskwarrior color theme" entry:"1580904995" modified:"1580959253" project:"Linux" status:"pending" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+---
+time 1580959283
+new [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580959283" project:"Terminal" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+---
+time 1580959303
+old [description:"Fix Taskwarrior color theme" entry:"1580904995" modified:"1580959253" project:"Linux" status:"pending" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+new [depends:"cc443b86-2628-4e14-952a-79662c498056" description:"Fix Taskwarrior color theme" entry:"1580904995" modified:"1580959303" project:"Linux" status:"pending" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+---
+time 1580959364
+old [description:"FIX | Move .taskrc 2 ~\/.config\/" entry:"1580905526" modified:"1580905526" project:"Linux" status:"pending" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+new [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580959364" project:"Linux" status:"pending" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+---
+time 1580959449
+old [description:"ADD | Backup WSL .dotfiles including .tasks" entry:"1580905729" modified:"1580905791" priority:"H" project:"Linux" status:"pending" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+new [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580959449" priority:"H" project:"Linux" status:"pending" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+---
+time 1580959497
+old [description:"ADD | _Paths to Dot-Hide.ps1" entry:"1580945478" modified:"1580945544" project:"Network" status:"pending" tags:"Windows" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+new [description:"Include _Paths to Dot-Hide.ps1 script" entry:"1580945478" modified:"1580959497" project:"Terminal" status:"pending" tags:"MSDN,PS1" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+---
+time 1580959514
+old [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580959364" project:"Linux" status:"pending" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+new [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580959514" project:"WSLinux" status:"pending" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+---
+time 1580959524
+old [depends:"cc443b86-2628-4e14-952a-79662c498056" description:"Fix Taskwarrior color theme" entry:"1580904995" modified:"1580959303" project:"Linux" status:"pending" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+new [depends:"cc443b86-2628-4e14-952a-79662c498056" description:"Fix Taskwarrior color theme" entry:"1580904995" modified:"1580959524" project:"WSLinux" status:"pending" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+---
+time 1580959558
+old [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580959227" project:"Networking" status:"pending" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+new [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580959558" project:"Terminal" status:"pending" tags:"SSH,WSL,PS1,RPi" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+---
+time 1580959881
+old [description:"Fix PS Reload Function" entry:"1580903554" modified:"1580957476" project:"Powershell" status:"pending" tags:"PS1" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+new [description:"Impove Powershell Reload Function" entry:"1580903554" modified:"1580959881" project:"Terminal" status:"pending" tags:"PS1" uuid:"0a59e50f-ca8c-436e-b625-052ba9279f27"]
+---
+time 1580959905
+old [description:"Cmder replacer script doesn't move between v-Desktops" entry:"1580956800" modified:"1580956800" project:"Terminal" status:"pending" tags:"ahk" uuid:"83ce4c7c-989d-4a2a-bf68-3d4e078a82ff"]
+new [description:"Cmder replacer script doesn't move between v-Desktops" entry:"1580956800" modified:"1580959905" project:"Terminal" status:"pending" tags:"AHK" uuid:"83ce4c7c-989d-4a2a-bf68-3d4e078a82ff"]
+---
+time 1580959923
+old [description:"WinClose managment algorithm" entry:"1580957365" modified:"1580957365" project:"Myriadth" status:"pending" tags:"ahk" uuid:"251fa4df-90b2-4a90-9274-652e9e47d55a"]
+new [description:"WinClose managment algorithm" entry:"1580957365" modified:"1580959923" project:"Myriadth" status:"pending" tags:"AHK" uuid:"251fa4df-90b2-4a90-9274-652e9e47d55a"]
+---
+time 1580960031
+old [description:"ESC key should clear command input" entry:"1580957760" modified:"1580957760" project:"Terminal" status:"pending" tags:"linux" uuid:"0e84cf82-e573-460d-bbcf-326fbafc0350"]
+new [description:"ESC key should clear command input" entry:"1580957760" modified:"1580960031" project:"Terminal" status:"pending" tags:"UNIX" uuid:"0e84cf82-e573-460d-bbcf-326fbafc0350"]
+---
+time 1580960057
+old [depends:"cc443b86-2628-4e14-952a-79662c498056" description:"Fix Taskwarrior color theme" entry:"1580904995" modified:"1580959524" project:"WSLinux" status:"pending" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+new [depends:"cc443b86-2628-4e14-952a-79662c498056" description:"Fix Taskwarrior color theme" entry:"1580904995" modified:"1580960057" project:"Terminal" status:"pending" tags:"UNIX" uuid:"2783409b-49fe-43af-aa8e-b563e4c41c90"]
+---
+time 1580960077
+old [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580959449" priority:"H" project:"Linux" status:"pending" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+new [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580960077" priority:"H" project:"Terminal" status:"pending" tags:"UNIX,WSL" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+---
+time 1580960092
+old [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580959514" project:"WSLinux" status:"pending" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+new [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580960092" project:"Terminal" status:"pending" tags:"UNIX,WSL" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+---
+time 1580960114
+old [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580959558" project:"Terminal" status:"pending" tags:"SSH,WSL,PS1,RPi" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+new [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580960114" project:"Terminal" status:"pending" tags:"WSL,PS1,RPi" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+---
+time 1580963879
+new [description:"Cleanup YouTube 'Watch Later'" entry:"1580963879" modified:"1580963879" status:"pending" uuid:"8294db41-c37b-4ebd-a1fe-5b71e209d06b"]
+---
+time 1580963971
+new [description:"Chrome 'Picture-in-Picture' Automation" entry:"1580963971" modified:"1580963971" project:"Myriadth" status:"pending" tags:"AHK" uuid:"55288a5f-877f-4de4-b110-0c94405dafe1"]
+---
+time 1580978729
+new [description:"Secure backup of SSH private keys" entry:"1580978729" modified:"1580978729" project:"System" status:"pending" uuid:"9d51253b-daa2-48f2-8b05-36a394c9ed71"]
+---
+time 1580978767
+new [description:"Secure backup of KeePass database" entry:"1580978767" modified:"1580978767" project:"System" status:"pending" uuid:"10d82835-d9f1-4eb0-833f-18ed7a2db153"]
+---
+time 1580986537
+new [description:"Execution Stopwatch script" entry:"1580986537" modified:"1580986537" project:"Linux" status:"pending" tags:"code" uuid:"af827a38-363a-415d-b261-82481dce6551"]
+---
+time 1580988085
+old [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580958969" project:"Terminal" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+new [description:"Add WSL Command Aliases to Powershell" end:"1580988085" entry:"1580904083" modified:"1580988085" project:"Terminal" status:"completed" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580988310
+old [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580959283" project:"Terminal" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+new [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580988310" priority:"M" project:"Terminal" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+---
+time 1580988334
+old [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580988310" priority:"M" project:"Terminal" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+new [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580988334" priority:"L" project:"Terminal" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+---
+time 1580988398
+old [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580960077" priority:"H" project:"Terminal" status:"pending" tags:"UNIX,WSL" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+new [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580988398" priority:"H" project:"Terminal" start:"1580988398" status:"pending" tags:"UNIX,WSL" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+---
+time 1580988522
+old [description:"Add WSL Command Aliases to Powershell" end:"1580988085" entry:"1580904083" modified:"1580988085" project:"Terminal" status:"completed" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+new [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580988522" project:"Terminal" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580988549
+old [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580988522" project:"Terminal" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+new [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580988549" project:"Terminal" start:"1580988549" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580988604
+old [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580988398" priority:"H" project:"Terminal" start:"1580988398" status:"pending" tags:"UNIX,WSL" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+new [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580988604" priority:"H" project:"Terminal" start:"1580981198" status:"pending" tags:"UNIX,WSL" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+---
+time 1580988627
+old [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580988549" project:"Terminal" start:"1580988549" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+new [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580988627" project:"Terminal" start:"1580920149" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580988653
+old [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580988334" priority:"L" project:"Terminal" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+new [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580988653" priority:"L" project:"Terminal" start:"1580988653" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+---
+time 1580988675
+old [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580988653" priority:"L" project:"Terminal" start:"1580988653" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+new [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580988675" priority:"L" project:"Terminal" start:"1580889600" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+---
+time 1580989510
+new [description:"Make only mod files that require hide" entry:"1580989510" modified:"1580989510" project:"Dot-Hide" status:"pending" tags:"PS1" uuid:"a68a42d2-53f9-40ce-bb8b-04d7385fcd85"]
+---
+time 1580989534
+old [description:"Include _Paths to Dot-Hide.ps1 script" entry:"1580945478" modified:"1580959497" project:"Terminal" status:"pending" tags:"MSDN,PS1" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+new [description:"Include _Paths to Dot-Hide.ps1 script" entry:"1580945478" modified:"1580989534" project:"Dot-Hide" status:"pending" tags:"MSDN,PS1" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+---
+time 1580989863
+old [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580988675" priority:"L" project:"Terminal" start:"1580889600" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+new [description:"Migrate to Windowns Terminal (Preview)" entry:"1580959283" modified:"1580989863" priority:"L" project:"System" start:"1580889600" status:"pending" uuid:"cc443b86-2628-4e14-952a-79662c498056"]
+---
+time 1580989917
+old [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580988604" priority:"H" project:"Terminal" start:"1580981198" status:"pending" tags:"UNIX,WSL" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+new [description:"Backup WSL '.dotfiles', especially TaskWarrior" entry:"1580905729" modified:"1580989917" priority:"H" project:"WSLinux" start:"1580981198" status:"pending" tags:"UNIX,WSL" uuid:"503dc33b-21a8-4d6e-90e3-1708b093bc53"]
+---
+time 1580989954
+old [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580988627" project:"Terminal" start:"1580920149" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+new [description:"Add WSL Command Aliases to Powershell" entry:"1580904083" modified:"1580989954" project:"Powershell" start:"1580920149" status:"pending" tags:"PS1,MSDN" uuid:"ff0b39cc-30c6-4776-afce-b682285a2560"]
+---
+time 1580990003
+old [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580960114" project:"Terminal" status:"pending" tags:"WSL,PS1,RPi" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+new [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580990003" project:"Powershell" status:"pending" tags:"WSL,PS1,RPi" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+---
+time 1580990003
+old [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580960092" project:"Terminal" status:"pending" tags:"UNIX,WSL" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+new [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580990003" project:"Powershell" status:"pending" tags:"UNIX,WSL" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+---
+time 1580990023
+old [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580990003" project:"Powershell" status:"pending" tags:"WSL,PS1,RPi" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+new [description:"Add System Distinct Splashtxt (Profile, SSH)" entry:"1580904518" modified:"1580990023" project:"WSLinux" status:"pending" tags:"WSL,PS1,RPi" uuid:"88901e7f-c47e-4373-9e37-3bae79f84f1d"]
+---
+time 1580990023
+old [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580990003" project:"Powershell" status:"pending" tags:"UNIX,WSL" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+new [description:"Migrate '~\/.taskrc' --> '~\/.config\/.taskrc'" entry:"1580905526" modified:"1580990023" project:"WSLinux" status:"pending" tags:"UNIX,WSL" uuid:"ec54df1f-0975-4cad-84c6-7f3334e95906"]
+---
+time 1580990095
+old [description:"Cmder replacer script doesn't move between v-Desktops" entry:"1580956800" modified:"1580959905" project:"Terminal" status:"pending" tags:"AHK" uuid:"83ce4c7c-989d-4a2a-bf68-3d4e078a82ff"]
+new [description:"Cmder replacer script doesn't move between v-Desktops" entry:"1580956800" modified:"1580990095" project:"Myriadth" status:"pending" tags:"AHK" uuid:"83ce4c7c-989d-4a2a-bf68-3d4e078a82ff"]
+---
+time 1580990216
+old [description:"ESC key should clear command input" entry:"1580957760" modified:"1580960031" project:"Terminal" status:"pending" tags:"UNIX" uuid:"0e84cf82-e573-460d-bbcf-326fbafc0350"]
+new [description:"ESC key should clear command input" entry:"1580957760" modified:"1580990216" project:"WSLinux" status:"pending" tags:"UNIX" uuid:"0e84cf82-e573-460d-bbcf-326fbafc0350"]
+---
+time 1580990244
+old [description:"Cmder replacer script doesn't move between v-Desktops" entry:"1580956800" modified:"1580990095" project:"Myriadth" status:"pending" tags:"AHK" uuid:"83ce4c7c-989d-4a2a-bf68-3d4e078a82ff"]
+new [description:"Cmder replacer script doesn't move between v-Desktops" entry:"1580956800" modified:"1580990244" project:"Terminal" status:"pending" tags:"AHK" uuid:"83ce4c7c-989d-4a2a-bf68-3d4e078a82ff"]
+---
+time 1580992036
+new [description:"Emulate MacOS window titlebar style Windows" entry:"1580992036" modified:"1580992036" project:"System.DaemonOS" status:"pending" tags:"UxTheme" uuid:"e9d78099-1911-42b0-8181-7897853f8352"]
+---
+time 1580992223
+old [description:"Cleanup YouTube 'Watch Later'" entry:"1580963879" modified:"1580963879" status:"pending" uuid:"8294db41-c37b-4ebd-a1fe-5b71e209d06b"]
+new [description:"Cleanup YouTube 'Watch Later'" entry:"1580963879" modified:"1580992223" project:"Personal.Media" status:"pending" tags:"Leisure" uuid:"8294db41-c37b-4ebd-a1fe-5b71e209d06b"]
+---
+time 1580992263
+old [description:"Secure backup of SSH private keys" entry:"1580978729" modified:"1580978729" project:"System" status:"pending" uuid:"9d51253b-daa2-48f2-8b05-36a394c9ed71"]
+new [description:"Secure backup of SSH private keys" entry:"1580978729" modified:"1580992263" project:"System.Backup" status:"pending" uuid:"9d51253b-daa2-48f2-8b05-36a394c9ed71"]
+---
+time 1580992263
+old [description:"Secure backup of KeePass database" entry:"1580978767" modified:"1580978767" project:"System" status:"pending" uuid:"10d82835-d9f1-4eb0-833f-18ed7a2db153"]
+new [description:"Secure backup of KeePass database" entry:"1580978767" modified:"1580992263" project:"System.Backup" status:"pending" uuid:"10d82835-d9f1-4eb0-833f-18ed7a2db153"]
+---
