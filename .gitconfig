@@ -1,0 +1,27 @@
+[core]
+	email = demonphoenix42@gmail.com
+	name = Daemon Phenex
+	editor = code -w
+	autocrlf = input
+[alias]
+	st = status
+	up = fetch --all
+	recommit = commit --amend -C@@{0}
+	# stamp = !f() { msg=$(printf %s ":bento: " "${1-update} " "$(date '+%Y%m%d%H%M%S')") ; commit -m $msg }; f
+	# say = "!f() { msg=$(printf %s ":bento: " "$(date '+%Y%m%d%H%M%S') " "${1-update}") ; echo $msg } ; f"
+	undo = reset --hard HEAD@{1}
+	reup = !git fetch --all && git reset --hard origin/master
+	ls = !git --no-pager log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an> %Creset' --abbrev-commit
+	gf = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit
+[commit]
+	template = ~/.gitmessage
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = manager
+[user]
+	email = demonphoenix42@gmail.com
+	name = Daemon Phenex
