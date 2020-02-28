@@ -117,7 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 # Personal Additions
-export DISPLAY=:0.0 
+export DISPLAY=:0.0
 export LIBGL_ALWAYS_INDIRECT=1
 set EDITOR="vim"
 
@@ -125,4 +125,4 @@ set EDITOR="vim"
 
 # Custom aliases
 alias cls="clear"
-
+alias ls='ls -1 $@'
