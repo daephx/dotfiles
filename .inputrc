@@ -1,2 +1,3 @@
 # bind '"\e":kill-whole-line'
-Escape: unix-line-discard
+# Escape: unix-line-discard
+set completion-ignore-case on

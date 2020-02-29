@@ -68,6 +68,7 @@ ZSH_THEME="afowler"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(
 	git
 	zsh-autosuggestions
@@ -77,9 +78,22 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# set $EDITOR = "vim"
+set $EDITOR = "vim"
 
 # User configuration
+
+# Prompt Execution Timer | Align -> Right
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(($SECONDS - $timer))
+    export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%}"
+    unset timer
+  fi
+}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -88,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#	export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
