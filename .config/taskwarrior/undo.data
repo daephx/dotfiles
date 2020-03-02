@@ -2566,3 +2566,98 @@ time 1582893856
 old [annotation_1582893761:"Not 💯 but pretty much parity" description:"migrate to powershell core" end:"1582893600" entry:"1582629467" modified:"1582893761" project:"sys.terminal" status:"completed" tags:"pwsh" uuid:"f5b0a815-d02f-4a4a-9284-d1ab8d942b05"]
 new [annotation_1582893761:"Not :100: but pretty much parity" description:"migrate to powershell core" end:"1582893600" entry:"1582629467" modified:"1582893856" project:"sys.terminal" status:"completed" tags:"pwsh" uuid:"f5b0a815-d02f-4a4a-9284-d1ab8d942b05"]
 ---
+time 1582972202
+new [description:"Add subtree for 'Testing' Environment" entry:"1582972202" modified:"1582972202" project:"code.myriadth" status:"pending" tags:"ahk,git" uuid:"46bf8f34-1c49-4add-8713-f0f591cb91e5"]
+---
+time 1582972283
+new [description:"Organizr is back up and running" end:"1582972283" entry:"1582972283" modified:"1582972283" project:"code.htpc" status:"completed" uuid:"07963aee-35c0-458d-a6b2-7086db961f92"]
+---
+time 1582972335
+old [description:"Add $meta.title := $filename to mkv converter" entry:"1581739988" modified:"1582860918" project:"code.htpc" status:"pending" tags:"pwsh,plex" uuid:"e4463b0c-e3cd-4211-a683-5e45aff759be"]
+new [description:"Add $meta.title := $filename to mkv converter" entry:"1581739988" modified:"1582972335" project:"sys.htpc" status:"pending" tags:"pwsh,plex" uuid:"e4463b0c-e3cd-4211-a683-5e45aff759be"]
+---
+time 1582972335
+old [description:"Series with &open;brackets&close; not getting removed by script" entry:"1581744612" modified:"1582860918" project:"code.htpc" status:"pending" tags:"plex,pwsh" uuid:"a35e7ff5-f853-4e2f-82e6-b05e38dbd11e"]
+new [description:"Series with &open;brackets&close; not getting removed by script" entry:"1581744612" modified:"1582972335" project:"sys.htpc" status:"pending" tags:"plex,pwsh" uuid:"a35e7ff5-f853-4e2f-82e6-b05e38dbd11e"]
+---
+time 1582972335
+old [description:"Organizr is back up and running" end:"1582972283" entry:"1582972283" modified:"1582972283" project:"code.htpc" status:"completed" uuid:"07963aee-35c0-458d-a6b2-7086db961f92"]
+new [description:"Organizr is back up and running" end:"1582972283" entry:"1582972283" modified:"1582972335" project:"sys.htpc" status:"completed" uuid:"07963aee-35c0-458d-a6b2-7086db961f92"]
+---
+time 1582972520
+new [description:"Organizr backup script needs work" entry:"1582972520" modified:"1582972520" project:"sys.htpc" status:"pending" uuid:"e4699836-8455-4154-ba4e-c04d9005fcf6"]
+---
+time 1582972581
+old [description:"Organizr backup script needs work" entry:"1582972520" modified:"1582972520" project:"sys.htpc" status:"pending" uuid:"e4699836-8455-4154-ba4e-c04d9005fcf6"]
+new [annotation_1582972581:"Directory structure is is not maintained." description:"Organizr backup script needs work" entry:"1582972520" modified:"1582972581" project:"sys.htpc" status:"pending" uuid:"e4699836-8455-4154-ba4e-c04d9005fcf6"]
+---
+time 1582972766
+old [annotation_1582972581:"Directory structure is is not maintained." description:"Organizr backup script needs work" entry:"1582972520" modified:"1582972581" project:"sys.htpc" status:"pending" uuid:"e4699836-8455-4154-ba4e-c04d9005fcf6"]
+new [annotation_1582972581:"Directory structure is is not maintained." annotation_1582972766:"GCI | % -> 'xcopy' results in seperate calls." description:"Organizr backup script needs work" entry:"1582972520" modified:"1582972766" project:"sys.htpc" status:"pending" uuid:"e4699836-8455-4154-ba4e-c04d9005fcf6"]
+---
+time 1582972788
+old [annotation_1582972581:"Directory structure is is not maintained." annotation_1582972766:"GCI | % -> 'xcopy' results in seperate calls." description:"Organizr backup script needs work" entry:"1582972520" modified:"1582972766" project:"sys.htpc" status:"pending" uuid:"e4699836-8455-4154-ba4e-c04d9005fcf6"]
+new [annotation_1582972581:"Directory structure is is not maintained." annotation_1582972766:"GCI | % -> 'xcopy' results in seperate calls." description:"Organizr backup script needs work" entry:"1582972520" modified:"1582972788" project:"sys.htpc" status:"pending" tags:"pwsh" uuid:"e4699836-8455-4154-ba4e-c04d9005fcf6"]
+---
+time 1582972898
+new [description:"Added exec timer to ZSH prompt" end:"1582972898" entry:"1582972898" modified:"1582972898" project:"sys.terminal" status:"completed" tags:"nix" uuid:"ec13e519-3325-454e-a5cc-f1445ba055b8"]
+---
+time 1582972980
+new [description:"Add timer conversion to ZSH exec timer function" entry:"1582972980" modified:"1582972980" project:"sys.terminal" status:"pending" tags:"nix" uuid:"1c56f062-b950-4274-804a-177bd22887e5"]
+---
+time 1582973023
+old [description:"Added exec timer to ZSH prompt" end:"1582972898" entry:"1582972898" modified:"1582972898" project:"sys.terminal" status:"completed" tags:"nix" uuid:"ec13e519-3325-454e-a5cc-f1445ba055b8"]
+new [description:"Added exec timer to ZSH prompt" end:"1582972898" entry:"1582972898" modified:"1582973023" project:"sys.terminal" status:"pending" tags:"nix" uuid:"ec13e519-3325-454e-a5cc-f1445ba055b8"]
+---
+time 1582973087
+old [description:"Add timer conversion to ZSH exec timer function" entry:"1582972980" modified:"1582972980" project:"sys.terminal" status:"pending" tags:"nix" uuid:"1c56f062-b950-4274-804a-177bd22887e5"]
+new [description:"Add timer conversion to ZSH exec timer function" entry:"1582972980" modified:"1582973087" parent:"68" project:"sys.terminal" status:"pending" tags:"nix" uuid:"1c56f062-b950-4274-804a-177bd22887e5"]
+---
+time 1582973151
+old [description:"Added exec timer to ZSH prompt" end:"1582972898" entry:"1582972898" modified:"1582973023" project:"sys.terminal" status:"pending" tags:"nix" uuid:"ec13e519-3325-454e-a5cc-f1445ba055b8"]
+new [description:"Added exec timer to ZSH prompt" end:"1582972898" entry:"1582972898" modified:"1582973151" project:"sys.terminal" status:"completed" tags:"nix" uuid:"ec13e519-3325-454e-a5cc-f1445ba055b8"]
+---
+time 1582973879
+old [description:"fix task 17 '+FL-Studio" entry:"1582863694" modified:"1582863733" project:"sys.tasks" status:"pending" uuid:"a0c58348-5705-4815-8258-666d2944b7e1"]
+new [description:"fix task 17 '+FL-Studio'" entry:"1582863694" modified:"1582973879" project:"sys.tasks" status:"pending" uuid:"a0c58348-5705-4815-8258-666d2944b7e1"]
+---
+time 1582976240
+new [description:"Figure out why 'nnn' (un)selection isn't working" entry:"1582976240" modified:"1582976240" project:"sys.terminal" status:"pending" tags:"wsl,nix" uuid:"c1eab280-810e-4b85-a62f-cdcbf102108c"]
+---
+time 1583108514
+old [description:"Check -> Steam family sharing achievements" entry:"1582487200" modified:"1582629876" project:"media.gaming" status:"pending" uuid:"5e8e47e4-3f12-43fa-9d8a-3d7c44606e49"]
+new [description:"Check -> Steam family sharing achievements" end:"1583108514" entry:"1582487200" modified:"1583108514" project:"media.gaming" status:"completed" uuid:"5e8e47e4-3f12-43fa-9d8a-3d7c44606e49"]
+---
+time 1583108577
+old [description:"Finish -> Prey" entry:"1582487125" modified:"1582629876" project:"media.gaming" status:"pending" uuid:"814f65de-fea9-4b1a-b8ee-bb3330e9b0cb"]
+new [description:"Finish -> Prey" entry:"1582487125" modified:"1583108577" parent:"5e8e47e4-3f12-43fa-9d8a-3d7c44606e49" project:"media.gaming" status:"pending" uuid:"814f65de-fea9-4b1a-b8ee-bb3330e9b0cb"]
+---
+time 1583131742
+new [description:"RunAsUser - Running script as admin elevates all children" entry:"1583131742" modified:"1583131742" project:"code.myriadth" status:"pending" tags:"ahk" uuid:"f2f7ea5a-49a6-42c9-bfa5-7555f387f770"]
+---
+time 1583152284
+new [description:"Trakt plugin not scrobbling addon plays" entry:"1583152284" modified:"1583152284" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"441fabcd-a2b1-4ce4-a52c-4858aae9383d"]
+---
+time 1583152307
+new [description:"XBMC Starter has annoying tab window" entry:"1583152307" modified:"1583152307" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"e287b853-5569-47d4-ab47-bd5143367910"]
+---
+time 1583152362
+new [description:"'Pop Team Epic' Eps. are cat duped" entry:"1583152362" modified:"1583152362" project:"sys.htpc" status:"pending" tags:"plex" uuid:"ac2d67b2-2344-4faf-81f0-a0a0f403594d"]
+---
+time 1583152484
+new [description:"Webhook notifications not vibrating" entry:"1583152484" modified:"1583152484" project:"sys.automation" status:"pending" tags:"ifttt,droid" uuid:"1051ef3b-fe20-4772-80ea-b5864cf2f4b3"]
+---
+time 1583152596
+new [description:"( ( uuid = 0106700f ) )" entry:"1583152596" modified:"1583152596" status:"pending" uuid:"efd9941f-1c74-4435-bef9-ba9c7c9b529d"]
+---
+time 1583152619
+old [description:"( ( uuid = 0106700f ) )" entry:"1583152596" modified:"1583152596" status:"pending" uuid:"efd9941f-1c74-4435-bef9-ba9c7c9b529d"]
+new [description:"( ( uuid = 0106700f ) )" end:"1583152617" entry:"1583152596" modified:"1583152619" status:"deleted" uuid:"efd9941f-1c74-4435-bef9-ba9c7c9b529d"]
+---
+time 1583152852
+old [description:"Inactive titlebar color -> black" end:"1582863849" entry:"1582776324" modified:"1582863849" project:"sys.uxtheme" status:"completed" tags:"win" uuid:"0106700f-d275-4d21-9f73-fa89ff29e769"]
+new [description:"Inactive titlebar color -> black" end:"1582863849" entry:"1582776324" modified:"1583152852" project:"sys.uxtheme" status:"pending" tags:"win" uuid:"0106700f-d275-4d21-9f73-fa89ff29e769"]
+---
+time 1583152983
+new [description:"Remove\/Fix close dialog - prevents clean reload" entry:"1583152983" modified:"1583152983" project:"code.myriadth" status:"pending" tags:"ahk" uuid:"92b06c8b-d9f0-4a5b-940f-a425ce14d3fa"]
+---
