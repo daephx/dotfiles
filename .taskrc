@@ -36,3 +36,4 @@ color.blocking=bold white on color53
 
 color=on
 search.case.sensitive=no
+journal.info=off
