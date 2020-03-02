@@ -20,8 +20,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[credential]
-	helper = manager
 [user]
 	email = demonphoenix42@gmail.com
 	name = Daemon Phenex
+[credential]
+	helper = cache
