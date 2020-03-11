@@ -2661,3 +2661,34 @@ new [description:"Inactive titlebar color -> black" end:"1582863849" entry:"1582
 time 1583152983
 new [description:"Remove\/Fix close dialog - prevents clean reload" entry:"1583152983" modified:"1583152983" project:"code.myriadth" status:"pending" tags:"ahk" uuid:"92b06c8b-d9f0-4a5b-940f-a425ce14d3fa"]
 ---
+time 1583155128
+new [description:"Edit OSD to be more anime compliant" entry:"1583155128" modified:"1583155128" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"23182945-c8ea-4b36-ac5a-9e401da977f2"]
+---
+time 1583155923
+old [description:"Edit OSD to be more anime compliant" entry:"1583155128" modified:"1583155128" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"23182945-c8ea-4b36-ac5a-9e401da977f2"]
+new [annotation_1583155923:"Auto hide on resume" description:"Edit OSD to be more anime compliant" entry:"1583155128" modified:"1583155923" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"23182945-c8ea-4b36-ac5a-9e401da977f2"]
+---
+time 1583155950
+old [annotation_1583155923:"Auto hide on resume" description:"Edit OSD to be more anime compliant" entry:"1583155128" modified:"1583155923" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"23182945-c8ea-4b36-ac5a-9e401da977f2"]
+new [annotation_1583155923:"Auto hide on resume" annotation_1583155950:"Cover art" description:"Edit OSD to be more anime compliant" entry:"1583155128" modified:"1583155950" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"23182945-c8ea-4b36-ac5a-9e401da977f2"]
+---
+time 1583156002
+old [annotation_1583155923:"Auto hide on resume" annotation_1583155950:"Cover art" description:"Edit OSD to be more anime compliant" entry:"1583155128" modified:"1583155950" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"23182945-c8ea-4b36-ac5a-9e401da977f2"]
+new [annotation_1583155923:"Auto hide on resume" annotation_1583155950:"Cover art > Thumbnail" description:"Edit OSD to be more anime compliant" entry:"1583155128" modified:"1583156002" project:"sys.htpc" status:"pending" tags:"kodi" uuid:"23182945-c8ea-4b36-ac5a-9e401da977f2"]
+---
+time 1583470057
+new [description:"Listview for Resparse Points 'Symbolic links'" entry:"1583470057" modified:"1583470057" project:"sys.temp" status:"pending" tags:"pwsh" uuid:"45c82fb7-2347-4e08-b650-9bb25b66453e"]
+---
+time 1583485673
+new [description:"Shift click support for tray menu" entry:"1583485673" modified:"1583485673" project:"code.myriadth" status:"pending" tags:"ahk" uuid:"c19ac5e3-37cb-43c3-9ab1-c963badd6f5f"]
+---
+time 1583667057
+new [description:"Add total filesize to 'Get-FileTypes'" entry:"1583667057" modified:"1583667057" project:"code.dev" status:"pending" tags:"pwsh" uuid:"4959c1f5-b02f-418b-9d90-3ceef2cf5104"]
+---
+time 1583677025
+new [description:"Simple command for .gitignore template" entry:"1583677025" modified:"1583677025" project:"code.dev" status:"pending" tags:"unity,git" uuid:"b39f1adb-fa4d-4e5c-92a1-be2fd38e0d57"]
+---
+time 1583929028
+old [annotation_1582865944:"maybe issue with diff count; broken -> myraidth-py3" description:"Git repository breaks PS prompt" entry:"1582863377" modified:"1582866054" priority:"H" project:"sys.terminal" status:"pending" tags:"pwsh" uuid:"3e8ee5ad-4d45-48ce-8e92-25389bae1cb0"]
+new [annotation_1582865944:"maybe issue with diff count; broken -> myraidth-py3" annotation_1583929028:"perhaps add posh-git as depends" description:"Git repository breaks PS prompt" entry:"1582863377" modified:"1583929028" priority:"H" project:"sys.terminal" status:"pending" tags:"pwsh" uuid:"3e8ee5ad-4d45-48ce-8e92-25389bae1cb0"]
+---
