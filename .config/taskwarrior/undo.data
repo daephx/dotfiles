@@ -2692,3 +2692,93 @@ time 1583929028
 old [annotation_1582865944:"maybe issue with diff count; broken -> myraidth-py3" description:"Git repository breaks PS prompt" entry:"1582863377" modified:"1582866054" priority:"H" project:"sys.terminal" status:"pending" tags:"pwsh" uuid:"3e8ee5ad-4d45-48ce-8e92-25389bae1cb0"]
 new [annotation_1582865944:"maybe issue with diff count; broken -> myraidth-py3" annotation_1583929028:"perhaps add posh-git as depends" description:"Git repository breaks PS prompt" entry:"1582863377" modified:"1583929028" priority:"H" project:"sys.terminal" status:"pending" tags:"pwsh" uuid:"3e8ee5ad-4d45-48ce-8e92-25389bae1cb0"]
 ---
+time 1585104489
+old [annotation_1582865944:"maybe issue with diff count; broken -> myraidth-py3" annotation_1583929028:"perhaps add posh-git as depends" description:"Git repository breaks PS prompt" entry:"1582863377" modified:"1583929028" priority:"H" project:"sys.terminal" status:"pending" tags:"pwsh" uuid:"3e8ee5ad-4d45-48ce-8e92-25389bae1cb0"]
+new [annotation_1582865944:"maybe issue with diff count; broken -> myraidth-py3" annotation_1583929028:"perhaps add posh-git as depends" description:"Git repository breaks PS prompt" end:"1585104489" entry:"1582863377" modified:"1585104489" priority:"H" project:"sys.terminal" status:"completed" tags:"pwsh" uuid:"3e8ee5ad-4d45-48ce-8e92-25389bae1cb0"]
+---
+time 1585104531
+old [description:"Include _Paths to Dot-Hide.ps1 script" entry:"1580945478" modified:"1582486528" project:"code.dot-hide" status:"pending" tags:"pwsh" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+new [description:"Include _Paths to Dot-Hide.ps1 script" end:"1585104531" entry:"1580945478" modified:"1585104531" project:"code.dot-hide" status:"completed" tags:"pwsh" uuid:"b433231b-a4e9-4852-b559-1000d4d6b493"]
+---
+time 1585126983
+old [description:"ESC key should clear command input" entry:"1580957760" modified:"1582860989" project:"sys.terminal" status:"pending" tags:"nix,wsl" uuid:"0e84cf82-e573-460d-bbcf-326fbafc0350"]
+new [description:"ESC key should clear command input" end:"1585126983" entry:"1580957760" modified:"1585126983" project:"sys.terminal" status:"completed" tags:"nix,wsl" uuid:"0e84cf82-e573-460d-bbcf-326fbafc0350"]
+---
+time 1585127042
+old [description:"Make only mod files that require hide" entry:"1580989510" modified:"1582487963" project:"code.dot-hide" status:"pending" tags:"pwsh" uuid:"a68a42d2-53f9-40ce-bb8b-04d7385fcd85"]
+new [description:"Make only mod files that require hide" end:"1585127042" entry:"1580989510" modified:"1585127042" project:"code.dot-hide" status:"completed" tags:"pwsh" uuid:"a68a42d2-53f9-40ce-bb8b-04d7385fcd85"]
+---
+time 1585127058
+old [description:"Bad config on windows SSH" entry:"1582698009" modified:"1582757524" project:"sys.network" status:"pending" tags:"win,ssh" uuid:"719d1969-ff8a-4e33-831f-f86d8057a181"]
+new [description:"Bad config on windows SSH" end:"1585127058" entry:"1582698009" modified:"1585127058" project:"sys.network" status:"completed" tags:"win,ssh" uuid:"719d1969-ff8a-4e33-831f-f86d8057a181"]
+---
+time 1585127069
+old [description:"Fake BSOD -> not ment to be mean" entry:"1582666753" modified:"1582666753" project:"code.devious" status:"pending" tags:"ahk,ui" uuid:"7fc7e8fe-ae11-4380-b30e-2df7eb9295b5"]
+new [description:"Fake BSOD -> not ment to be mean" end:"1585127069" entry:"1582666753" modified:"1585127069" project:"code.devious" status:"completed" tags:"ahk,ui" uuid:"7fc7e8fe-ae11-4380-b30e-2df7eb9295b5"]
+---
+time 1585127090
+old [description:"Cleanup commit history, lots of garbage IDs" entry:"1581430461" modified:"1582486510" project:"code.myriadth" status:"pending" tags:"ahk" uuid:"b5fdc9d5-b60d-415b-92eb-1ec2c46ca8e3"]
+new [description:"Cleanup commit history, lots of garbage IDs" end:"1585127090" entry:"1581430461" modified:"1585127090" project:"code.myriadth" status:"completed" tags:"ahk" uuid:"b5fdc9d5-b60d-415b-92eb-1ec2c46ca8e3"]
+---
+time 1585127139
+old [description:"Fix kontakt libraries; backup regkey info" entry:"1581436656" modified:"1582629889" project:"media.music" status:"pending" tags:"vst" uuid:"4b02c3a9-2970-41bc-9ac4-bce63d072a99"]
+new [annotation_1585127139:"scriptable, move reg directory" description:"Fix kontakt libraries; backup regkey info" entry:"1581436656" modified:"1585127139" project:"media.music" status:"pending" tags:"vst" uuid:"4b02c3a9-2970-41bc-9ac4-bce63d072a99"]
+---
+time 1585127150
+old [description:"Simple command for .gitignore template" entry:"1583677025" modified:"1583677025" project:"code.dev" status:"pending" tags:"unity,git" uuid:"b39f1adb-fa4d-4e5c-92a1-be2fd38e0d57"]
+new [description:"Simple command for .gitignore template" end:"1585127150" entry:"1583677025" modified:"1585127150" project:"code.dev" status:"completed" tags:"unity,git" uuid:"b39f1adb-fa4d-4e5c-92a1-be2fd38e0d57"]
+---
+time 1585127157
+old [description:"Optimize Powershell profile loadtime" entry:"1581592782" modified:"1582863444" project:"sys.terminal" status:"pending" tags:"pwsh" uuid:"69555ba8-5c70-4e45-b376-8f11ca4d7f94"]
+new [description:"Optimize Powershell profile loadtime" end:"1585127157" entry:"1581592782" modified:"1585127157" project:"sys.terminal" status:"completed" tags:"pwsh" uuid:"69555ba8-5c70-4e45-b376-8f11ca4d7f94"]
+---
+time 1585127211
+old [description:"only display changes vs all files" entry:"1582484175" modified:"1582486528" project:"code.dot-hide" status:"pending" tags:"pwsh" uuid:"5aeaa177-07cc-481d-8209-f38e668f7158"]
+new [description:"only display changes vs all files" end:"1585127211" entry:"1582484175" modified:"1585127211" project:"code.dot-hide" status:"completed" tags:"pwsh" uuid:"5aeaa177-07cc-481d-8209-f38e668f7158"]
+---
+time 1585127844
+old [description:"tryout black titlebar" entry:"1582489434" modified:"1582860589" project:"sys.uxtheme" status:"pending" tags:"win" uuid:"bb85abd1-b3c9-4ea8-9937-36ce826dd06e"]
+new [description:"tryout black titlebar" end:"1585127842" entry:"1582489434" modified:"1585127844" project:"sys.uxtheme" status:"deleted" tags:"win" uuid:"bb85abd1-b3c9-4ea8-9937-36ce826dd06e"]
+---
+time 1585127861
+old [description:"consider user configurations" entry:"1582693231" modified:"1582693231" project:"sys.temp" status:"pending" uuid:"9e04b1c2-2bbc-45b1-be46-c26249bf0ab7"]
+new [description:"consider user configurations" end:"1585127859" entry:"1582693231" modified:"1585127861" project:"sys.temp" status:"deleted" uuid:"9e04b1c2-2bbc-45b1-be46-c26249bf0ab7"]
+---
+time 1585127931
+old [description:"Tiramasu-esk dynamic sample layer alternative" entry:"1581252101" modified:"1582629889" project:"media.music" status:"pending" tags:"FL-Studio" uuid:"612d4407-ed21-42f3-8252-0fb3fad6bb2f"]
+new [description:"Tiramasu-esk dynamic sample layer alternative" end:"1585127929" entry:"1581252101" modified:"1585127931" project:"media.music" status:"deleted" tags:"FL-Studio" uuid:"612d4407-ed21-42f3-8252-0fb3fad6bb2f"]
+---
+time 1585127960
+old [description:"look into miniconda" entry:"1582693193" modified:"1582693379" parent:"56" project:"sys.temp" status:"pending" uuid:"7b1ca4f7-e1d8-4188-a31d-0e02826b9f1f"]
+new [description:"look into miniconda" end:"1585127960" entry:"1582693193" modified:"1585127960" parent:"56" project:"sys.temp" status:"completed" uuid:"7b1ca4f7-e1d8-4188-a31d-0e02826b9f1f"]
+---
+time 1585128007
+old [description:"Add remote compare to git status string" entry:"1582860826" modified:"1582860989" project:"sys.terminal" status:"pending" tags:"pwsh" uuid:"4cc90175-2ec0-476f-89b1-e8b730e27e19"]
+new [description:"Add remote compare to git status string" end:"1585128007" entry:"1582860826" modified:"1585128007" project:"sys.terminal" status:"completed" tags:"pwsh" uuid:"4cc90175-2ec0-476f-89b1-e8b730e27e19"]
+---
+time 1585128007
+old [depends:"3e8ee5ad-4d45-48ce-8e92-25389bae1cb0" description:"Remove double whitespace from git status in PS prompt" entry:"1582875093" modified:"1582875093" project:"sys.terminal" status:"pending" tags:"pwsh" uuid:"038c24ff-d768-4e8a-b260-bcc8984e4771"]
+new [depends:"3e8ee5ad-4d45-48ce-8e92-25389bae1cb0" description:"Remove double whitespace from git status in PS prompt" end:"1585128007" entry:"1582875093" modified:"1585128007" project:"sys.terminal" status:"completed" tags:"pwsh" uuid:"038c24ff-d768-4e8a-b260-bcc8984e4771"]
+---
+time 1585640588
+old [description:"Attempt git release as submodule -> DebugView++" entry:"1581001290" modified:"1582487995" project:"code.myriadth" status:"pending" tags:"git,ahk" uuid:"dcac1d00-caf6-432b-bad2-33b600dbc69d"]
+new [annotation_1585640588:"Probebly just piggyback on PortableApps" description:"Attempt git release as submodule -> DebugView++" entry:"1581001290" modified:"1585640588" project:"code.myriadth" status:"pending" tags:"git,ahk" uuid:"dcac1d00-caf6-432b-bad2-33b600dbc69d"]
+---
+time 1585640869
+old [description:"Webhook notifications not vibrating" entry:"1583152484" modified:"1583152484" project:"sys.automation" status:"pending" tags:"ifttt,droid" uuid:"1051ef3b-fe20-4772-80ea-b5864cf2f4b3"]
+new [description:"Webhook notifications not vibrating" end:"1585640869" entry:"1583152484" modified:"1585640869" project:"sys.automation" status:"completed" tags:"ifttt,droid" uuid:"1051ef3b-fe20-4772-80ea-b5864cf2f4b3"]
+---
+time 1585640911
+new [description:"organize google keep" entry:"1585640911" modified:"1585640911" project:"temp" status:"pending" uuid:"d7ba73c6-8368-4e70-8eaa-f5969ec1f812"]
+---
+time 1585640925
+new [description:"consider task warrior replacment 'gkeep'" entry:"1585640925" modified:"1585640925" project:"temp" status:"pending" uuid:"7b43c3e9-2808-4a3e-89fa-a501e9f057c2"]
+---
+time 1585641054
+old [description:"Explorer term summon no longer moves..." entry:"1582893569" modified:"1582893569" project:"code.myriadth" status:"pending" tags:"ahk,pwsh" uuid:"306fa651-b27f-4b62-8d28-14043b3d09c4"]
+new [annotation_1585641054:"either disabled or completely broken" description:"Explorer term summon no longer moves..." entry:"1582893569" modified:"1585641054" project:"code.myriadth" status:"pending" tags:"ahk,pwsh" uuid:"306fa651-b27f-4b62-8d28-14043b3d09c4"]
+---
+time 1585641238
+old [description:"Add timer conversion to ZSH exec timer function" entry:"1582972980" modified:"1582973087" parent:"68" project:"sys.terminal" status:"pending" tags:"nix" uuid:"1c56f062-b950-4274-804a-177bd22887e5"]
+new [annotation_1585641211:"Set color value 'DarkGray'" description:"Add timer conversion to ZSH exec timer function" entry:"1582972980" modified:"1585641238" parent:"68" project:"sys.terminal" status:"pending" tags:"nix" uuid:"1c56f062-b950-4274-804a-177bd22887e5"]
+---
