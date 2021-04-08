@@ -1,0 +1,53 @@
+[alias]
+    st = status
+    up = fetch --all
+    recommit = commit --amend -C@@{0}
+    # stamp = !f() { msg=$(printf %s ":bento: " "${1-update} " "$(date '+%Y%m%d%H%M%S')") ; commit -m $msg }; f
+    # say = "!f() { msg=$(printf %s ":bento: " "$(date '+%Y%m%d%H%M%S') " "${1-update}") ; echo $msg } ; f"
+    undo = reset --hard HEAD@{1}
+    reup = !git fetch --all && git reset --hard origin/master
+    ls = !git --no-pager log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an> %Creset' --abbrev-commit
+    lg = !git log --graph --date=relative --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit
+    gf = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit
+
+    lm = !git --no-pager log -n 1 # <CommitID>
+
+    initial = !git rev-list HEAD | tail -n 1
+
+    # List all aliases
+    lsa = !git --no-pager config --get-regexp alias
+
+    whoami-user = !git config user.name
+    whoami-email = !git config user.email
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[core]
+    editor = code -w
+    autocrlf = input
+    # Use custom `.gitignore` and `.gitattributes`.
+    excludesfile = ~/.config/git/ignore
+    attributesfile = ~/.config/git/attributes
+
+[user]
+    email = 36192863+daephx@users.noreply.github.com
+    name = daephx
+
+[credential]
+    helper = store
+
+[init]
+    defaultBranch = main
+
+[commit]
+    template = ~/.config/git/message
+
+[http]
+    sslCAInfo = /usr/local/share/ca-certificates/extra/cert.pem
+
+[pager]
+	branch = false
