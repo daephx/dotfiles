@@ -10,7 +10,8 @@
 
 function _main() {
 
-    set -e                                                 # stop execution if return not 0
+    set -e # stop execution if return not 0
+    LOGLEVEL=1
     SCRIPT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd) # full path to script parent
     CURRENTFILE=$(basename "${BASH_SOURCE[0]}")            # the file that is currently being executed
     BACKUPDIR="$SCRIPT_DIR/backups"                        # location for your home files to be kept safe
@@ -18,21 +19,28 @@ function _main() {
     source "$SCRIPT_DIR/install.sh"                        # asking a friend for help
     setup_colors                                           # assign color codes to variables
 
-    if [[ $SUDO_USER ]]; then error "Don't do that, Try again without 'sudo'."; fi
+    debug "Bootstrap: Sourced script '$SCRIPT_DIR/install.sh'"
+
+    if [[ $SUDO_USER ]]; then error "If we need it then we'll ask, Try again without 'sudo'."; fi
     if ! [[ ".git" ]]; then error "Bootstrap: could not locate git repository."; fi # (.env) variable injection
+    if ! [[ $(git config --get remote.origin.url) == "https://github.com/daephx/dotfiles" ]]; then
+        error "Bootstrap: wrong repository brother, you're using my setup now."
+    fi
     # if [[ -f ".env" ]]; then export $(cat .env | xargs); fi                         # (.env) variable injection
     # out $DOTFILES_BACKUP                                                            # TEST
 
-    git pull origin main # Update the repository
+    # git pull origin main # Update the repository
+    # ?: Potentially determine git error
+    # ?. such as, 'fatal: refusing to merge unrelated histories'
 
     confirm "User Confirmation required:
 
-    This is going to move all dotfiles (.*) from within your \$HOME directory;
-    your files will be backed up into the specified backup location,
+  This is going to move all dotfiles (.*) from within your \$HOME directory;
+  your files will be backed up into the specified backup location,
 
-    Backup Directory: $BACKUPDIR
-"
+  Backup Directory: $BACKUPDIR"
 
+    debug "Bootstrap: change into \$HOME directory: '$HOME'"
     cd $HOME # Go back home to start bootstrap
 
     if [[ ! -e $BACKUPDIR ]]; then
@@ -40,8 +48,8 @@ function _main() {
         mkdir -p $BACKUPDIR
     fi
 
-    # dotfiles=get_home_dotfiles
-    # backup_dotfile
+    dotfiles=get_home_dotfiles
+    backup_dotfile $dotfiles
     return
 
     if [[ $dotfiles ]]; then
@@ -49,7 +57,7 @@ function _main() {
 
         for dotfile in $dotfiles; do
             if [[ $dotfile == .* ]]; then
-                debug "something"
+                debug "Bootstrap: dotfile loop: '$dotfile'"
             fi
             debug "$dotfile"
             # backup_dotfile $dotfile
@@ -138,6 +146,7 @@ function get_home_dotfiles() {
         "bootstrap"
         "install"
         "backup"
+        "dot"
         "scripts"
     )
     cmd="ls -1 -A $DOTFILEDIR | grep -Fv"
