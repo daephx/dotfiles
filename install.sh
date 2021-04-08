@@ -134,8 +134,9 @@ function argument_parser() {
         bootstrap)
             debug "Argument Parser: command spotted 'bootstrap': Activating bootstrap script"
             file="$(dirname "${BASH_SOURCE[0]}")/bootstrap.sh"
-            info "Activating '$file'"
-            bash "$file"
+            info "Argument Parser: Activating '$file'"
+            source "$file"
+            _main
             exit
             ;;
 
