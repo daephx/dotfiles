@@ -14,23 +14,6 @@
 # VERSION: 0.2.2
 # CREATED: 2021-04-04 - 03:36:51
 # ─────────────────────────────────────────────────────────────────────────────
-# Commands:
-#         --help          Print the help message
-#   -v, | --version       Print script version info
-#         --bootstrap     Overwrite $HOME files with symbolic links
-#         --gitconfig     Check for gitconfig file & if not, create it
-#         --update        Process common updates                         # TODO
-#
-# Options:
-#         --debug         Print script version info
-#         --verbose       Print script debug info
-#   -y, | --yes           Automatically accept confirmation prompts
-#
-# Inputs:
-#   -r, | --repo   <str>  URL to dotfiles repository
-#   -p, | --path   <str>  Clone destination for dotfiles repository
-#   -o, | --output <str>  Optonal path for logging to file               # TODO
-# ─────────────────────────────────────────────────────────────────────────────
 
 function usage() {
     echo -e "$(
