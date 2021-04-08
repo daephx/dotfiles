@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# -*- coding: utf-8 -*-
 # Reference: https://github.com/ActionScripted/dotfiles/blob/master/bootstrap.sh
 # ---
 # dotfiles boostrap
