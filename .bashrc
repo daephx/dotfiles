@@ -119,20 +119,15 @@ fi
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-    fi
-fi
-# Personal Additions
-export DISPLAY=:0.0
-export LIBGL_ALWAYS_INDIRECT=1
-set EDITOR="vim"
         source /usr/share/bash-completion/bash_completion
     elif [ -f /etc/bash_completion ]; then
         source /etc/bash_completion
     fi
 fi
+
+# Personal Additions
+export DISPLAY=:0.0
+export LIBGL_ALWAYS_INDIRECT=1
 
 # Personal Additions:
 # export DISPLAY=:0.0
@@ -144,51 +139,51 @@ alias ls='ls -1 $@'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/daemonphoenix42/.conda/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
-        source "/home/daemonphoenix42/.conda/etc/profile.d/conda.sh"
+__conda_setup="$('/home/daephx/.conda/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
+source "/home/daephx/.conda/etc/profile.d/conda.sh"
+if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/daemonphoenix42/.conda/etc/profile.d/conda.sh" ]; then
-        . "/home/daemonphoenix42/.conda/etc/profile.d/conda.sh"
+    if [ -f "/home/daephx/.conda/etc/profile.d/conda.sh" ]; then
+        source "/home/daephx/.conda/etc/profile.d/conda.sh"
     else
-        export PATH="/home/daemonphoenix42/.conda/bin:$PATH"
+        export PATH="/home/daephx/.conda/bin:$PATH"
     fi
-### ARCHIVE EXTRACTION
-# usage: ex <file>
-ex() {
-    if [ -f $1 ]; then
-        case $1 in
-        *.tar.bz2) tar xjf $1 ;;
-        *.tar.gz) tar xzf $1 ;;
-        *.bz2) bunzip2 $1 ;;
-        *.rar) unrar x $1 ;;
-        *.gz) gunzip $1 ;;
-        *.tar) tar xf $1 ;;
-        *.tbz2) tar xjf $1 ;;
-        *.tgz) tar xzf $1 ;;
-        *.zip) unzip $1 ;;
-        *.Z) uncompress $1 ;;
-        *.7z) 7z x $1 ;;
-        *.deb) ar x $1 ;;
-        *.tar.xz) tar xf $1 ;;
-        *.tar.zst) unzstd $1 ;;
-        *) echo "'$1' cannot be extracted via ex()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
+    ### ARCHIVE EXTRACTION
+    # usage: ex <file>
+    ex() {
+        if [ -f $1 ]; then
+            case $1 in
+            *.tar.bz2) tar xjf $1 ;;
+            *.tar.gz) tar xzf $1 ;;
+            *.bz2) bunzip2 $1 ;;
+            *.rar) unrar x $1 ;;
+            *.gz) gunzip $1 ;;
+            *.tar) tar xf $1 ;;
+            *.tbz2) tar xjf $1 ;;
+            *.tgz) tar xzf $1 ;;
+            *.zip) unzip $1 ;;
+            *.Z) uncompress $1 ;;
+            *.7z) 7z x $1 ;;
+            *.deb) ar x $1 ;;
+            *.tar.xz) tar xf $1 ;;
+            *.tar.zst) unzstd $1 ;;
+            *) echo "'$1' cannot be extracted via ex()" ;;
+            esac
+        else
+            echo "'$1' is not a valid file"
+        fi
+    }
 
-abspath() {
-    cd "$(dirname "$1")"
-    printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
-    cd "$OLDPWD"
-}
+    abspath() {
+        cd "$(dirname "$1")"
+        printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
+        cd "$OLDPWD"
+    }
 
-# vim config
-export VIMINIT='source $MYVIMRC'
-export MYVIMRC='~/.config/vim/.vimrc' # or any other location you want
-
+    # vim config
+    export VIMINIT='source $MYVIMRC'
+    export MYVIMRC='~/.config/vim/.vimrc' # or any other location you want
 
 # precmd() { printf "\n" }
 fi
