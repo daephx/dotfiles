@@ -344,17 +344,23 @@ ${UWHITE}or, clone the repository and modify the .env variables:\n
 
 function confirm() {
 
-    if [[ $bypass_mode ]]; then return 0; fi # quick stop if active
-
     default_string=$1
+
+    if [[ $bypass_mode ]]; then return 0; fi # quick stop if active
     if ! [[ $default_string ]]; then error "User Confirmation: Default string was not supplied. '$default_string'"; fi
 
+    printf "$1\n\n"
+
+    echo -n "Do you wish to continue? [y/n]: "
     while true; do
-        read -p "Do you wish to continue? [Yy/Nn]" yn
+        read -e yn
         case $yn in
         [Yy]*) return 0 ;;
         [Nn]*) exit ;;
-        *) echo "Please answer yes or no. [Yy/Nn]" ;;
+        *)
+            # echo -en "\033[1A\033[2K"
+            echo -ne "\rPlease answer yes or no. [y/n]: "
+            ;;
         esac
     done
 }
