@@ -1,80 +1,106 @@
 #!/bin/bash
-## $_PROGRAM $_VERSION - $_ORG [2021-01-01]
-## Compatible with bash and dash/POSIX
-##
-## Usage: $PROG [OPTION...] [COMMAND]...
-## Options:
-##   -i, | --log-info     Set log level to info (default)
-##   -q, | --log-quiet    Set log level to quiet
-##   -l, | --log MESSAGE  Log a message
-## Commands:
-##   -h, | --help         Displays this help and exists
-##   -v, | --version      Displays output version and exists
-## Examples:
-##   -r, | --repo         Repo url from GitHub https://github.com/<user>/dotfiles <repo_url>}
-##   -p, | --path         Destination path to clone the repo "~/.dotfiles" <install_path>}
-
-APP_VERSION="0.2.1"
-APP_NAME="SymDot"
-AUTHORNAME="daephx"
-TRADEMARK=$(date +%Y)
-LOGFORMAT="true" # timstamp on log output
-LOGLEVEL="2"     # Default Log Level | 2:INFO
+# ─────────────────────────────────────────────────────────────────────────────
+# FILE: install.sh
+#
+# USAGE: install.sh [--help] [-y] [-r <url>] [-p <path>] [-oD logfile]
+#
+# DESCRIPTION: List and/or delete all stale links in directory trees.
+# The default starting directory is the current directory.
+# Don't descend directories on other filesystems.
+# ~ Compatible with bash and dash/POSIX
+#
+# DEPENDS: git
+# AUTHOR: Daephx
+# VERSION: 0.2.2
+# CREATED: 2021-04-04 - 03:36:51
+# ─────────────────────────────────────────────────────────────────────────────
+# Commands:
+#         --help          Print the help message
+#   -v, | --version       Print script version info
+#         --bootstrap     Overwrite $HOME files with symbolic links
+#         --gitconfig     Check for gitconfig file & if not, create it
+#         --update        Process common updates                         # TODO
+#
+# Options:
+#         --debug         Print script version info
+#         --verbose       Print script debug info
+#   -y, | --yes           Automatically accept confirmation prompts
+#
+# Inputs:
+#   -r, | --repo   <str>  URL to dotfiles repository
+#   -p, | --path   <str>  Clone destination for dotfiles repository
+#   -o, | --output <str>  Optonal path for logging to file               # TODO
+# ─────────────────────────────────────────────────────────────────────────────
 
 function usage() {
     echo -e "$(
         cat <<EOF
-_______________________________________________________________________________
+─────────────────────────────────────────────────────────────────────────────────
 
-$APP_NAME v$APP_VERSION - $COMPANY [$TRADEMARK] : Compatible with bash and dash/POSIX
+${WHITE}Usage: $(basename "${BASH_SOURCE[0]}") [--help] [-y] [-r <url>] [-p <path>] [-oD logfile]${RESET}
 
-${WHITE}Usage: $(basename "${BASH_SOURCE[0]}") [-y] --repo <repo_url> --path <install_path>${BBLACK}
-Options:
-        --debug       ${WHITE}Print script version info${BBLACK}
-        --verbose     ${WHITE}Print script debug info${BBLACK}
-  -y, | --yes         ${WHITE}Automatically accept confirmation prompts${BBLACK}
-Commands:
-        --help        ${WHITE}Print the help message${BBLACK}
-  -v, | --version     ${WHITE}Print script version info${BBLACK}
-Examples:
-  -r, | --repo <str>  ${WHITE}Repository URL to download from  https://github.com/<user>/dotfiles${BBLACK}
-  -p, | --path <str>  ${WHITE}Destination path to clone the repo <install_path> "~/.dotfiles"${BBLACK}
-\n_______________________________________________________________________________
+${RESET}$_NAME v$_VERSION - $_ORG [$_TM] : ~~Compatible with bash and dash/POSIX${RESET}~~
+
+${WHITE}Commands:${BBLACK}
+${BBLACK}        --help          ${WHITE}Print the help message${RESET}
+${BBLACK}  -v, | --version       ${WHITE}Print script version info${RESET}
+
+${BBLACK}  bootstrap             ${WHITE}Overwrite \$HOME files with symbolic links${RESET}          ${ON_PURPLE}# TODO${RESET}
+${BBLACK}  gitconfig             ${WHITE}Check for gitconfig file & if not, create it${RESET}       ${ON_PURPLE}# TODO${RESET}
+${BBLACK}  update                ${WHITE}Process common updates${RESET}                             ${ON_PURPLE}# TODO${RESET}
+
+${WHITE}Options:${RESET}
+${BBLACK}        --debug         ${WHITE}Print script version info${RESET}
+${BBLACK}        --verbose       ${WHITE}Print script debug info${RESET}
+${BBLACK}  -y, | --yes           ${WHITE}Automatically accept confirmation prompts${RESET}
+
+${WHITE}Inputs:${BBLACK}
+${BBLACK}  -r, | --repo   <str>  ${WHITE}Repository URL${RESET}
+${BBLACK}  -p, | --path   <str>  ${WHITE}Destination path to clone the repo${RESET}
+${BBLACK}  -o, | --output <str>  ${WHITE}Optonal path for logging to file${RESET}                   ${ON_PURPLE}# TODO${RESET}
+
+─────────────────────────────────────────────────────────────────────────────────
 EOF
     )" # this cannot not be on the EOF line
-}
-
-function cleanup() {
-    debug "Clearnup Trap: Starting cleanup process..."
-    trap - SIGINT SIGTERM ERR EXIT
     exit 1
 }
 
 function _main() {
 
+    # trap "cleanup" EXIT INT SIGINT
     # set -e # stop execution if return not 0
     # set -Eeuo pipefail
 
+    _VERSION="0.2.2"
+    _NAME="SymDot"
+    _AUTHOR="daephx"
+    _ORG=$_AUTHOR
+    _TM=$(date +%Y)
+    TIMESTAMP=0 # timstamp on log output
+    LOGLEVEL=2  # Default Log Level | 2:INFO
+    FILELABEL=1 # prepends the filename to log output
+    TIMESTAMP=0 # Display a timestamp in the log output
+
     # default values of variables set from params
-    NO_COLOR=0
-    KILLERRORS=1 # enable terminating error messages
-    setup_colors # assign color codes to variables
+    bypass_mode=0 # whether the script should halt for user input
+    killerrors=1  # enable terminating error messages
+    setup_colors  # assign color codes to variables
+    argument_parser "$@"
 
-    argument_parser
+    debug "All default variables have been loaded"
+    info "Starting application: $_NAME v$_VERSION"
 
-    # if [ "$YES-" ] && echo "_main - YES!"
+    confirm
+    return
+    # if ! [[$REPOURL]] && ! [[$dotfiles_location]]; then error "oof, can't do notin without yer arguments there sonny."; fi
+    # debug "Environement Variable: ENVIRONMENT:development, Loading settings..."
 
-    # if [[ "$ENVIRONMENT" == "development" ]]; then LOGLEVEL="1"; fi
-    debug "Environement Variable: ENVIRONMENT:development, Loading settings..."
-    info "\n${YELLOW}This script is a work in progress, ${RED}use at your own risk!${RESET}"
-    info "\n\tUNIX dotfile installation script!\n"
-    info "  Path:\t\"$CLONEPATH\""
-    info "  Repo:\t\"$REPOURL\"\n"
-    printf "$(read -p "Press ENTER to continue, Ctrl+C to cancel...")\n"
+    warn "\n${YELLOW}This script is a work in progress, ${RED}use at your own risk!${RESET}"
+    prompt "Press ENTER to continue, Ctrl+C to cancel..."
     info "Starting installation process..."
     sleep 3
 
-    check_config_providers $CLONEPATH # check data providers $1 || (.env)
+    # file_config_providor $CLONEPATH # check data providers $1 || (.env)
     install_dependencies
 
     # confirm
@@ -87,22 +113,23 @@ function _main() {
 
     sleep 3
     info "Installation Process complete..."
-    trap "cleanup" EXIT INT SIGINT SIGTERM ERR
+
 }
 
 function argument_parser() {
+
     # Ok, listen to me...
     # First we initalize the params variable, we do this so that it can be parsed.
     # we are expecting a string like this:
 
-    #     "--debug --repo-url https://.../ --path /tmp/$APP_NAME"
+    #     "--debug --repo-url https://.../ --path /tmp/$_NAME"
 
     # With the paramaters in this format we will split them by the number of spaces.  The issue I'm
     # having is that some cli applications are diffrent with thier strings.  Part of this could be
     # my windows background but there are cases where things come in within quotations or
     # , where they are not as easily split.
     #
-    #   "--repo=http://.../", "--path=/tmp/$APP_NAME"
+    #   "--repo=http://.../", "--path=/tmp/$_NAME"
     #
     # To remedy this, I wish to preprocess the strings, but finding the route has been difficult...
     # .*gasp*. Alright, so I think all the arguments are initialized at runtime and the parser is
@@ -110,45 +137,68 @@ function argument_parser() {
     # "$1","$2", "$3", "$4" ...
 
     PARAMS=""
-    while (("$#")); do
+    while (($#)); do
+        debug "Argument Parser: evaluating argument case: '$1'"
         split=$(split_equalsign_arguments $1)
         case "$1" in
-        -h | --help)
-            usage
+
+        update)
+            debug "Argument Parser: command spotted 'update': Activating update process"
+            echo sudo apt-get update -qq
             exit
             ;;
+
+        bootstrap)
+            debug "Argument Parser: command spotted 'bootstrap': Activating bootstrap script"
+            file="$(dirname "${BASH_SOURCE[0]}")/bootstrap.sh"
+            info "Activating '$file'"
+            bash "$file"
+            exit
+            ;;
+
+        gitconfig)
+            debug "Argument Parser: command spotted 'gitconfig': Activating gitconfig generator"
+            out "im a devloper"
+            error "gitconfig script is not yet trusted, stopping execution."
+            # setup_gitconfig
+            exit
+            ;;
+
         -v | --version)
-            info "$APP_NAME v$APP_VERSION"
+            out "$_NAME v$_VERSION"
             exit
             ;;
         --debug)
             LOGLEVEL=1
-            debug "Argument Parser: '--debug' flag called: loglevel now equals 1 'LOGLEVEL=1'"
-            # shift
+            TIMESTAMP=1
+            debug "Argument Parser: flag spotted '--debug': Activating debug mode 'LOGLEVEL=$LOGLEVEL'"
             ;;
         --verbose)
             set -x
-            debug "Argument Parser: '--verose' flag called: running command 'set -x'"
-            shift
+            debug "Argument Parser: flag spotted '--verose': Activating verbose mode  'set -x'"
             ;;
         -y | --yes)
             YES=1
-            debug "Argument Parser: '--yes' flag called: yes now equals 1 'YES=1'"
+            debug "Argument Parser: flag spotted '--yes': Bypassing user prompts 'YES=$YES'"
+            ;;
+        --repo)
+            url=$2
+            url_validator $url
+            dotfiles_repository=$url
+            debug "Argument Parser: command called '--repo' command called; output: '$url'"
             shift
             ;;
-        --repo=*)
-            url_validator $1
-            DOTFILE_REPO=$1
-            debug "Argument Parser: '--repo' command called: 'DOTFILE_REPO=$1'"
+        --path)
+            path=$2
+            path_validator $path
+            dotfiles_location=$path
+            debug "Argument Parser: '--path' command called; output: '$path'"
             shift
             ;;
-        --path=*)
-            path_validator $1
-            INSTALL_PATH=$1
-            debug "Argument Parser: '--path' command called: 'INSTALL_PATH=$1'"
-            shift
+        --help)
+            usage
             ;;
-        -?*) error "Argument Parser: Unknown option: $1" ;;
+        ?*) error "Argument Parser: ${RED}Unknown option${RESET}: '$1'" ;;
         *) # preserve positional arguments
             PARAMS="$PARAMS $1"
             debug "Argument Parser: Reattaching Paramas \"$PARAMS\" | \"{$1: $2: $3: $4}\""
@@ -158,48 +208,61 @@ function argument_parser() {
         shift
     done
 
+    if [[ "$PARAMS" == "" ]]; then usage; fi # Display help and exit if no paramaters given
     # set positional arguments in their proper place
-    eval set -- "$PARAMS"
-    info "$PARAMS"
+    eval set -- "$PARAMS" # !IMPORTANT ?? maybe
+    debug "Argument Parser: Evaluated Parameter list: '$PARAMS'"
+
     # error "he's dead jim..." # error terminates the script
 
     # word is the empty string, and the colon is omitted. Without the colon, the check is just for
     # unset, but not for null, so ${uno-} is equivalent to checking if uno is set '${parameter:-word}'
 
-    args=("$@")
-    [ -z "${DOTFILE_REPO-}" ] && error "${BRED}Missing required parameter:${RESET} REPO, Ex. <${YELLOW}https://githost.tld/<user>/dotfiles.git${RESET}>"
-    [ -z "${INSTALL_PATH-}" ] && error "${BRED}Missing required parameter:${RESET} PATH, Ex. <${YELLOW}\$HOME/dotfiles/${RESET}>"
-    [ ${#args[@]} -eq 0 ] && error "${BRED}Missing script arguments:${RESET} take a look at the usage $(usage)."
-    # check required params and arguments
+    debug "Argument Parser: Aquired parameters:\n\n\t--repo: $dotfiles_repository\n\t--path: $dotfiles_location\n"
+
+    # if no arguments were provided.
+    # args=("$@")
+    # if [[ ${#args[@]} -eq 0 ]]; then usage; fi
+    # check variable assignment for required arguments
+    [[ -z "${dotfiles_repository-}" ]] && error "Argument Parser: ${RED}Missing required parameter${RESET}: '--repo <url>' | https://githost.tld/<user>/dotfiles.git"
+    [[ -z "${dotfiles_location-}" ]] && error "Argument Parser: ${RED}Missing required parameter:${RESET} '--path <str>' | /tmp/dotfiles/"
+
     return 0
+}
+
+function evaluate_argument_string() {
+
+    previous_argument=0 # TODO
+    # [[ "$1" == "-.+=" ]] &&
+    if ! [[ "$1" =~ "-.+=(.+)" ]]; then return; fi
+    debug "Attmpted split_argument on string $1\n\n\t${BASH_REMATCH[1]}"
+    printf "$1" 1>&1
 }
 
 function split_equalsign_arguments() {
-    if [[ "$1" == "-.+=" ]] && [[ "$1" =~ "-.+=(.+)" ]]; then
-        info "Attmpted split_argument on string $1\n\n\t${BASH_REMATCH[1]}"
-    fi
+    # [[ "$1" == "-.+=" ]] &&
+    if ! [[ "$1" =~ "-.+=(.+)" ]]; then return; fi
+    debug "Attmpted split_argument on string $1\n\n\t${BASH_REMATCH[1]}"
+    printf "$1" 1>&1
 }
 
 function url_validator() {
-    debug "Validators: url_validator verifying string '$1'"
-    regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
     string="$1"
-    if ! [[ $string =~ $regex ]]; then
-        error "Validators: url_validator failed to verify: [${RED}FAIL${RESET}] '$1'"
-    fi
-    info "Validators: url_validator [${GREEN}GOOD${RESET}] '$1'"
-    return 0
+    regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
+    default_log="String Validators: URL: Attempted MATCH"
+    if [[ $string =~ $regex ]]; then
+        debug "$default_log [${GREEN}GOOD${RESET}] w/ '$string'"
+    else error "$default_log [${RED}FAIL${RESET}] w/ '$string'"; fi
 }
 
-# function path_validator() {
-#     if [[ "$1" =~ "-.+=(.+)" ]] && [[ $1 != "--path" ]]; then
-#         INSTALL_PATH=${BASH_REMATCH[1]}
-#     if
-#     if ! [[ -f $1 ]] || ! [[ -f $2]]; then
-#         error "Argument Parser: unable to parse string: '"$1"'"
-#         exit 1
-#     fi
-# }
+function path_validator() {
+    string="$1"
+    regex="^/|//|(/[\w-]+)+$"
+    default_log="String Validators: PATH: Attempted MATCH "
+    if [[ $string =~ $regex ]]; then
+        debug "$default_log [${GREEN}GOOD${RESET}] w/ '$string'"
+    else error "$default_log [${RED}FAIL${RESET}] w/ '$string'"; fi
+}
 
 function setup_gitconfig() {
     if ! [[ -f git/gitconfig.local.symlink ]]; then
@@ -210,35 +273,53 @@ function setup_gitconfig() {
             debug "GitConfigInit: 'uname -s' resolved to 'Dawrin', git_credential set to 'osxkeychain'"
         fi
 
-        log " * What is your github author name?"
-        read -e git_authorname
-        log " * What is your github author email?"
+        out " * What is your github author name?"
+        read -e git__AUTHOR
+        out " * What is your github author email?"
         read -e git_authoremail
 
         sed \
-            -e "s/AUTHORNAME/$git_authorname/g" \
+            -e "s/_AUTHOR/$git__AUTHOR/g" \
             -e "s/AUTHOREMAIL/$git_authoremail/g" \
             -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" \
             git/gitconfig.local >git/gitconfig.local.symlink
 
-        info "GitConfigInit: Successfully created gitconfig file"
+        info "Gitconfig Setup: Successfully created file: 'git/gitconfig.local.symlink'"
     fi
 }
 
-function get_basic_credentials() {
+# function get_basic_credentials() {
+#   # '-s' option prevents the user's typing from appearing in the terminal,
+#   read -p "Enter your username: " username
+#   read -sp "Enter your password: " password
+#   echo
+# }
 
-    #
-    # '-s' option prevents the user's typing from appearing in the terminal,
-    #
+install_oh-my-zsh() {
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
 
-    read -p "Enter your username: " username
-    read -sp "Enter your password: " password
-    echo
+function update_system() {
+    info "Updating system..."
+    sudo apt-get update -qq # -qq will hide stdout
+
+    # insatll/update general system packages
+    sudo apt-get install -yy htop
+    sleep 3
 }
 
 function install_dependencies() {
     info "Installing packages..."
     sleep 3
+}
+
+function github_latest_release() {
+    # v0.31.4 : https://gist.github.com/lukechilds/a83e1d7127b78fef38c2914c4ececc3c
+    # Usage:    $ get_latest_release "creationix/nvm"
+    # This will curl the output into the current directory
+    curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+        grep '"tag_name":' |                                          # Get tag line
+        sed -E 's/.*"([^"]+)".*/\1/'                                  # Pluck JSON value
 }
 
 function clone_dotfiles() {
@@ -248,15 +329,15 @@ function clone_dotfiles() {
     #   the rest is supplised by global variables atm.
 
     if [[ -f "$1" ]]; then
-        error "It appears that the provided path already exists.\n\n${RED}Conflict: ${BBLACK}'$1'"
+        error "It appears that the provided path already exists.\n\n${RED}Conflict:${BBLACK} '$1'"
     fi
     # info "Installing dotfiles..."
     git clone --recursive $REPOURL $CLONEPATH # Clone the repo
     cd "$CLONEPATH"                           # enter the .dotfile repo
 }
 
-function check_config_providers() {
-    if [ "$1" == "" ] || [ $# -gt 1 ]; then             # check for script paramaters
+function file_config_providor() {
+    if [ "$1" == "" ] || [ "$#" -gt 1 ]; then           # check for script paramaters
         if ! [ -f ".env" ] || ! [ -z $CLONEPATH ]; then # check for environment variables
             error "The script could not determin a sutible path to clone the repository.
 -------------------------------------------------------------------------------
@@ -277,41 +358,71 @@ ${UWHITE}or, clone the repository and modify the .env variables:\n
     info "Starting with path: '$CLONEPATH'"
 }
 
-# function parse_params() {
-
-# }
-
 function confirm() {
-    if [[ "$yes" ]]; then log "YESSSS"; fi
+
+    if [[ $bypass_mode ]]; then return 0; fi # quick stop if active
+
+    default_string=$1
+    if ! [[ $default_string ]]; then error "User Confirmation: Default string was not supplied. '$default_string'"; fi
+
+    while true; do
+        read -p "Do you wish to continue? [Yy/Nn]" yn
+        case $yn in
+        [Yy]*) return 0 ;;
+        [Nn]*) exit ;;
+        *) echo "Please answer yes or no. [Yy/Nn]" ;;
+        esac
+    done
+}
+
+function prompt() {
+
+    # - log " * What is your github author email?"
+    # + out " * What is your github author email?"
+    #   read -e git_authoremail
+
+    printf "$(read -p "$1")\n" 1>&1
 }
 
 # Logging functions
-function error() { log "$1" 4; }
-function warn() { log "$1" 3; }
-function info() { log "$1" 2; }
-function debug() { log "$1" 1; }
-function msg() { log "$1" 0; }
-function log() {
+function error() { out "$1" 4; }
+function warn() { out "$1" 3; }
+function info() { out "$1" 2; }
+function debug() { out "$1" 1; }
+function out() {
+
+    local msg="$1" # STRING
+    local lvl="$2" # 0, 1, 2, 3, 4
+
+    if [[ "$lvl" -lt "$LOGLEVEL" ]] && [[ "$lvl" -ne 0 ]]; then return; fi
 
     case "$2" in
-    4) loglvl="${BRED}ERR${RESET}" ;;   # Error
-    3) loglvl="${YELLOW}WRN${RESET}" ;; # Warning
-    2) loglvl="${WHITE}INF${RESET}" ;;  # Info
-    1) loglvl="${CYAN}DBG${RESET}" ;;   # Debug
-    0) ;;                               # No-label
+    4) level_label="${RED}ERR${RESET}" ;;    # Error
+    3) level_label="${YELLOW}WRN${RESET}" ;; # Warning
+    2) level_label="${WHITE}INF${RESET}" ;;  # Info
+    1) level_label="${CYAN}DBG${RESET}" ;;   # Debug
+    *) ;;                                    # General
     esac
 
-    timestamp="${RESET}[${BBLACK}$(date "+%Y-%M-%dT%T.%3N")${RESET}]${BBLACK}"
-    if ! [[ "LOGFORMAT" ]]; then timestamp=""; fi
-    OUTSTRING+="$timestamp ${loglvl}: ${RESET}$1\n"
-    if [[ "$2" == "4" ]] && [[ $KILLERRORS ]]; then
-        debug "Logging: [[ '$2' == '4' ]] comparison successful; logger registered an error, this could result in script termination."
-        printf "$OUTSTRING${RESET}\n" 1>&2
+    default_output_string="${RESET}$1${RESET}"
+    file_label="$(basename "${BASH_SOURCE[0]}")"
+    timestamp="${RESET}[${BBLACK}$(date "+%Y-%M-%dT%T.%3N")${RESET}]${RESET}"
+    if [[ "$level_label" != "" ]]; then
+        if [[ "$FILELABEL" -ne 0 ]]; then output_string="$file_label: $default_output_string"; fi
+        if [[ "$TIMESTAMP" -ne 0 ]]; then output_string="$file_label: $timestamp $level_label: $default_output_string"; fi
+    else
+        output_string="$default_output_string"
+    fi
+
+    # TODO: File Logging
+
+    if [[ $lvl -gt 3 ]] && [[ $killerrors -ne 0 ]]; then
+        printf "$file_label: Logging: 'killerrors' gaurd successful; logger registered an error, and has resulted in script termination.\n" 1>&/dev/null
+        printf "$output_string${RESET}\n\n" 1>&2
         exit 1
-    elif (($2 >= $LOGLEVEL)) || (($2 == 0)); then
-        debug "Logging: (($2 >= $LOGLEVEL)) || (($2 == 0)) comparison successful; outstring set to default."
-        OUTSTRING="$1${RESET}\n"
-        printf "$OUTSTRING" 1>&1
+    else
+        printf "$file_label: Logging: 'killerrors' gaurd unsuccessful; outstring set to default.\n" 1>&/dev/null
+        printf "$output_string\n" 1>&1
     fi
 
 }
@@ -469,10 +580,15 @@ function setup_colors() {
     fi
 }
 
-# Much like pythons: if __name__ == '__main__':
+function cleanup() {
+    debug "Clearnup Trap: Starting cleanup process..."
+    exit 1
+}
+
+# Much like pythons: if __NAME_ == '__main__':
 if ! [ "${BASH_SOURCE[0]}" == "${0}" ]; then
-    debug "Script is being sourced, no function calls today."
+    printf "$(basename "${BASH_SOURCE[0]}"): Script is being sourced, NOT calling _main() function.\n" 1>&/dev/null
 else
-    debug "Script is a subshell, calling _main() function."
+    printf "$(basename "${BASH_SOURCE[0]}"): Script is a subshell, calling _main() function.\n" 1>&/dev/null
     _main "$@"
 fi
