@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -7,10 +10,18 @@ case $- in
 *i*) ;;
 *) return ;;
 esac
+# Set default editor
+set EDITOR="vim"
+if [ "$TERM_PROGRAM" == "vscode" ]; then
+    set EDITOR="code"
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
+
+# Change History Location
+HISTFILE=~/.cache/bash_history
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -26,6 +37,9 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
+
+# Enable auto cd
+shopt -s autocd
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -87,22 +101,17 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
+fi
+
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -115,11 +124,19 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
-
 # Personal Additions
 export DISPLAY=:0.0
 export LIBGL_ALWAYS_INDIRECT=1
 set EDITOR="vim"
+        source /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        source /etc/bash_completion
+    fi
+fi
+
+# Personal Additions:
+# export DISPLAY=:0.0
+# export LIBGL_ALWAYS_INDIRECT=1
 
 # Custom aliases
 alias cls="clear"
@@ -128,7 +145,7 @@ alias ls='ls -1 $@'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/daemonphoenix42/.conda/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
+        source "/home/daemonphoenix42/.conda/etc/profile.d/conda.sh"
     eval "$__conda_setup"
 else
     if [ -f "/home/daemonphoenix42/.conda/etc/profile.d/conda.sh" ]; then
@@ -136,6 +153,44 @@ else
     else
         export PATH="/home/daemonphoenix42/.conda/bin:$PATH"
     fi
+### ARCHIVE EXTRACTION
+# usage: ex <file>
+ex() {
+    if [ -f $1 ]; then
+        case $1 in
+        *.tar.bz2) tar xjf $1 ;;
+        *.tar.gz) tar xzf $1 ;;
+        *.bz2) bunzip2 $1 ;;
+        *.rar) unrar x $1 ;;
+        *.gz) gunzip $1 ;;
+        *.tar) tar xf $1 ;;
+        *.tbz2) tar xjf $1 ;;
+        *.tgz) tar xzf $1 ;;
+        *.zip) unzip $1 ;;
+        *.Z) uncompress $1 ;;
+        *.7z) 7z x $1 ;;
+        *.deb) ar x $1 ;;
+        *.tar.xz) tar xf $1 ;;
+        *.tar.zst) unzstd $1 ;;
+        *) echo "'$1' cannot be extracted via ex()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+abspath() {
+    cd "$(dirname "$1")"
+    printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
+    cd "$OLDPWD"
+}
+
+# vim config
+export VIMINIT='source $MYVIMRC'
+export MYVIMRC='~/.config/vim/.vimrc' # or any other location you want
+
+
+# precmd() { printf "\n" }
 fi
 unset __conda_setup
 # <<< conda initialize <<<
