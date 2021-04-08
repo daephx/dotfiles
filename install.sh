@@ -575,6 +575,14 @@ function cleanup() {
     exit 1
 }
 
+determine_installation_varients() {
+    for f in scripts/install_*.sh; do
+        echo "Processing $f file.."
+    done
+}
+
+# chmod +x script.sh
+
 # Much like pythons: if __NAME_ == '__main__':
 if ! [ "${BASH_SOURCE[0]}" == "${0}" ]; then
     printf "$(basename "${BASH_SOURCE[0]}"): Script is being sourced, NOT calling _main() function.\n" 1>&/dev/null
