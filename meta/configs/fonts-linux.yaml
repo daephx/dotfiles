@@ -1,0 +1,4 @@
+- shell:
+    - if [ ! -d $HOME/.fonts ]; then mkdir $HOME/.fonts; fi
+    - cp src/fonts/CaskaydiaCove\ NF.ttf $HOME/.fonts/
+    - [fc-cache -f -v, Installing fonts...]

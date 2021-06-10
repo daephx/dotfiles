@@ -1,0 +1,15 @@
+- shell:
+    - [
+        ZSH="$HOME/.config/zsh/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended,
+        Installing oh-my-zsh,
+      ]
+    # - [mkdir -p $HOME/.config/oh-my-zsh/custom/, Creating 'oh-my-zsh' custom folder]
+    # - [
+    #     mkdir -p $HOME/.config/oh-my-zsh/custom/plugins,
+    #     Creating 'oh-my-zsh' custom plugins folder,
+    #   ]
+
+- link:
+    $HOME/.config/zsh/custom:
+      path: src/zsh/custom
+      force: true

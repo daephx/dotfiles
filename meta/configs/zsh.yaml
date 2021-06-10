@@ -1,0 +1,11 @@
+- shell:
+    - [apt update && apt install -y zsh, Install ZSH...]
+
+- link:
+    $HOME/.zshenv: src/zsh/.zshenv
+    $HOME/.config/zsh/.zshrc: src/zsh/.zshrc
+    $HOME/.config/zsh:
+      glob: true
+      path: src/zsh/*
+      exclude: [src/zsh/zshrc, src/zsh/.zshenv, src/zsh/z, src/zsh/oh-my-zsh]
+    $HOME/.config/zsh/.z: src/zsh/.z

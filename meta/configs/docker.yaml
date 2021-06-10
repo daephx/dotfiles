@@ -1,0 +1,3 @@
+- link:
+    # Docker
+    $HOME/.docker/config.json: src/docker/config.json
