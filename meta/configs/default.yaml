@@ -1,8 +1,0 @@
-- link:
-    # SH
-    $HOME/.aliases: src/sh/aliases
-    $HOME/.profile: src/sh/profile
-
-    # SSH
-    $HOME/.ssh/config:
-      path: src/ssh/config

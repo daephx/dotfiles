@@ -1,2 +1,2 @@
 - shell:
-    - [docker pull daephx/userspace:latest, Downloaiding dotfiles container.]
+    - [docker pull daephx/userspace:latest, Downloading dotfiles container.]

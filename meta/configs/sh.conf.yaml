@@ -1,0 +1,4 @@
+- link:
+    ~/.aliases: src/sh/aliases
+    ~/.functions: src/sh/functions
+    ~/.profile: src/sh/profile

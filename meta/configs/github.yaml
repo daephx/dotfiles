@@ -1,2 +1,2 @@
-- link:
-    $HOME/.config/gh/config.yml: src/gh/config.yml
+- shell:
+    - [apt update && apt install -y gh]

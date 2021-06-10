@@ -1,8 +1,2 @@
 - shell:
     - [apt update && apt install -y git, Install Git...]
-
-- link:
-    $HOME/.config/git:
-      glob: true
-      force: true
-      path: src/git/*
