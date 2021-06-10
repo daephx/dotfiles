@@ -1,5 +1,2 @@
 - shell:
-    - [
-        docker pull daemonphoenix42/userspace:latest,
-        Downloaiding dotfiles container.,
-      ]
+    - [docker pull daephx/userspace:latest, Downloaiding dotfiles container.]
