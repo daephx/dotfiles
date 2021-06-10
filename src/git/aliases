@@ -1,0 +1,33 @@
+[alias]
+undo = reset --hard
+abort = rebase --abort
+aliases = "!git config -l | grep alias | cut -c 7-"
+amend = commit -a --amend
+
+st = status
+up = fetch --all
+recommit = commit --amend -C@@{0}
+# stamp = !f() { msg=$(printf %s ":bento: " "${1-update} " "$(date '+%Y%m%d%H%M%S')") ; commit -m $msg }; f
+# say = "!f() { msg=$(printf %s ":bento: " "$(date '+%Y%m%d%H%M%S') " "${1-update}") ; echo $msg } ; f"
+undo = reset --hard HEAD@{1}
+reup = !git fetch --all && git reset --hard origin/master
+ls = !git --no-pager log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an> %Creset' --abbrev-commit
+lg = !git log --graph --date=relative --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit
+gf = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit
+
+lm = !git --no-pager log -n 1 # <CommitID>
+
+initial = !git rev-list HEAD | tail -n 1
+
+# List all aliases
+lsa = !git --no-pager config --get-regexp alias
+
+whoami = "!f() { \
+msg='$(git config user.name) <$(git config user.email)>'; \
+printf $msg; \
+}; f"
+
+whoami-user = !git config user.name
+whoami-email = !git config user.email
+
+unstage="!git 'reset HEAD --'"
