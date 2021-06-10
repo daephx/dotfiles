@@ -1,10 +1,15 @@
+# Enabled prompt theme
+if command -v oh-my-posh &>/dev/null; then
+  precmd() { print "" } # add extra newline
+  eval "$(oh-my-posh --init --shell zsh --config $HOME/.config/poshthemes/slimy.omp.json)"
+else
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
 fi
-
 
 # Lines configured by zsh-newuser-install
 HISTFILE="$XDG_CACHE_HOME/.histfile"
@@ -25,7 +30,7 @@ ZSH_CUSTOM="$ZDOTDIR/custom"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -97,31 +102,39 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit $ZDOTDIR/p10k.zsh.
-[[ ! -f "$ZDOTDIR/p10k.zsh" ]] || source "$ZDOTDIR/p10k.zsh"
+# [[ ! -f "$ZDOTDIR/p10k.zsh" ]] || source "$ZDOTDIR/p10k.zsh"
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# source contents from ~/.zshrc.d/*.zsh
+for file in "${ZDOTDIR:-$HOME/.config}/.zshrc.d/*.zsh"; do
+  [[ -f "${file}" ]] && source "${file}"
+done
+
+
+
+# load after ~/.zshrc.d files to make sure that ~/.local/bin is the first in $PATH
+export PATH="${HOME}/.local/bin:${PATH}"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# export EDITOR="${TERM_PROGRAM:-vim}"
+export EDITOR="${TERM_PROGRAM:-vim}"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # Functions definitions.
 if [ -f "$HOME/.functions" ]; then
-    source "$HOME/.functions"
+  source "$HOME/.functions"
 fi
 
 # Alias definitions.
 if [ -f "$HOME/.aliases" ]; then
-    source "$HOME/.aliases"
+  source "$HOME/.aliases"
 fi
 
 if [ -f "$HOME/.zsh_aliases" ]; then
-    source "$HOME/.zsh_aliases"
+  source "$HOME/.zsh_aliases"
 fi

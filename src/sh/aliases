@@ -5,10 +5,12 @@ alias ...="cd ../.."
 alias ..="cd .."
 
 # Use LSD as default || standard LS
-if [[ $(lsd --version) != "" ]]; then
-    alias ls="command lsd -l ${colorflag} $*"
-    alias lt="ls --tree"
-    alias ll="ls -dla"
+if command -v lsd &>/dev/null; then
+    alias ls="command lsd -l ${colorflag} "
+    alias l='ls -l'
+    alias la='ls -a'
+    alias lla='ls -la'
+    alias lt='ls --tree'
 else
 
     # Detect which `ls` flavor is in use
@@ -23,10 +25,10 @@ else
     fi
 
     # Always use color output for `ls`
-    alias ls="command ls -xla ${colorflag} $*"
-    alias l="ls -CF"
-    alias la="ls -A"
-    alias ll="ls -alF"
+    alias ls="command ls -xla ${colorflag} "
+    alias l="ls -CF "
+    alias la="ls -A "
+    alias ll="ls -alF "
 fi
 
 # Always enable colored `grep` output
@@ -76,9 +78,9 @@ alias path='echo -e ${PATH//:/\\n}'
 alias myip="curl http://ipecho.net/plain; echo"
 
 # Make distructive commands interactive
-alias cp="cp -I"
-alias mv="mv -I"
-alias rm="rm -I"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
 
 # View HTTP traffic | Requires ngrep
 # alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -114,7 +116,7 @@ alias untar='tar xvf'
 alias df="df -h"
 
 # Attempt to reclaim mem cache from WSL Guest
-# alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
+alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
 alias dps="docker ps | less -S"
 alias ls-env="env | sed 's/;/\n/g'"
 
