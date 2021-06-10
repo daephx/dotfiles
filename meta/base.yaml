@@ -7,16 +7,13 @@
       stderr: true
 
 - create:
-    - $HOME/.config
+    - ~/.config
 
 - clean:
-    $HOME:
+    ~/:
       force: true
-    $HOME/.config:
+    ~/.config:
       recursive: true
 
 - shell:
     - [sh scripts/pre-install.sh, Running pre installation script]
-
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
