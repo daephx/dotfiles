@@ -1,7 +1,11 @@
 {
-  "credSstore": "desktop",
+  "auths": {
+    "https://index.docker.io/v1/": {
+      "auth": "***REMOVED***"
+    }
+  },
   "credsStore": "desktop.exe",
-  "experimental": "disabled",
+  "experimental": "enabled",
   "imagesFormat": "table {{.Repository}}\\t{{.Tag}}\\t{{.ID}}\\t{{.Size}}",
   "psFormat": "table {{.Names}}\\t{{.Image}}\\t{{.RunningFor}} ago\\t{{.Status}}\\t{{.Ports}}"
 }
