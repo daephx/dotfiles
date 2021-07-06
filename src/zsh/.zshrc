@@ -3,12 +3,24 @@ if command -v oh-my-posh &>/dev/null; then
   precmd() { print "" } # add extra newline
   eval "$(oh-my-posh --init --shell zsh --config $HOME/.config/poshthemes/slimy.omp.json)"
 else
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable oh-my-zsh / Powerlevel10k
+# Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
   if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   fi
+
+  # Path to your oh-my-zsh installation.
+  export ZSH="$ZDOTDIR/oh-my-zsh"
+  export _Z_DIRS="$XDG_CACHE_HOME/.z"
+
+  # Would you like to use another custom folder than $ZSH/custom?
+  ZSH_CUSTOM="$ZDOTDIR/custom"
+  source $ZSH/oh-my-zsh.sh
+
+  # To customize prompt, run `p10k configure` or edit $ZDOTDIR/p10k.zsh.
+  # [[ ! -f "$ZDOTDIR/p10k.zsh" ]] || source "$ZDOTDIR/p10k.zsh"
 fi
 
 # Lines configured by zsh-newuser-install
@@ -19,12 +31,6 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-# Path to your oh-my-zsh installation.
-export ZSH="$ZDOTDIR/oh-my-zsh"
-export _Z_DIRS="$XDG_CACHE_HOME/.z"
-
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM="$ZDOTDIR/custom"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -99,10 +105,7 @@ plugins=(
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-source $ZSH/oh-my-zsh.sh
 
-# To customize prompt, run `p10k configure` or edit $ZDOTDIR/p10k.zsh.
-# [[ ! -f "$ZDOTDIR/p10k.zsh" ]] || source "$ZDOTDIR/p10k.zsh"
 
 # User configuration
 
