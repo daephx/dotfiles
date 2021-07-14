@@ -126,8 +126,8 @@
                     "type": "spotify",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#ffffff",
-                    "background": "#1BD760",
+                    "foreground": "#1BD760",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": "\uF9C6 ",
                         "playing_icon": "\uE602 ",
@@ -140,8 +140,8 @@
                     "type": "ytm",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#ffffff",
-                    "background": "#FF0000",
+                    "foreground": "#FF0000",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": "\uF16A ",
                         "playing_icon": "\uE602 ",
@@ -154,8 +154,8 @@
                     "type": "kubectl",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#000000",
-                    "background": "#3069DE",
+                    "foreground": "#3069DE",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": " \uFD31 ",
                         "template": "{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}"
@@ -165,8 +165,8 @@
                     "type": "aws",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#ffffff",
-                    "background": "#FFA400",
+                    "foreground": "#FFA400",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": " \uE7AD ",
                         "template": "{{.Profile}}{{if .Region}}@{{.Region}}{{end}}"
@@ -176,8 +176,8 @@
                     "type": "az",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#000000",
-                    "background": "#9ec3f0",
+                    "foreground": "#9ec3f0",
+                    "background": "#2f2f2f",
                     "properties": {
                         "display_id": true,
                         "display_name": true,
@@ -189,8 +189,8 @@
                     "type": "azfunc",
                     "style": "powerline",
                     "powerline_symbol": "",
-                    "foreground": "#ffffff",
-                    "background": "#FEAC19",
+                    "foreground": "#FEAC19",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": " \uf0e7 ",
                         "display_version": true,
@@ -201,8 +201,8 @@
                     "type": "dart",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#ffffff",
-                    "background": "#06A4CE",
+                    "foreground": "#06A4CE",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": " \uE798 "
                     }
@@ -211,8 +211,8 @@
                     "type": "julia",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#ffffff",
-                    "background": "#4063D8",
+                    "foreground": "#4063D8",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": " \uE624 "
                     }
@@ -231,8 +231,8 @@
                     "type": "java",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#ffffff",
-                    "background": "#f89820",
+                    "foreground": "#f89820",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": " \uE738 "
                     }
@@ -241,8 +241,8 @@
                     "type": "go",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#ffffff",
-                    "background": "#7FD5EA",
+                    "foreground": "#7FD5EA",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": " \uFCD1 "
                     }
@@ -251,8 +251,8 @@
                     "type": "ruby",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#ffffff",
-                    "background": "#CC0000",
+                    "foreground": "#EC0000",
+                    "background": "#2f2f2f",
                     "properties": {
                         "prefix": " \uE791 "
                     }
@@ -302,8 +302,8 @@
                     "type": "battery",
                     "style": "powerline",
                     "powerline_symbol": "\uE0B0",
-                    "foreground": "#193549",
-                    "background": "#ffeb3b",
+                    "foreground": "#ffeb3b",
+                    "background": "#2f2f2f",
                     "properties": {
                         "battery_icon": "",
                         "discharging_icon": "\uE231 ",
