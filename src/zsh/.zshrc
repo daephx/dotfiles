@@ -1,3 +1,6 @@
+# profile loading timer init
+integer t0=$(($(date +%s%N)/1000000))
+
 # Enabled prompt theme
 if command -v oh-my-posh &>/dev/null; then
   precmd() { print "" } # add extra newline
@@ -141,3 +144,12 @@ fi
 if [ -f "$HOME/.zsh_aliases" ]; then
   source "$HOME/.zsh_aliases"
 fi
+
+# Output startup time
+function {
+    local -i t1 startup
+    t1=$(($(date +%s%N)/1000000))
+    startup=$(( t1 - t0 ))
+    [[ $startup -gt 1 ]] && print "Loading shell profile took: ${startup}ms"
+}
+unset t0
