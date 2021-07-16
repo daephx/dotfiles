@@ -7,4 +7,5 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # the path to your zsh config, default: '~/.config/zsh'
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+# Python startup file, basic repl customization.
+export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/.pythonrc"
