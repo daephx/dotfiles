@@ -27,7 +27,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 HISTCONTROL=ignoreboth
 
 # Change History Location
-HISTFILE="$XDG_CACHE_HOME/.histfile"
+HISTFILE="$XDG_CACHE_HOME/.bash_history"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
