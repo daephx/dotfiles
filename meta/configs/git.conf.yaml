@@ -1,5 +1,0 @@
-- link:
-    ~/.config/git:
-      glob: true
-      force: true
-      path: src/git/*

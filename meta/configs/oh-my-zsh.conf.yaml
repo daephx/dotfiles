@@ -1,4 +1,0 @@
-- link:
-    ~/.config/zsh/custom:
-      path: src/zsh/custom
-      force: true

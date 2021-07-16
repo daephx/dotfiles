@@ -1,2 +1,24 @@
+- sudo:
+    - shell:
+        - [apt update && apt install -y zsh, Installing zsh.]
+
 - shell:
-    - [apt update && apt install -y zsh, Install ZSH...]
+    - [/usr/sbin/usermod -s $(which zsh) $USER, Set zsh as users default shell.]
+
+- link:
+    ~/.zshenv: src/zsh/.zshenv
+    ~/.config/zsh/.zshrc: src/zsh/.zshrc
+    ~/.config/zsh/zshrc.d:
+      glob: true
+      path: src/zsh/zshrc.d/*.zsh
+    ~/.config/zsh:
+      glob: true
+      path: src/zsh/*
+      exclude:
+        [
+          src/zsh/.zshenv,
+          src/zsh/oh-my-zsh,
+          src/zsh/z,
+          src/zsh/zshrc,
+          src/zsh/zshrc.d,
+        ]

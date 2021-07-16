@@ -1,6 +1,7 @@
 - create:
     - ~/.local/share/fonts/
 
-- shell:
-    - [cp -a src/fonts/. ~/.local/share/fonts/]
-    - [fc-cache -f -v, Installing fonts...]
+- sudo:
+    - shell:
+        - [cp -a src/fonts/. ~/.local/share/fonts/]
+        - [fc-cache -f -v, Installing fonts...]

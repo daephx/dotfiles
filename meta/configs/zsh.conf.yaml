@@ -1,7 +1,0 @@
-- link:
-    ~/.zshenv: src/zsh/.zshenv
-    ~/.config/zsh/.zshrc: src/zsh/.zshrc
-    ~/.config/zsh:
-      glob: true
-      path: src/zsh/*
-      exclude: [src/zsh/zshrc, src/zsh/.zshenv, src/zsh/z, src/zsh/oh-my-zsh]

@@ -1,2 +1,6 @@
-- shell:
-    - [apt update && apt install -y gh]
+- link:
+    ~/.config/gh/config.yml: src/gh/config.yml
+
+- sudo:
+    - shell:
+        - [apt update && apt install -y gh]
