@@ -178,7 +178,7 @@ if [ -d "${BASHCONFD}" ]; then
   if [ $? -eq 0 ]; then
     for CONF in ${CONFS[@]}; do
       source $CONF
-done
+    done
   fi
   unset CONFS
   unset CONF
