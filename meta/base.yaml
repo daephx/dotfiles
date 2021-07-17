@@ -1,19 +1,28 @@
 - defaults:
     link:
-      create: true
       relink: true
+      create: true
+      glob: true
     shell:
       stdout: true
       stderr: true
 
 - create:
     - ~/.config
+    - ~/.local
+    - ~/.cache
 
 - clean:
     ~/:
       force: true
     ~/.config:
       recursive: true
+    ~/.local:
+      recursive: true
 
 - shell:
-    - [sh scripts/pre-install.sh, Running pre installation script]
+    - git submodule sync --recursive
+    - git submodule update --recursive
+
+- shell:
+    - [sh scripts/pre-install.sh, Executing pre-installation script.]
