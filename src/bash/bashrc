@@ -15,12 +15,13 @@ case $- in
 *) return ;;
 esac
 
-if command -v oh-my-posh &>/dev/null; then
-  eval "$(oh-my-posh --init --shell bash --config $HOME/.config/poshthemes/slimy.omp.json)"
-fi
-
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_LOCAL_DIR="$HOME/.local"
+
+if command -v oh-my-posh &>/dev/null; then
+  eval "$(oh-my-posh --init --shell bash --config $XDG_CONFIG_HOME/poshthemes/slimy.omp.json)"
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
