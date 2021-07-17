@@ -1,3 +1,6 @@
 - link:
-    ~/.bashrc: src/bash/bashrc
-    ~/.bash_logout: src/bash/bash_logout
+    ~/.bashrc: src/bash/.bashrc
+    ~/.bash_logout: src/bash/.bash_logout
+    ~/.config/bash/.bashrc.d:
+      glob: true
+      path: src/bash/.bashrc.d/*.conf
