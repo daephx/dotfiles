@@ -1,0 +1,8 @@
+- link:
+    ~/.local/bin:
+      glob: true
+      force: true
+      path: src/local/bin/*
+
+- shell:
+    - [chmod +x src/local/bin/*]
