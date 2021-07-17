@@ -3,6 +3,7 @@ integer t0=$(($(date +%s%N)/1000000))
 
 # Enabled prompt theme
 if command -v oh-my-posh &>/dev/null; then
+  # precmd() { print "" } # add extra newline
   eval "$(oh-my-posh --init --shell zsh --config $XDG_CONFIG_HOME/poshthemes/slimy.omp.json)"
 else
 # Enable oh-my-zsh / Powerlevel10k
