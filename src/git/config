@@ -18,8 +18,9 @@ template = ~/.config/git/message
 [credential]
 helper = store
 
-[http]
-sslCAInfo = /usr/local/share/ca-certificates/extra/cert.pem
+# used for personal git server
+# [http]
+# sslCAInfo = /usr/local/share/ca-certificates/extra/cert.pem
 
 [pager]
 branch = false
