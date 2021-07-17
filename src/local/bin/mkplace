@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+function is_empty() {
+  if [ -z "$(ls -A ${1})" ]; then return 0; fi
+  return 1
+}
+
+function create_placeholder() {
+
+  path=$1 # directory path to put placeholder
+
+  # create path if not exists
+  if [[ ! -d $path ]]; then mkdir "$path" &>/dev/null || true; fi
+  # exit if path is not empty, placeholder not required
+  if ! is_empty "$path"; then (echo "Directory is not empty." && exit 1); fi
+
+  # create the placeholder
+  echo "Creating placehold file in path: '$path'"
+  touch "$path/.place" &>/dev/null
+}
+
+function _main() {
+  set -e # stop execution if return not 0
+  SCRIPTROOT="$(dirname "${BASH_SOURCE}")"
+  CURRENTFILE=$(basename "${BASH_SOURCE[0]}")
+
+  # Die if dir name provided on command line
+  [[ $# -eq 0 ]] && { echo "Usage: $0 dir-name" && exit 1; }
+
+  create_placeholder $@
+
+}
+
+# Much like pythons: if __name__ == '__main__':
+if [ "${BASH_SOURCE[0]}" == "${0}" ]; then
+  printf "$(basename "${BASH_SOURCE[0]}"): Script is a subshell, calling _main() function.\n" 1>&/dev/null
+  _main "$@"
+fi
