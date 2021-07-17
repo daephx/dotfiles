@@ -1,0 +1,3 @@
+# TODO: I don't like it being in the homeroot
+- link:
+    ~/.prettierrc: src/prettier/.prettierrc
