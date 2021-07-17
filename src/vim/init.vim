@@ -1,3 +1,7 @@
+let mapleader=' '
+
+set clipboard+=unnamedplus
+
 " Settings
 set backupdir=~/.cache/vim/tmp//,.
 set directory=~/.cache/vim/tmp//,.
@@ -15,3 +19,6 @@ set virtualedit=onemore
 " colorscheme molokai
 
 set viminfo+=n~/.config/vim/.viminfo
+
+nnoremap <leader>q :wq<CR>
+nnoremap <leader>w :w<CR>
