@@ -160,6 +160,6 @@ if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
 fi
 
-if [ -f "$HOME/.zsh_aliases" ]; then
+if [ -f "$HOME/.bash_aliases" ]; then
     source "$HOME/.bash_aliases"
 fi
