@@ -8,6 +8,7 @@ function is_empty() {
 function create_placeholder() {
 
   path=$1 # directory path to put placeholder
+  filename="${2:-.place}"
 
   # create path if not exists
   if [[ ! -d $path ]]; then mkdir -p "$path" &>/dev/null || true; fi
@@ -15,8 +16,8 @@ function create_placeholder() {
   if ! is_empty "$path"; then (echo "Directory is not empty." && exit 1); fi
 
   # create the placeholder
-  echo "Creating placehold file in path: '$path'"
-  touch "$path/.place" &>/dev/null
+  echo "Creating placehold file in path: '$path/$filename'"
+  touch "$path/$filename" &>/dev/null
 }
 
 function _main() {
@@ -25,7 +26,7 @@ function _main() {
   CURRENTFILE=$(basename "${BASH_SOURCE[0]}")
 
   # Die if dir name provided on command line
-  [[ $# -eq 0 ]] && { echo "Usage: $0 dir-name" && exit 1; }
+  [[ $# -eq 0 ]] && { echo "Usage: $0 path/ filename" && exit 1; }
 
   create_placeholder $@
 
@@ -33,6 +34,5 @@ function _main() {
 
 # Much like pythons: if __name__ == '__main__':
 if [ "${BASH_SOURCE[0]}" == "${0}" ]; then
-  printf "$(basename "${BASH_SOURCE[0]}"): Script is a subshell, calling _main() function.\n" 1>&/dev/null
   _main "$@"
 fi
