@@ -28,13 +28,15 @@ export EDITOR="${TERM_PROGRAM:-vim}"
 export GIT_EDITOR=code
 export GUI_EDITOR=code
 
-  # Would you like to use another custom folder than $ZSH/custom?
-  ZSH_CUSTOM="$ZDOTDIR/custom"
-  source $ZSH/oh-my-zsh.sh
+# History: Nice tutorial,
+# https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
 
-  # To customize prompt, run `p10k configure` or edit $ZDOTDIR/p10k.zsh.
-  # [[ ! -f "$ZDOTDIR/p10k.zsh" ]] || source "$ZDOTDIR/p10k.zsh"
-fi
+# Configure how the history is written
+export HISTFILE="$XDG_CACHE_HOME/.zsh_history"
+export HISTSIZE=10000
+export HISTFILESIZE=100000
+export HISTCONTROL=ignoreboth
+export HISTIGNORE='ls:ll:la:lc:cd:gt:up:todo:exit:clear:hist:history'
 
 unsetopt beep
 bindkey -e
@@ -50,7 +52,7 @@ if [ -d "${ZSHCONFD}" ]; then
         for CONF in ${CONFS[@]}
         do
             source $CONF
-done
+        done
     fi
     unset CONFS
     unset CONF
