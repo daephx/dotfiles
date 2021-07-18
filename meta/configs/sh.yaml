@@ -1,5 +1,5 @@
 - link:
-    ~/.aliases: src/sh/aliases
-    ~/.functions: src/sh/functions
-    ~/.inputrc: src/sh/inputrc
-    ~/.profile: src/sh/profile
+    ~/.aliases: src/sh/.aliases
+    ~/.functions: src/sh/.functions
+    ~/.inputrc: src/sh/.inputrc
+    ~/.profile: src/sh/.profile
