@@ -32,7 +32,7 @@ export GUI_EDITOR=code
 # https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
 
 # Configure how the history is written
-export HISTFILE="$XDG_CACHE_HOME/.zsh_history"
+export HISTFILE="$XDG_CACHE_HOME/.bash_history"
 export HISTSIZE=10000
 export HISTFILESIZE=100000
 export HISTIGNORE='ls:ll:la:lc:cd:gt:up:todo:exit:clear:hist:history'
