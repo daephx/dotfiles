@@ -1,0 +1,12 @@
+- link:
+    ~/.config/python/.pythonrc:
+      path: src/python/pythonrc.py
+      relink: true
+      force: true
+
+- sudo:
+    - shell:
+        - [
+            update-alternatives --install /usr/bin/python python /usr/bin/python3 10,
+            Set python3 as the default 'python'.,
+          ]
