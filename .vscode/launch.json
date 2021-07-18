@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "type": "bashdb",
+            "request": "launch",
+            "name": "Bash-Debug (Current file)",
+            "cwd": "${workspaceFolder}",
+            "program": "${file}",
+            "stopOnEntry": false,
+            "args": [
+                "--debug",
+                "--repo",
+                "https://github.com/daephx/dotfiles.git",
+                "--path",
+                "/tmp/dotfiles/"
+            ],
+            "env": {
+                "ENVIRONMENT": "development"
+            }
+        },
+        {
+            "type": "bashdb",
+            "request": "launch",
+            "name": "Bash-Debug (type in script name)",
+            "cwd": "${workspaceFolder}",
+            "program": "${command:AskForScriptName}",
+            "args": []
+        }
+    ]
+}
