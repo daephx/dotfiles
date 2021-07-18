@@ -1,0 +1,56 @@
+{
+    "folders": [
+        {
+            "name": "⚪ Dotfiles",
+            "path": ".."
+        },
+        {
+            "name": "🚧 Projects",
+            "path": "../../Documents/Projects"
+        },
+        {
+            "name": "🐳 Docker",
+            "path": "../../Documents/Docker"
+        },
+        {
+            "name": "🏡 Home",
+            "path": "../.."
+        },
+    ],
+    "settings": {
+        "debug.console.wordWrap": false,
+        "terminal.integrated.enableFileLinks": true,
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "bash"
+            },
+            "zsh": {
+                "path": "zsh"
+            },
+            "fish": {
+                "path": "fish"
+            },
+            "tmux": {
+                "path": "tmux"
+            },
+            "pwsh": {
+                "path": "pwsh"
+            }
+        },
+        "editor.fontFamily": "'CaskaydiaCove NF', 'Cascadia Code', 'Consolas', 'Courier New', 'monospace'",
+        "python.pythonPath": "/usr/bin/python3",
+        "terminal.integrated.fontFamily": "'CaskaydiaCove NF', 'Cascadia Code', 'Consolas', 'Courier New', 'monospace'",
+        "[yaml]": {
+            "editor.detectIndentation": false,
+            "editor.tabSize": 2
+        },
+        "[shellscript]": {
+            "editor.detectIndentation": false,
+            "editor.tabSize": 2
+        },
+        "[powershell]": {
+            "editor.detectIndentation": true,
+            "editor.tabSize": 4
+        },
+    },
+}
