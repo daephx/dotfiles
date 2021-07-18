@@ -10,7 +10,7 @@ function create_placeholder() {
   path=$1 # directory path to put placeholder
 
   # create path if not exists
-  if [[ ! -d $path ]]; then mkdir "$path" &>/dev/null || true; fi
+  if [[ ! -d $path ]]; then mkdir -p "$path" &>/dev/null || true; fi
   # exit if path is not empty, placeholder not required
   if ! is_empty "$path"; then (echo "Directory is not empty." && exit 1); fi
 
