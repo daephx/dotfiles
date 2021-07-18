@@ -22,6 +22,8 @@ initial = !git rev-list HEAD | tail -n 1
 # List all aliases
 lsa = !git --no-pager config --get-regexp alias
 
+# Get the hash value of a particular label,
+hash = "!f() { git rev-parse $1 | cut -c1-7; }; f"
 whoami = "!f() { \
 msg='$(git config user.name) <$(git config user.email)>'; \
 printf $msg; \
