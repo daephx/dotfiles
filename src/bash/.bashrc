@@ -23,6 +23,10 @@ if command -v oh-my-posh &>/dev/null; then
   eval "$(oh-my-posh --init --shell bash --config $XDG_CONFIG_HOME/poshthemes/slimy.omp.json)"
 fi
 
+# Default editors
+export EDITOR="${TERM_PROGRAM:-vim}"
+export GIT_EDITOR=$EDITOR
+export GUI_EDITOR=code
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -48,8 +52,6 @@ shopt -s checkwinsize
 
 # Enable auto cd
 # shopt -s autocd
-
-export EDITOR="${TERM_PROGRAM:-vim}"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
