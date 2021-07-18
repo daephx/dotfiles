@@ -21,9 +21,10 @@ else
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   fi
 
-  # Path to your oh-my-zsh installation.
-  export ZSH="$ZDOTDIR/oh-my-zsh"
-  export _Z_DIRS="$XDG_CACHE_HOME/.z"
+# Default editors
+export EDITOR="${TERM_PROGRAM:-vim}"
+export GIT_EDITOR=code
+export GUI_EDITOR=code
 
   # Would you like to use another custom folder than $ZSH/custom?
   ZSH_CUSTOM="$ZDOTDIR/custom"
@@ -133,10 +134,6 @@ export PATH="${HOME}/.local/bin:${PATH}"
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR="${TERM_PROGRAM:-vim}"
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # Functions definitions.
 if [ -f "$HOME/.functions" ]; then
