@@ -1,6 +1,6 @@
 [submodule "meta/dotbot"]
-path = meta/dotbot
-url = https://github.com/anishathalye/dotbot.git
+  path = meta/dotbot
+  url = https://github.com/anishathalye/dotbot.git
 [submodule "meta/plugins/sudo"]
 	path = meta/plugins/sudo
 	url = https://github.com/DrDynamic/dotbot-sudo.git
