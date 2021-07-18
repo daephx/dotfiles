@@ -1,0 +1,4 @@
+- link:
+    # SSH
+    ~/.ssh/config:
+      path: src/ssh/config
