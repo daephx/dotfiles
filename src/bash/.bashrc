@@ -27,15 +27,24 @@ fi
 export EDITOR="${TERM_PROGRAM:-vim}"
 export GIT_EDITOR=$EDITOR
 export GUI_EDITOR=code
+
+# History: Nice tutorial,
+# https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
+
+# Configure how the history is written
+export HISTFILE="$XDG_CACHE_HOME/.zsh_history"
+export HISTSIZE=10000
+export HISTFILESIZE=100000
+export HISTIGNORE='ls:ll:la:lc:cd:gt:up:todo:exit:clear:hist:history'
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# Change History Location
-HISTFILE="$XDG_CACHE_HOME/.bash_history"
+export HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s cmdhist
+shopt -u lithist
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
