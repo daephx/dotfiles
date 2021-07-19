@@ -70,7 +70,7 @@ alias cls="clear"
 alias shell="ps -p $$"
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="exec $(sh -c 'ps -p $$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe') -l"
+alias reload="clear && exec $(sh -c 'ps -p $$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe') -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
