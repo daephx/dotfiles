@@ -25,7 +25,7 @@ fi
 
 # Default editors
 export EDITOR="${TERM_PROGRAM:-vim}"
-export GIT_EDITOR=$EDITOR
+export GIT_EDITOR=code
 export GUI_EDITOR=code
 
 # History: Nice tutorial,
