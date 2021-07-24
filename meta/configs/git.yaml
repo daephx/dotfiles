@@ -2,7 +2,7 @@
     ~/.config/git:
       glob: true
       force: true
-      path: src/git/*
+      path: dotfiles/git/*
 
 - sudo:
     - shell:

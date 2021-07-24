@@ -6,5 +6,5 @@
 
 - link:
     ~/.config/zsh/custom:
-      path: src/zsh/custom
+      path: dotfiles/zsh/custom
       force: true

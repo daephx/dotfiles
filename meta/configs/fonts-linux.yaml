@@ -3,5 +3,5 @@
 
 - sudo:
     - shell:
-        - [cp -a src/fonts/. ~/.local/share/fonts/]
+        - [cp -a dotfiles/fonts/. ~/.local/share/fonts/]
         - [fc-cache -f -v, Installing fonts...]

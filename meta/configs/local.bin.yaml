@@ -2,7 +2,12 @@
     ~/.local/bin:
       glob: true
       force: true
-      path: src/local/bin/*
+      path: dotfiles/local/bin/*
+
+    ~/.local/lib:
+      glob: true
+      force: true
+      path: dotfiles/local/lib/*
 
 - shell:
-    - [chmod +x src/local/bin/*]
+    - [chmod +x dotfiles/local/bin/*]

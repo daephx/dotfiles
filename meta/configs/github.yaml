@@ -1,5 +1,5 @@
 - link:
-    ~/.config/gh/config.yml: src/gh/config.yml
+    ~/.config/gh/config.yml: dotfiles/gh/config.yml
 
 - sudo:
     - shell:
