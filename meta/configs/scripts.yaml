@@ -1,0 +1,15 @@
+- link:
+    ~/.local/lib:
+      glob: true
+      force: true
+      path: dotfiles/scripts/lib/*
+
+- link:
+    ~/.local/bin:
+      glob: true
+      force: true
+      path: dotfiles/scripts/bin/*
+
+- sudo:
+    - shell:
+        - [chmod +x dotfiles/scripts/bin/*, Giving command scripts executable privileges.]
