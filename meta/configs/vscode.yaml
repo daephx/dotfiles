@@ -1,0 +1,7 @@
+- sudo:
+  - shell:
+    - [ apt update, Updating package index ]
+    - [ apt install software-properties-common apt-transport-https wget, Installing dependencies ]
+    - [ wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -, Applying package keys ]
+    - [ add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main", Adding repo to sources.list ]
+    - [ apt install code, Installing application ]
