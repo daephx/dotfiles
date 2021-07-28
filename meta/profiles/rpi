@@ -2,7 +2,7 @@ bash
 fonts-linux
 git
 github
-local.bin
+scripts
 oh-my-posh-arm
 python
 sh
