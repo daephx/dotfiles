@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "final_space": true,
+    "final_space": false,
     "console_title": true,
     "console_title_style": "template",
     "console_title_template": "{{if .Root}}root :: {{end}}{{.Shell}} :: {{.Folder}}",
@@ -65,7 +65,6 @@
                     "foreground": "#fafafa",
                     "background": "#2f2f2f",
                     "properties": {
-                        // "prefix": "<#f2f200> \ue5ff </>",
                         "style": "agnoster_short",
                         "enable_hyperlink": true,
                         "home_icon": "\uf015 ",
@@ -129,11 +128,12 @@
                     "foreground": "#1BD760",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": "\uF9C6 ",
                         "playing_icon": "\uE602 ",
                         "paused_icon": "\uF8E3 ",
                         "stopped_icon": "\uF04D ",
-                        "track_separator": " - "
+                        "track_separator": " - ",
+                        "prefix": "\uF9C6 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -143,11 +143,12 @@
                     "foreground": "#FF0000",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": "\uF16A ",
                         "playing_icon": "\uE602 ",
                         "paused_icon": "\uF8E3 ",
                         "stopped_icon": "\uF04D ",
-                        "track_separator": " - "
+                        "track_separator": " - ",
+                        "prefix": "\uF16A ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -157,8 +158,9 @@
                     "foreground": "#3069DE",
                     "background": "#2f2f2f",
                     "properties": {
+                        "template": "{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}",
                         "prefix": " \uFD31 ",
-                        "template": "{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}"
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -168,8 +170,9 @@
                     "foreground": "#FFA400",
                     "background": "#2f2f2f",
                     "properties": {
+                        "template": "{{.Profile}}{{if .Region}}@{{.Region}}{{end}}",
                         "prefix": " \uE7AD ",
-                        "template": "{{.Profile}}{{if .Region}}@{{.Region}}{{end}}"
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -182,7 +185,8 @@
                         "display_id": true,
                         "display_name": true,
                         "info_separator": " @ ",
-                        "prefix": " \uFD03 "
+                        "prefix": " \uFD03 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -192,9 +196,10 @@
                     "foreground": "#FEAC19",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": " \uf0e7 ",
                         "display_version": true,
-                        "display_mode": "files"
+                        "display_mode": "files",
+                        "prefix": " \uf0e7 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -204,7 +209,8 @@
                     "foreground": "#06A4CE",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": " \uE798 "
+                        "prefix": " \uE798 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -214,7 +220,8 @@
                     "foreground": "#4063D8",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": " \uE624 "
+                        "prefix": " \uE624 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -224,7 +231,8 @@
                     "foreground": "#B7410E",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": " \uE7a8 "
+                        "prefix": " \uE7a8 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -234,7 +242,8 @@
                     "foreground": "#f89820",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": " \uE738 "
+                        "prefix": " \uE738 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -244,7 +253,8 @@
                     "foreground": "#7FD5EA",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": " \uFCD1 "
+                        "prefix": " \uFCD1 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -254,7 +264,8 @@
                     "foreground": "#EC0000",
                     "background": "#2f2f2f",
                     "properties": {
-                        "prefix": " \uE791 "
+                        "prefix": " \uE791 ",
+                        "postfix": "<#7A7A7A> \ue0b3</>"
                     }
                 },
                 {
@@ -337,29 +348,14 @@
             "type": "prompt",
             "alignment": "left",
             "segments": [
-                {
-                    "type": "text",
-                    "style": "plain",
-                    "foreground": "#7a7a7a",
-                    "properties": {
-                        "text": "\u276F"
-                    }
-                }
-            ]
-        },
-        {
-            "type": "rprompt",
-            "alignment": "right",
-            "segments": [
-                {
-                    "type": "executiontime",
-                    "style": "plain",
-                    "foreground": "#FFCE5C",
-                    "properties": {
-                        "threshold": 500,
-                        "style": "galveston"
-                    }
-                },
+                // {
+                //     "type": "text",
+                //     "style": "plain",
+                //     "foreground": "#7a7a7a",
+                //     "properties": {
+                //         "text": "\u276F"
+                //     }
+                // }
                 {
                     "type": "exit",
                     "style": "plain",
@@ -370,10 +366,38 @@
                         "always_enabled": true,
                         "error_color": "#E84855",
                         "color_background": false,
-                        "prefix": "\uf705  "
+                        "prefix": " \u276F"
                     }
                 }
             ]
         }
+        // {
+        //     "type": "rprompt",
+        //     "alignment": "right",
+        //     "segments": [
+        //         {
+        //             "type": "executiontime",
+        //             "style": "plain",
+        //             "foreground": "#FFCE5C",
+        //             "properties": {
+        //                 "threshold": 500,
+        //                 "style": "galveston"
+        //             }
+        //         },
+        //         {
+        //             "type": "exit",
+        //             "style": "plain",
+        //             "foreground": "#9FD356",
+        //             "properties": {
+        //                 "display_exit_code": false,
+        //                 "always_numeric": true,
+        //                 "always_enabled": true,
+        //                 "error_color": "#E84855",
+        //                 "color_background": false,
+        //                 "prefix": "\uf705  "
+        //             }
+        //         }
+        //     ]
+        // }
     ]
 }
