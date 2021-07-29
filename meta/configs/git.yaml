@@ -1,9 +1,13 @@
+- sudo:
+    - shell:
+        - [apt update && apt install -y git, Install Git...]
+
+- create:
+   - ~/.config/git
+
 - link:
     ~/.config/git:
       glob: true
       force: true
       path: dotfiles/git/*
 
-- sudo:
-    - shell:
-        - [apt update && apt install -y git, Install Git...]
