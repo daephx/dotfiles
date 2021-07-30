@@ -18,6 +18,13 @@ if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then # SSH mode
+  export EDITOR='vim'
+else # Local terminal mode
+  export EDITOR='code -w'
+fi
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
   # include .bashrc if it exists

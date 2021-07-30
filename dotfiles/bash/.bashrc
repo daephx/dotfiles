@@ -17,7 +17,7 @@ esac
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_LOCAL_DIR="$HOME/.local"
+export XDG_LOCAL_HOME="$HOME/.local"
 
 if command -v oh-my-posh &>/dev/null; then
   eval "$(oh-my-posh --init --shell bash --config $XDG_CONFIG_HOME/poshthemes/slimy.omp.json)"
@@ -28,10 +28,11 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/.pythonrc"
 # Make python look in '~/.local/share/python/lib' for custom modules and packages
 export PYTHONPATH="${PYTHONPATH}:${XDG_DATA_HOME:-$HOME/.local/share}/python/lib"
 
+# TODO(daephx): TERM_PROGRAM outputs 'vscode' when using remote-ssh, but command 'vscode' != 'code'.
 # Default editors
-#export EDITOR="${TERM_PROGRAM:-vim}"
-#export GIT_EDITOR=code
-#export GUI_EDITOR=code
+# export EDITOR="${TERM_PROGRAM:-vim}"
+# export GIT_EDITOR=code
+# export GUI_EDITOR=code
 
 # History: Nice tutorial,
 # https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
