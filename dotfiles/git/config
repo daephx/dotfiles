@@ -3,9 +3,8 @@ email = 36192863+daephx@users.noreply.github.com
 name = daephx
 
 [core]
-editor = code -w
+	editor = code --wait
 autocrlf = input
-# Use custom `.gitignore` and `.gitattributes`.
 excludesfile = ~/.config/git/ignore
 attributesfile = ~/.config/git/attributes
 
@@ -28,8 +27,18 @@ branch = false
 [init]
 defaultBranch = main
 
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
 process = git-lfs filter-process
 required = true
+

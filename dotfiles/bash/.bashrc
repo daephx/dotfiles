@@ -24,9 +24,9 @@ if command -v oh-my-posh &>/dev/null; then
 fi
 
 # Default editors
-export EDITOR="${TERM_PROGRAM:-vim}"
-export GIT_EDITOR=code
-export GUI_EDITOR=code
+#export EDITOR="${TERM_PROGRAM:-vim}"
+#export GIT_EDITOR=code
+#export GUI_EDITOR=code
 
 # History: Nice tutorial,
 # https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
