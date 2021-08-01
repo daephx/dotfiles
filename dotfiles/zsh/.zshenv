@@ -15,8 +15,8 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
 export ZSHCONFD="$XDG_CONFIG_HOME/zsh/.zshrc.d"
 
 # vim config
-export MYVIMRC='$XDG_CONFIG_HOME/vim/init.vim' # or any other location you want
-export VIMINIT='source $MYVIMRC'
+# export MYVIMRC='$XDG_CONFIG_HOME/vim/init.vim' # or any other location you want
+# export VIMINIT='source $MYVIMRC'
 
 # Python startup file, basic repl customization.
 export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/.pythonrc"

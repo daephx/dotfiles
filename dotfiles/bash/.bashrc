@@ -153,8 +153,8 @@ alias cls="clear"
 # alias ls='ls -1 $@'
 
 # vim config
-export MYVIMRC='$XDG_CONFIG_HOME/vim/init.vim' # or any other location you want
-export VIMINIT='source $MYVIMRC'
+# export MYVIMRC="${XDG_CONFIG_HOME:-$HOME/.config}/vim/init.vim"
+# export VIMINIT="source $MYVIMRC"
 
 # Python startup file, basic repl customization.
 export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/.pythonrc"
