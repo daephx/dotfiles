@@ -1,0 +1,4 @@
+- sudo:
+    - shell:
+        - [ apt update && apt install -y bpytop, Installing 'bpytop' ]
+
