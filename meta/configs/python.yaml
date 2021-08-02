@@ -1,5 +1,5 @@
 - link:
-    ~/.config/python/.pythonrc:
+    ~/.config/python/pythonrc.py:
       path: dotfiles/python/pythonrc.py
       relink: true
       force: true

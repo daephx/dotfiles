@@ -1,5 +1,5 @@
 - link:
-    ~/.aliases: dotfiles/sh/.aliases
-    ~/.functions: dotfiles/sh/.functions
-    ~/.inputrc: dotfiles/sh/.inputrc
-    ~/.profile: dotfiles/sh/.profile
+    ~/.aliases: dotfiles/sh/aliases
+    ~/.functions: dotfiles/sh/functions
+    ~/.inputrc: dotfiles/sh/inputrc
+    ~/.profile: dotfiles/sh/profile

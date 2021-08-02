@@ -24,9 +24,16 @@ if command -v oh-my-posh &>/dev/null; then
 fi
 
 # Python startup file, basic repl customization.
-export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/.pythonrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
 # Make python look in '~/.local/share/python/lib' for custom modules and packages
-export PYTHONPATH="${PYTHONPATH}:${XDG_DATA_HOME:-$HOME/.local/share}/python/lib"
+export PYTHONPATH="${PYTHONPATH}:$XDG_LOCAL_HOME/share/python/lib"
+
+# vim config
+# export MYVIMRC="${XDG_CONFIG_HOME:-$HOME/.config}/vim/init.vim"
+# export VIMINIT="source $MYVIMRC"
+
+# Bash preexec library for styling
+source "$XDG_LOCAL_HOME/lib/bash-preexec.sh"
 
 # TODO(daephx): TERM_PROGRAM outputs 'vscode' when using remote-ssh, but command 'vscode' != 'code'.
 # Default editors
@@ -158,13 +165,6 @@ export LIBGL_ALWAYS_INDIRECT=1
 alias cls="clear"
 # alias ls='ls -1 $@'
 
-# vim config
-# export MYVIMRC="${XDG_CONFIG_HOME:-$HOME/.config}/vim/init.vim"
-# export VIMINIT="source $MYVIMRC"
-
-# Python startup file, basic repl customization.
-export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/.pythonrc"
-
 # Aliases
 if [ -f "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
@@ -181,9 +181,9 @@ fi
 
 # bash config dir containing additional configs to be sourced
 # Rewrite this if the configs are read from somewhere else
-export BASHCONFD="$XDG_CONFIG_HOME/bash/.bashrc.d"
+export BASHCONFD="$XDG_CONFIG_HOME/bash/bashrc.d"
 
-# Source the configurations in .bashrc.d directory
+# Source the configurations in bashrc.d directory
 if [ -d "${BASHCONFD}" ]; then
   CONFS=[]
   CONFS=$(ls "${BASHCONFD}"/*.conf 2>/dev/null)
