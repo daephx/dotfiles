@@ -1,0 +1,3 @@
+- sudo:
+    - shell:
+        - [apt update && apt install -y tilix, Installing tilix.]
