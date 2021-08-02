@@ -20,3 +20,5 @@ export ZSHCONFD="$XDG_CONFIG_HOME/zsh/.zshrc.d"
 
 # Python startup file, basic repl customization.
 export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/.pythonrc"
+# Make python look in '~/.local/share/python/lib' for custom modules and packages
+export PYTHONPATH="${PYTHONPATH}:${XDG_DATA_HOME:-$HOME/.local/share}/python/lib"
