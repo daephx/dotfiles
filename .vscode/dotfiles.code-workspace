@@ -22,19 +22,24 @@
         "terminal.integrated.enableFileLinks": true,
         "terminal.integrated.profiles.linux": {
             "bash": {
-                "path": "bash"
+                "path": "bash",
+				"args": ["-l"]
             },
             "zsh": {
-                "path": "zsh"
+                "path": "zsh",
+				"args": ["-l"]
             },
             "fish": {
-                "path": "fish"
+                "path": "fish",
+				"args": ["-l"]
             },
             "tmux": {
-                "path": "tmux"
+                "path": "tmux",
+				"args": ["-l"]
             },
             "pwsh": {
-                "path": "pwsh"
+                "path": "pwsh",
+				"args": ["-l"]
             }
         },
         "editor.fontFamily": "'CaskaydiaCove NF', 'Cascadia Code', 'Consolas', 'Courier New', 'monospace'",
