@@ -25,6 +25,15 @@ helper = store
 [pager]
 branch = false
 
+[color "status"]
+added = green
+changed = red
+deleted = red bold
+untracked = magenta
+
+[color "branch"]
+remote = yellow
+
 [init]
 defaultBranch = main
 
