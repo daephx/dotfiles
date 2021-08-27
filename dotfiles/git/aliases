@@ -7,11 +7,11 @@ st = status
 up = fetch --all
 
 # Styling output
-ls = !git --no-pager log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an> %Creset' --abbrev-commit
-lm = !git --no-pager log -n 1 # <CommitID>
+ls = !git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an> %Creset' --abbrev-commit
+lm = !git log -n 1 # <CommitID>
 lg = !git log --graph --date=relative --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit
-lsa = !git --no-pager config --get-regexp alias
-gf = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit
+lsa = !git config --get-regexp alias
+gf = !git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit
 
 br = !git for-each-ref refs/heads/ --format='%(HEAD) %(align:width=15)%(color:bold yellow)%(refname:short)%(end)%(color:reset) %(color:green)%(committerdate)%(color:reset) - %(contents:subject)%(color:dim white) - %(color:bold blue)%(authorname)%(color:reset)'
 
