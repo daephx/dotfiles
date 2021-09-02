@@ -4,18 +4,6 @@
             "name": "💠 Dotfiles",
             "path": ".."
         },
-        {
-            "name": "🚧 Projects",
-            "path": "../../Documents/Projects"
-        },
-        {
-            "name": "🐳 Docker",
-            "path": "../../Documents/Docker"
-        },
-        {
-            "name": "🏡 Home",
-            "path": "../.."
-        },
     ],
     "settings": {
         "debug.console.wordWrap": false,
@@ -23,39 +11,53 @@
         "terminal.integrated.profiles.linux": {
             "bash": {
                 "path": "bash",
-				"args": ["-l"]
-            },
-            "zsh": {
-                "path": "zsh",
-				"args": ["-l"]
+                "args": [
+                    "-l"
+                ]
             },
             "fish": {
                 "path": "fish",
-				"args": ["-l"]
-            },
-            "tmux": {
-                "path": "tmux",
-				"args": ["-l"]
+                "args": [
+                    "-l"
+                ]
             },
             "pwsh": {
                 "path": "pwsh",
-				"args": ["-l"]
-            }
+                "args": [
+                    "-l"
+                ]
+            },
+            "tmux": {
+                "path": "tmux",
+                "args": [
+                    "-l"
+                ]
+            },
+            "zsh": {
+                "path": "zsh",
+                "args": [
+                    "-l"
+                ]
+            },
         },
         "editor.fontFamily": "'CaskaydiaCove NF', 'Cascadia Code', 'Consolas', 'Courier New', 'monospace'",
-        "python.pythonPath": "/usr/bin/python3",
         "terminal.integrated.fontFamily": "'CaskaydiaCove NF', 'Cascadia Code', 'Consolas', 'Courier New', 'monospace'",
-        "[yaml]": {
+        "python.pythonPath": "/usr/bin/python3",
+        "[ini]": {
             "editor.detectIndentation": false,
-            "editor.tabSize": 2
+            "editor.tabSize": 4
+        },
+        "[powershell]": {
+            "editor.detectIndentation": true,
+            "editor.tabSize": 4
         },
         "[shellscript]": {
             "editor.detectIndentation": false,
             "editor.tabSize": 2
         },
-        "[powershell]": {
-            "editor.detectIndentation": true,
-            "editor.tabSize": 4
+        "[yaml]": {
+            "editor.detectIndentation": false,
+            "editor.tabSize": 2
         },
     },
 }
