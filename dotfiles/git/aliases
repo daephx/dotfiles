@@ -3,7 +3,7 @@
 
 # Quick commands
 b = branch
-st = status
+st = status -uno
 up = fetch --all
 
 # Styling output
