@@ -1,3 +1,3 @@
 # TODO: I don't like it being in the homeroot
 - link:
-    ~/.prettierrc: dotfiles/prettier/.prettierrc
+    ~/.prettierrc: dotfiles/prettier/prettierrc.json
