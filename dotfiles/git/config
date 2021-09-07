@@ -29,7 +29,7 @@ branch = false
 [color "status"]
 added = green
 changed = yellow dim
-deleted = red
+deleted = red bold
 untracked = red
 
 [color "branch"]
