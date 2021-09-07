@@ -18,10 +18,7 @@
       force: true
     ~/.config:
       recursive: true
-    ~/.local:
-      recursive: true
 
 - shell:
     - git submodule sync --recursive
     - git submodule update --recursive
-
