@@ -1,7 +1,22 @@
-# [Add/Fix/Remove/Update/Refactor/Document] [summary] [50-character limit]
 
-# 72-character wrapped longer description. This should answer:
-# * Why was this change necessary?
-# * How does it address the problem?
-# * Are there any side effects?
-# * Include a link to the ticket, if any.
+# [Conventional Commits] [summary] [50-character limit]
+#
+# - feat: new feature for the user, not a new feature for build script
+# - fix: bug fix for the user, not a fix to a build script
+# - docs: changes to the documentation only
+# - style: affect the meaning (white-space, formatting, missing semi-colons, etc)
+# - refactor: refactoring production code, eg. renaming a variable
+# - perf: special refactor commits, that improves performance
+# - test: adding missing tests, refactoring tests; no production code change
+# - chore: updating grunt tasks etc; no production code change
+# - build: affect build tool, ci/cd, dependencies, project version
+# - ops: operational components like infrastructure, deployment, backup, recovery 
+#
+# [Long Description] [72-character wrapped]
+#
+# This should answer:
+# - Why was this change necessary?
+# - How does it address the problem?
+# - Are there any side effects?
+# - Include a link to the ticket, if any.
+
