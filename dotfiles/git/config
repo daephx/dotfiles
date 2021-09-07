@@ -28,9 +28,9 @@ branch = false
 
 [color "status"]
 added = green
-changed = red
-deleted = red bold
-untracked = magenta
+changed = yellow dim
+deleted = red
+untracked = red
 
 [color "branch"]
 remote = yellow
