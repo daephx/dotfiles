@@ -1,18 +1,18 @@
 - create:
     - ~/.config/poshthemes
 
-- shell:
-    - [
-        'bash -c "shopt -s nullglob dotglob &&
-        files=(~/.config/poshthemes/*.json) &&
-        if [ ${#files[@]} -lt 0 ]; then
-        wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.config/poshthemes/themes.zip &&
-        unzip ~/.config/poshthemes/themes.zip -d ~/.config/poshthemes &&
-        chmod u+rw ~/.config/poshthemes/*.json &&
-        rm ~/.config/poshthemes/themes.zip
-        ;fi"',
-        Downloading posh themes,
-      ]
+# - shell:
+#     - [
+#         'bash -c "shopt -s nullglob dotglob &&
+#         files=(~/.config/poshthemes/*.json) &&
+#         if [ ${#files[@]} -lt 0 ]; then
+#         wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.config/poshthemes/themes.zip &&
+#         unzip ~/.config/poshthemes/themes.zip -d ~/.config/poshthemes &&
+#         chmod u+rw ~/.config/poshthemes/*.json &&
+#         rm ~/.config/poshthemes/themes.zip
+#         ;fi"',
+#         Downloading posh themes,
+#       ]
 
 - link:
     ~/.config/poshthemes/:
