@@ -8,3 +8,7 @@ credentials.*
 
 themes/
 zsh/custom/
+
+# Local files.
+# might contain sensitive information
+*.local.*
