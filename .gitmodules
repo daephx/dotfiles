@@ -1,9 +1,9 @@
 [submodule "meta/dotbot"]
-path = meta/dotbot
-url = https://github.com/anishathalye/dotbot.git
+    path = meta/dotbot
+    url = https://github.com/anishathalye/dotbot.git
 [submodule "meta/plugins/sudo"]
-path = meta/plugins/sudo
-url = https://github.com/DrDynamic/dotbot-sudo.git
+    path = meta/plugins/sudo
+    url = https://github.com/DrDynamic/dotbot-sudo.git
 [submodule "ansible"]
-path = ansible
-url = https://github.com/daephx/ansible.git
+    path = ansible
+    url = https://github.com/daephx/ansible.git
