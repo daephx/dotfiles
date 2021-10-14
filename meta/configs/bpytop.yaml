@@ -1,4 +1,4 @@
-- sudo:
-    - shell:
-        - [ apt update && apt install -y bpytop, Installing 'bpytop' ]
+# Linux/OSX/FreeBSD resource monitor
 
+- shell:
+    - [pip3 install bpytop --upgrade, Installing package; bpytop]
