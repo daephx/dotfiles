@@ -1,7 +1,0 @@
-- sudo:
-    - shell:
-        - [
-            wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-arm -O /usr/local/bin/oh-my-posh,
-            Installing oh-my-posh from repository.,
-          ]
-        - [chmod +x /usr/local/bin/oh-my-posh, Giving 'oh-my-posh' executable privilege.]
