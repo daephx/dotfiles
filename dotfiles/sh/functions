@@ -32,3 +32,8 @@ abspath() {
     printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
     cd "$OLDPWD"
 }
+
+mkcdir () {
+  mkdir -p -- "$1" &&
+    cd -P -- "$1"
+}
