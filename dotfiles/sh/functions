@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # Exctract archive:
 # Usage: extract <file>
 function extract() {
