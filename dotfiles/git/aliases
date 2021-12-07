@@ -45,3 +45,6 @@
 
   # Create ignore file from Toptal.io
   ignore = "!f() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; f"
+
+  hash = "!f() { git rev-parse $1 | cut -c1-7; }; f"
+  find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
