@@ -55,6 +55,7 @@ function main() {
   # Default action is standalone configs: './install zsh'
   if [[ ! $STRAT ]] || [[ $STRAT == "profile" ]]; then parse_profiles "${POSITIONAL[@]}" && return 0; fi
   if [[ $STRAT == "standalone" ]]; then parse_standalone "${POSITIONAL[@]}" && return 0; fi
+  if [[ $STRAT == "docker" ]]; then parse_docker; fi
 
 }
 
@@ -64,6 +65,7 @@ function parse_opts() {
     case "${1}" in
     -p | --profile) STRAT="profile" && shift ;;
     -s | --standalone) STRAT="standalone" && shift ;;
+    -D | --docker) STRAT="docker" && shift ;;
     *) POSITIONAL+=("${1}") && shift ;;
     esac
     done
@@ -90,6 +92,15 @@ function parse_profiles() {
     execute_command $config
   done
 
+}
+
+function parse_docker() {
+  docker build -t docker.daephx/dotfiles .
+  ID=$(
+      docker images --format="{{.Repository}} {{.ID}}" |
+      grep "docker.daephx/dotfiles" |
+      cut -d' ' -f2
+  ); docker run -it $ID
 }
 
 function load_plugins() {
