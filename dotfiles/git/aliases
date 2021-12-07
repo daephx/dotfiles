@@ -48,3 +48,9 @@
 
   hash = "!f() { git rev-parse $1 | cut -c1-7; }; f"
   find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+
+  whoami-user = !git config user.name
+  whoami-email = !git config user.email
+
+  # FIXME: Failed execution for full git whoami string
+  whoami = "!f() { printf '$(git config user.name) <$(git config user.email)>'; }; f"
