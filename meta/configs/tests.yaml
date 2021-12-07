@@ -1,0 +1,7 @@
+- defaults:
+    shell:
+      stdout: true
+      stderr: true
+
+- shell:
+    - [python -m unittest discover ./tests, Discovering test cases]
