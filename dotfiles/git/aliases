@@ -36,3 +36,9 @@
   save = !git add -A && git commit -m "chore: commit save point"
   undo = reset HEAD~1 --mixed
   unstage = reset HEAD --
+
+  # branch operations
+  main = checkout main
+  feat = "!f() { git checkout -b feat/$1; }; f"
+  fix = "!f() { git checkout -b fix/$1; }; f"
+  refactor = "!f() { git checkout -b refactor/$1; }; f"
