@@ -1,40 +1,38 @@
-# vim: ft=config
+# vim: set ft=gitconfig
 [alias]
 
-# Quick commands
-b = branch
-st = status -uno
-up = fetch --all
+  # Shorthands
+  b = branch
+  co = checkout
+  del = branch -D
+  s = status
+  st = status -uno
+  up = fetch --all
+  wt = worktree
 
-# Styling output
-ls = !git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an> %Creset' --abbrev-commit
-lm = !git log -n 1 # <CommitID>
-lg = !git log --graph --date=relative --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit
-lsa = !git config --get-regexp alias
-gf = !git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit
+  # Styling output
+  br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) %(color:bold blue)<%(authorname)>%(color:reset)' --sort=-committerdate
+  gf = log --color --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%C(bold blue) <%an>%C(yellow)%d %Creset' --abbrev-commit
+  lg = log --graph --date=relative --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit
+  lm = log -n 1 # <CommitID>
+  ls = log --color --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%C(bold blue) <%an>%C(yellow)%d %Creset' --abbrev-commit
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  lsa = config --get-regexp alias
 
-br = !git for-each-ref refs/heads/ --format='%(HEAD) %(align:width=15)%(color:bold yellow)%(refname:short)%(end)%(color:reset) %(color:green)%(committerdate)%(color:reset) - %(contents:subject)%(color:dim white) - %(color:bold blue)%(authorname)%(color:reset)'
+  # Either this requires a rework or platform depended aliases will have to be sorted
+  # FIXME: git alias depends on sed, ! this is not os portable
+  alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
-# Operations
-abort = rebase --abort
-aliases = "!git config -l | grep alias | cut -c 7-"
-amend = commit -a --amend
-initial = !git rev-list HEAD | tail -n 1 # Get the root commit
-reup = !git fetch --all && git reset --hard origin/master
-recommit = commit --amend -C@@{0}
-undo = reset --hard HEAD@{1}
-unstage = !git reset HEAD --
-# Get the hash value of a particular label,
-hash = "!f() { git rev-parse $1 | cut -c1-7; }; f"
-
-# Testing
-# stamp = !f() { msg=$(printf %s ":bento: " "${1-update} " "$(date '+%Y%m%d%H%M%S')") ; commit -m $msg }; f
-# say = "!f() { msg=$(printf %s ":bento: " "$(date '+%Y%m%d%H%M%S') " "${1-update}") ; echo $msg } ; f"
-
-whoami-user = !git config user.name
-whoami-email = !git config user.email
-
-whoami = "!f() { \
-msg='$(git config user.name) <$(git config user.email)>'; \
-printf $msg; \
-}; f"
+  # Operations
+  abort = rebase --abort
+  amend = commit -a --amend
+  conflicts = diff --name-only --diff-filter=U
+  done = !git push origin HEAD
+  initial = !git rev-list HEAD | tail -n 1 # Get the root commit
+  recommit = commit --amend -C@@{0}
+  res = !git reset --hard
+  reup = fetch --all && git reset --hard origin/master
+  save = !git add -A && git commit -m "chore: commit save point"
+  undo = reset HEAD~1 --mixed
+  unstage = reset HEAD --
