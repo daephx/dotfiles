@@ -1,0 +1,20 @@
+# neovim | https://github.com/neovim/neovim
+# Vim-fork focused on extensibility and usability.
+
+- shell:
+    - [
+        git submodule sync -- dotfiles/nvim && git submodule update -- dotfiles/nvim,
+        Downloading submodule; daephx/nvim
+      ]
+
+- link:
+    ~/.config/nvim:
+      path: dotfiles/nvim
+
+- shell:
+    - [
+        sudo sh -c " \
+        add-apt-repository -y ppa:neovim-ppa/unstable;
+        apt update && apt install -y neovim",
+        Downloading package; 'Neovim/Unstable'
+      ]

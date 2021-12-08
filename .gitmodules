@@ -1,15 +1,18 @@
+# Dotbot
 [submodule "meta/dotbot"]
-	path = meta/dotbot
-	url = https://github.com/anishathalye/dotbot.git
+  path = meta/dotbot
+  url = https://github.com/anishathalye/dotbot.git
 [submodule "meta/plugins/sudo"]
-	path = meta/plugins/sudo
-	url = https://github.com/DrDynamic/dotbot-sudo.git
-[submodule "meta/plugins/dotbot-git"]
-	path = meta/plugins/dotbot-git
-  url = https://github.com/DrDynamic/dotbot-git.git
-[submodule "ansible"]
-	path = ansible
-	url = https://github.com/daephx/ansible.git
+  path = meta/plugins/sudo
+  url = https://github.com/DrDynamic/dotbot-sudo.git
 [submodule "meta/plugins/git"]
-	path = meta/plugins/git
-	url = https://github.com/DrDynamic/dotbot-git.git
+  path = meta/plugins/git
+  url = https://github.com/DrDynamic/dotbot-git.git
+
+# Packages
+[submodule "ansible"]
+  path = ansible
+  url = https://github.com/daephx/ansible.git
+[submodule "dotfiles/nvim"]
+  path = dotfiles/nvim
+  url = https://github.com/daephx/nvim.git
