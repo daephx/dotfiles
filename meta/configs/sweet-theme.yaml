@@ -1,0 +1,11 @@
+- defaults:
+    shell:
+      stdin: true
+      stdout: true
+
+- create:
+    - ~/.local/share/icons
+    - ~/.local/share/themes
+
+- shell:
+    - [meta/scripts/install-gnome-sweet.sh, Running installation script.]
