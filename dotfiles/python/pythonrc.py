@@ -10,8 +10,11 @@ type(exit).__repr__ = type(exit).__call__
 # tab completion
 readline.parse_and_bind('tab: complete')
 
-# history file
-histfile = os.path.join(os.environ['HOME'], '.pythonhistory')
+# History file - attempt XDG directory: fallback $HOME
+try:
+    histfile = os.path.join(os.environ['XDG_STATE_HOME'], 'python_history')
+except KeyError:
+    histfile = os.path.join(os.environ['HOME'], '.python_history')
 
 try:
     readline.read_history_file(histfile)
