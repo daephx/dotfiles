@@ -4,7 +4,6 @@
   name = daephx
 
 [core]
-editor = code --wait
 autocrlf = input
 excludesfile = ~/.config/git/ignore
 attributesfile = ~/.config/git/attributes
