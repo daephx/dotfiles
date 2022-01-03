@@ -1,7 +1,7 @@
 # vim: set ft=ini
 [user]
-email = 36192863+daephx@users.noreply.github.com
-name = daephx
+  email = daephxdev@gmail.com
+  name = daephx
 
 [core]
 editor = code --wait
