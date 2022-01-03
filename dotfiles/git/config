@@ -1,44 +1,51 @@
-# vim: set ft=ini
+# vim: set ft=gitconfig
 [user]
   email = daephxdev@gmail.com
   name = daephx
 
+[init]
+  defaultBranch = main
+
 [core]
-autocrlf = input
-excludesfile = ~/.config/git/ignore
-attributesfile = ~/.config/git/attributes
-pager = less -S
+  autocrlf = input
+  excludesfile = ~/.config/git/ignore
+  attributesfile = ~/.config/git/attributes
+  pager = less -S
 
 [include]
-path = ~/.config/git/aliases
+  path = ~/.config/git/aliases
 
 [commit]
-template = ~/.config/git/message
+  template = ~/.config/git/message
 
 [credential]
-helper = store
-
-# used for personal git server
-# [http]
-# sslCAInfo = /usr/local/share/ca-certificates/extra/cert.pem
+  helper = cache --timeout=600
 
 [pager]
-branch = false
+  branch = false
+  status = true
 
-[color "status"]
-added = green
-changed = yellow dim
-deleted = red bold
-untracked = red
+[pull]
+  rebase = true
 
-[color "branch"]
-remote = yellow
+[rebase]
+  autoStash = true
 
-[init]
-defaultBranch = main
+[color]
+  ui = auto
 
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+
+### Difftools ###
+
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
