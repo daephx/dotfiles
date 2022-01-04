@@ -88,9 +88,9 @@ fi
 
 # Output startup time
 function {
-    local -i t1 startup
-    t1=$(($(date +%s%N)/1000000))
-    startup=$(( t1 - t0 ))
-    [[ $startup -gt 1 ]] && print "Loading shell profile took: ${startup}ms"
+  local -i t1 startup
+  t1=$(($(date +%s%N)/1000000))
+  startup=$(( t1 - t0 ))
+  [[ $startup -gt 1 ]] && print "Loading shell profile took: ${startup}ms"
 }
 unset t0
