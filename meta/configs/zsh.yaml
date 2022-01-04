@@ -1,23 +1,15 @@
 - create:
     - ~/.config/zsh
-    - ~/.config/zsh/zshrc.d
 
 - link:
     ~/.zshenv: dotfiles/zsh/zshenv
     ~/.config/zsh/.zshrc: dotfiles/zsh/zshrc
-    ~/.config/zsh/zshrc.d:
-      glob: true
-      path: dotfiles/zsh/zshrc.d/*.zsh
     ~/.config/zsh:
       glob: true
       path: dotfiles/zsh/*
       exclude:
-        [
-          dotfiles/zsh/oh-my-zsh,
-          dotfiles/zsh/z,
-          dotfiles/zsh/zshrc,
-          dotfiles/zsh/zshrc.d,
-        ]
+        - dotfiles/zsh/zshenv
+        - dotfiles/zsh/zshrc
 
 - sudo:
     - shell:
