@@ -12,7 +12,6 @@
 [[ $- != *i* ]] && return
 
 # Configure how the history is written
-export HISTFILE="$XDG_CACHE_HOME/.bash_history"
 export HISTSIZE=10000
 export HISTFILESIZE=100000
 export HISTIGNORE='ls:ll:la:lc:cd:gt:up:todo:exit:clear:hist:history'
@@ -20,6 +19,9 @@ export HISTIGNORE='ls:ll:la:lc:cd:gt:up:todo:exit:clear:hist:history'
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 export HISTCONTROL=ignoreboth
+
+# Set hisfile if not exists
+[ ! -z $HISTFILE ] && export HISTFILE=$XDG_STATE_HOME/bash_history
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -132,19 +134,14 @@ export LIBGL_ALWAYS_INDIRECT=1
 alias cls="clear"
 # alias ls='ls -1 $@'
 
+# Source common shell configurations
+[ -f ~/.shellrc ] && source ~/.shellrc
+
 # Aliases
-if [ -f "$HOME/.aliases" ]; then
-  source "$HOME/.aliases"
-fi
+[ -f ~/.aliases ] && source ~/.aliases
 
-if [ -f "$HOME/.bash_aliases" ]; then
-  source "$HOME/.bash_aliases"
-fi
-
-# Functions
-if [ -f "$HOME/.functions" ]; then
-  source "$HOME/.functions"
-fi
+# Bash common sources
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # bash config dir containing additional configs to be sourced
 source_files "$XDG_CONFIG_HOME/bash/bashrc.d" "bash"
