@@ -45,7 +45,9 @@ function source_files() {
   fi
 }
 
-mkcdir () {
+# Create and change directory
+# Usage: mk </dir/path>
+function mk() {
   mkdir -p -- "$1" &&
     cd -P -- "$1"
 }
