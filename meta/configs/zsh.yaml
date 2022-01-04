@@ -11,10 +11,12 @@
         - dotfiles/zsh/zshenv
         - dotfiles/zsh/zshrc
 
-- sudo:
-    - shell:
-        - [apt update && apt install -y zsh, Installing zsh.]
-        - [
-            /usr/sbin/usermod -s $(which zsh) $USER,
-            Set zsh as users default shell!,
-          ]
+- shell:
+    - [
+        sh -c "if ! command -v zsh; then sudo apt install -y zsh; fi",
+        Installing Package; 'zsh'
+      ]
+    - [
+        sudo usermod -s $(which zsh) $USER,
+        Set zsh as default for $USER
+      ]
