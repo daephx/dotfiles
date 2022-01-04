@@ -1,45 +1,15 @@
+#!/usr/bin/env bash
+#
 #    ██████╗  █████╗ ███████╗██╗  ██╗██████╗  ██████╗
 #    ██╔══██╗██╔══██╗██╔════╝██║  ██║██╔══██╗██╔════╝
 #    ██████╔╝███████║███████╗███████║██████╔╝██║
 #    ██╔══██╗██╔══██║╚════██║██╔══██║██╔══██╗██║
 # ██╗██████╔╝██║  ██║███████║██║  ██║██║  ██║╚██████╗
 # ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
-case $- in
-*i*) ;;
-*) return ;;
-esac
-
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_LOCAL_HOME="$HOME/.local"
-
-if command -v oh-my-posh &>/dev/null; then
-  eval "$(oh-my-posh --init --shell bash --config $XDG_CONFIG_HOME/poshthemes/slimy.omp.json)"
-fi
-
-# Python startup file, basic repl customization.
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
-# Make python look in '~/.local/share/python/lib' for custom modules and packages
-export PYTHONPATH="${PYTHONPATH}:$XDG_LOCAL_HOME/share/python/lib"
-
-# vim config
-# export MYVIMRC="${XDG_CONFIG_HOME:-$HOME/.config}/vim/init.vim"
-# export VIMINIT="source $MYVIMRC"
-
-# TODO(daephx): TERM_PROGRAM outputs 'vscode' when using remote-ssh, but command 'vscode' != 'code'.
-# Default editors
-# export EDITOR="${TERM_PROGRAM:-vim}"
-# export GIT_EDITOR=code
-# export GUI_EDITOR=code
-
-# History: Nice tutorial,
-# https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
+[[ $- != *i* ]] && return
 
 # Configure how the history is written
 export HISTFILE="$XDG_CACHE_HOME/.bash_history"
