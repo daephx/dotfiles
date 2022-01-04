@@ -25,13 +25,14 @@ extract() {
       fi
 }
 
-# Absolute path
-# Usage: abspath <file>
-abspath() {
-  cd "$(dirname "$1")"
-    printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
-    cd "$OLDPWD"
+# Get absolute path
+# Usage: abspath <path/to/item>
+function abspath() {
+  pushd "$(dirname "$1")" >/dev/null
+  printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
+  popd >/dev/null
 }
+
 
 # Source all files in directory
 # Usage: source_files </dir/path/> bash
