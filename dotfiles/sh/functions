@@ -33,6 +33,18 @@ abspath() {
     cd "$OLDPWD"
 }
 
+# Source all files in directory
+# Usage: source_files </dir/path/> bash
+function source_files() {
+  local dir="$1"
+  local ext="$2"
+  if [[ -d "$dir" && -r "$dir" && -x "$dir" ]]; then
+    for file in "$dir"/*."$ext"; do
+      [[ -f "$file" && -r "$file" ]] && . "$file"
+    done
+  fi
+}
+
 mkcdir () {
   mkdir -p -- "$1" &&
     cd -P -- "$1"

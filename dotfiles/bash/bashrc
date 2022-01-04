@@ -147,18 +147,4 @@ if [ -f "$HOME/.functions" ]; then
 fi
 
 # bash config dir containing additional configs to be sourced
-# Rewrite this if the configs are read from somewhere else
-export BASHCONFD="$XDG_CONFIG_HOME/bash/bashrc.d"
-
-# Source the configurations in bashrc.d directory
-if [ -d "${BASHCONFD}" ]; then
-  CONFS=[]
-  CONFS=$(ls "${BASHCONFD}"/*.bash 2>/dev/null)
-  if [ $? -eq 0 ]; then
-    for CONF in ${CONFS[@]}; do
-      source $CONF
-    done
-  fi
-  unset CONFS
-  unset CONF
-fi
+source_files "$XDG_CONFIG_HOME/bash/bashrc.d" "bash"

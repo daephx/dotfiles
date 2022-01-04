@@ -50,23 +50,6 @@ bindkey -e
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Source the configurations in .zshrc.d directory
-if [ -d "${ZSHCONFD}" ]; then
-    CONFS=[]
-    CONFS=$(ls "${ZSHCONFD}"/*.zsh 2> /dev/null)
-    if [ $? -eq 0 ]; then
-        for CONF in ${CONFS[@]}
-        do
-            source $CONF
-        done
-    fi
-    unset CONFS
-    unset CONF
-fi
-
-# load after zshrc.d files to make sure that ~/.local/bin is the first in $PATH
-export PATH="${HOME}/.local/bin:${PATH}"
-
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -85,6 +68,10 @@ fi
 if [ -f "$HOME/.zsh_aliases" ]; then
   source "$HOME/.zsh_aliases"
 fi
+
+# ZSH config folder containing additional files to be sourced
+source_files "$ZDOTDIR/zshrc.d" "zsh"
+
 
 # Output startup time
 function {
