@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -21,8 +22,6 @@ fi
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then # SSH mode
   export EDITOR='vim'
-else # Local terminal mode
-  export EDITOR='code -w'
 fi
 
 # if running bash
