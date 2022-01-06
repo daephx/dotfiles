@@ -2,14 +2,22 @@
 skip_global_compinit=1
 
 # XDG base directory specifications
-export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
-export XDG_LOCAL_HOME=${XDG_LOCAL_HOME:="$HOME/.local"}
-export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
-export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_LOCAL_HOME="$HOME/.local"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# Unofficial XDG, extended specifications
+# These are not standardized but are useful and common
+export XDG_BIN_HOME="$XDG_LOCAL_HOME/bin"
+export XDG_LIB_HOME="$XDG_LOCAL_HOME/lib"
 
 # the path to your zsh config, default: '~/.config/zsh'
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
+
+# Dotfiles locations
+export DOTFILES="$HOME/.dotfiles"
 
 # Prevent PATH duplication
 typeset -U PATH path

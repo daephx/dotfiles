@@ -14,64 +14,26 @@
 # profile loading timer init
 integer t0=$(($(date +%s%N)/1000000))
 
-# Enabled prompt theme
-if command -v oh-my-posh &>/dev/null; then
-  # precmd() { print "" } # add extra newline
-  eval "$(oh-my-posh --init --shell zsh --config $XDG_CONFIG_HOME/poshthemes/slimy.omp.json)"
-else
-# Enable oh-my-zsh / Powerlevel10k
-# Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-  fi
-  source "$XDG_CONFIG_HOME/zsh/oh-my-zsh.zsh"
-fi
+# Set history file if not exists
+export HISTFILE=${HISTFILE:-$XDG_STATE_HOME/zsh_history}
 
-# Default editors
-# export EDITOR="${TERM_PROGRAM:-vim}"
-# export GIT_EDITOR=code
-# export GUI_EDITOR=code
+# ZSH Options
+unsetopt BEEP
 
-# History: Nice tutorial,
-# https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
 
-# Configure how the history is written
-export HISTFILE="$XDG_CACHE_HOME/.zsh_history"
-export HISTSIZE=10000
-export HISTFILESIZE=100000
-export HISTCONTROL=ignoreboth
-export HISTIGNORE='ls:ll:la:lc:cd:gt:up:todo:exit:clear:hist:history'
+### User Configs ###
 
-unsetopt beep
-bindkey -e
+# Source common shell configurations
+[ -f ~/.commonrc ] && source ~/.commonrc
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-
-# Functions definitions.
-if [ -f "$HOME/.functions" ]; then
-  source "$HOME/.functions"
-fi
-
-# Alias definitions.
-if [ -f "$HOME/.aliases" ]; then
-  source "$HOME/.aliases"
-fi
-
-if [ -f "$HOME/.zsh_aliases" ]; then
-  source "$HOME/.zsh_aliases"
-fi
+# Zsh common source
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
 # ZSH config folder containing additional files to be sourced
 source_files "$ZDOTDIR/zshrc.d" "zsh"
 
+
+### Complete ###
 
 # Output startup time
 function {
