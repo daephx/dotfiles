@@ -1,0 +1,37 @@
+gui:
+  # stuff relating to the UI
+  scrollHeight: 2 # how many lines you scroll by
+  scrollPastBottom: true # enable scrolling past the bottom
+  sidePanelWidth: 0.3333 # number from 0 to 1
+  expandFocusedSidePanel: false
+  mainPanelSplitMode: 'horizontal' # one of 'horizontal' | 'flexible' | 'vertical'
+  language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
+  theme:
+    lightTheme: false # For terminals with a light background
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - '#5A5A5A'
+  commitLength:
+    show: true
+  mouseEvents: true
+  skipUnstageLineWarning: false
+  skipStashWarning: true
+  showFileTree: false # for rendering changes files in a tree format
+  showListFooter: true # for seeing the '5 of 20' message in list panels
+  showRandomTip: true
+  showCommandLog: true
+  commandLogSize: 8
+  authorColors: # in case you're not happy with the randomly assigned colour
+    'John Smith': '#3782D6'
+git:
+  paging:
+    colorArg: always
+    useConfig: false
+notARepository: 'skip' # one of: 'prompt' | 'create' | 'skip'
+keybinding:
+  universal:
+    quit: 'q'
+    quit-alt1: '<c-c>' # alternative/alias of quit
+    return: '<esc>' # return to previous menu, will quit if there's nowhere to return

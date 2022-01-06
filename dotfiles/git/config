@@ -1,45 +1,51 @@
-# vim: set ft=ini
+# vim: set ft=gitconfig
 [user]
-email = 36192863+daephx@users.noreply.github.com
-name = daephx
-
-[core]
-editor = code --wait
-autocrlf = input
-excludesfile = ~/.config/git/ignore
-attributesfile = ~/.config/git/attributes
-pager = less -S
-
-[include]
-path = ~/.config/git/aliases
-
-[commit]
-template = ~/.config/git/message
-
-[credential]
-helper = store
-
-# used for personal git server
-# [http]
-# sslCAInfo = /usr/local/share/ca-certificates/extra/cert.pem
-
-[pager]
-branch = false
-
-[color "status"]
-added = green
-changed = yellow dim
-deleted = red bold
-untracked = red
-
-[color "branch"]
-remote = yellow
+  email = daephxdev@gmail.com
+  name = daephx
 
 [init]
-defaultBranch = main
+  defaultBranch = main
+
+[core]
+  autocrlf = input
+  excludesfile = ~/.config/git/ignore
+  attributesfile = ~/.config/git/attributes
+  pager = less -S
+
+[include]
+  path = ~/.config/git/aliases
+
+[commit]
+  template = ~/.config/git/message
+
+[credential]
+  helper = cache --timeout=600
+
+[pager]
+  branch = false
+  status = true
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
+
+[color]
+  ui = auto
 
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+
+### Difftools ###
+
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""

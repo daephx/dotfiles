@@ -1,0 +1,13 @@
+# lazygit | simple terminal UI for git commands
+# https://github.com/jesseduffield/lazygit
+
+- create:
+  - ~/.config/lazygit
+
+- link:
+    ~/.config/lazygit/config.yml:
+      path: dotfiles/lazygit/config.yml
+
+- shell:
+    - [sh -c "sudo add-apt-repository ppa:lazygit-team/release", Add Package repository; lazygit-team]
+    - [sudo apt update && sudo apt install -y lazygit", Installing Package; Lazygit]

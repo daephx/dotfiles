@@ -28,6 +28,7 @@
   abort = rebase --abort
   amend = commit -a --amend
   conflicts = diff --name-only --diff-filter=U
+  count-commits = rev-list --count HEAD
   done = !git push origin HEAD
   initial = !git rev-list HEAD | tail -n 1 # Get the root commit
   recommit = commit --amend -C@@{0}
