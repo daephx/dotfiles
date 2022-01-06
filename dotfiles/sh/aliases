@@ -16,6 +16,11 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# Editors
+alias e="emacs"
+alias v="$VISUAL"
+alias vi="$VISUAL"
+
 # Use LSD as default || standard LS
 if command -v lsd &>/dev/null; then
   alias ls="command lsd -l ${colorflag} "
