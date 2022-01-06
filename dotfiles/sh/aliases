@@ -9,8 +9,9 @@
 # ~/.aliases: sourced commonrc, shorthand for shell cmds
 
 # Easier navigation:
-alias cd-="cd -"
-alias ..="cd .."
+alias -- -="cd -" # Previous directory
+alias ~="cd ~"    # `cd` is probably faster to type
+alias ..="cd .."  # Fast parents
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
