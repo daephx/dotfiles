@@ -14,10 +14,9 @@
 # profile loading timer init
 integer t0=$(($(date +%s%N)/1000000))
 
-# Set history file if not exists
-export HISTFILE=${HISTFILE:-$XDG_STATE_HOME/zsh_history}
 
-# ZSH Options
+### Options ###
+
 setopt GLOB_COMPLETE
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
@@ -33,6 +32,19 @@ setopt noautoremoveslash
 setopt share_history
 unsetopt BEEP
 unsetopt EXTENDED_HISTORY
+
+# Set history file if not exists
+export HISTFILE=${HISTFILE:-$XDG_STATE_HOME/zsh_history}
+
+stty stop undef # Disable Ctrl-s to freeze terminal.
+
+
+### Completions ###
+
+autoload -Uz compinit
+zmodload zsh/complist
+compinit -d "$XDG_CACHE_HOME/zsh/zccompdump"
+_comp_options+=(globdots) # Include hidden files.
 
 
 ### User Configs ###
