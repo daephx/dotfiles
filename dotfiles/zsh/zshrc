@@ -18,7 +18,21 @@ integer t0=$(($(date +%s%N)/1000000))
 export HISTFILE=${HISTFILE:-$XDG_STATE_HOME/zsh_history}
 
 # ZSH Options
+setopt GLOB_COMPLETE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt MENU_COMPLETE
+setopt appendhistory
+setopt interactive_comments
+setopt no_list_ambiguous
+setopt noautoremoveslash
+setopt share_history
 unsetopt BEEP
+unsetopt EXTENDED_HISTORY
 
 
 ### User Configs ###
