@@ -1,12 +1,7 @@
-- create:
-    - ~/.config/git
+# Git: Version Control
 
 - link:
-    ~/.config/git:
-      glob: true
-      force: true
-      path: dotfiles/git/*
+    ~/.config/git: dotfiles/git/
 
-- sudo:
-    - shell:
-        - [apt update && apt install -y git git-fls, Install Git.]
+  - shell:
+      - [sudo sh -c "apt update && apt install -y git git-fls", Install Git.]
