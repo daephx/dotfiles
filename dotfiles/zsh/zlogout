@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+# Executes commands at logout.
+
+cat <<-EOF
+Thank you. Come again!
+EOF
