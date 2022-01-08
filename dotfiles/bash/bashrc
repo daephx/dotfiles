@@ -32,9 +32,6 @@ export PYTHONPATH="${PYTHONPATH}:$XDG_LOCAL_HOME/share/python/lib"
 # export MYVIMRC="${XDG_CONFIG_HOME:-$HOME/.config}/vim/init.vim"
 # export VIMINIT="source $MYVIMRC"
 
-# Bash preexec library for styling
-source "$XDG_LOCAL_HOME/lib/bash-preexec.sh"
-
 # TODO(daephx): TERM_PROGRAM outputs 'vscode' when using remote-ssh, but command 'vscode' != 'code'.
 # Default editors
 # export EDITOR="${TERM_PROGRAM:-vim}"
