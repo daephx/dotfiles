@@ -12,10 +12,8 @@
 
   # Styling output
   br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) %(color:bold blue)<%(authorname)>%(color:reset)' --sort=-committerdate
-  gf = log --color --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%C(bold blue) <%an>%C(yellow)%d %Creset' --abbrev-commit
-  lg = log --graph --date=relative --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit
   lm = log -n 1 # <CommitID>
-  ls = log --color --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%C(bold blue) <%an>%C(yellow)%d %Creset' --abbrev-commit
+  ls = !git log --graph --oneline
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
   lsa = config --get-regexp alias
