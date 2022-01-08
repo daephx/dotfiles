@@ -7,4 +7,4 @@
     ~/.bash_logout: dotfiles/bash/bash_logout
     ~/.config/bash/bashrc.d:
       glob: true
-      path: dotfiles/bash/bashrc.d/*.conf
+      path: dotfiles/bash/bashrc.d/*.bash
