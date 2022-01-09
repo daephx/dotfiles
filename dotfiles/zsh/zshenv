@@ -24,7 +24,7 @@ export XDG_BIN_HOME="$XDG_LOCAL_HOME/bin"
 export XDG_LIB_HOME="$XDG_LOCAL_HOME/lib"
 
 # the path to your zsh config, default: '~/.config/zsh'
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Dotfiles locations
 export DOTFILES="$HOME/.dotfiles"
