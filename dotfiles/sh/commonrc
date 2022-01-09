@@ -36,8 +36,8 @@ export CURRENT_SHELL="$(ps | grep $(echo $$) | awk '{ print $4 }')"
 export LANG="en_US.UTF-8"
 
 # Personal Additions
-export DISPLAY=:0.0
-export LIBGL_ALWAYS_INDIRECT=1
+# export DISPLAY=:0.0
+# export LIBGL_ALWAYS_INDIRECT=1
 
 # History
 # Configure how the history is written
