@@ -11,10 +11,32 @@
     ~/.config/nvim:
       path: dotfiles/nvim
 
+
+
 - shell:
     - [
         sudo sh -c " \
         add-apt-repository -y ppa:neovim-ppa/unstable;
         apt update && apt install -y neovim",
         Downloading package; 'Neovim/Unstable'
+      ]
+
+- shell:
+    - [
+        sudo sh -c "\
+        apt install -y ripgrep fd-find",
+        Downloading external dependencies
+      ]
+
+- shell:
+    - [
+        pip3 install neovim neovim-remote
+        apt install -y ripgrep fd-find",
+        Installing python compatabilities
+      ]
+
+- shell:
+    - [
+        nvim --headless -c "autocmd User PackerComplete quitall",
+        Installing plugins for 'NeoVim'
       ]
