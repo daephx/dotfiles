@@ -63,38 +63,15 @@ if command -v lsd &>/dev/null; then
   alias tree="ls --tree"
 fi
 
+# Default to raw-control-characters
+alias less="less -R"
+
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+
+alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
-alias grep="grep --color=auto"
-
-# Enable aliases to be sudo"ed
-alias sudo="sudo "
-
-# Recursively delete `.DS_Store` files
-alias ds_cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empty the Trash on all mounted volumes and the main HDD.
-# Also, clear Apple's System Logs to improve shell startup speed.
-# Finally, clear download history from quarantine. https://mths.be/bum
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-
-# if apple
-# Show/hide hidden files in Finder
-# alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-# alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
-# alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-# alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-# fi # apple
-
-# # Add an "alert" alias for long running commands.
-# if command -v notify-send &>/dev/null; then
-#    alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-# #   Example: sleep 10; alert
-# fi
 
 # Clear terminal output
 alias cls="clear"
@@ -103,56 +80,97 @@ alias shell="ps -p $$"
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="clear && exec $(sh -c 'ps -p $$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe') -l"
 
-# Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
-# alias path2='echo $path tr ":" "\n"'
+# Clear Screen
+alias cls="clear"
 
-# Return the current public IP address
-alias myip="curl http://ipecho.net/plain; echo"
+# Enable sudo to expand aliases
+alias sudo="sudo"
 
-# Make distructive commands interactive
+# Make destructive commands interactive
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 
-# View HTTP traffic | Requires ngrep
-# alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-# alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\\: .*|GET \\/.*\""
+alias shell="ps -p $$"
+alias mnt="mount | grep -E ^/dev | column -t" # list mounted drives
+alias syn="pygmentize -l $1 $2 | less -R"     # Syntax highlight like cat
 
-# Trim new lines and copy to clipboard | Requires xclip
-# alias c="tr -d '\\n' | xclip -selection clipboard"
+# human-readable sizes
+alias df="df -h"
 
-# Kill all the tabs in Chrome to free up memory
-# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-# alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+# File size
+# alias fs="stat -f \"%z bytes\""
 
-# Lock the screen (when going AFK)
-# alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-# alias afk="i3lock -c 000000"
+# hosts
+alias hosts='sudo vi /etc/hosts'
 
-# vhosts
-alias hosts='sudo vim /etc/hosts'
+# Return the current public IP address
+alias myip="curl http://ipecho.net/plain; echo"
 
-# copy working directory | Requires xclip
-# alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard | echo "=> Working Directory copied to pasteboard."'
+# Print each PATH entry on a separate line
+alias path='echo -e "${PATH//:/\\n}" | less'
+
+# List environment
+alias ls-env="env | sed 's/;/\n/g'"
 
 # untar archive
 alias untar='tar xvf'
 
-# Pipe my public key to my clipboard. | Requires xclip
-# alias pubkey="more ~/.ssh/id_ed25519.pub | xclip -selection clipboard | echo '=> Public key copied to pasteboard.'"
+# Recursively delete `.DS_Store` files
+alias ds_cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
-# Pipe my private key to my clipboard. | Requires xclip
-# alias prikey="more ~/.ssh/id_ed25519 | xclip -selection clipboard | echo '=> Private key copied to pasteboard.'"
+# Docker container list
+alias dps="docker ps | less -S"
 
-# human-readable sizes
-alias df="df -h"
+# Shorthand to display command history
+alias hist="history"
+
+# Create gitignore file from online template
+alias gitignore="f() { curl -sL https://www.toptal.com/developers/gitignore/api/\$@ }; f >> .gitignore"
+
+# Git version control
+if command -v git &>/dev/null; then
+  alias g="git"
+  alias gc="git commit"
+  alias gs="git status"
+  alias gb="git branch"
+  alias gs="git show"
+fi
+
+# If fd-find is installed
+if command -v fdfind &>/dev/null; then
+  alias fd="fdfind"
+fi
+
+# if command -v bat &>/dev/null; then
+#   alias cat="bat"
+# else
+#   alias cat="cat $@ | less -F"
+# fi
+
+# Shorthand for python
+alias py="/usr/bin/env python"
+if command -v ipython &>/dev/null; then
+  alias ipy="ipython"
+fi
+
+# Xclip commands
+if command -v xclip >&/dev/null; then
+
+  # copy working directory | Requires xclip
+  alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard && echo "=> Working Directory copied to pasteboard."'
+
+  # Pipe my public key to my clipboard. | Requires xclip
+  alias public_key="less ~/.ssh/id_ed25519.pub | xclip -selection clipboard && echo '=> Public key copied to pasteboard.'"
+
+  # Pipe my private key to my clipboard. | Requires xclip
+  alias private_key="less ~/.ssh//id_rsa | xclip -selection clipboard && echo '=> Private key copied to pasteboard.'"
+fi
 
 # If WSL: Enable windows subsystem aliases
 # Alternative check: attempting to avoid spawning grep
 # read var </proc/version ; if echo $var == *wsl 1>/dev/null ; then echo wsl; fi
 if grep -q '[Mm]icrosoft' /proc/version; then
-
   # quick sanity check
   alias is_wsl="echo 'true'"
 
@@ -162,22 +180,4 @@ if grep -q '[Mm]icrosoft' /proc/version; then
   && swapoff -a && swapon -a \
   && printf '\n%s\n' 'Ram-cache and Swap Cleared'\" \
   "
-
-fi
-
-
-alias dps="docker ps | less -S"
-alias ls-env="env | sed 's/;/\n/g'"
-
-# Git aliases
-# alias g="git"
-# alias gc="git commit"
-# alias gs="git status"
-# alias gb="git branch"
-# alias gs="git show"
-
-# Shorthand for python
-alias py="/usr/bin/env python"
-if command -v ipython &>/dev/null; then
-  alias ipy="ipython"
 fi
