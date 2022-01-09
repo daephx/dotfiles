@@ -1,6 +1,11 @@
 # neovim | https://github.com/neovim/neovim
 # Vim-fork focused on extensibility and usability.
 
+- defaults:
+    shell:
+      stderr: true
+      stdout: true
+
 - shell:
     - [
         git submodule sync -- dotfiles/nvim && git submodule update -- dotfiles/nvim,
