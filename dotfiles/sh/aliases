@@ -17,6 +17,22 @@ alias ..="cd .."             # 1 Parent
 alias tmp="cd /tmp"          # System Temp
 alias ~="cd ~"               # HOME `cd`|`~`
 
+# Common mistakes
+alias brwe="brew"   # Typos
+alias where="which" # Dammit windows
+
+# Exit mistakes
+alias x='exit'
+alias xa="exit"
+alias Xa="exit"
+alias xit="exit"
+alias eexit="exit"
+alias eit="exit"
+alias exot="exit"
+alias q='exit'
+alias Q='exit'
+alias \:q='exit'
+
 # Editors
 alias e="emacs"
 alias v="$VISUAL"
