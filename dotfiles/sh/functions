@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Common POSIX shell functions
+# ~/.functions: Common functions for POSIX shells
 
 # Extract archive formats
 # Usage: extract <path/to/file>
@@ -33,6 +33,12 @@ function abspath() {
   pushd "$(dirname "$1")" >/dev/null
   printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
   popd >/dev/null
+}
+
+# Create path on touch
+# Usage: touchd <path/to/file>
+function touchd() {
+  mkdir -p "${1%/*}" && touch "$1"
 }
 
 # Source all files in directory
