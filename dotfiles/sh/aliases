@@ -9,12 +9,13 @@
 # ~/.aliases: sourced commonrc, shorthand for shell cmds
 
 # Easier navigation:
-alias -- -="cd -" # Previous directory
-alias ~="cd ~"    # `cd` is probably faster to type
-alias ..="cd .."  # Fast parents
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias -- -="cd -"            # Previous directory
+alias .....="cd ../../../.." # 4 Parents
+alias ....="cd ../../.."     # 3 Parents
+alias ...="cd ../.."         # 2 Parents
+alias ..="cd .."             # 1 Parent
+alias tmp="cd /tmp"          # System Temp
+alias ~="cd ~"               # HOME `cd`|`~`
 
 # Editors
 alias e="emacs"
