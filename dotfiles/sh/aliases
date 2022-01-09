@@ -175,3 +175,9 @@ alias ls-env="env | sed 's/;/\n/g'"
 # alias gs="git status"
 # alias gb="git branch"
 # alias gs="git show"
+
+# Shorthand for python
+alias py="/usr/bin/env python"
+if command -v ipython &>/dev/null; then
+  alias ipy="ipython"
+fi
