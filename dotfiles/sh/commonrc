@@ -125,8 +125,8 @@ else
     VISUAL="nvim"
   else
     if command -v nvr >&/dev/null; then
-      VISUAL="nvr -cc '1windo vsp e'"
-      GIT_EDITOR="nvr -cc 'bot sp' --remote-wait"
+      VISUAL="nvr -cc '1windo e'"
+      GIT_EDITOR="nvr -cc 'top sp' --remote-wait"
     fi
   fi
 fi
@@ -137,7 +137,7 @@ if [[ "$TERM_PROGRAM" = "vscode" ]]; then
 fi
 
 export EDITOR="$VISUAL"
-export GIT_EDITOR="$VISUAL"
+export GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
 
 # Shell Aliases: ~/.{bash,zsh}_aliases
 SHELL_ALIASES="~/.${CURRENT_SHELL}_aliases"
