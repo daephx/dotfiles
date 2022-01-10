@@ -1,0 +1,92 @@
+#!/usr/bin/env sh
+# Basic prompt to use if no others can be found
+
+PROMPT_ENGINE="oh-my-posh"
+PROMPT_THEME="slimy"
+
+# Set active shell variable if not exists
+if [ ! -z $CURRENT_SHELL ]; then
+  CURRENT_SHELL="$(ps | grep `echo $$` | awk '{ print $4 }')"
+fi
+
+
+function initalize_omp {
+  if command -v oh-my-posh &>/dev/null; then
+    theme_file="$PROMPT_THEME.omp.json"
+    theme_path="$XDG_CONFIG_HOME/poshthemes/$theme_file"
+    eval "$(oh-my-posh --init --shell $CURRENT_SHELL --config $theme_path)"
+  fi
+}
+
+
+function initalize_p10k {
+
+  # Enable oh-my-zsh / Powerlevel10k
+  # Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+  # Initialization code that may require console input (password prompts, [y/n]
+  # confirmations, etc.) must go above this block; everything else may go below.
+
+  if [ $CURRENT_SHELL -ne "zsh" ]; then
+    echo "Error: This prompt only supports zsh!" >&2
+    return 1
+  fi
+
+  prompt_path="$(${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh)"
+  if [[ -r $prompt_path ]]; then
+    source $prompt_path
+  fi
+  # source "$XDG_CONFIG_HOME/zsh/oh-my-zsh.zsh"
+}
+
+
+function initalize_default {
+  # Minimalist git prompt
+  if [ "$CURRENT_SHELL" = "bash" ]; then
+    RESET=$(tput sgr0)
+
+    BLUE=$(tput setaf 4)
+    GREY=$(tput setaf 244)
+    RED=$(tput setaf 1)
+    YELLOW=$(tput setaf 3)
+
+    git_prompt() {
+      BRANCH=$(git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/*\(.*\)/\1/")
+      if [ ! -z $BRANCH ]; then
+        echo -n "$YELLOW$BRANCH"
+        if [ ! -z "$(git status --short)" ]; then
+          echo " ${RED}✗"
+        fi
+      fi
+    }
+    PS1="\[$GREY\]$USER \[$BLUE\w$(git_prompt)\]\n\[$GREY\]$ \[$RESET\]"
+
+elif [ "$CURRENT_SHELL" = "zsh" ]; then
+  git_prompt() {
+    BRANCH=$(git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/*\(.*\)/\1/")
+    if [ ! -z $BRANCH ]; then
+      echo -n "%F{yellow}$BRANCH"
+      if [ ! -z "$(git status --short)" ]; then
+        echo " %F{red}✗"
+      fi
+    fi
+  }
+    NEWLINE=$'\n'
+    PS1="%F{grey}${USER} %F{blue}%~$(git_prompt)${NEWLINE}%F{244}\$ %F{reset}"
+  else
+    echo "Error: prompt does not support current shell!" &>2
+    return 1
+  fi
+}
+
+
+
+case $PROMPT_ENGINE in
+  "oh-my-posh") initalize_omp ;;
+  'powerline') initalize_p10k ;;
+  'disabled') echo "Disabled: No prompt selected" &>2 ;;
+  *?) echo "Error: Unknown prompt selected..." &>2 ;;
+esac
+
+if [ "${?}" -ne 1 ]; then
+  initalize_default
+fi

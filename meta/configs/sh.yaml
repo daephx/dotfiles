@@ -1,5 +1,15 @@
+# Bourne Shell / common shell configurations
+
+- defaults:
+    link:
+      force: true
+      relink: true
+
 - link:
     ~/.aliases: dotfiles/sh/aliases
+    ~/.commonrc: dotfiles/sh/commonrc
     ~/.functions: dotfiles/sh/functions
     ~/.inputrc: dotfiles/sh/inputrc
+    ~/.ls_colors: dotfiles/sh/ls_colors
     ~/.profile: dotfiles/sh/profile
+    ~/.prompt: dotfiles/sh/prompt

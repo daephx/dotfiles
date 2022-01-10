@@ -1,24 +1,36 @@
+#!/usr/bin/env zsh
+#
+#    ███████╗███████╗██╗  ██╗███████╗███╗   ██╗██╗   ██╗
+#    ╚══███╔╝██╔════╝██║  ██║██╔════╝████╗  ██║██║   ██║
+#      ███╔╝ ███████╗███████║█████╗  ██╔██╗ ██║██║   ██║
+#     ███╔╝  ╚════██║██╔══██║██╔══╝  ██║╚██╗██║╚██╗ ██╔╝
+# ██╗███████╗███████║██║  ██║███████╗██║ ╚████║ ╚████╔╝
+# ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝
+# ~/.zshrc: executed by zsh(1) for all user shells.
+
+# Speed up zsh by skipping completion cache
 skip_global_compinit=1
 
+# XDG base directory specifications
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_LOCAL_HOME="$HOME/.local"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
-# If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
+# Unofficial XDG, extended specifications
+# These are not standardized but are useful and common
+export XDG_BIN_HOME="$XDG_LOCAL_HOME/bin"
+export XDG_LIB_HOME="$XDG_LOCAL_HOME/lib"
 
 # the path to your zsh config, default: '~/.config/zsh'
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-# ZSH config dir containing additional configs to be sourced
-# Rewrite this if the configs are read from somewhere else
-export ZSHCONFD="$XDG_CONFIG_HOME/zsh/zshrc.d"
+# Dotfiles locations
+export DOTFILES="$HOME/.dotfiles"
 
-# vim config
-# export MYVIMRC='$XDG_CONFIG_HOME/vim/init.vim' # or any other location you want
-# export VIMINIT='source $MYVIMRC'
+# Prevent PATH duplication
+typeset -U PATH path
 
-# Python startup file, basic repl customization.
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
-# Make python look in '~/.local/share/python/lib' for custom modules and packages
-export PYTHONPATH="${PYTHONPATH}:$XDG_LOCAL_HOME/share/python/lib"
+# If you come from bash you might have to change your $PATH.
+export PATH="$XDG_LOCAL_HOME/bin:/usr/local/bin:$PATH"

@@ -1,0 +1,151 @@
+#!/usr/bin/env sh
+#
+#     ██████╗ ██████╗ ███╗   ███╗███╗   ███╗ ██████╗ ███╗   ██╗
+#    ██╔════╝██╔═══██╗████╗ ████║████╗ ████║██╔═══██╗████╗  ██║
+#    ██║     ██║   ██║██╔████╔██║██╔████╔██║██║   ██║██╔██╗ ██║
+#    ██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║██║   ██║██║╚██╗██║
+# ██╗╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║╚██████╔╝██║ ╚████║
+# ╚═╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+# ~/.commonrc: POSIX shell to initialize environment variables
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# XDG base directory specifications
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_LOCAL_HOME="$HOME/.local"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# Unofficial XDG, extended specifications
+# These are not standardized but are useful and common
+export XDG_BIN_HOME="$XDG_LOCAL_HOME/bin"
+export XDG_LIB_HOME="$XDG_LOCAL_HOME/lib"
+
+# Dotfiles locations
+export DOTFILES="$HOME/.dotfiles"
+
+# Evaluate the currently active shell
+export CURRENT_SHELL="$(ps | grep $(echo $$) | awk '{ print $4 }')"
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# You may need to manually set your language environment
+export LANG="en_US.UTF-8"
+
+# Personal Additions
+# export DISPLAY=:0.0
+# export LIBGL_ALWAYS_INDIRECT=1
+
+# History
+# Configure how the history is written
+export HISTSIZE=10000
+export HISTFILESIZE=100000
+export SAVEHIST=10000
+export HISTCONTROL=ignoreboth
+export HISTIGNORE='ls:ll:la:lc:lt:cd:gt:up:todo:exit:clear:cls:hist:history'
+export HISTFILE="$XDG_STATE_HOME/${CURRENT_SHELL}_history"
+
+# Manpager
+# Define how to display man pages
+export MANPAGER="less -s -M +Gg"
+# export MANPAGER="nvim +Man"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# Set less command properties
+export LESS="$LESS -FIJMQRSWX -x4 -z4"
+export LESSHISTFILE=-
+
+# Set $less variables for coloring less output
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+# Doom emacs direct
+export EMACSDIR="$XDG_CONFIG_HOME/emacs"
+export DOOMDIR="$XDG_CONFIG_HOME/doom"
+if [ -d "$EMACSDIR" ]; then
+  export PATH="$PATH:${EMACSDIR}/bin"
+fi
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# Python Settings
+# Python startup file, basic repl customization.
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
+
+# Make python look in '~/.local/share/python/lib' for custom modules and packages
+export PYTHONPATH="$PYTHONPATH:$XDG_LOCAL_HOME/share/python/lib"
+
+# Lua Settings
+# Trailing ;; ensure that default path will be appended by Lua
+LUA_LIB="$XDG_LOCAL_HOME/lib/lua" # Custom module location
+export LUA_PATH="$LUA_PATH;$LUA_LIB/?.lua;$LUA_LIB/?/init.lua;;"
+export LUA_CPATH="$LUA_CPATH;$LUA_LIB/?.so;$LUA_LIB/?/init.so;;"
+export LUAROCKS_CONFIG="$XDG_CONFIG_HOME/luarocks/config.lua"
+
+# Go settings
+export GOPATH="$XDG_LOCAL_HOME/lib/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# WGet Settings
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+alias wget="wget --hsts-file $XDG_CACHE_HOME/wget/history"
+
+# GnuPG
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+
+# Ripgrep Configuration
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+
+# FZF Command line fuzzy finder
+# export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+# " --color=dark"\
+# " --margin=1,1"\
+# " --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1"\
+# " --color=info:0,pointer:12,marker:4,spinner:11,header:-1"
+
+
+### Editors ###
+
+if ! command -v nvim >&/dev/null; then
+  VISUAL="vim"
+else
+  if [[ -z "${NVIM_LISTEN_ADDRESS}" ]]; then
+    VISUAL="nvim"
+  else
+    if command -v nvr >&/dev/null; then
+      VISUAL="nvr -cc '1windo e'"
+      GIT_EDITOR="nvr -cc 'top sp' --remote-wait"
+    fi
+  fi
+fi
+
+if [[ "$TERM_PROGRAM" = "vscode" ]]; then
+  export VISUAL="code -w"
+  export GIT_EDITOR="$VISUAL"
+fi
+
+export EDITOR="$VISUAL"
+export GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
+
+# Shell Aliases: ~/.{bash,zsh}_aliases
+SHELL_ALIASES="~/.${CURRENT_SHELL}_aliases"
+[ -f $SHELL_ALIASES ] &&
+  source $SHELL_ALIASES
+unset SHELL_ALIASES
+
+# Common shell sources
+[ -f ~/.aliases ] && source ~/.aliases
+[ -f ~/.functions ] && source ~/.functions
+[ -f ~/.prompt ] && source ~/.prompt

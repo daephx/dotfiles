@@ -1,0 +1,16 @@
+# ~/.local: Setup environment
+- create: ~/.local
+- link:
+    ~/.local/bin:
+      glob: true
+      force: true
+      path: local/bin/*
+
+- link:
+    ~/.local/lib:
+      glob: true
+      force: true
+      path: local/lib/*
+
+- shell:
+    - [sudo chmod 755 local/bin/*, Give bin/ script executable privileges]
