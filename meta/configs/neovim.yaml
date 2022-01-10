@@ -8,13 +8,13 @@
 
 - shell:
     - [
-        git submodule sync -- dotfiles/nvim && git submodule update -- dotfiles/nvim,
+        git submodule sync -- config/nvim && git submodule update -- config/nvim,
         Downloading submodule; daephx/nvim
       ]
 
 - link:
     ~/.config/nvim:
-      path: dotfiles/nvim
+      path: config/nvim
 
 
 

@@ -17,4 +17,4 @@
 - link:
     ~/.config/poshthemes/:
       glob: true
-      path: dotfiles/poshthemes/*
+      path: config/poshthemes/*

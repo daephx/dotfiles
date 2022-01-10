@@ -13,7 +13,7 @@
 [submodule "ansible"]
   path = ansible
   url = https://github.com/daephx/ansible.git
-[submodule "dotfiles/nvim"]
-  path = dotfiles/nvim
+[submodule "config/nvim"]
+	path = config/nvim
   url = https://github.com/daephx/nvim.git
   branch = develop

@@ -3,7 +3,7 @@
     - ~/.config/bash/bashrc.d
 
 - link:
-    ~/.bashrc: dotfiles/bash/bashrc
-    ~/.bash_logout: dotfiles/bash/bash_logout
+    ~/.bashrc: config/bash/bashrc
+    ~/.bash_logout: config/bash/bash_logout
     ~/.config/bash/bashrc.d:
-      path: dotfiles/bash/bashrc.d/
+      path: config/bash/bashrc.d/

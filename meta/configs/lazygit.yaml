@@ -6,7 +6,7 @@
 
 - link:
     ~/.config/lazygit/config.yml:
-      path: dotfiles/lazygit/config.yml
+      path: config/lazygit/config.yml
 
 - shell:
     - [sh -c "sudo add-apt-repository ppa:lazygit-team/release", Add Package repository; lazygit-team]
