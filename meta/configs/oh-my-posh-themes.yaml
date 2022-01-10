@@ -1,5 +1,10 @@
-- create:
-    - ~/.config/poshthemes
+# Install local themes
+
+- link:
+    ~/.config/poshthemes:
+      path: config/poshthemes/
+
+# Install oh-my-posh themes
 
 # - shell:
 #     - [
@@ -13,8 +18,3 @@
 #         ;fi"',
 #         Downloading posh themes,
 #       ]
-
-- link:
-    ~/.config/poshthemes/:
-      glob: true
-      path: config/poshthemes/*
