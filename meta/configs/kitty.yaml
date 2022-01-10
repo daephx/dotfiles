@@ -6,7 +6,7 @@
 - link:
     ~/.config/kitty:
       glob: true
-      path: dotfiles/kitty/*
+      path: config/kitty/*
 
 - sudo:
   - shell:

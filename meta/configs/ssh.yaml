@@ -1,4 +1,4 @@
 - link:
     # SSH
     ~/.ssh/config:
-      path: dotfiles/ssh/config
+      path: config/ssh/config

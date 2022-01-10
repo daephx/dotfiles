@@ -1,7 +1,7 @@
 # Git: Version Control
 
 - link:
-    ~/.config/git: dotfiles/git/
+    ~/.config/git: config/git/
 
   - shell:
       - [sudo sh -c "apt update && apt install -y git git-fls", Install Git.]

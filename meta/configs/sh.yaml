@@ -6,10 +6,10 @@
       relink: true
 
 - link:
-    ~/.aliases: dotfiles/sh/aliases
-    ~/.commonrc: dotfiles/sh/commonrc
-    ~/.functions: dotfiles/sh/functions
-    ~/.inputrc: dotfiles/sh/inputrc
-    ~/.ls_colors: dotfiles/sh/ls_colors
-    ~/.profile: dotfiles/sh/profile
-    ~/.prompt: dotfiles/sh/prompt
+    ~/.aliases: config/sh/aliases
+    ~/.commonrc: config/sh/commonrc
+    ~/.functions: config/sh/functions
+    ~/.inputrc: config/sh/inputrc
+    ~/.ls_colors: config/sh/ls_colors
+    ~/.profile: config/sh/profile
+    ~/.prompt: config/sh/prompt

@@ -3,11 +3,11 @@
     - ~/.config/zsh
 
 - link:
-    ~/.zshenv: dotfiles/zsh/zshenv
-    ~/.config/zsh/.zshrc: dotfiles/zsh/zshrc
+    ~/.zshenv: config/zsh/zshenv
+    ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh:
       glob: true
-      path: dotfiles/zsh/*
+      path: config/zsh/*
 
 - shell:
     - [
