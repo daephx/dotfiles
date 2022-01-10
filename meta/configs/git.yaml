@@ -3,5 +3,8 @@
 - link:
     ~/.config/git: config/git/
 
-  - shell:
-      - [sudo sh -c "apt update && apt install -y git git-fls", Install Git.]
+- shell:
+    - [
+        sudo sh -c "apt update && apt install -y git git-fls",
+        Installing package; Git
+      ]
