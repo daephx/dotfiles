@@ -5,6 +5,6 @@
 
 - shell:
     - [
-        sudo sh -c "apt update && apt install -y git git-fls",
+        sudo sh -c "apt update && apt install -y git git-lfs",
         Installing package; Git
       ]
