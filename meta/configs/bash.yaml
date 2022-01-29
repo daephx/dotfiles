@@ -1,6 +1,5 @@
 - create:
     - ~/.config/bash
-    - ~/.config/bash/bashrc.d
 
 - link:
     ~/.bashrc: config/bash/bashrc
