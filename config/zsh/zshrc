@@ -38,6 +38,8 @@ export HISTFILE=${HISTFILE:-$XDG_STATE_HOME/zsh_history}
 
 stty stop undef # Disable Ctrl-s to freeze terminal.
 
+# Set terminal 256 color in tmux
+if [ ! "$TMUX" = "" ]; then export TERM=xterm-256color; fi
 
 ### Completions ###
 

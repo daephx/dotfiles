@@ -1,0 +1,4 @@
+- link:
+    ~/.config/tmux: config/tmux/
+- shell:
+    - [sudo sh -c "apt install -y tmux", Installing package; tmux]
