@@ -324,7 +324,7 @@
                         "always_enabled": true,
                         "error_color": "#E84855",
                         "color_background": false,
-                        "prefix": " \u276F"
+                        "prefix": "\u276F"
                     }
                 }
             ]
