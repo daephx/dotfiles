@@ -161,6 +161,11 @@ if command -v git >/dev/null; then
   alias gs="git show"
 fi
 
+# Bat | Cat w/ wings
+if command -v batcat >/dev/null; then
+  alias bat="batcat"
+fi
+
 # If fd-find is installed
 if command -v fdfind >/dev/null; then
   alias fd="fdfind"
