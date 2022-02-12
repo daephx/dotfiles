@@ -46,9 +46,10 @@ function main() {
 
   dotbot="${meta_dir}/dotbot/bin/dotbot"
 
+  git submodule update --init --recursive -- meta/dotbot
+
   base_config_path="${meta_dir}/${BASE_CONFIG}${CONFIG_SUFFIX}"
 
-  git submodule update --init --recursive
   parse_opts $@
 
   # Execute the returned stratagy
