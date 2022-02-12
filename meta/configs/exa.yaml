@@ -1,0 +1,6 @@
+# exa | A modern replacement for ‘ls’.
+# https://github.com/ogham/exa
+
+- shell:
+  # - [pkg install exa, Install via termux pkg]
+    - [sudo sh -c "apt install -y exa", Installing package; exa]

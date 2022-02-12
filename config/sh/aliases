@@ -38,30 +38,53 @@ alias e="emacs"
 alias v="$VISUAL"
 alias vi="$VISUAL"
 
+# List Directories
+
 # Detect which `ls` flavor is in use
 if ls --color >/dev/null 2>&1; then # GNU `ls`
-  colorflag="--color"
+  colorflag="--color=always"
   eval 'dircolors $HOME/.ls_colors' >/dev/null
 else # MacOS `ls`
   colorflag="-G"
   export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
 
-# Always use color output for `ls`
-alias ls="command ls -lv --g ${colorflag}"
-alias l="ls -CF"
-alias la="ls -A"
-alias ll="ls -alF"
+# Determinal ls utility
+# Break loop on first found
+# Priority determined left-right
+deps=(exa lsd ls)
+for ls in ${deps[@]}; do
+  if command -v "$ls" &>/dev/null; then
+    break
+  fi
+done
 
-# Use LSD as default || standard LS
-if command -v lsd &>/dev/null; then
-  alias ls="command lsd -l ${colorflag} "
-  alias l="ls -l"
-  alias la="ls -a"
-  alias lla="ls -la"
-  alias lt="ls --tree"
-  alias tree="ls --tree"
-fi
+# Apply utility specific overrides
+case "${ls}" in
+  exa)
+    default_args="$colorflag -l --group-directories-first --icons"
+    alias ls="command exa $default_args"
+    alias ll="ls -alF"
+    alias la="ls -a"
+    alias lt="ls --tree"
+    alias tree="ls --tree"
+    ;;
+  lsd)
+    default_args="$colorflag -l --group-directories-first"
+    alias ls="command lsd $default_args"
+    alias ll="ls -l"
+    alias la="ls -a"
+    alias lt="ls --tree"
+    alias tree="ls --tree"
+    ;;
+  ls)
+    default_args="$colorflag -lv --g"
+    alias ls="command ls $default_args"
+    alias l="ls -CF"
+    alias la="ls -A"
+    alias ll="ls -alF"
+    ;;
+esac
 
 # Default to raw-control-characters
 alias less="less -R"
