@@ -110,11 +110,13 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 
 # FZF Command line fuzzy finder
 # export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-# " --color=dark"\
-# " --margin=1,1"\
-# " --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1"\
-# " --color=info:0,pointer:12,marker:4,spinner:11,header:-1"
 
+### Terminal ###
+
+if [ -z "$TMUX" ] && command -v tmux >&/dev/null; then
+  tmux attach -t default || tmux new -s default
+  exit 0
+fi
 
 ### Editors ###
 
