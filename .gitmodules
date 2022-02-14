@@ -11,7 +11,7 @@
 
 # Packages
 [submodule "ansible"]
-  path = ansible
+	path = config/ansible
   url = https://github.com/daephx/ansible.git
 [submodule "config/nvim"]
 	path = config/nvim
