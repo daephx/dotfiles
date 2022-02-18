@@ -145,6 +145,9 @@ SHELL_ALIASES="~/.${CURRENT_SHELL}_aliases"
   source $SHELL_ALIASES
 unset SHELL_ALIASES
 
+# disable stty start
+stty start undef
+
 # Common shell sources
 [ -f ~/.aliases ] && source ~/.aliases
 [ -f ~/.functions ] && source ~/.functions
