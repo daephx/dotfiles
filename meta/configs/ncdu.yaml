@@ -1,0 +1,2 @@
+- shell:
+    - [sudo sh -c 'apt install ncdu', Installing package; ncdu]
