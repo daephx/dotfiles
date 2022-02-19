@@ -165,12 +165,6 @@ if command -v fdfind &>/dev/null; then
   alias fd="fdfind"
 fi
 
-# if command -v bat &>/dev/null; then
-#   alias cat="bat"
-# else
-#   alias cat="cat $@ | less -F"
-# fi
-
 # Shorthand for python
 alias py="/usr/bin/env python"
 if command -v ipython &>/dev/null; then
