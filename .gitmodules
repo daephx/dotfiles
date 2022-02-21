@@ -13,6 +13,7 @@
 [submodule "ansible"]
 	path = config/ansible
   url = https://github.com/daephx/ansible.git
+  branch = main
 [submodule "config/nvim"]
 	path = config/nvim
   url = https://github.com/daephx/nvim.git
