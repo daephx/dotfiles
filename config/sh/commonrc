@@ -108,13 +108,6 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 # Ripgrep Configuration
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 
-# FZF Command line fuzzy finder
-# export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-# " --color=dark"\
-# " --margin=1,1"\
-# " --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1"\
-# " --color=info:0,pointer:12,marker:4,spinner:11,header:-1"
-
 ## Default commands
 export FZF_DEFAULT_COMMAND="rg -uu --files -H"
 export FZF_ALT_COMMAND="fd -uu -t f"
