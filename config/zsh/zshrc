@@ -36,6 +36,7 @@ unsetopt EXTENDED_HISTORY
 # Set history file if not exists
 export HISTFILE=${HISTFILE:-$XDG_STATE_HOME/zsh_history}
 
+stty start undef # Disable Ctrl-q closing terminal
 stty stop undef # Disable Ctrl-s to freeze terminal.
 
 # Set terminal 256 color in tmux
