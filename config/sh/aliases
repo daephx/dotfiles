@@ -1,4 +1,5 @@
 #!/bin/env sh
+# shellcheck disable=1001
 #
 #     █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗
 #    ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝
@@ -31,12 +32,13 @@ alias eit="exit"
 alias exot="exit"
 alias q='exit'
 alias Q='exit'
+# shellcheck disable=1001
 alias \:q='exit'
 
 # Editors
 alias e="emacs"
-alias v="$VISUAL"
-alias vi="$VISUAL"
+alias v="\$VISUAL"
+alias vi="\$VISUAL"
 
 # List Directories
 
@@ -49,37 +51,33 @@ else # MacOS `ls`
   export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
 
-# Determinal ls utility
-# Break loop on first found
+# Determinal ls utility, Break loop on first found
 # Priority determined left-right
-deps=(exa lsd ls)
-for ls in ${deps[@]}; do
-  if command -v "$ls" &>/dev/null; then
+set -- exa lsd ls
+for ls in "$@"; do
+  if command -v "$ls" >/dev/null; then
     break
   fi
 done
 
 # Apply utility specific overrides
-case "${ls}" in
+case "$ls" in
   exa)
-    default_args="$colorflag -l --group-directories-first --icons"
-    alias ls="command exa $default_args"
+    alias ls="command exa \$colorflag -l --group-directories-first --icons"
     alias ll="ls -alF"
     alias la="ls -a"
     alias lt="ls --tree"
     alias tree="ls --tree"
     ;;
   lsd)
-    default_args="$colorflag -l --group-directories-first"
-    alias ls="command lsd $default_args"
+    alias ls="command lsd \$colorflag -l --group-directories-first"
     alias ll="ls -l"
     alias la="ls -a"
     alias lt="ls --tree"
     alias tree="ls --tree"
     ;;
   ls)
-    default_args="$colorflag -lv --g"
-    alias ls="command ls $default_args"
+    alias ls="command ls \$colorflag -lv --g"
     alias l="ls -CF"
     alias la="ls -A"
     alias ll="ls -alF"
@@ -98,10 +96,10 @@ alias fgrep="fgrep --color=auto"
 
 # Clear terminal output
 alias cls="clear"
-alias shell="ps -p $$"
+alias shell="ps -p \$$"
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="clear && exec $(sh -c 'ps -p $$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe') -l"
+alias reload="clear && exec \$(sh -c 'ps -p \$$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe') -l"
 
 # Clear Screen
 alias cls="clear"
@@ -114,9 +112,13 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 
-alias shell="ps -p $$"
+alias shell="ps -p \$$"
 alias mnt="mount | grep -E ^/dev | column -t" # list mounted drives
-alias syn="pygmentize -l $1 $2 | less -R"     # Syntax highlight like cat
+
+# Syntax highlight like cat
+pygsyn() {
+  "pygmentize -l \$1 \$2 | less -R"
+}; alias syn="pygsyn"
 
 # human-readable sizes
 alias df="df -h"
@@ -149,10 +151,12 @@ alias dps="docker ps | less -S"
 alias hist="history"
 
 # Create gitignore file from online template
-alias gitignore="f() { curl -sL https://www.toptal.com/developers/gitignore/api/\$@ }; f >> .gitignore"
+create_gitignore() {
+  curl -sL "https://www.toptal.com/developers/gitignore/api/$*" >> .gitignore
+}; alias ignore="create_gitignore"
 
 # Git version control
-if command -v git &>/dev/null; then
+if command -v git >/dev/null; then
   alias g="git"
   alias gc="git commit"
   alias gs="git status"
@@ -161,18 +165,18 @@ if command -v git &>/dev/null; then
 fi
 
 # If fd-find is installed
-if command -v fdfind &>/dev/null; then
+if command -v fdfind >/dev/null; then
   alias fd="fdfind"
 fi
 
 # Shorthand for python
 alias py="/usr/bin/env python"
-if command -v ipython &>/dev/null; then
+if command -v ipython >/dev/null; then
   alias ipy="ipython"
 fi
 
 # Xclip commands
-if command -v xclip >&/dev/null; then
+if command -v xclip >/dev/null; then
 
   # copy working directory | Requires xclip
   alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard && echo "=> Working Directory copied to pasteboard."'
@@ -200,6 +204,6 @@ if grep -q '[Mm]icrosoft' /proc/version; then
 fi
 
 # forgetful ifconfig
-if !command -v ifconfig >&/dev/null; then
+if ! command -v ifconfig >/dev/null; then
   alias ifconfig='ip -c a'
 fi
