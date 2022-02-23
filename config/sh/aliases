@@ -198,3 +198,8 @@ if grep -q '[Mm]icrosoft' /proc/version; then
   && printf '\n%s\n' 'Ram-cache and Swap Cleared'\" \
   "
 fi
+
+# forgetful ifconfig
+if !command -v ifconfig >&/dev/null; then
+  alias ifconfig='ip -c a'
+fi
