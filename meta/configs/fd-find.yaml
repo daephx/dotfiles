@@ -1,0 +1,5 @@
+# fd-find | A simple, fast and user-friendly alternative to 'find'
+# https://github.com/sharkdp/fd
+
+- shell:
+    - [sudo sh -c "apt install -y fd-find", Installing package; fd-find]
