@@ -11,8 +11,19 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# XDG base directory specifications
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_LOCAL_HOME="$HOME/.local"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
 # Set history file if not exists
-export HISTFILE=${HISTFILE:-$XDG_STATE_HOME/bash_history}
+export HISTFILE="$XDG_STATE_HOME/bash_history"
+
+# Source common shell configurations
+[ -f "$HOME/.environment" ] && source "$HOME/.environment"
+[ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -22,13 +33,6 @@ shopt -u lithist
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-
-# Source common shell configurations
-[ -f ~/.commonrc ] && source ~/.commonrc
-
-# Bash common sources
-[ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # bash config dir containing additional configs to be sourced
 source_files "$XDG_CONFIG_HOME/bash/bashrc.d" "bash"

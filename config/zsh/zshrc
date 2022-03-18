@@ -14,6 +14,12 @@
 # profile loading timer init
 integer t0=$(($(date +%s%N)/1000000))
 
+# Source shell configurations
+[ -f ~/.environment ] && source ~/.environment
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+
+# Set history file if not exists
+export HISTFILE="$XDG_STATE_HOME/zsh_history"
 
 ### Options ###
 
@@ -32,9 +38,6 @@ setopt noautoremoveslash
 setopt share_history
 unsetopt BEEP
 unsetopt EXTENDED_HISTORY
-
-# Set history file if not exists
-export HISTFILE=${HISTFILE:-$XDG_STATE_HOME/zsh_history}
 
 stty start undef # Disable Ctrl-q closing terminal
 stty stop undef # Disable Ctrl-s to freeze terminal.
@@ -73,9 +76,6 @@ initialize_completions
 initialize_plugins
 
 
-### User Configs ###
-
-
 ### Styles ###
 
 zle_highlight=('paste:none')
@@ -95,18 +95,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:options' list-colors '=^(-- *)=34'
 
 autoload -Uz colors && colors
-
-
-### Sources ###
-
-# Source common shell configurations
-[ -f ~/.commonrc ] && source ~/.commonrc
-
-# Zsh common source
-[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
-
-# ZSH config folder containing additional files to be sourced
-source_files "$ZDOTDIR/zshrc.d" "zsh"
 
 
 ### Bindings ###
@@ -131,6 +119,9 @@ bindkey "$key[Down]" down-line-or-beginning-search
 
 
 ### Complete ###
+
+# ZSH config folder containing additional files to be sourced
+source_files "$ZDOTDIR/zshrc.d" "zsh"
 
 # Output startup time
 function {
