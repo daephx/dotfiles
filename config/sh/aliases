@@ -101,9 +101,6 @@ alias shell="ps -p \$$"
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="clear && exec \$(sh -c 'ps -p \$$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe') -l"
 
-# Clear Screen
-alias cls="clear"
-
 # Enable sudo to expand aliases
 alias sudo="sudo"
 
