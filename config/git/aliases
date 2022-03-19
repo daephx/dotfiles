@@ -6,7 +6,7 @@
   co = checkout
   del = branch -D
   s = status
-  st = status -uno
+  st = status
   up = fetch --all
   wt = worktree
 

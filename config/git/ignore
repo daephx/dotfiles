@@ -1,4 +1,40 @@
 # vim: set ft=ignore
+
+# Global gitignore
+.php_cs.cache
+.ignore
+dumps/
+xdebug*
+
+# System
 .DS_Store
 *.swp
 *~
+
+# Docker
+docker-compose.override.yml
+
+# Automatic testing
+.testomatic*
+autotest.rb
+
+# phpactor
+.phpactor.yml
+
+# Golang static analysis
+report-golang-analysis/
+
+# Devdash config for each projects
+.devdash
+
+# lsp files
+.lsp
+
+# Clojure
+.clj-kondo
+
+# PHP
+phpunit.xml.dist
+
+# Vim
+.vimspector.json

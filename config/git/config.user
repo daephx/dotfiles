@@ -1,0 +1,8 @@
+# vim: set ft=gitconfig
+
+[user]
+  name = daephx
+  email = daephxdev@gmail.com
+
+[credential]
+  helper = store

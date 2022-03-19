@@ -1,7 +1,6 @@
 # vim: set ft=gitconfig
-[user]
-  email = daephxdev@gmail.com
-  name = daephx
+
+### Core ###
 
 [init]
   defaultBranch = main
@@ -12,9 +11,6 @@
   attributesfile = ~/.config/git/attributes
   pager = less -S
 
-[include]
-  path = ~/.config/git/aliases
-
 [commit]
   template = ~/.config/git/message
 
@@ -22,17 +18,38 @@
   helper = cache --timeout=600
 
 [pager]
-  branch = false
+  branch = true
   status = true
 
-[pull]
-  rebase = true
+[status]
+  showUntrackedFiles = all
+
+[push]
+  default = matching
 
 [rebase]
   autoStash = true
 
+### Colors ###
+
 [color]
-  ui = auto
+  ui = true
+
+[color "diff"]
+  meta = 11
+  frag = magenta bold
+  commit = cyan bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = yellow bold 52
+  newNormal = green bold
+  newHighlight = cyan bold 22
+
+### LFS ###
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -40,12 +57,17 @@
   process = git-lfs filter-process
   required = true
 
-
 ### Difftools ###
 
 [difftool]
-    prompt = true
+  prompt = true
 [diff]
-    tool = nvimdiff
+  tool = nvimdiff
 [difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+### Includes ###
+
+[include]
+  path = ~/.config/git/aliases
+  path = ~/.config/git/config.user
