@@ -1,0 +1,9 @@
+# ripgrep is an improved grep search tool
+- create:
+    - ~/.config/ripgrep
+
+- link:
+    ~/.config/ripgrep/ripgreprc: config/ripgrep/ripgreprc
+
+- shell:
+    - [sudo sh -c "apt install -y ripgrep", Installing packge; ripgrep]
