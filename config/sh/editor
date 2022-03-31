@@ -1,0 +1,68 @@
+#!/usr/bin/env sh
+
+# Default Editor:
+# Conditionally set the default visual editor
+# Provide a list of editor programs in order of priority first
+# Define conditions where by that editor should be selected
+#
+# Such as, making neovim-remote the default visual editor
+# when shell is instantiated from inside a neovim terminal buffer.
+
+# Define list of editor programs
+set -- nvim emacs micro vim nano
+
+_editor() {
+  while [ "$#" -gt 0 ]; do
+    cmd="$1" # Set value to temp variable
+    shift 1  # Shift to next variable in array
+    # Skip apps that are not in PATH
+    command -v "$cmd" >/dev/null || continue
+    case "$cmd" in
+      nano) VISUAL="nano" ;;
+      vim) VISUAL="vim" ;;
+      emacs) VISUAL="emacs" ;;
+      nvim) # Check for neovim variable
+        VISUAL="nvim" # Set nvim default
+        [ -n "$NVIM_LISTEN_ADDRESS" ] && {
+          # Else use neovim-remote if available
+          if command -v nvr >/dev/null; then
+            VISUAL="nvr -cc '1windo e'"
+            GIT_EDITOR="nvr -cc 'top sp' --remote-wait"
+          else
+            printf "For better nvim terminal compatability, "
+            printf "consider installing neovim-remote 'nvr'\n\n"
+            printf "  \$ pip3 install neovim-remote\n\n"
+          fi
+        }
+        ;;
+    esac
+    # Break if visual is set
+    [ -n "$VISUAL" ] && break
+  done
+}
+
+# Unset variables
+# Ensure a clean state for all applicable environment variables
+unset EDITOR
+unset GIT_EDITOR
+unset VISUAL
+
+# Overrides for specific terminal programs
+# Example: prefer to work within vscode from the integrated terminal
+case "$TERM_PROGRAM" in
+  vscode) VISUAL="code -w" ;;
+  *) _editor "$@" ;;
+esac
+
+# Overrides for SSH
+# Preferred editor for remote sessions
+[ -n "$SSH_CONNECTION" ] && VISUAL='vim'
+
+# Assign variables to themselves or visual
+EDITOR="${EDITOR:-$VISUAL}"
+GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
+
+# Export variables
+export EDITOR
+export GIT_EDITOR
+export VISUAL

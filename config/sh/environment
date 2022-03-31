@@ -158,31 +158,9 @@ if [[ -z "$DISPLAY" ]]; then
     --color=fg+:15"
 fi
 
-### Editors ###
-
-if ! command -v nvim >&/dev/null; then
-  VISUAL="vim"
-else
-  if [[ -z "${NVIM_LISTEN_ADDRESS}" ]]; then
-    VISUAL="nvim"
-  else
-    if command -v nvr >&/dev/null; then
-      VISUAL="nvr -cc '1windo e'"
-      GIT_EDITOR="nvr -cc 'top sp' --remote-wait"
-    fi
-  fi
-fi
-
-if [[ "$TERM_PROGRAM" = "vscode" ]]; then
-  export VISUAL="code -w"
-  export GIT_EDITOR="$VISUAL"
-fi
-
-export EDITOR="$VISUAL"
-export GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
-
 # Common shell sources
 [ -f ~/.aliases ] && . "$HOME/.aliases"
+[ -f ~/.editor ] && . "$HOME/.editor"
 [ -f ~/.functions ] && . "$HOME/.functions"
 [ -f ~/.prompt ] && . "$HOME/.prompt"
 
