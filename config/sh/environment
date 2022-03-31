@@ -8,6 +8,8 @@
 # ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝
 # ~/.environment: initialize common user environment variables
 
+# shellcheck disable=SC1091
+
 # XDG base directory specifications
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -187,6 +189,6 @@ export EDITOR="$VISUAL"
 export GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
 
 # Common shell sources
-[ -f ~/.aliases ] && source ~/.aliases
-[ -f ~/.functions ] && source ~/.functions
-[ -f ~/.prompt ] && source ~/.prompt
+[ -f ~/.aliases ] && . "$HOME/.aliases"
+[ -f ~/.functions ] && . "$HOME/.functions"
+[ -f ~/.prompt ] && . "$HOME/.prompt"
