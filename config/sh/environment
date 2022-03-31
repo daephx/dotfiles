@@ -158,13 +158,6 @@ if [[ -z "$DISPLAY" ]]; then
     --color=fg+:15"
 fi
 
-### Terminal ###
-
-if [ -z "$TMUX" ] && command -v tmux >&/dev/null; then
-  tmux attach -t default || tmux new -s default
-  exit 0
-fi
-
 ### Editors ###
 
 if ! command -v nvim >&/dev/null; then
@@ -192,3 +185,8 @@ export GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
 [ -f ~/.aliases ] && . "$HOME/.aliases"
 [ -f ~/.functions ] && . "$HOME/.functions"
 [ -f ~/.prompt ] && . "$HOME/.prompt"
+
+# Initialize TMUX Session
+if [ -z "$TMUX" ] && command -v tmux >/dev/null; then
+  (tmux attach -t default || tmux new -s default) && return || exit
+fi
