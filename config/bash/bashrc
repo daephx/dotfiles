@@ -8,6 +8,8 @@
 # ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+# shellcheck disable=SC1091
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -34,5 +36,7 @@ shopt -u lithist
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# bash config dir containing additional configs to be sourced
-source_files "$XDG_CONFIG_HOME/bash/bashrc.d" "bash"
+# Source dynamic config contents from ~/.zshrc.d/*.zsh
+for file in "$XDG_CONFIG_HOME/bash/bashrc.d/"*.bash; do
+  [[ -f "${file}" ]] && source "${file}"
+done

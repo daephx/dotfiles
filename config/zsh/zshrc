@@ -120,8 +120,10 @@ bindkey "$key[Down]" down-line-or-beginning-search
 
 ### Complete ###
 
-# ZSH config folder containing additional files to be sourced
-source_files "$ZDOTDIR/zshrc.d" "zsh"
+# Source dynamic config contents from ~/.zshrc.d/*.zsh
+for file in "${ZDOTDIR:-$HOME/.config/zsh}"/zshrc.d/*.zsh; do
+  [[ -f "${file}" ]] && source "${file}"
+done
 
 # Output startup time
 function {

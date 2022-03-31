@@ -41,18 +41,6 @@ function touchd() {
   mkdir -p "${1%/*}" && touch "$1"
 }
 
-# Source all files in directory
-# Usage: source_files </dir/path/> bash
-function source_files() {
-  local dir="$1"
-  local ext="$2"
-  if [[ -d "$dir" && -r "$dir" && -x "$dir" ]]; then
-    for file in "$dir"/*."$ext"; do
-      [[ -f "$file" && -r "$file" ]] && . "$file"
-    done
-  fi
-}
-
 # Create and change directory
 # Usage: mk </dir/path>
 function mk() {
