@@ -25,9 +25,6 @@ export XDG_LIB_HOME="$XDG_LOCAL_HOME/lib"
 # Dotfiles locations
 export DOTFILES="$HOME/.dotfiles"
 
-# Evaluate the currently active shell
-export CURRENT_SHELL="$(ps | grep $(echo $$) | awk '{ print $4 }')"
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -45,7 +42,6 @@ export HISTFILESIZE=100000
 export SAVEHIST=10000
 export HISTCONTROL=ignoreboth
 export HISTIGNORE='ls:ll:la:lc:lt:cd:gt:up:todo:exit:clear:cls:hist:history'
-export HISTFILE="$XDG_STATE_HOME/${CURRENT_SHELL}_history"
 
 # Manpager
 # Define how to display man pages
