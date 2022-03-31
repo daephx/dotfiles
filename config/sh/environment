@@ -186,12 +186,6 @@ fi
 export EDITOR="$VISUAL"
 export GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
 
-# Shell Aliases: ~/.{bash,zsh}_aliases
-SHELL_ALIASES="~/.${CURRENT_SHELL}_aliases"
-[ -f $SHELL_ALIASES ] &&
-  source $SHELL_ALIASES
-unset SHELL_ALIASES
-
 # Common shell sources
 [ -f ~/.aliases ] && source ~/.aliases
 [ -f ~/.functions ] && source ~/.functions
