@@ -45,5 +45,5 @@ touchd() {
 # Usage: mk </dir/path>
 mk() {
   mkdir -p -- "$1" &&
-    cd -P -- "$1"
+    cd -P -- "$1" || return
 }
