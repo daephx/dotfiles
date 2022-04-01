@@ -30,9 +30,9 @@ extract() {
 # Get absolute path
 # Usage: abspath <path/to/item>
 abspath() {
-  pushd "$(dirname "$1")" >/dev/null
+  cd "$(dirname "$1")" >/dev/null || return
   printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
-  popd >/dev/null
+  cd - || return
 }
 
 # Create path on touch
