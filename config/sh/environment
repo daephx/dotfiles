@@ -56,14 +56,23 @@ export MANPAGER="less -s -M +Gg"
 export LESS="$LESS -FIJMQRSWX -x4 -z4"
 export LESSHISTFILE=-
 
-# Set $less variables for coloring less output
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
+# Set variables for coloring LESS output
+LESS_TERMCAP_mb="$(printf '\e[01;31m')" # enter blinking mode - red
+LESS_TERMCAP_md="$(printf '\e[01;34m')" # enter double-bright mode - bold, blue
+LESS_TERMCAP_me="$(printf '\e[0m')" # turn off all appearance modes (mb, md, so, us)
+LESS_TERMCAP_se="$(printf '\e[0m')" # leave standout mode
+LESS_TERMCAP_so="$(printf '\e[01;33m')" # enter standout mode - yellow
+LESS_TERMCAP_ue="$(printf '\e[0m')" # leave underline mode
+LESS_TERMCAP_us="$(printf '\e[04;36m')" # enter underline mode - cyan
+
+# Export LESS variables
+export LESS_TERMCAP_mb
+export LESS_TERMCAP_md
+export LESS_TERMCAP_me
+export LESS_TERMCAP_se
+export LESS_TERMCAP_so
+export LESS_TERMCAP_ue
+export LESS_TERMCAP_us
 
 # Doom emacs direct
 export EMACSDIR="$XDG_CONFIG_HOME/emacs"
