@@ -119,22 +119,22 @@ export FZF_ALT_COMMAND="fd -uu -t f"
 
 ## Default Movement
 export FZF_MOVEMENT="\
-  --bind='ctrl-s:preview-page-down' \
-  --bind='alt-p:toggle-preview' \
-  --bind='ctrl-a:preview-page-up' \
-  --bind='ctrl-u:half-page-up+refresh-preview' \
-  --bind='alt-u:page-up+refresh-preview' \
-  --bind='ctrl-d:half-page-down+refresh-preview' \
-  --bind='alt-d:page-down+refresh-preview' \
-  --bind='alt-y:yank' \
-  --bind='ctrl-y:kill-line' \
-  --bind='alt-g:ignore' \
-  --bind='ctrl-g:top' \
   --bind='alt-a:toggle-all' \
-  --bind='alt-s:toggle-sort' \
+  --bind='alt-d:page-down+refresh-preview' \
+  --bind='alt-g:ignore' \
   --bind='alt-h:backward-char+refresh-preview' \
   --bind='alt-l:forward-char+refresh-preview' \
+  --bind='alt-p:toggle-preview' \
+  --bind='alt-s:toggle-sort' \
+  --bind='alt-u:page-up+refresh-preview' \
+  --bind='alt-y:yank' \
+  --bind='ctrl-a:preview-page-up' \
+  --bind='ctrl-d:half-page-down+refresh-preview' \
+  --bind='ctrl-g:top' \
   --bind='ctrl-l:clear-screen'
+  --bind='ctrl-s:preview-page-down' \
+  --bind='ctrl-u:half-page-up+refresh-preview' \
+  --bind='ctrl-y:kill-line' \
   --bind='esc:unix-line-discard'"
 
 ## Default options
