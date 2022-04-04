@@ -139,12 +139,23 @@ export FZF_MOVEMENT="\
 
 ## Default options
 export FZF_DEFAULT_OPTS="$FZF_MOVEMENT \
-  --layout=reverse --margin=0 \
-  --prompt='❯ ' --pointer='❯' \
-  --color=dark --color=fg:#808080,bg:-1,hl:3 \
-  --color=fg+:15,bg+:0,hl+:3 \
-  --color=info:#D68EB2,prompt:3,pointer:1 \
-  --color=marker:4,spinner:11,header:#EEFA00"
+  --layout=reverse \
+  --margin=0 \
+  --pointer='❯' \
+  --prompt='❯ ' \
+  --color=dark \
+  --color=bg+:0 \
+  --color=bg:-0 \
+  --color=fg+:15 \
+  --color=fg:#808080 \
+  --color=header:#EEFA00 \
+  --color=hl+:3 \
+  --color=hl:3 \
+  --color=info:#D68EB2 \
+  --color=marker:4 \
+  --color=pointer:1 \
+  --color=prompt:4 \
+  --color=spinner:11"
 
 ## fzf - Use basic colors if display not set
 if [[ -z "$DISPLAY" ]]; then
