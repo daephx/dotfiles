@@ -8,6 +8,7 @@
 # ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝
 # ~/.environment: initialize common user environment variables
 
+# shellcheck disable=SC1090
 # shellcheck disable=SC1091
 
 # XDG base directory specifications
