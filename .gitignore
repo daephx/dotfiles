@@ -12,3 +12,6 @@ zsh/custom/
 # Local files.
 # might contain sensitive information
 *.local.*
+
+# Local dotfile notes
+[Nn]ote[s]/*
