@@ -1,0 +1,5 @@
+- link:
+    ~/.termux/font.ttf: 'config/fonts/CaskaydiaCove NF.ttf'
+
+- shell:
+    - [ termux-reload-settings, Reloading termux configuration ]
