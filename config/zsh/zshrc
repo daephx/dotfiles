@@ -52,32 +52,20 @@ zmodload zsh/complist
 compinit -d "$XDG_CACHE_HOME/zsh/zccompdump"
 _comp_options+=(globdots) # Include hidden files.
 
-
 ### Plugins ###
 
-# Useful Functions
 source "$ZDOTDIR/lib/plugins.zsh"
 
-_completions=(
-  "agkozak/zsh-z"
-)
-
-_plugins=(
-  "zshzoo/xdg-basedirs"
-  "hlissner/zsh-autopair"
-  "zsh-users/zsh-autosuggestions"
-  # "zsh-users/zsh-syntax-highlighting"
-  "Aloxaf/fzf-tab"
-  # "redxtech/zsh-kitty"
-  "MenkeTechnologies/zsh-dotnet-completion"
-  "MichaelAquilina/zsh-autoswitch-virtualenv"
-  "chitoku-k/fzf-zsh-completions"
-)
-
-# Execute lists
-initialize_completions
-initialize_plugins
-
+declare -a plugins=(
+  Aloxaf/fzf-tab
+  MenkeTechnologies/zsh-dotnet-completion
+  MichaelAquilina/zsh-autoswitch-virtualenv
+  agkozak/zsh-z
+  chitoku-k/fzf-zsh-completions
+  hlissner/zsh-autopair
+  zsh-users/zsh-autosuggestions
+  zshzoo/xdg-basedirs
+) && plugin::initialize "${plugins[@]}"
 
 ### Styles ###
 
