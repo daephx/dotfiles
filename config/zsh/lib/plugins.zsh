@@ -1,23 +1,23 @@
 #!/usr/bin/env zsh
 
 # Function to source files if they exist
-function zsh_add_file() {
+zsh_add_file() {
   [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
 }
 
-function initialize_plugins() {
+initialize_plugins() {
   for plugin in "$_plugins[@]"; do
     zsh_add_plugin $plugin
   done
 }
 
-function initialize_completions() {
+initialize_completions() {
   for completion in "$_completions[@]"; do
     zsh_add_completion $completion
   done
 }
 
-function zsh_add_plugin() {
+zsh_add_plugin() {
   PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
   if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then
     # For plugins
@@ -28,7 +28,7 @@ function zsh_add_plugin() {
   fi
 }
 
-function zsh_add_completion() {
+zsh_add_completion() {
   PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
   if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then
     # For completions
@@ -44,7 +44,7 @@ function zsh_add_completion() {
   if [ "$2" = true ] && compinit "${completion_file:1}"
 }
 
-function zsh_clean_plugins() {
+zsh_clean_plugins() {
   installed_plugins="$(find . -maxdepth 1 -type d)"
   for plugin in "$installed_plugins[@]"; do
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
@@ -55,7 +55,7 @@ function zsh_clean_plugins() {
   done
 }
 
-function zsh_remove_plugin() {
+zsh_remove_plugin() {
   PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
   if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then
     rm -rf "$ZDOTDIR/plugins/$PLUGIN_NAME"
