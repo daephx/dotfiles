@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+ZSH_PLUGIN_LIST=() # Active plugin array
+ZSH_PLUGIN_DIR="$ZDOTDIR/plugins" # Path to install plugins
+
 # User confirmation
 # ARGUMENTS:
 #   message string
