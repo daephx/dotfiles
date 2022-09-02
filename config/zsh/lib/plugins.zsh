@@ -1,5 +1,20 @@
 #!/usr/bin/env zsh
 
+# User confirmation
+# ARGUMENTS:
+#   message string
+function zsh_plugin_choice() {
+  while true; do
+    vared -cp "$1 " ans
+    case $ans in
+      [Yy]*) break;;
+      [Nn]*) return 1;;
+      *) echo "Please answer yes or no.";;
+    esac
+  done
+  return 0
+}
+
 # Function to source files if they exist
 function zsh_add_file() {
   [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
