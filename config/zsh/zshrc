@@ -61,7 +61,6 @@ plugins=(
   agkozak/zsh-z
   chitoku-k/fzf-zsh-completions
   zsh-users/zsh-autosuggestions
-  zshzoo/xdg-basedirs
 )
 
 # Source minimal plugin manager.
