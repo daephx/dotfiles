@@ -60,7 +60,6 @@ plugins=(
   MichaelAquilina/zsh-autoswitch-virtualenv
   agkozak/zsh-z
   chitoku-k/fzf-zsh-completions
-  hlissner/zsh-autopair
   zsh-users/zsh-autosuggestions
   zshzoo/xdg-basedirs
 )
