@@ -58,7 +58,6 @@ plugins=(
   Aloxaf/fzf-tab
   MenkeTechnologies/zsh-dotnet-completion
   MichaelAquilina/zsh-autoswitch-virtualenv
-  agkozak/zsh-z
   chitoku-k/fzf-zsh-completions
   zsh-users/zsh-autosuggestions
 )
