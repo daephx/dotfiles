@@ -54,9 +54,7 @@ _comp_options+=(globdots) # Include hidden files.
 
 ### Plugins ###
 
-source "$ZDOTDIR/lib/plugins.zsh"
-
-declare -a plugins=(
+plugins=(
   Aloxaf/fzf-tab
   MenkeTechnologies/zsh-dotnet-completion
   MichaelAquilina/zsh-autoswitch-virtualenv
@@ -65,7 +63,11 @@ declare -a plugins=(
   hlissner/zsh-autopair
   zsh-users/zsh-autosuggestions
   zshzoo/xdg-basedirs
-) && plugin::initialize "${plugins[@]}"
+)
+
+# Source minimal plugin manager.
+# Plugin list must be defined beforehand.
+source "$ZDOTDIR/lib/plugins.zsh"
 
 ### Styles ###
 
