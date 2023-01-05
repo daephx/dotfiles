@@ -2,7 +2,7 @@
 # Basic prompt to use if no others can be found
 
 PROMPT_ENGINE="oh-my-posh"
-PROMPT_THEME="slimy"
+PROMPT_THEME="sentiment"
 
 # Set active shell variable if not exists
 CURRENT_SHELL="$(ps | grep "$$" | awk '{ print $4 }')"
