@@ -1,35 +1,41 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "{{if .Root}}root :: {{end}}{{.Shell}} :: {{.Folder}}",
   "blocks": [
     {
       "alignment": "left",
       "segments": [
         {
           "background": "#2f2f2f",
-          "foreground": "#26C6DA",
+          "foreground": "#fafafa",
           "leading_diamond": "\ue0c7\u2593",
-          "properties": {
-            "alpine": "\uf300",
-            "arch": "\uf303",
-            "centos": "\uf304",
-            "debian": "\uf306",
-            "elementary": "\uf309",
-            "fedora": "\uf30a",
-            "gentoo": "\uf30d",
-            "linux": "\ue712",
-            "macos": "\ue711",
-            "manjaro": "\uf312",
-            "mint": "\uf30f",
-            "opensuse": "\uf314",
-            "raspbian": "\uf315",
-            "ubuntu": "\uf31c",
-            "windows": "\ue70f",
-            "wsl": "\ue712",
-            "wsl_separator": " - "
-          },
           "style": "diamond",
-          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}<#7A7A7A> \ue0b1</>",
-          "type": "os"
+          "template": "{{.Icon}} <#7A7A7A>\ue0b1</>",
+          "type": "os",
+          "properties": {
+            "alpine": "<#0f5779>\uF300</>",
+            "aosc": "<#fafafa>\uF301</>",
+            "arch": "<#1b90c8>\uF303</>",
+            "centos": "<#fafafa>\uF304</>",
+            "coreos": "<#fafafa>\uF305</>",
+            "debian": "<#d70a53>\uF306</>",
+            "devuan": "<#fafafa>\uF307</>",
+            "elementary": "<#fafafa>\uF309</>",
+            "fedora": "<#fafafa>\uF30a</>",
+            "gentoo": "<#fafafa>\uF30d</>",
+            "linux": "<#fafafa>\uF17C</>",
+            "macos": "<#fafafa>\uF179</>",
+            "mageia": "<#fafafa>\uF310</>",
+            "manjaro": "<#fafafa>\uF312</>",
+            "mint": "<#fafafa>\uF30e</>",
+            "nixos": "<#fafafa>\uF313</>",
+            "opensuse": "<#fafafa>\uF314</>",
+            "raspbian": "<#bc1a48>\uF315</>",
+            "sabayon": "<#fafafa>\uF317</>",
+            "slackware": "<#556fb3>\uF319</>",
+            "ubuntu": "<#E95420>\uF31b</>",
+            "windows": "<#26C6DA>\uE62A</>"
+          }
         },
         {
           "background": "#2f2f2f",
@@ -39,7 +45,7 @@
             "display_default": false
           },
           "style": "powerline",
-          "template": "{{ if .SSHSession }}\uf817 {{ end }}<#77f5d6>{{ .UserName }}</><#7A7A7A>\uf1fa</><#2EEFBF>{{ .HostName }}</><#7A7A7A> \ue0b1</>",
+          "template": "{{if .SSHSession}}\uf817 {{end}}<#77f5d6>{{.UserName}}</><#7A7A7A>\uf1fa</><#2EEFBF>{{.HostName}}</> <#7A7A7A>\ue0b1</>",
           "type": "session"
         },
         {
@@ -50,7 +56,7 @@
             "root_icon": "\uf0e7"
           },
           "style": "powerline",
-          "template": " \uf0e7<#7A7A7A> \ue0b1</>",
+          "template": " \uf0e7 <#7A7A7A>\ue0b1</>",
           "type": "root"
         },
         {
@@ -58,22 +64,40 @@
           "foreground": "#fafafa",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "folder_icon": "\ue5fe ",
-            "folder_separator_icon": "\ue0bf ",
-            "home_icon": "\uf015 ",
-            "style": "agnoster_short"
+            "folder_icon": "\ue5fe",
+            "folder_separator_icon": " \ue0bf ",
+            "home_icon": "\uf015",
+            "style": "agnoster_short",
+            "mapped_locations": {
+              "~/Desktop": "\uf108 Desktop",
+              "~/Documents": "\uf719 Documents",
+              "~/Downloads": "\uf019 Downloads",
+              "~/Music": "\uf001 Music",
+              "~/Pictures": "\uf03e Pictures",
+              "~/Projects": "\uf121 Projects",
+              "~/Public": "\uf0ac Public",
+              "~/Templates": "\uebbf Templates",
+              "~/Videos": "\uf03d Videos "
+            }
           },
           "style": "powerline",
-          "template": "{{ .Path }}",
+          "template": "{{.Path}} ",
+          "type": "path"
+        },
+        {
+          "background": "#2f2f2f",
+          "foreground": "red",
+          "style": "powerline",
+          "template": "{{if not .Writable}} \uf023{{end}}",
           "type": "path"
         },
         {
           "background": "#2f2f2f",
           "foreground": "#ffeb3b",
           "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#ffea00{{ end }}",
-            "{{ if gt .Ahead 0 }}#2EC4B6{{ end }}",
-            "{{ if gt .Behind 0 }}#8A4FFF{{ end }}"
+            "{{if or (.Working.Changed) (.Staging.Changed)}}#ffeb3b{{end}}",
+            "{{if gt .Ahead 0}}#8A4FFF{{end}}",
+            "{{if gt .Behind 0}}#2EC4B6{{end}}"
           ],
           "powerline_symbol": "\ue0b0",
           "properties": {
@@ -82,7 +106,7 @@
             "fetch_upstream_icon": true
           },
           "style": "powerline",
-          "template": "<#7a7a7a>\ue0b1 </>{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }}<#E84855> \uf044 {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#2FDA4E> \uf046 {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
+          "template": "<#7A7A7A>\ue0b1</> {{.UpstreamIcon}}{{.HEAD}}{{.BranchStatus}}{{if .Working.Changed}} \uf044 <#E84855>{{.Working.String}}</>{{end}}{{if and (.Staging.Changed) (.Working.Changed)}} |{{end}}{{if .Staging.Changed}} \uf046 <#2FDA4E>{{.Staging.String}}</>{{end}}{{if gt .StashCount 0}} \uf692 {{.StashCount}}{{end}}{{if gt .WorktreeCount 0}} \uf1bb {{.WorktreeCount}}{{end}} ",
           "type": "git"
         }
       ],
@@ -93,11 +117,20 @@
       "segments": [
         {
           "background": "#2f2f2f",
+          "foreground": "#576eff",
+          "invert_powerline": true,
+          "powerline_symbol": "\ue0b2",
+          "style": "powerline",
+          "template": " \ue620 {{.Full}} <#7A7A7A>\ue0b3</>",
+          "type": "lua"
+        },
+        {
+          "background": "#2f2f2f",
           "foreground": "#3069DE",
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ufd31 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}<#7A7A7A> \ue0b3</>",
+          "template": " \ufd31 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "kubectl"
         },
         {
@@ -106,7 +139,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue7ad {{.Profile}}{{if .Region}}@{{.Region}}{{end}}<#7A7A7A> \ue0b3</>",
+          "template": " \ue7ad {{.Profile}}{{if .Region}}@{{.Region}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "aws"
         },
         {
@@ -120,7 +153,7 @@
             "info_separator": " @ "
           },
           "style": "powerline",
-          "template": " \ufd03 {{ .Name }}<#7A7A7A> \ue0b3</>",
+          "template": " \ufd03 {{.Name}} <#7A7A7A>\ue0b3</>",
           "type": "az"
         },
         {
@@ -133,7 +166,7 @@
             "fetch_version": true
           },
           "style": "powerline",
-          "template": " \uf0e7 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \uf0e7 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "azfunc"
         },
         {
@@ -142,7 +175,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue798 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \ue798 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "dart"
         },
         {
@@ -151,7 +184,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue624 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \ue624 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "julia"
         },
         {
@@ -160,7 +193,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue7a8 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \ue7a8 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "rust"
         },
         {
@@ -169,7 +202,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue738 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \ue738 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "java"
         },
         {
@@ -178,7 +211,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ufcd1 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \ufcd1 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "go"
         },
         {
@@ -187,7 +220,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue791 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \ue791 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "ruby"
         },
         {
@@ -196,7 +229,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}<#7A7A7A> \ue0b3</>",
+          "template": " \ue718 {{if .PackageManagerIcon}}{{.PackageManagerIcon}} {{end}}{{.Full}} <#7A7A7A>\ue0b3</>",
           "type": "node"
         },
         {
@@ -205,7 +238,10 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \ue235 {{if .Error}}{{.Error}}{{else}}{{if .Venv}}{{.Venv}} {{end}}{{.Full}}{{end}} <#7a7a7a>\ue0b3</>",
+          "properties": {
+            "display_mode": "files"
+          },
           "type": "python"
         },
         {
@@ -214,7 +250,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ue77f {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }}<#7A7A7A> \ue0b3</>",
+          "template": " \ue77f {{if .Unsupported}}\uf071{{else}}{{.Full}}{{end}} <#7A7A7A>\ue0b3</>",
           "type": "dotnet"
         },
         {
@@ -223,7 +259,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": " \ufcb5 {{ .Name }}<#7A7A7A> \ue0b3</>",
+          "template": " \ufcb5 {{.Name}} <#7A7A7A>\ue0b3</>",
           "type": "shell"
         },
         {
@@ -233,7 +269,7 @@
             "time_format": "15:04:05"
           },
           "style": "diamond",
-          "template": "{{ .CurrentDate | date .Format }}<#007ACC> \uf64f </>",
+          "template": "{{.CurrentDate | date .Format}} <#007ACC>\uf64f</>",
           "trailing_diamond": "\u2593\ue0c6",
           "type": "time"
         }
@@ -246,9 +282,7 @@
       "segments": [
         {
           "foreground": "#9FD356",
-          "foreground_templates": [
-            "{{ if gt .Code 0 }}#E84855{{ end }}"
-          ],
+          "foreground_templates": ["{{if gt .Code 0}}#E84855{{end}}"],
           "properties": {
             "always_enabled": true
           },
@@ -260,7 +294,10 @@
       "type": "prompt"
     }
   ],
-  "console_title_template": "{{if .Root}}root :: {{end}}{{.Shell}} :: {{.Folder}}",
+  "secondary_prompt": {
+    "foreground": "#727272",
+    "template": "\u276f "
+  },
   "final_space": true,
   "version": 2
 }
