@@ -12,7 +12,7 @@
     ~/.config/zsh/.zshrc: config/zsh/zshrc.zsh
     ~/.config/zsh/.zlogout: config/zsh/zlogout.zsh
     ~/.config/zsh/.zplugin: config/zsh/zplugin.zsh
-    ~/.config/zsh/zshrc.d: config/zsh/zshrc.d
+    ~/.config/zsh/conf.d: config/zsh/conf.d
 
 - shell:
     - [

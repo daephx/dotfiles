@@ -102,8 +102,8 @@ bindkey "$key[Down]" down-line-or-beginning-search
 
 ### Complete ###
 
-# Source dynamic config contents from ~/.zshrc.d/*.zsh
-for file in "${ZDOTDIR:-$HOME/.config/zsh}"/zshrc.d/*.zsh; do
+# Source dynamic config contents from zsh/conf.d
+for file in "${ZDOTDIR:-$HOME/.config/zsh}"/conf.d/*.zsh; do
   [[ -f "${file}" ]] && source "${file}"
 done
 
