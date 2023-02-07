@@ -29,6 +29,7 @@ function _confirm() {
 # ARGUMENTS:
 #   string plugin definitions (org/repo)
 function zsh_plugin_update() {
+  local plugin
   for plugin in "${1:-$plugins[@]}"; do
     local plugin_name=$(echo $plugin | cut -d "/" -f 2)
     local default_branch=$(git -C "$ZSH_PLUGIN_DIR/$plugin_name" rev-parse --abbrev-ref origin/HEAD | cut -d "/" -f 2)
@@ -72,22 +73,29 @@ function zsh_plugin_clean() {
 }
 
 # Load all plugins defined in ~/.zshrc
-for plugin ($plugins); do
-  local plugin_name=$(echo "$plugin" | cut -d "/" -f 2)
-  local plugin_path="$ZSH_PLUGIN_DIR/$plugin_name"
+function zsh_plugin_install() {
+  local plugin
+  for plugin ($plugins); do
+    local plugin_name=$(echo "$plugin" | cut -d "/" -f 2)
+    local plugin_path="$ZSH_PLUGIN_DIR/$plugin_name"
 
-  # Install plugin repository
-  if [[ ! -d "$plugin_path" ]]; then
-    echo -e "\e[0;35mInstalling plugin: $plugin\e[0m"
-    git clone --depth 1 "https://github.com/$plugin.git" "$plugin_path"
-  fi
+    # Install plugin repository
+    if [[ ! -d "$plugin_path" ]]; then
+      echo -e "\e[0;35mInstalling plugin: $plugin\e[0m"
+      git clone --depth 1 "https://github.com/$plugin.git" "$plugin_path"
+    fi
 
-  # Source plugin files
-  source "$plugin_path/"*".plugin.zsh" ||
-    source "$plugin_path/$plugin_name.zsh" ||
-      echo -e "\e[0;31mplugin not found: '$plugin'\e[0m"
+    # Source plugin files
+    source "$plugin_path/"*".plugin.zsh" ||
+      source "$plugin_path/$plugin_name.zsh" ||
+        echo -e "\e[0;31mplugin not found: '$plugin'\e[0m"
 
-  # Source completion files
-  local completion_file_path=$(find "$plugin_path/_"*) 2>/dev/null
-  fpath+="$(dirname "$completion_file_path")"
-done
+    # Source completion files
+    local completion_file_path=$(find "$plugin_path/_"*) 2>/dev/null
+    fpath+="$(dirname "$completion_file_path")"
+  done
+}
+
+# Run install function when sourced
+# Make sure the plugins=() array is defined before source
+zsh_plugin_install
