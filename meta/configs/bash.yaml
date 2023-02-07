@@ -1,8 +1,15 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
 - create:
     - ~/.config/bash
+
+- clean:
+    ~/.config/bash:
 
 - link:
     ~/.bashrc: config/bash/bashrc
     ~/.bash_logout: config/bash/bash_logout
-    ~/.config/bash/bashrc.d:
-      path: config/bash/bashrc.d/
+    ~/.config/bash/conf.d: config/bash/conf.d/
