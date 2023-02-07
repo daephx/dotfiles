@@ -56,7 +56,7 @@ plugins=(
 
 # Source minimal plugin manager.
 # Plugin list must be defined beforehand.
-source "$ZDOTDIR/zplugins"
+[ -f "$ZDOTDIR/zplugin.zsh" ] && source "$ZDOTDIR/zplugin.zsh"
 
 ### Styles ###
 
