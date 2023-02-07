@@ -8,10 +8,10 @@
     ~/.config/zsh:
 
 - link:
-    ~/.zshenv: config/zsh/zshenv.zsh
-    ~/.config/zsh/.zshrc: config/zsh/zshrc.zsh
-    ~/.config/zsh/.zlogout: config/zsh/zlogout.zsh
-    ~/.config/zsh/.zplugin: config/zsh/zplugin.zsh
+    ~/.zshenv: config/zsh/zshenv
+    ~/.config/zsh/.zshrc: config/zsh/zshrc
+    ~/.config/zsh/.zlogout: config/zsh/zlogout
+    ~/.config/zsh/.zplugin: config/zsh/zplugin
     ~/.config/zsh/conf.d: config/zsh/conf.d
 
 - shell:
