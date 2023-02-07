@@ -33,7 +33,7 @@ function zsh_plugin_update() {
   for plugin in "${1:-$plugins[@]}"; do
     local plugin_name=$(echo $plugin | cut -d "/" -f 2)
     local default_branch=$(git -C "$ZSH_PLUGIN_DIR/$plugin_name" rev-parse --abbrev-ref origin/HEAD | cut -d "/" -f 2)
-    echo -e "Updaing plugin: $plugin:$default_branch"
+    echo -e "\e[0;35mUpdating plugin: $plugin:$default_branch\e[0m"
     git -C "$ZSH_PLUGIN_DIR/$plugin_name" pull origin $default_branch 1>& /dev/null
   done
 }
