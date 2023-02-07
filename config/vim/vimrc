@@ -1,0 +1,489 @@
+" vimrc | Designed for vim 8+
+
+" vim-tiny lacks 'eval'
+if has("eval")
+  let skip_defaults_vim = 1
+endif
+
+" Plugins
+
+" Only load plugins if vim-plug file detected
+if filereadable(expand("~/.vim/autoload/plug.vim"))
+  call plug#begin('~/.local/share/vim/plugins')
+
+  Plug 'tomasiser/vim-code-dark'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+
+  Plug 'scrooloose/nerdtree'
+  Plug 'jistr/vim-nerdtree-tabs'
+  Plug 'tpope/vim-commentary'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'Yggdroot/indentLine'
+  Plug 'machakann/vim-highlightedyank'
+  Plug 'liuchengxu/vim-which-key'
+
+  " Git Source control
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-rhubarb'
+
+  " Fzf - fuzzy search
+  if isdirectory('/usr/local/opt/fzf')
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
+  else
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+    Plug 'junegunn/fzf.vim'
+  endif
+
+  "" Vim-Session
+  Plug 'xolox/vim-misc'
+  Plug 'xolox/vim-session'
+
+  call plug#end()
+endif
+
+" Settings
+set nocompatible
+set secure
+set splitbelow
+set splitright
+
+" File encoding
+set encoding=utf-8
+
+" Indentation width
+set shiftwidth=2
+set softtabstop=2
+set tabstop=4
+
+" replace tabs with spaces automatically
+set expandtab
+
+" enough for line numbers + gutter within 80 standard
+set textwidth=80
+
+" Color column divider
+set colorcolumn=+1
+
+" automatically write files when changing when multiple files open
+set autowrite
+
+" activate line numbers
+set number
+set relativenumber
+
+set signcolumn="yes:1"
+
+" turn col and row position on in bottom right
+set ruler
+
+" show command and insert mode
+set showmode
+
+set laststatus=2
+set showtabline=2
+
+" stop complaints about switching buffer with changes
+set hidden
+
+" Auto reload open buffer
+set autoread
+
+" More risky, but cleaner
+set nobackup
+set noswapfile
+set nowritebackup
+
+" Disable format options
+set formatoptions-=cro
+
+" Enable list chars
+set list
+
+" Icon support
+set icon
+
+" Center the cursor always on the screen
+set scrolloff=8
+
+" Cursorline settings
+set cursorline
+set cursorlineopt=number
+
+" Command history
+set history=100
+
+" highlight search hits
+set hlsearch
+set ignorecase
+set incsearch
+set linebreak
+
+set fillchars=vert:│,fold:\ ,eob:~
+
+" avoid most of the 'Hit Enter ...' messages
+set shortmess+=aoOtTI
+
+" Disable line wrapping
+set nowrap
+
+" enhanced command-line completion
+set wildmenu
+set wildignorecase
+set wildmode=full:lastused
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
+
+" prevents truncated yanks, deletes, etc.
+set viminfo+=n~/.cache/vim/.viminfo
+set viminfo='20,<1000,s1000
+
+" Just the defaults, these are changed per filetype by plugins.
+" Most of the utility of all of this has been superseded by the use of
+" modern simplified pandoc for capturing knowledge source instead of
+" arbitrary raw text files.
+
+set fo+=1 " Don't break a line after a one-letter word
+set fo+=M " Don't add space before or after multi-byte char
+set fo+=c " Autowrap comments using textwidth with leader
+set fo+=j " Delete comment prefix when joining
+set fo+=l " Long lines not broken in insert mode
+set fo+=m " Multi-byte character line break support
+set fo+=q " Allow formatting of comments with gq
+set fo-=2 " Don't use the indent of second paragraph line
+set fo-=B " Don't add space between two multi-byte chars
+set fo-=a " Disable auto-formatting of paragraph changes
+set fo-=b " Don't use broken 'vi-compatible auto-wrapping'
+set fo-=n " Don't recognized numbered lists
+set fo-=o " Don't auto-insert comment leader on o/O in normal
+set fo-=r " Don't auto-insert comment leader on enter in insert
+set fo-=t " Don't auto-wrap text using text width
+set fo-=v " Don't use broken 'vi-compatible auto-wrapping'
+set fo-=w " Don't use trailing whitespace for paragraphs
+
+" Use a line cursor within insert mode and a block cursor everywhere else.
+"
+" Reference chart of values:
+" Ps = 0  -> blinking block.
+" Ps = 1  -> blinking block (default).
+" Ps = 2  -> steady block.
+" Ps = 3  -> blinking underline.
+" Ps = 4  -> steady underline.
+" Ps = 5  -> blinking bar (xterm).
+" Ps = 6  -> steady bar (xterm).
+
+let &t_EI = "\e[2 q"
+let &t_SI = "\e[5 q"
+
+" Vim8 Conditionals
+if v:version >= 800
+  " stop vim from silently messing with files that it shouldn't
+  set nofixendofline
+
+  " better ascii friendly listchars
+  set listchars=extends:»,nbsp:␣,precedes:«,space:\ ,tab:\ »,trail:·
+endif
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+  " Enable file type detection.
+  filetype plugin indent on
+else
+  " automatically indent new lines
+  set autoindent
+endif
+
+" Requires PLATFORM env variable set (in ~/.bashrc)
+if $PLATFORM == 'mac'
+  " required for mac delete to work
+  set backspace=indent,eol,start
+endif
+
+" Mark trailing spaces as errors
+if has("match")
+  match ErrorMsg '\s\+$'
+endif
+
+" Set default shell
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
+
+" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+" Visual
+
+" Disable visual bell
+set belloff=all noerrorbells novisualbell t_vb=
+
+" Here because plugins and stuff need it
+if has("syntax")
+  syntax enable
+  " Apply spell highlight to comments/strings
+  set spell spellcapcheck
+  syntax spell toplevel
+endif
+
+if has('termguicolors')
+  set t_Co=256       " Enable 256 colors
+  set termguicolors  " Enable GUI colors for the terminal to get truecolor
+endif
+
+" Set colorscheme
+set background=dark " or light
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " set foreground color
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " set background color
+
+" Codedark Settings
+if &runtimepath =~? "vim-code-dark"
+  colorscheme codedark
+  " Override colorscheme highlights
+  highlight Comment ctermfg=14 guifg=#626262
+endif
+
+" Global Highlight overrides
+highlight Normal        ctermbg=NONE guibg=NONE
+highlight EndOfBuffer   ctermbg=NONE guibg=NONE
+highlight CursorLineNr  ctermbg=NONE guibg=NONE
+highlight LineNr        ctermbg=NONE guibg=NONE
+highlight SignColumn    ctermbg=NONE guibg=NONE
+highlight FoldColumn    ctermbg=NONE guibg=NONE
+highlight VertSplit     ctermbg=NONE guibg=NONE
+
+highlight EndOfBuffer guifg=#222222
+
+" vim-airline
+if &runtimepath =~? "vim-airline"
+  " disable insert text if plugins available
+  set noshowmode
+endif
+
+" let g:airline_theme = g:colors_name
+let g:airline_theme = get(g:, 'colors_name', "default")
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline_skip_empty_sections = 1
+let g:airline_powerline_fonts = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#show_tab_count = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#tab_min_count = 0
+
+" nerdtree
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 40
+let g:NERDTreeWinPos = 'right'
+
+"" fzf.vim
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+
+" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
+" Indent blank line
+let g:indentLine_enabled = 1
+let g:indentLine_char = '│'
+let g:indentLine_first_char = '│'
+let g:indentLine_showFirstIndentLevel = 1
+
+" set highlight to 1000 ms
+let g:highlightedyank_highlight_duration = 1000
+
+" Session-saver
+let g:session_autosave = 'no'
+
+" Git gutter
+if &runtimepath =~? "vim-gitgutter"
+  " highlight clear SignColumn
+  highlight! GitGutterAdd           ctermfg=2 guibg=NONE guifg=#628d50
+  highlight! GitGutterChange        ctermfg=3 guibg=NONE guifg=#c8c99c
+  highlight! GitGutterDelete        ctermfg=1 guibg=NONE guifg=#de4343
+  highlight! GitGutterChangeDelete  ctermfg=4 guibg=NONE guifg=#d38670
+endif
+
+let g:gitgutter_sign_allow_clobber = 0
+let g:gitgutter_set_sign_backgrounds = 1
+let g:gitgutter_override_sign_column_highlight = 1
+
+let g:gitgutter_sign_added = '▎'
+let g:gitgutter_sign_modified = '▎'
+let g:gitgutter_sign_removed = '▎'
+let g:gitgutter_sign_removed_first_line = '▎'
+let g:gitgutter_sign_removed_above_and_below = '▎'
+let g:gitgutter_sign_modified_removed = '▎'
+
+" Functions
+
+" Install vim-plug
+function! InstallVimplug()
+
+  " Dependency Validation
+  let vimplug_exists=expand('~/.vim/autoload/plug.vim')
+  if has('win32') && !has('win64')
+    let curl_exists=expand('C:\Windows\Sysnative\curl.exe')
+  else
+    let curl_exists=expand('curl')
+  endif
+
+  " Bootstrap vim-plug
+  if !filereadable(vimplug_exists)
+    if !executable(curl_exists)
+      echoerr 'You have to install curl or first install vim-plug yourself!'
+      return
+    endif
+    echo "Installing Vim-Plug..."
+    echo ""
+    silent exec "!"curl_exists" -fLo "
+        \ . shellescape(vimplug_exists)
+        \ . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    let g:not_finish_vimplug = "yes"
+
+    autocmd VimEnter * PlugInstall
+    source expand('<sfile>')
+  endif
+
+endfunction
+
+" Commands
+
+" Mistake abbreviations
+cnoreabbrev BD :bd
+cnoreabbrev Bd :bd
+cnoreabbrev Q  :q
+cnoreabbrev QA :qa
+cnoreabbrev Qa :qa
+cnoreabbrev W  :w
+cnoreabbrev WQ :wq
+cnoreabbrev Wq :wq
+cnoreabbrev XA :xa
+cnoreabbrev Xa :xa
+cnoreabbrev bD :bd
+cnoreabbrev qA :qa
+cnoreabbrev wQ :wq
+cnoreabbrev xA :xa
+
+" remove trailing whitespace
+command! FixWhitespace :%s/\s\+$//e
+      \| :%s/\($\n\s*\)\+\%$//e
+
+" Mappings
+
+" Set leader keys
+let mapleader=' '
+let localleader='\\'
+
+" Enable whichkey bindings
+if &runtimepath =~? "vim-which-key"
+  xnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+  xnoremap <silent> <localleader> :<c-u>WhichKey '\'<CR>
+endif
+
+" Fix ctrl+arrow movement in tmux
+if &term == "tmux-256color"
+  map <esc>[1;5A <C-Up>
+  map <esc>[1;5B <C-Down>
+  map <esc>[1;5C <C-Right>
+  map <esc>[1;5D <C-Left>
+endif
+
+" make Y consistent with D and C (yank til end)
+map Y y$
+
+" Move visual block
+vnoremap <M-k> :m '<-2<CR>gv=gv
+vnoremap <M-j> :m '>+1<CR>gv=gv
+
+" Buffer switching
+nnoremap <silent> [b :bp<CR>
+nnoremap <silent> ]b :bn<CR>
+
+" Move visual block
+vnoremap <Tab> :m '>+1<CR>gv=gv
+vnoremap <S-Tab> :m '<-2<CR>gv=gv
+
+" Clean search (highlight)
+nmap <silent> <esc><esc> :noh<cr>
+
+" Git fugitive
+noremap <leader>gg :Git<CR>
+noremap <leader>gc :Git commit<CR>
+
+"" Open current line on GitHub
+nnoremap <leader>go :.GBrowse<CR>
+
+" Git Gutter
+noremap  <leader>gd :Gdiffsplit<CR>
+xnoremap <leader>gs :GitGutterStageHunk<CR>
+xnoremap <leader>gr :GitGutterUndoHunk<CR>
+
+" session management
+nnoremap <leader>so :OpenSession<Space>
+nnoremap <leader>ss :SaveSession<Space>
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
+
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>e :NERDTree<CR>
+
+" Terminal
+
+function TerminalSettings()
+  setlocal colorcolumn=0
+  setlocal nonumber
+  setlocal norelativenumber
+  setlocal nospell
+  setlocal scrolloff=0
+  setlocal sidescrolloff=0
+  setlocal winfixheight
+endfunction
+
+nnoremap <silent> <C-\> :execute 'terminal' \| wincmd J \| resize 20<CR>
+" tnoremap <silent> <C-\> <C-\><C-n>:call MonkeyTerminalToggle()<CR>
+tnoremap <silent> <esc><esc> <C-\><C-n>
+tnoremap <silent> <C-w> <C-\><C-n><C-w>
+
+" Autocmds
+if has('autocmd')
+  augroup terminal_au
+    autocmd!
+    " Disable terminal buffer settings
+    autocmd FileType term://* :call TerminalSettings()<CR>
+  augroup END
+  augroup document_au
+    autocmd!
+    " Trim trailing whitespace
+    autocmd BufWritePre * :%s/\s\+$//e
+    autocmd BufWritePre * :%s/\($\n\s*\)\+\%$//e
+    autocmd FocusLost * :write<CR>
+  augroup END
+endif
+
+" Include extra runtime directories
+" set rtp^=~/.vim/personal

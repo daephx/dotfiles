@@ -1,2 +1,4 @@
+# Vim editor configurations
+
 - link:
-    ~/.config/vim/init.vim: config/vim/init.vim
+    ~/.vim: config/vim
