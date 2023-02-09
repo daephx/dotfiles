@@ -1,35 +1,30 @@
 #! /usr/bin/env bash
 # -----------------------------------------------------------------------------
 # https://github.com/chrisfcarroll/PowerShell-Bash-Dual-Script-Templates
-# The top half of this script runs in Bash and the bottom half in Powershell
-# Some lines at the end can run in both shells, but syntax common to both is
-# limited.
+# The top half of this script runs in Bash and the bottom half in Powershell.
+# Some lines at the end can run in both shells, but common syntax is limited.
 # -----------------------------------------------------------------------------
 #region    # * Pwsh <params> --------------------------------------------------
-` # \
-# PowerShell Param statement: every line must end in '#\' except the last line must with '<#\'
-# And, you can't use backticks in this section        #\
-Param( [Switch]$Standalone                            #\
-)                                                    <#\ `
+` # \ PowerShell Parameters:
+# Every line must end in '#\' the last line ends in '<#\'
+# You cannot use backticks in this section!           #\
+Param( [Alias("s")]                                   #\
+       [Switch]$Standalone                            #\
+)                                                    <#\`
 #endregion # * Pwsh <params> -------------------------------------------------
 #region    # * Bash ----------------------------------------------------------
-__ARGS="$@"
-__SHELL="bash"
-__ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-__FILE="$(cd "$(basename "${BASH_SOURCE[0]}")" && pwd)"
 set -e # stop execution if return not 0
+echo "Dotfiles install script: $(git remote get-url origin)"
 echo "Platform: $OSTYPE"
+echo "Shell: bash"
 echo ""
-echo "Shell: $__SHELL"
-echo "Args: $__ARGS"
-echo "Cmd: $__SHELL $__FILE $__ARGS"
-echo ""
-echo "Dotfiles installation script: $(git remote get-url origin)"
-echo ""
+
+# Define colors
+RESET='\e[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
 
 function main() {
-
-  # ! these variables get overwritten by each source
   __root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   __file=$(basename "${BASH_SOURCE[0]}")
   __local="${XDG_LOCAL_HOME:-HOME/.local}"
@@ -43,33 +38,33 @@ function main() {
   profile_dir="${meta_dir}/profiles"
   plugins_dir="${meta_dir}/plugins"
   scripts_dir="${meta_dir}/scripts"
-
+  base_config_path="${meta_dir}/${BASE_CONFIG}${CONFIG_SUFFIX}"
   dotbot="${meta_dir}/dotbot/bin/dotbot"
 
+  log info "Ensuring dotbot submodule is initialized..."
   git submodule update --init --recursive -- meta/dotbot
 
-  base_config_path="${meta_dir}/${BASE_CONFIG}${CONFIG_SUFFIX}"
-
+  # Parse command line arguments
   parse_opts $@
 
-  # Execute the returned stratagy
+  # Execute the returned strategy
   # Default action is standalone configs: './install zsh'
   if [[ ! $STRAT ]] || [[ $STRAT == "profile" ]]; then parse_profiles "${POSITIONAL[@]}" && return 0; fi
   if [[ $STRAT == "standalone" ]]; then parse_standalone "${POSITIONAL[@]}" && return 0; fi
   if [[ $STRAT == "docker" ]]; then parse_docker; fi
-
 }
 
 function parse_opts() {
   POSITIONAL=()
   while (($# > 0)); do
     case "${1}" in
-    -p | --profile) STRAT="profile" && shift ;;
-    -s | --standalone) STRAT="standalone" && shift ;;
-    -D | --docker) STRAT="docker" && shift ;;
-    *) POSITIONAL+=("${1}") && shift ;;
+    -p | --profile) STRAT="profile" ;;
+    -s | --standalone) STRAT="standalone" ;;
+    -D | --docker) STRAT="docker" ;;
+    *) POSITIONAL+=("${1}") ;;
     esac
-    done
+    shift
+  done
   set -- "${POSITIONAL[@]}" # restore positional params
 }
 
@@ -77,7 +72,7 @@ function parse_standalone() {
   args=("$@")
   items=("$BASE_CONFIG" "${args[@]}")
   for config in "${items[@]}"; do
-    echo "--- Configuration: $config ---"
+    log info "Initializing dotbot config: $config"
     execute_command $config
     done
 }
@@ -89,10 +84,9 @@ function parse_profiles() {
   shift
 
   for config in ${CONFIGS} ${@}; do
-    echo "--- Configuration: $config ---"
+    log info "Initializing dotbot profile: $config"
     execute_command $config
   done
-
 }
 
 function parse_docker() {
@@ -108,7 +102,6 @@ function load_plugins() {
   plugins=()
   for plugin_dir in $plugins_dir/*; do
   plugin_name=$(basename "$plugin_dir")
-  log debug "SEARCH\t| Directory: '$plugin_dir'"
     for file in $plugin_dir/*; do
 
       [ -f "$file" ] || continue
@@ -119,11 +112,11 @@ function load_plugins() {
 
       if [ "${filename}" = "${plugin_name}" ]; then
         plugin_path="$file"
-        log debug "${GREEN}MATCH${RESET}\t| Loading: '$plugin_path'"
+        log debug "${GREEN}MATCH${RESET} | Plugin: '$plugin_path'"
         plugins+=("${plugin_path}")
-        fi
+      fi
     done
-    done
+  done
   echo "${plugins[@]}"
 }
 
@@ -140,7 +133,6 @@ function execute_command() {
   plug_d=()
   IFS=' ' read -r -a plugins <<<"$(load_plugins)"
   for element in "${plugins[@]}"; do
-  log debug "Processing: $element"
   plug_d+=(-p "$element")
   done
 
@@ -148,113 +140,87 @@ function execute_command() {
   cmd=("${cmd[@]}" -c "${config_file}")
   cmd+=("${plug_d[@]}")
 
+  # Run config file as sudo if prefixed
+  # Example: sudo-docker.yaml
   if [[ $config == *"sudo"* ]]; then cmd=(sudo "${cmd[@]}"); fi
 
-  log debug "Command Input: \n$ ${cmd[@]}\n"
-  # IFS=' ' read -r -a plugins <<<"${cmd[@]}"
-  # for i in "${plugins[@]}"; do
-  #   echo "${i}"
-  # done
+  # Execute command string
+  # "${cmd[@]}"
 
-  "${cmd[@]}"
+  echo "${cmd[@]}"
+
+  # Delete temp config file
   rm -f "$config_file"
 }
 
-# ! God this is a mess...
+log() { [[ -n "$DEBUG" ]] && echo -e "${1^^}:\t${2}" 1>&2; }
+
 # Much like pythons: if __name__ == '__main__':
 if [ "${BASH_SOURCE[0]}" == "${0}" ]; then
-  # Import internal functions, patch them if unavalible
-  INTERNAL="${XDG_LOCAL_HOME:-HOME/.local}/lib/internal.sh"
-  [[ -e $INTERNAL ]] && source $INTERNAL || {
-    include() { [[ -f $1 ]] && source "${XDG_LOCAL_HOME:-HOME/.local}/lib/$1"; }
-    log() { [[ -z "$DEBUG" ]] && echo -e "${1^^}: ${2}" 1>&2; }
-    log warn "internal library not defined or does not exist: '$INTERNAL'" 1>&2
-  } && main "$@" # finally call the main function
+  main "$@" # call the main function
 fi
 
+# Do not touch...
 echo > /dev/null <<"out-null" ###
 '@ | out-null
 #>
 #endregion # * Bash ----------------------------------------------------------
 #region    # * Pwsh -----------------------------------------------------------
 $ErrorActionPreference = "Stop" # Stop on first error
-$__ARGS = $args
-$__SHELL = "pwsh"
-$__ROOT = $PSScriptRoot
-$__FILE = $PSCommandPath
-echo "Platform: $($PSVersionTable.OS)"
-echo ""
-echo "Shell: $__SHELL"
-echo "Args: $__ARGS"
-echo "Cmd: $__SHELL '$__FILE' $__ARGS"
-echo ""
-echo "Dotfiles installation script: $(git remote get-url origin)"
-echo ""
-
-$BaseConfig = "base"
-$ConfigSuffix = "yaml"
-$BaseConfigPath = "$__ROOT/meta/base.$ConfigSuffix"
+Write-Output "Dotfiles install script: $(git remote get-url origin)"
+Write-Output "Platform: $($PSVersionTable.OS)"
+Write-Output "Shell: pwsh"
 
 # Default config file location
-$ConfigPath = "$__ROOT/meta/profiles"
-$ProfilePath = "$__ROOT/meta/profiles"
-$PluginPath = "$__ROOT/meta/plugins"
-$DotbotPath = "$__ROOT/meta/dotbot"
+$ConfigPath = "$PSScriptRoot/meta/configs"
+$ProfilePath = "$PSScriptRoot/meta/profiles"
+$PluginPath = "$PSScriptRoot/meta/plugins"
+$DotbotPath = "$PSScriptRoot/meta/dotbot"
 $DotbotBin = "$DotbotPath/bin/dotbot"
+$BaseConfigPath = "$PSScriptRoot/meta/base.yaml"
 
 # Overwrite path if standalone flag was set
-if ($Standalone) { $Path = "$__ROOT/meta/configs" }
-else { $Path = "$__ROOT/meta/configs" }
+if ($Standalone) { $SearchPath = $ConfigPath }
+else { $SearchPath = $ProfilePath }
 
 # initialize command list
 $Cmd = New-Object System.Collections.Generic.List[String[]]
 
 # Parse matching config files from arguments
-$ParsedConfig = Get-ChildItem -File -Path:$Path |
-Where-Object {
-  $_.Basename -in $__ARGS
+$ScriptArguments = $args
+$ParsedConfig = Get-ChildItem -File -Path:$SearchPath | Where-Object {
+  $_.BaseName -in $ScriptArguments
 } | Select-Object -ExpandProperty FullName
-
-# Protect unix/windows from incompatible plugins
-$IncompatiblePlugins = @("windows") # disable windows by default
-if ($PSVersionTable.Platform -eq "Win32NT") {
-  # activate if platform equals windows
-  $WindowsCompatible = @("windows")
-  # get list of plugins agains known windows compatibles
-  $IncompatiblePlugins = @( Get-ChildItem -Path:$PluginPath |
-  Where-Object { $_.name -notin $WindowsCompatible } |
-  Select-Object -ExpandProperty Basename )
-}
 
 # Parse matching plugins from directory
 $ParsedPlugins = Get-ChildItem -File -Depth 1 -Path:$PluginPath |
 Where-Object {
-  $_.BaseName -notin $IncompatiblePlugins -and
   $_.BaseName -eq (Get-Item (Split-Path -Parent $_)).basename
 } | Select-Object -ExpandProperty FullName
 
 # Construct command
 $Cmd += "python " + $DotbotBin
-$Cmd += "-d $__ROOT"
+$Cmd += "-d $PSScriptRoot"
 $Cmd += "-c $BaseConfigPath"
 $Cmd += $ParsedConfig | ForEach-Object { "-c $_" }
 $Cmd += $ParsedPlugins | ForEach-Object { "-p $_" }
 $Cmd = ($Cmd -join " ") # Join them together
 
 # Verbose command output
-$Message = ($Cmd -split " ") | ForEach-Object { $i = 0 } { $i++ ; if (($i % 2) -eq 0) { Write-Host "$Last $_" } ; $Last = $_ }
+$Message = ($Cmd -split " ") |
+ForEach-Object { $i = 0 } { $i++ ; if (($i % 2) -eq 0) { "$Last $_" } ; $Last = $_ }
 Write-Verbose "$Message"
 
-# Run the command
+# Evaluate command string
 Invoke-Expression -Command:$Cmd
 
-out-null
+Out-Null
 #endregion # * Pwsh -----------------------------------------------------------
 #region    # * Both -----------------------------------------------------------
 # -----------------------------------------------------------------------------
 # Both Bash and Powershell run the rest but syntax common to both is limited
 # -----------------------------------------------------------------------------
 echo ""
-echo "Installation script has completed, please refresh your terminal!"
+echo "Installation script complete!"
 echo ""
 #endregion # * Both -----------------------------------------------------------
