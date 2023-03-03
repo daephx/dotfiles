@@ -198,18 +198,18 @@
         {
           "foreground": "#ffffff",
           "style": "powerline",
-          "template": " <green>\ufcb5</> {{.Name}}",
+          "template": " \ufcb5 {{.Name}} <#7A7A7A>\ue0b3</>",
           "type": "shell"
+        },
+        {
+          "foreground": "#fafafa",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "style": "diamond",
+          "template": " {{.CurrentDate | date .Format}} <lightBlue>\uf64f</>",
+          "type": "time"
         }
-        // {
-        //   "foreground": "#fafafa",
-        //   "properties": {
-        //     "time_format": "15:04:05"
-        //   },
-        //   "style": "diamond",
-        //   "template": " {{.CurrentDate | date .Format}}<lightBlue> \uf64f</>",
-        //   "type": "time"
-        // }
       ],
       "type": "prompt"
     },
