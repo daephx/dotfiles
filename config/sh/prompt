@@ -7,8 +7,8 @@ parse_git_dirty() {
 }
 
 parse_git_branch() {
-  git branch --no-color 2> /dev/null |
-    sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+  git branch --no-color 2> /dev/null \
+    | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
 bash_prompt() {
@@ -34,16 +34,18 @@ zsh_prompt() {
 
 oh_my_posh() {
   shell="$1"
-  default_theme="sentiment"
-  theme_path="$XDG_CONFIG_HOME/poshthemes/$default_theme.omp.json"
-  eval "$(oh-my-posh init "$shell" --config "${POSH_THEME:-$theme_path}")"
+  theme_name="skellum"
+  theme_file="$theme_name.omp.json"
+  theme_path="$XDG_CONFIG_HOME/poshthemes/$theme_file"
+  eval "$(oh-my-posh init "$shell" --config "$theme_path")"
 }
 
-# shellcheck disable=2317 # fall-through to default prompt, prefer special case
+# shellcheck disable=2317
+# fall-through to default prompt, prefer special case
 initalize_prompt() {
   [ -n "$BASH_VERSION" ] && shell="bash"
   [ -n "$ZSH_VERSION" ] && shell="zsh"
-  command -v oh-my-posh >/dev/null && oh_my_posh "$shell"; return
+  command -v oh-my-posh > /dev/null && oh_my_posh "$shell" && return
   [ "$shell" = "bash" ] && bash_prompt
   [ "$shell" = "zsh" ] && zsh_prompt
 }
