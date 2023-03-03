@@ -55,20 +55,9 @@
           "foreground": "#fafafa",
           "properties": {
             "folder_icon": "\u2026",
-            "folder_separator_icon": " <#7A7A7A>\ue0bf</> ",
-            "home_icon": "\uf015",
-            "style": "agnoster_short",
-            "mapped_locations": {
-              "~/Desktop": "\uf108 Desktop",
-              "~/Documents": "\uf719 Documents",
-              "~/Downloads": "\uf019 Downloads",
-              "~/Music": "\uf001 Music",
-              "~/Pictures": "\uf03e Pictures",
-              "~/Projects": "\uf121 Projects",
-              "~/Public": "\uf0ac Public",
-              "~/Templates": "\uebbf Templates",
-              "~/Videos": "\uf03d Videos"
-            }
+            "folder_separator_icon": "/",
+            "home_icon": "~",
+            "style": "agnoster_short"
           },
           "style": "powerline",
           "template": " {{.Path}}",
