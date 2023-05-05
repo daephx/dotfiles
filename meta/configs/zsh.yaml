@@ -1,8 +1,12 @@
-# ZSH | Zshell configurations
+# zsh: zshell configuration
+
 - defaults:
     link:
       create: true
       relink: true
+
+- create:
+    - ~/.config/zsh/
 
 - clean:
     ~/.config/zsh:
@@ -11,15 +15,11 @@
     ~/.zshenv: config/zsh/zshenv
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/.zlogout: config/zsh/zlogout
-    ~/.config/zsh/.zplugin: config/zsh/zplugin
-    ~/.config/zsh/conf.d: config/zsh/conf.d
+    ~/.config/zsh/plugins: config/zsh/plugins
 
 - shell:
     - [
         sh -c "if ! command -v zsh; then sudo apt install -y zsh; fi",
-        Installing Package; 'zsh'
+        Installing Package; 'zsh',
       ]
-    - [
-        sudo usermod -s $(which zsh) $USER,
-        Set zsh as default for $USER
-      ]
+    - [sudo usermod -s $(which zsh) $USER, Set zsh as default for $USER]

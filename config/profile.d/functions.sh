@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
 # ~/.functions: Common functions for POSIX shells
+# shellcheck shell=sh
 
 # Extract archive formats
 # Usage: extract <path/to/file>
@@ -20,17 +20,17 @@ extract() {
       *.deb) ar x "$1" ;;
       *.tar.xz) tar xf "$1" ;;
       *.tar.zst) unzstd "$1" ;;
-      *) echo "'$1' cannot be extracted via ex()" ;;
+      *) echo "Extraction method cannot be resolved for file: '$1'" ;;
     esac
   else
-    echo "'$1' is not a valid file"
+    echo "Invalid file: '$1'"
   fi
 }
 
 # Get absolute path
 # Usage: abspath <path/to/item>
 abspath() {
-  cd "$(dirname "$1")" >/dev/null || return
+  cd "$(dirname "$1")" > /dev/null || return
   printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
   cd - || return
 }
@@ -44,6 +44,21 @@ touchd() {
 # Create and change directory
 # Usage: mk </dir/path>
 mk() {
-  mkdir -p -- "$1" &&
-    cd -P -- "$1" || return
+  mkdir -p -- "$1" && cd -P -- "$1" || return
+}
+
+# FZF Changing Directories
+fcd() {
+  cd "$(find ~ -maxdepth 5 -not -path '*/\.git/*' -type d \
+    | fzf --height 40% --reverse)" || return
+}
+
+fbr() {
+  choice=$(
+    git for-each-ref --format='%(refname:short)' 'refs/heads/*' | fzf \
+      --prompt="Switch branch: " \
+      --header="Select a branch to switch to" \
+      --height 40% --reverse
+  )
+  git switch "$choice"
 }

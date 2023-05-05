@@ -1,0 +1,23 @@
+# profile: Static/Dynamic user shell configuration
+
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- create:
+    - ~/.config/profile.d/
+
+- clean:
+    ~/: # Home directory
+    ~/.config/profile.d:
+
+- link:
+    ~/.config/LESS_TERMCAPS: config/less/LESS_TERMCAPS
+    ~/.config/dir_colors: config/profile/dir_colors
+    ~/.inputrc: config/profile/inputrc
+    ~/.profile: config/profile/profile
+    ~/.config/profile.d:
+      force: true
+      glob: true
+      path: config/profile.d/*

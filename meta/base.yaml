@@ -1,21 +1,22 @@
 - defaults:
+    clean:
+      force: true
     link:
-      relink: true
       create: true
       force: true
       glob: true
+      relink: true
     shell:
-      stdout: true
       stderr: true
+      stdout: true
 
 - create:
+    - ~/.cache
     - ~/.config
     - ~/.local
-    - ~/.cache
 
 - clean:
-    ~/:
-      force: true
+    ~/: # Home directory
     ~/.config:
       recursive: true
 

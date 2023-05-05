@@ -88,12 +88,11 @@ zle -N down-line-or-beginning-search
 bindkey "$key[Up]" up-line-or-beginning-search
 bindkey "$key[Down]" down-line-or-beginning-search
 
-# Source shell configurations
-[ -f ~/.environment ] && source ~/.environment
+### Source ###
 
-# Source dynamic config contents from zsh/conf.d
-for file in "${ZDOTDIR:-$HOME/.config/zsh}"/conf.d/*.zsh; do
-  [[ -f "${file}" ]] && source "${file}"
+# Dynamically source user configurations
+for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
+  source "$file"
 done
 
 ### Plugins ###

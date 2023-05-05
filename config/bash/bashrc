@@ -16,10 +16,6 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # Set history file if not exists
 export HISTFILE="$XDG_STATE_HOME/bash_history"
 
-# Source common shell configurations
-[ -f "$HOME/.environment" ] && source "$HOME/.environment"
-[ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 shopt -s cmdhist
@@ -29,7 +25,7 @@ shopt -u lithist
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Source dynamic config contents from ~/.zshrc.d/*.zsh
-for file in "$XDG_CONFIG_HOME/bash/bashrc.d/"*.bash; do
-  [[ -f "${file}" ]] && source "${file}"
+# Dynamically source user configurations
+for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
+  source "$file"
 done

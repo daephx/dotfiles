@@ -1,3 +1,5 @@
+# bash: bash shell configuration
+
 - defaults:
     link:
       create: true
@@ -12,4 +14,3 @@
 - link:
     ~/.bashrc: config/bash/bashrc
     ~/.bash_logout: config/bash/bash_logout
-    ~/.config/bash/conf.d: config/bash/conf.d/
