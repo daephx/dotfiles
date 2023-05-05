@@ -1,5 +1,5 @@
 # shellcheck shell=sh
-if ! command -v zoxide >/dev/null; then
+if ! command -v zoxide > /dev/null; then
   return 0
 fi
 
@@ -9,6 +9,14 @@ cd() {
   [ "$#" -eq 0 ] && z "$@" || builtin cd "$@" || return
 }
 
+_z_cd() {
+  cd "$@" || return "$?"
+
+  if [ "$_ZO_ECHO" = "1" ]; then
+    echo "$PWD"
+  fi
+}
+
 z() {
   if [ "$#" -eq 0 ]; then
     _zoxide_result="$(zoxide query -i -- "$@")" && _z_cd "$_zoxide_result"
@@ -16,10 +24,29 @@ z() {
     if [ -n "$OLDPWD" ]; then
       _z_cd "$OLDPWD"
     else
-      echo "zoxide: \$OLDPWD is not set"
+      echo "zoxide: $OLDPWD is not set"
       return 1
     fi
   else
     _zoxide_result="$(zoxide query -- "$@")" && _z_cd "$_zoxide_result"
   fi
 }
+
+zi() {
+  _zoxide_result="$(zoxide query -i -- "$@")" && _z_cd "$_zoxide_result"
+}
+
+zri() {
+  _zoxide_result="$(zoxide query -i -- "$@")" && zoxide remove "$_zoxide_result"
+}
+
+_zoxide_hook() {
+  zoxide add "$(pwd -L)"
+}
+
+chpwd_functions=("${chpwd_functions[@]}" "_zoxide_hook")
+
+alias za='zoxide add'
+alias zq='zoxide query'
+alias zqi='zoxide query -i'
+alias zr='zoxide remove'
