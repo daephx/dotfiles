@@ -1,5 +1,4 @@
-#!/usr/bin/env zsh
-# Executes commands at logout.
+# zlogout: Executes commands on zsh logout
 
 cat <<-EOF
 Thank you. Come again!
