@@ -1,21 +1,21 @@
 # ~/.local: Setup environment
 
-- create: ~/.local
+- create:
+    - ~/.local/bin/
+    - ~/.local/lib/
 
 - link:
     ~/.local/bin:
-      glob: true
       force: true
+      glob: true
       path: local/bin/*
-
-- link:
     ~/.local/lib:
-      glob: true
       force: true
+      glob: true
       path: local/lib/*
 
 - shell:
     - [
         sudo chmod 755 local/bin/*,
-        Give '~/.local/bin/' script executable privileges,
+        Give '~/.local/bin/*' scripts executable privileges,
       ]
