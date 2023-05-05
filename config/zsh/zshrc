@@ -44,20 +44,6 @@ zmodload zsh/complist
 compinit -d "$XDG_CACHE_HOME/zsh/zccompdump"
 _comp_options+=(globdots) # Include hidden files.
 
-### Plugins ###
-
-plugins=(
-  Aloxaf/fzf-tab
-  MenkeTechnologies/zsh-dotnet-completion
-  MichaelAquilina/zsh-autoswitch-virtualenv
-  chitoku-k/fzf-zsh-completions
-  zsh-users/zsh-autosuggestions
-)
-
-# Source minimal plugin manager.
-# Plugin list must be defined beforehand.
-[ -f "$ZDOTDIR/.zplugin" ] && source "$ZDOTDIR/.zplugin"
-
 ### Styles ###
 
 zle_highlight=('paste:none')
@@ -99,13 +85,31 @@ zle -N down-line-or-beginning-search
 bindkey "$key[Up]" up-line-or-beginning-search
 bindkey "$key[Down]" down-line-or-beginning-search
 
-
-### Complete ###
-
 # Source dynamic config contents from zsh/conf.d
 for file in "${ZDOTDIR:-$HOME/.config/zsh}"/conf.d/*.zsh; do
   [[ -f "${file}" ]] && source "${file}"
 done
+
+### Plugins ###
+
+# Zap: a minimal zsh plugin manager
+# https://github.com/zap-zsh/zap
+ZAP_DIR="$XDG_DATA_HOME/zap"
+[ -f "$ZAP_DIR/zap.zsh" ] && source "$ZAP_DIR/zap.zsh" || {
+  git clone --depth 1 -b "master" "https://github.com/zap-zsh/zap.git" "$ZAP_DIR" > /dev/null 2>&1 || {
+    echo "E: Failed to install Zap"
+  }
+}
+
+# Initialize plugins
+plug 'Aloxaf/fzf-tab'
+plug 'MenkeTechnologies/zsh-dotnet-completion'
+plug 'MichaelAquilina/zsh-autoswitch-virtualenv'
+plug 'chitoku-k/fzf-zsh-completions'
+plug 'jeffreytse/zsh-vi-mode'
+plug 'zsh-users/zsh-autosuggestions'
+plug 'zsh-users/zsh-completions'
+plug 'zsh-users/zsh-syntax-highlighting'
 
 # Output startup time
 function {
