@@ -35,66 +35,16 @@ unsetopt LIST_AMBIGUOUS
 unsetopt MENU_COMPLETE # do not auto select the first completion entry
 
 
-### Completions ###
-
-autoload -Uz compinit
-zmodload zsh/complist
-compinit -d "$XDG_CACHE_HOME/zsh/zccompdump"
-_comp_options+=(globdots) # Include hidden files.
-
-### Styles ###
-
-zle_highlight=('paste:none')
-
-## case-insensitive (uppercase from lowercase) completion
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-## case-insensitive (all) completion
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-## case-insensitive,partial-word and then substring completion
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
-zstyle ':completion:*' menu select
-# zstyle ':completion::complete:lsof:*' menu yes select
-
-# Tab completion colors
-# zstyle ":completion:*:default" list-colors ${(s.:.)LS_COLORS} "ma=16;5;244;2"
-zstyle ':completion:*:options' list-colors '=^(-- *)=34'
-
-autoload -Uz colors && colors
-
-
-### Bindings ###
-
-stty start undef # Disable Ctrl-q closing terminal
-stty stop undef # Disable Ctrl-s to freeze terminal
-
-# Set Vim-like binding mode
-bindkey -v
-
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-
-bindkey "\e" kill-whole-line
-
-bindkey "^j" down-line-or-beginning-search # Down
-bindkey "^k" up-line-or-beginning-search   # Up
-bindkey "^n" down-line-or-beginning-search # Down
-bindkey "^p" up-line-or-beginning-search   # Up
-
-# Cycle through history based on characters already typed on the line
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "$key[Up]" up-line-or-beginning-search
-bindkey "$key[Down]" down-line-or-beginning-search
-
 ### Source ###
+
+source "$ZDOTDIR/completions.zsh"
+source "$ZDOTDIR/bindings.zsh"
 
 # Dynamically source user configurations
 for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
   source "$file"
 done
+
 
 ### Plugins ###
 

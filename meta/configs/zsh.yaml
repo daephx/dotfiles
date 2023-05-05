@@ -16,6 +16,9 @@
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/.zlogout: config/zsh/zlogout
     ~/.config/zsh/plugins: config/zsh/plugins
+    ~/.config/zsh/:
+      glob: true
+      path: config/zsh/*.zsh
 
 - shell:
     - [
