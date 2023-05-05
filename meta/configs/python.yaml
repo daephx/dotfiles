@@ -1,5 +1,5 @@
 - create:
-  - ~/.config/python
+    - ~/.config/python
 
 - link:
     ~/.config/python/pythonrc.py:

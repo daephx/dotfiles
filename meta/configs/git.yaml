@@ -6,5 +6,5 @@
 - shell:
     - [
         sudo sh -c "apt update && apt install -y git git-lfs",
-        Installing package; Git
+        Installing package; Git,
       ]

@@ -1,4 +1,5 @@
 # ~/.local: Setup environment
+
 - create: ~/.local
 
 - link:
@@ -16,5 +17,5 @@
 - shell:
     - [
         sudo chmod 755 local/bin/*,
-        Give '~/.local/bin/' script executable privileges
+        Give '~/.local/bin/' script executable privileges,
       ]
