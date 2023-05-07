@@ -36,7 +36,7 @@ _nvim() {
 
 editor() {
   # Define editor list if no argument supplied
-  [ $# -eq 0 ] && set -- nvim emacs vim nano
+  [ $# -eq 0 ] && set -- nvim vim nano
   # Loop available arguments
   while [ "$#" -gt 0 ]; do
     cmd="$1" # Set value to temp variable
