@@ -233,7 +233,7 @@ set belloff=all noerrorbells novisualbell t_vb=
 if has("syntax")
   syntax enable
   " Apply spell highlight to comments/strings
-  set spell spellcapcheck
+  set spell
   syntax spell toplevel
 endif
 
