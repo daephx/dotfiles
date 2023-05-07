@@ -1,14 +1,24 @@
-Brewfile.*.lock.json
-secrets.*
-credentials.*
-.pkrvars.hcl
+# General
 *.pkrvars.hcl
-.nvimlog
 .env
-
-themes/
-zsh/custom/
+.pkrvars.hcl
+Brewfile.*.lock.json
+credentials.*
+secrets.*
 
 # Local files.
 # might contain sensitive information
 *.local.*
+
+# Local git worktrees directory
+.worktrees/
+
+# Temporary files
+.[Tt]emp/
+
+# Git sensitive config files
+config/git/credential
+
+# Local notes
+TODO.md
+notes/
