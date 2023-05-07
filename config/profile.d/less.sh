@@ -7,8 +7,7 @@
 # Set less command properties
 export LESS="-QRiFSMn~ \
   --mouse \
-  --wheel-lines=3 \
-  --incsearch"
+  --wheel-lines=3"
 export LESSHISTFILE=-
 # export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export LESSEDIT='nvim -RM ?lm+%lm. %f'
