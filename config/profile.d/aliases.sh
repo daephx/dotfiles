@@ -263,8 +263,6 @@ if command -v batcat > /dev/null; then
   }
   alias help='_bathelp'
   if ! command -v bat > /dev/null; then
-    echo "W: Command 'batcat' in PATH but 'bat' not found!"
-    echo "I: Creating alias for 'bat' until resolved..."
     alias bat="batcat"
   fi
 fi
