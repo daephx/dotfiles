@@ -40,7 +40,7 @@ function main() {
   base_config_path="${meta_dir}/${BASE_CONFIG}${CONFIG_SUFFIX}"
   dotbot="${meta_dir}/dotbot/bin/dotbot"
 
-  log info "Ensuring the dotbot submodule is initialized..."
+  echo -e "Ensuring the dotbot submodule is initialized..."
   git submodule update --init --recursive -- meta/dotbot
 
   # Parse command line arguments
@@ -71,7 +71,7 @@ function parse_standalone() {
   args=("$@")
   items=("$BASE_CONFIG" "${args[@]}")
   for config in "${items[@]}"; do
-    log info "Evaluating dotbot config: $config"
+    echo -e "Evaluating dotbot config: $config"
     execute_command $config
   done
 }
@@ -83,7 +83,7 @@ function parse_profiles() {
   shift
 
   for config in ${CONFIGS} ${@}; do
-    log info "Evaluating dotbot profile: $config"
+    echo -e "Evaluating dotbot profile: $config"
     execute_command $config
   done
 }
