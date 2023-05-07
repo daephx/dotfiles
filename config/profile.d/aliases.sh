@@ -69,8 +69,8 @@ alias sudo="sudo"
 
 # Reload current shell session
 reload() {
-  clear && exec $(sh -c 'ps -p $$ -o ppid=' |
-    xargs -I'{}' readlink -f '/proc/{}/exe')
+  clear && exec $(sh -c 'ps -p $$ -o ppid=' \
+    | xargs -I'{}' readlink -f '/proc/{}/exe')
 }
 
 # Print each PATH entry on a separate line
