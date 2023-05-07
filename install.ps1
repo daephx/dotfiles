@@ -10,7 +10,7 @@
 # You cannot use backticks in this section!           #\
 Param( [Alias("s")]                                   #\
        [Switch]$Standalone                            #\
-)                                                    <#\`
+)                                                    <#\ `
 #endregion # * Pwsh <params> -------------------------------------------------
 #region    # * Bash ----------------------------------------------------------
 set -e # stop execution if return not 0
