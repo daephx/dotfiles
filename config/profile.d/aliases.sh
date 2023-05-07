@@ -344,9 +344,10 @@ cx() { cd "$@" && ls -l; }
 
 # Ripgrep paging
 # alias rg='rg -p -i'
-if command -v delta >/dev/null; then
-  rg() { command rg --json "$@" | delta; }
-fi
+# NOTE: Json flag doesn't work with other flags like files-with-matches
+# if command -v delta >/dev/null; then
+#   rg() { command rg --json "$@" | delta; }
+# fi
 
 # Send files to Trash from command line
 alias trash="mv --force -t ~/.local/share/Trash"
