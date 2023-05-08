@@ -1,0 +1,22 @@
+# btop: A monitor of resources
+# https://github.com/aristocratos/btop
+
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stderr: true
+      stdout: true
+
+- create:
+    - ~/.config/btop/
+
+- clean:
+    ~/.config/btop:
+
+- link:
+    ~/.config/btop/btop.conf: config/btop/btop.conf
+
+- shell:
+    - [sudo apt install -y btop, "Installing package: btop"]
