@@ -1,5 +1,4 @@
-- sudo:
-    - shell:
-        - [apt update && apt install -y docker docker-compose]
-        - [groupadd docker, Creating 'docker' group]
-        - [gpasswd -a $USER docker, Add current user to 'docker' group]
+- shell:
+    - [sudo apt install -y docker docker-compose]
+    - [sudo groupadd docker, Creating 'docker' group]
+    - [sudo gpasswd -a $USER docker, Add current user to 'docker' group]

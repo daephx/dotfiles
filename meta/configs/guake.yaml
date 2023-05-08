@@ -1,6 +1,5 @@
 # You might need this command:
 # `sudo dpkg --configure -a`
 
-- sudo:
-    - shell:
-        - [apt update && apt install -y guake, Installing guake terminal.]
+- shell:
+    - [sudo apt install -y guake, Installing guake terminal.]

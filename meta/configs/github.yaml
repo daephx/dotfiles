@@ -1,6 +1,5 @@
 - link:
     ~/.config/gh/config.yml: config/gh/config.yml
 
-- sudo:
-    - shell:
-        - [apt update && apt install -y gh]
+- shell:
+    - [sudo apt install -y gh, "Installing package gh: github-cli"]

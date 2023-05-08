@@ -8,6 +8,5 @@
       glob: true
       path: config/kitty/*
 
-- sudo:
-    - shell:
-        - [apt install -y kitty, Installing package; Kitty Terminal]
+- shell:
+    - [sudo apt install -y kitty, Installing package; Kitty Terminal]

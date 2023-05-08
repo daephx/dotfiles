@@ -2,12 +2,6 @@
 [submodule "meta/dotbot"]
   path = meta/dotbot
   url = https://github.com/anishathalye/dotbot.git
-[submodule "meta/plugins/sudo"]
-  path = meta/plugins/sudo
-  url = https://github.com/DrDynamic/dotbot-sudo.git
-[submodule "meta/plugins/git"]
-  path = meta/plugins/git
-  url = https://github.com/DrDynamic/dotbot-git.git
 
 # Configs
 [submodule "ansible"]

@@ -7,9 +7,8 @@
       relink: true
       force: true
 
-- sudo:
-    - shell:
-        - [
-            update-alternatives --install /usr/bin/python python /usr/bin/python3 10,
-            Set python3 as the default 'python'.,
-          ]
+- shell:
+    - [
+        sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10,
+        Set python3 as the default 'python'.,
+      ]

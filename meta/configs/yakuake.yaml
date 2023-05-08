@@ -1,3 +1,2 @@
-- sudo:
-    - shell:
-        - [apt update && apt install -y yakuake, Installing Yakuake.]
+- shell:
+    - [sudo apt install -y yakuake, Installing Yakuake.]
