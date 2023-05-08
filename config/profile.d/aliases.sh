@@ -97,7 +97,6 @@ _alias_override_ls() {
   # Detect which `ls` flavor is in use
   if command ls --color > /dev/null; then # GNU `ls`
     colorflag="--color=auto"
-    eval 'dircolors $XDG_CONFIG_HOME/LS_COLORS' > /dev/null
   else # MacOS `ls`
     colorflag="-G"
     export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
