@@ -55,12 +55,6 @@ editor() {
   done
 }
 
-# Unset variables
-# Ensure a clean state for all applicable environment variables
-unset EDITOR
-unset GIT_EDITOR
-unset VISUAL
-
 # Overrides for specific terminal programs
 # Example: prefer to work within vscode from the integrated terminal
 case "$TERM_PROGRAM" in
@@ -70,7 +64,7 @@ esac
 
 # Overrides for SSH
 # Preferred editor for remote sessions
-[ -n "$SSH_CONNECTION" ] && VISUAL='vim'
+[ -n "$SSH_CONNECTION" ] && VISUAL="${VISUAL:-vim}"
 
 # Override for Vim terminal
 [ -n "$VIM_TERMINAL" ] && VISUAL="vim"
