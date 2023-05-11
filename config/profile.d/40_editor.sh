@@ -1,14 +1,11 @@
-#!/usr/bin/env sh
-
-# Default Editor:
-# Conditionally set the default visual editor
-# Provide a list of editor programs in order of priority first
-# Define conditions where by that editor should be selected
+# editor: Conditionally set users default editor
+# assign EDITOR/VISUAL variables based on priority list and context!
+# This script will apply a default editor and expose the editor function for
+# temporarily overriding the associated variables.
 #
-# Such as, making neovim-remote the default visual editor
-# when shell is instantiated from inside a neovim terminal buffer.
+# Default editor order: nvim, vim, vi, nano
 
-_emacs() {
+__editor_emacs() {
   VISUAL="emacsclient -c"
   # Initialize emacs daemon if not running
   if ! emacsclient -e 0 > /dev/null; then
@@ -16,22 +13,21 @@ _emacs() {
   fi
 }
 
-# _nvim() {
-#   VISUAL="nvim" # Set default
-#   [ -n "$NVIM" ] && {
-#     VISUAL="nvim --server \$NVIM --remote-tab"
-#     # Use neovim-remote if available
-#     if command -v nvr >/dev/null; then
-#       VISUAL="nvr -cc '1windo e'"
-#       GIT_EDITOR="nvr -cc 'top sp' --remote-wait"
-#     fi
-#   }
-# }
-
-_nvim() {
-  VISUAL="nvim" # Set default
-  GIT_EDITOR="nvim --cmd 'let g:unception_block_while_host_edits=1'"
-  export PATH="$PATH:$XDG_DATA_HOME/nvim/mason/bin"
+__editor_nvim() {
+  VISUAL="nvim"
+  PATH="$PATH:$XDG_DATA_HOME/nvim/mason/bin"
+  [ -n "$NVIM" ] && {
+    VISUAL="nvim --server \$NVIM --remote-tab"
+    # Use neovim-remote if available
+    if command -v nvr > /dev/null; then
+      VISUAL="nvr -cc '1windo e'"
+      GIT_EDITOR="nvr -cc 'top sp' --remote-wait"
+    else
+      printf "\e[031mE\e[0m: Command could not be located: nvr (neovim-remote)\n"
+      printf "This is recommended for better integration between nvim terminal and git.\n"
+      printf "Install command: 'pip3 install neovim-remote'\n\n"
+    fi
+  }
 }
 
 editor() {
@@ -44,10 +40,10 @@ editor() {
     # Skip apps that are not in PATH
     command -v "$cmd" > /dev/null || continue
     case "$cmd" in
-      nvim) _nvim ;;
-      emacs) _emacs ;;
-      nano) VISUAL="nano" ;;
+      emacs) __editor_emacs ;;
+      nvim) __editor_nvim ;;
       vi*) VISUAL=$(if command -v vim > /dev/null; then echo "vim"; else echo "vi"; fi) ;;
+      nano) VISUAL="nano" ;;
       *?) printf "Unknown editor selected\n" ;;
     esac
     # Break if visual is set
