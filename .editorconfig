@@ -1,0 +1,27 @@
+[*]
+charset = utf-8
+indent_size = 2
+indent_style = space
+max_line_length = 80
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# shfmt
+binary_next_line = true
+function_next_line = false
+keep_padding = false
+space_redirects = true
+switch_case_indent = true
+
+[*.{bat,ps1}]
+max_line_length = 102
+indent_size = 4
+tab_width = 4
+
+[*.md]
+trim_trailing_whitespace = false
+
+[{Makefile,**/Makefile}]
+indent_style = tab
+indent_size = 4
+tab_width = 4
