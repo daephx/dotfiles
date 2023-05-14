@@ -15,6 +15,7 @@
     ~/.zshenv: config/zsh/zshenv
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/.zlogout: config/zsh/zlogout
+    ~/.config/zsh/.zprofile: config/zsh/zprofile
     ~/.config/zsh/plugins: config/zsh/plugins
     ~/.config/zsh/:
       glob: true
