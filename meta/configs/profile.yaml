@@ -15,6 +15,8 @@
 - link:
     ~/.config/LESS_TERMCAPS: config/less/LESS_TERMCAPS
     ~/.config/dir_colors: config/profile/dir_colors
+    ~/.config/user-dirs.dirs: config/profile/user-dirs.dirs
+    ~/.config/user-dirs.locale: config/profile/user-dirs.locale
     ~/.inputrc: config/profile/inputrc
     ~/.profile: config/profile/profile
     ~/.config/profile.d:
