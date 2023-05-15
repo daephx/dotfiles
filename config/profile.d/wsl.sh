@@ -1,6 +1,6 @@
 # WSL: Enabled in windows subsystem
-read -r var < /proc/version
-if ! echo "$var == *wsl" 1> /dev/null; then
+read -r var &> /dev/null < /proc/version
+if test "${var#*microsoft}" = "$var"; then
   return
 fi
 
