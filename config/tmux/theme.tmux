@@ -118,7 +118,7 @@ tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$BG]$right_arrow_icon"
 tmux_set status-left-bg "$G04"
 tmux_set status-left-fg "G12"
 tmux_set status-left-length 150
-LS="#[fg=$user_icon_fg,bg=$BG,bold] $user_icon #[fg=$TC,bg=$BG,nobold]$right_arrow_icon#[bg=$BG,fg=$session_icon_fg] $session_icon #[fg=$TC,bg=$BG]#S "
+LS="#[bg=$BG,fg=$session_icon_fg] $session_icon #[fg=$TC,bg=$BG]#S "
 if "$show_upload_speed"; then
   LS="$LS#[fg=$TC,bg=$BG]$right_arrow_icon#[fg=$TC,bg=$BG] $upload_speed_icon #{upload_speed} #[fg=$TC,bg=$BG]$right_arrow_icon"
 else
@@ -133,7 +133,11 @@ tmux_set status-left "$LS"
 tmux_set status-right-bg "$BG"
 tmux_set status-right-fg "$G12"
 tmux_set status-right-length 150
-RS="#[fg=$TC,bg=$BG] $time_format #[fg=$time_icon_fg,bg=$BG]$time_icon #[fg=$TC,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$BG] $date_format #[fg=$date_icon_fg,bg=$BG]$date_icon "
+user=$(whoami)
+identity="#[fg=cyan,bg=$BG]$user#[fg=$G12,bg=$BG]#[fg=blue,bg=$BG]#h#[fg=$TC,bg=$BG] #[fg=$user_icon_fg,bg=$BG,bold]$user_icon"
+date="$date_format #[fg=$date_icon_fg,bg=$BG]$date_icon"
+time="#[fg=$TC,bg=$BG]$time_format #[fg=$time_icon_fg,bg=$BG]$time_icon"
+RS="$identity #[fg=$TC,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$BG] $time #[fg=$TC,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$BG] $date "
 if "$show_download_speed"; then
   RS="#[fg=$TC,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$BG] $download_speed_icon #{download_speed} $RS"
 fi
