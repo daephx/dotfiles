@@ -47,7 +47,7 @@
         {
           "type": "root",
           "style": "powerline",
-          "foreground": "#ffff66",
+          "foreground": "lightYellow",
           "template": " \uf0e7<#7A7A7A> \ue0b1</>",
           "properties": {
             "root_icon": "\uf0e7"
@@ -56,7 +56,7 @@
         {
           "type": "path",
           "style": "powerline",
-          "foreground": "#fafafa",
+          "foreground": "lightBlue",
           "template": " {{.Path}}",
           "properties": {
             "folder_icon": "\u2026",
