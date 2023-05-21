@@ -1,31 +1,14 @@
-# vim: set ft=ignore
-
-# Global gitignore
-.php_cs.cache
-.ignore
-dumps/
-xdebug*
+# ~/.config/git/ignore: Global gitignore file
+# vim: set ft=gitignore
 
 # System
-.DS_Store
 *.swp
 *~
+.DS_Store
 
-# Docker
-docker-compose.override.yml
-
-# Automatic testing
-.testomatic*
-autotest.rb
-
-# phpactor
-.phpactor.yml
-
-# Golang static analysis
-report-golang-analysis/
-
-# Devdash config for each projects
-.devdash
+# Global gitignore
+.ignore
+dumps/
 
 # lsp files
 .lsp
@@ -33,8 +16,22 @@ report-golang-analysis/
 # Clojure
 .clj-kondo
 
-# PHP
-phpunit.xml.dist
+# Python
+*$py.class
+*.egg-info
+*.py[cod]
+.eggs
+.pytest_cache
+.venv
+__pycache__/
 
-# Vim
-.vimspector.json
+# VSCode
+.vscode
+
+# Worktree directory
+.worktrees/
+
+# Project notes
+notes.md
+notes/
+todo.md
