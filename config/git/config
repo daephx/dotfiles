@@ -11,6 +11,9 @@
   attributesfile = ~/.config/git/attributes
   pager = less -S
 
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
 [commit]
   template = ~/.config/git/message
 
