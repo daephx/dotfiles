@@ -24,6 +24,9 @@
   branch = true
   status = true
 
+[log]
+  date = relative
+
 [status]
   showUntrackedFiles = all
 
