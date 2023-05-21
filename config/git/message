@@ -1,15 +1,15 @@
 
 # [Conventional Commits] [summary] [50-character limit]
 #
-# - build: affect build tool, ci/cd, dependencies, project version
-# - chore: updating grunt tasks etc; no production code change
+# - build: affect build tool, CI/CD, dependencies, project version
+# - chore: updating grunt tasks etc; no production code changes
 # - docs: changes to the documentation only
 # - feat: new feature for the user, not a new feature for build script
 # - fix: bug fix for the user, not a fix to a build script
-# - ops: operational components like infrastructure, deployment, backup, recovery 
+# - ops: operational changes like infrastructure, deployment, backup, recovery
 # - perf: special refactor commits, that improves performance
 # - refactor: refactoring production code, eg. renaming a variable
-# - style: affect the meaning (white-space, formatting, missing semi-colons, etc)
+# - style: affect the meaning (whitespace, formatting, missing semi-colons, etc)
 # - test: adding missing tests, refactoring tests; no production code change
 #
 # [Long Description] [72-character wrapped]
