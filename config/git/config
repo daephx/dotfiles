@@ -70,4 +70,4 @@
 
 [include]
   path = ~/.config/git/aliases
-  path = ~/.config/git/config.user
+  path = ~/.config/git/config.local
