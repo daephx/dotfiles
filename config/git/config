@@ -27,6 +27,12 @@
 [status]
   showUntrackedFiles = all
 
+[fetch]
+  prune = true
+
+[pull]
+  rebase = false
+
 [push]
   default = matching
 
