@@ -57,14 +57,49 @@
   process = git-lfs filter-process
   required = true
 
+
 ### Difftools ###
 
-[difftool]
-  prompt = true
 [diff]
   tool = nvimdiff
+
+[difftool]
+  trustExitCode = true
+  prompt = true
+
+[merge]
+  tool = nvimdiff
+  conflictstyle = diff3
+
+[mergetool]
+  trustExitCode = true
+  keepBackup = false
+  prompt = false
+
+# Neovim
+
 [difftool "nvimdiff"]
-  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+  cmd = "nvim -d $MERGED $BASE $LOCAL $REMOTE -c 'wincmd J | wincmd ='"
+
+[mergetool "nvimdiff"]
+  cmd = "nvim -d $MERGED $BASE $LOCAL $REMOTE -c 'wincmd J | wincmd ='"
+
+# Visual Studio Code
+
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+
+# Visual Studio IDE
+
+[difftool "visualstudio"]
+  cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\Preview\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+
+[mergetool "visualstudio"]
+  cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\Preview\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
+
 
 ### Includes ###
 
