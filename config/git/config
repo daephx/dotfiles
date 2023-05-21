@@ -30,17 +30,18 @@
 [rebase]
   autoStash = true
 
+
 ### Colors ###
 
 [color]
-  ui = true
+  ui = auto
 
 [color "diff"]
-  meta = 11
-  frag = magenta bold
   commit = cyan bold
-  old = red bold
+  frag = magenta bold
+  meta = yellow bold
   new = green bold
+  old = red bold
   whitespace = red reverse
 
 [color "diff-highlight"]
@@ -48,6 +49,7 @@
   oldHighlight = yellow bold 52
   newNormal = green bold
   newHighlight = cyan bold 22
+
 
 ### LFS ###
 
