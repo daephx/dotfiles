@@ -1,12 +1,883 @@
-# Configuration file for dircolors, a utility to help you set the
-# LS_COLORS environment variable used by GNU ls with the --color option.
-# Copyright (C) 1996, 1999-2010 Free Software Foundation, Inc.
-# Copying and distribution of this file, with or without modification,
-# are permitted provided the copyright notice and this notice are preserved.
-# The keywords COLOR, OPTIONS, and EIGHTBIT (honored by the
-# slackware version of dircolors) are recognized but ignored.
-# Below, there should be one TERM entry for each termtype that is colorizable
-TERM Eterm
+# 256 color theme for the color GNU ls utility.
+# Used and tested with dircolors (GNU coreutils) 8.13
+#
+# @author  daephx
+# @license http://opensource.org/licenses/MIT The MIT License (MIT)
+#
+#
+# Standard colors
+#
+# Below are the color init strings for the basic file types. A color init
+# string consists of one or more of the following numeric codes:
+# Attribute codes:
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+#
+#
+# 256 color support
+# see here: http://www.mail-archive.com/bug-coreutils@gnu.org/msg11030.html)
+#
+# Text 256 color coding:
+# 38;5;COLOR_NUMBER
+# Background 256 color coding:
+# 48;5;COLOR_NUMBER
+
+
+# Settings
+MULTIHARDLINK 00 # core
+STICKY 48;5;33;38;5;230 # core
+SETGID 48;5;136;38;5;230 # core
+FIFO 48;5;230;38;5;136;1 # core
+CAPABILITY 30;41 # core
+FILE 0 # core
+RESET 0 # core
+CHR ;1;230;38;5;94;1 # core
+EXEC 01;32 # core
+LINK target # core
+ORPHAN 38;5;9 # core
+NORMAL 0 # core
+DOOR 38;5;127 # core
+BLK ;4;230;38;5;142;1 # core
+STICKY_OTHER_WRITABLE 48;5;64;38;5;230 # core
+SETUID 48;5;160;38;5;230 # core
+SOCK 48;5;230;38;5;136;1 # core
+OTHER_WRITABLE 38;5;110 # core
+DIR 01;34 # core
+
+
+# Filetypes
+.JPG 38;5;215 # image
+.tiff 38;5;215 # image
+.agdai 38;5;110
+.haml 38;5;255
+.flif 38;5;97
+.3p 38;5;7
+.jsx 38;5;45
+.sentinel 38;5;244 # csharp
+.c++ 38;5;204 # C++
+.theme 38;5;116
+.S 38;5;110
+.jxl 38;5;97
+.8xe 38;5;121
+.mka 38;5;166 # audio
+.spec.jsx 38;5;45
+.f08 38;5;81
+.device 38;5;45
+.rmd 38;5;74
+.divx 38;5;202 # video
+.ini 38;5;66
+.sch 38;5;7
+.description 38;5;116
+.gpg 38;5;192;3
+.atr 38;5;213 # rom
+.TIFF 38;5;97
+.a00 38;5;213 # rom
+.3g2 38;5;115 # video
+.zoo 38;5;40
+.xltx 38;5;73 # data
+.cbz 38;5;141
+.F08 38;5;81
+.cdi 38;5;213 # rom
+.vcd 38;5;124
+.bz2 38;5;124 # archive
+.xls 38;5;29
+.djvu 38;5;141
+.gbc 38;5;213 # rom
+.vcf 38;5;7
+.lz 38;5;40
+.license 38;5;185
+.s7z 38;5;40
+.ftn 38;5;81
+.f03 38;5;81
+.cljc 38;5;113
+.7z 38;5;124 # archive
+.z[0-9]{0,2} 38;5;239
+.wasm 38;5;62
+.pfb 38;5;66 # Fonts
+.sass 38;5;204
+.toast 38;5;124
+.82p 38;5;121
+.godot 38;5;66
+.CR2 38;5;215 # image
+.mjs 38;5;185
+.xpm 38;5;215 # image
+.F03 38;5;81
+.sed 38;5;172
+.vhdx 38;5;124 # vm
+.gem 38;5;160 # archive
+.v 38;5;28
+.dicom 38;5;97
+.rss 38;5;215
+.mount 38;5;45
+.tf 38;5;93
+.pro 1 # sh
+.RData 38;5;178
+.gitignore 38;5;166 # Git
+.Z 38;5;124 # archive
+.gitattributes 38;5;166 # git
+.application 38;5;116
+.vdf 38;5;215
+.rake 38;5;160
+.8eu 38;5;121
+.bzl 38;5;113
+.gitconfig 38;5;166 # git
+.tfnt 38;5;7
+.ppts 38;5;166
+.xln 38;5;7
+.cpio 38;5;40
+.st 38;5;213 # rom
+.py 38;5;214 # python
+.fm2 38;5;213 # rom
+.vala 38;5;91
+.nes 38;5;213 # rom
+.lock 38;5;250
+.accdt 38;5;60
+.icns 38;5;97
+.lagda.rst 38;5;81
+.fnt 38;5;66 # Fonts
+.ape 38;5;136;1 # audio
+.zpaq 38;5;40
+.ts 38;5;39
+.midi 38;5;166 # audio
+.Rproj 38;5;11
+.rnc 38;5;178
+.fsi 38;5;74
+.rlib 38;5;216
+.fmp12 38;5;60
+.pdf 38;5;124
+.mkd 1 # Document
+.spec.js 38;5;185
+.1p 38;5;7
+.ics 38;5;7
+.stackdump 38;5;241
+.gp4 38;5;115 # video
+.fvd 38;5;124
+.swo 38;5;244
+.ml 38;5;166
+.bson 38;5;201 # Binary
+.dhall 38;5;178
+.rs 38;5;216
+.vhd 38;5;28 # disk
+.xsd 38;5;178
+.m3u 38;5;116
+.sub 38;5;117
+.pod 38;5;184 # Document
+.directory 38;5;116
+.qcow 38;5;124
+.vfd 38;5;124
+.babelrc 38;5;185 # babel
+.gnumakefile 38;5;66
+.makefile 38;5;66
+.env 38;5;227 # environment
+.vob 38;5;202 # video
+.rdf 1 # Document
+.zcompdump 38;5;241 # zsh
+.glb 38;5;214
+.docm 38;5;111;4
+.tcl 38;5;25
+.path 38;5;45
+.pc 38;5;7
+.ksh 38;5;108
+.vue 38;5;113
+.mk 38;5;66
+.enc 38;5;192;3
+.npmrc 38;5;197 # nodejs
+.error 38;5;160;1
+.scpt 38;5;219
+.nix 38;5;110
+.plist 1 # config
+.agda 38;5;81
+.mm 38;5;7
+.gitmodules 38;5;166 # Git
+.fxml 38;5;178
+.flc 38;5;202 # video
+.dump 38;5;188
+.fsscript 38;5;74
+.java 38;5;167
+.php 38;5;140
+.avi 38;5;202 # video
+.m3u8 38;5;116
+.awk 38;5;108 # awk
+.localstorage 38;5;60
+.apk 38;5;124 # archive
+.profile 38;5;113 # sh
+.hs 38;5;140
+.scm 38;5;107
+.m4v 38;5;202 # video
+.part 38;5;243 # transient
+.aac 38;5;166 # audio
+.ger 38;5;7
+.IFO 38;5;114 # video
+.less 38;5;54
+.psd1 38;5;68
+.a 38;5;40
+.mod 38;5;137;1 # audio
+.query 38;5;107
+.r[0-9]{0,2} 38;5;239
+.nc 38;5;60
+.sql 38;5;188 # sql
+.cljd 38;5;74
+.cfg 38;5;255
+.lhs 38;5;140
+.hxx 38;5;140
+.mo 38;5;135
+.DS_Store 38;5;239
+.p7s 38;5;192;3
+.entitlements 1 # xcode
+.accdb 38;5;60
+.sublime-commands 1 # config
+.md 38;5;74 # markup
+.dtd 38;5;178
+.fish 38;5;108
+.mpeg 38;5;202 # video
+*~ 38;5;243 # transient
+.gemspec 38;5;160
+.markdown 38;5;74 # markup
+.sbt 38;5;167
+.ejs 38;5;185
+.ds_store 38;5;239 # macos
+.torrent 38;5;120
+.pptsm 38;5;166;4
+.scan 38;5;242
+.spl 38;5;7
+.otf 38;5;255
+.elc 38;5;241
+.H 38;5;110 # C
+.fsx 38;5;74
+.bz 38;5;124 # archive
+.nth 38;5;97
+.xltm 38;5;73;4 # data
+.asciidoc 1 # Document
+.kt 38;5;99
+.lzma 38;5;40
+.rom 38;5;213 # rom
+.ii 38;5;110
+.doc 38;5;26
+.h 38;5;140 # C
+.pyo 38;5;240 # python
+.rpm 38;5;124 # archive
+.pgn 38;5;178
+.rmvb 38;5;202 # video
+.sln 38;5;98
+.etx 38;5;5 # Document
+.alac 38;5;136;1 # audio
+.mustache 38;5;166
+.jhtm 38;5;125;1 # XML
+.epsf 38;5;99
+.jad 38;5;215
+.crx 38;5;215
+.chm 38;5;141
+.git 38;5;166
+.pm 38;5;74
+.dropbox 38;5;27
+.ogg 38;5;166 # audio
+.tfstate 38;5;168
+.ldjson 38;5;178 # Data
+.tg 38;5;7
+.jsonnet 38;5;178
+.el 38;5;81
+.img 38;5;124
+.PDF 38;5;141
+.m2ts 38;5;202 # video
+.sudo_as_admin_successful  38;5;242
+.ex 38;5;140
+.odt 38;5;111
+.erl 38;5;163
+.pxm 38;5;215 # image
+.conf 38;5;66
+.rtf 38;5;111
+.zstd 38;5;40
+.lua 38;5;69
+.psd 38;5;74
+.bak 38;5;243 # transient
+.gz 38;5;124 # archive
+.liquid 38;5;106
+.tmp 38;5;243 # transient
+.afm 38;5;66 # Fonts
+.pb 38;5;201 # Binary
+.pps 38;5;166
+.vpk 38;5;215
+.pp 38;5;214
+.mov 38;5;202 # video
+.pl 38;5;74
+.js 38;5;185
+.eslintrc 38;5;56 # eslint
+.c 38;5;111 # C
+.fnl 38;5;230
+.odp 38;5;166
+.styl 38;5;113
+.F95 38;5;81
+.dmg 38;5;209 # disk image
+.pk3 38;5;215
+.f4v 38;5;115 # video
+.gd 38;5;66
+.proto 38;5;201 # Binary
+.cl 38;5;81
+.elm 38;5;74
+.nfo 38;5;5 # Document
+.for 38;5;81
+.csproj 38;5;105 # csharp
+.mht 38;5;125;1 # XML
+.nimble 38;5;81
+.def 38;5;7
+.h++ 38;5;110
+.tsx 38;5;14
+.xwd 38;5;215 # image
+.eex 38;5;140
+.test.tsx 38;5;26
+.d 38;5;28
+.ahk 38;5;41
+.numbers 38;5;112 # data
+.clj 38;5;113
+.material 38;5;163
+.ass 38;5;117
+.C 38;5;81 # C
+.pck 38;5;66
+.err 38;5;160;1
+.cson 38;5;185
+.f95 38;5;81
+.automount 38;5;45
+.test.jsx 38;5;45
+.dmp 38;5;29
+.pak 38;5;215
+.deny 38;5;196
+.htm 38;5;166 # markup
+.83p 38;5;121
+.cnc 38;5;7
+.drl 38;5;217
+.BUP 38;5;241
+.config 1 # config
+.WARC 38;5;40
+.hbs 38;5;202
+.f# 38;5;74
+.zz 38;5;40
+.zx[0-9]{0,2} 38;5;239
+.snapshot 38;5;45
+.zwc 38;5;241
+.zst 38;5;40
+.emf 38;5;215 # image
+.dts 38;5;137;1 # audio
+.PNG 38;5;215 # image
+.zshenv 1 # zsh
+.sgml 38;5;178
+.strings 1 # xcode
+.lzh 38;5;124 # archive
+.zlogout 1 # zsh
+.zlogin 1 # zsh
+.zipx 38;5;40
+.kts 38;5;99
+.zip 38;5;124 # archive
+.sis 38;5;7
+.dat 38;5;137;1 # audio
+.msg 38;5;178
+.yuv 38;5;215 # image
+.yml 38;5;66 # data
+.rdata 38;5;178
+.xml 38;5;166 # XML
+.xz 38;5;40
+.xcworkspacedata 1 # xcode
+.xul 38;5;166
+.xsh 38;5;41
+.xpi 38;5;215
+.yaml 38;5;66 # data
+.css 38;5;75
+.webpack 38;5;74
+.wav 38;5;166 # audio
+.xlsxm 38;5;112;4 # data
+.mobi 38;5;141
+.iml 38;5;166
+.mp3 38;5;166 # audio
+.tdy 38;5;7
+.hh 38;5;140
+.github 38;5;197 # Git
+.p12 38;5;192;3
+.xcuserstate 1 # xcode
+.epp 38;5;214
+.gbr 38;5;7
+.dl 38;5;215 # image
+.lzo 38;5;40
+.csh 38;5;108
+.sqlite3 38;5;188 # sql
+.xcsettings 1 # xcode
+.xcplayground 38;5;166
+.cda 38;5;136;1 # audio
+.lagda 38;5;81
+.html 38;5;166 # markup
+.vimrc 38;5;28 # disk
+.xcf 38;5;215 # image
+.bib 38;5;178
+.xcconfig 1 # xcode
+.mkv 38;5;202 # video
+.pgp 38;5;192;3
+.wv 38;5;136;1 # audio
+.sfv 38;5;116
+.wrl 38;5;216
+.tcc 38;5;110
+.woff 38;5;66 # Fonts
+.wmv 38;5;202 # video
+.sty 38;5;7
+.code-workspace 38;5;185
+.bfe 38;5;192;3
+.key 38;5;166
+.webp 38;5;140
+.hpp 38;5;140 # C++
+.webmanifest 38;5;185
+.gl 38;5;202 # video
+.lisp 38;5;81
+.ai 38;5;185
+.dwg 38;5;216
+.ods 38;5;112 # data
+.DS_STORE 38;5;239 # macos
+.S3M 38;5;137;1 # audio
+.mdx 38;5;74 # markup
+.aux 38;5;243 # transient
+.gql 38;5;199
+.warc 38;5;40
+.SKIP 38;5;244
+.test.ts 38;5;74
+.war 38;5;215
+.vtt 38;5;117
+.cmake 38;5;66
+.au 38;5;166 # audio
+.VOB 38;5;115;1 # video
+.vmdk 38;5;124
+.example 38;5;7
+.txt 1 # Document
+.viminfo 38;5;242 # disk
+.iso 38;5;209 # disk image
+.flv 38;5;202 # video
+.vim 38;5;28 # disk
+.vhdl 38;5;28 # vm
+.vh 38;5;28
+.vdi 38;5;124
+.vcard 38;5;7
+.eps 38;5;215 # image
+.cjs 38;5;185
+.aiff 38;5;136;1 # audio
+.config.ru 38;5;160
+.coffee 38;5;185
+.lnk 38;5;39
+.vbs 38;5;81
+.mtx 38;5;7
+.fp7 38;5;60
+.8xp 38;5;121
+.vba 38;5;81
+.code-snippets 38;5;185
+.mysql 38;5;222
+.vb 38;5;81
+.jsm 38;5;74;1
+.pbxproj 1 # xcode
+.jpeg 38;5;140
+.user-ca-bundle 1 # config
+.adf 38;5;213 # rom
+.o 38;5;243 # transient
+.urlview 38;5;116
+.gel 38;5;213 # rom
+.cc 38;5;204
+.un~ 38;5;241
+.typelib 38;5;60
+.amr 38;5;137;1 # audio
+.mp4 38;5;202 # video
+.sml 38;5;166
+.tsv 38;5;78 # data
+.F90 38;5;81
+.bash_logout 1 # bash
+.F 38;5;81
+.drw 38;5;99
+.tscn 38;5;140
+.tres 38;5;185
+.3gp 38;5;115 # video
+.pptxm 38;5;166;4
+.dll 38;5;241
+.toml 38;5;66
+.leex 38;5;140
+*# 38;5;243 # transient
+.hi 38;5;110
+.fon 38;5;66 # Fonts
+.swift 38;5;166
+.bash 38;5;108 # bash
+.mf 38;5;7
+.bash_profile 1 # bash
+.props 38;5;244 # csharp
+.r 38;5;29
+.bat 38;5;191
+.cxx 38;5;74
+.mpg 38;5;202 # video
+.tif 38;5;215 # image
+.tgz 38;5;124 # archive
+.feature 38;5;7
+.f 38;5;81
+.dylib 38;5;241
+.tga 38;5;215 # image
+.mdb 38;5;60
+.tfm 38;5;7
+.textile 38;5;106 # Document
+.tex 38;5;22
+.test.js 38;5;185
+.pptx 38;5;166
+.terminal 38;5;34
+.temp 38;5;243 # transient
+.woff2 38;5;66 # Fonts
+.tbz 38;5;40
+.tbc 38;5;25
+.targets 38;5;244 # csharp
+.target 38;5;45
+.rng 38;5;178
+.json5 38;5;185
+.tar 38;5;124 # archive
+.t 38;5;74
+.pbm 38;5;215 # image
+.nuv 38;5;202 # video
+.swp 38;5;243 # transient
+.CFUserTextEncoding 38;5;239
+.caf 38;5;137;1 # audio
+.swap 38;5;45
+.epf 1 # config
+.svgz 38;5;215 # image
+.svg 38;5;214
+.cap 38;5;29
+.lagda.tex 38;5;81
+.sv 38;5;28
+.sup 38;5;117
+.sx 38;5;81
+.sug 38;5;7
+.cpy 38;5;25
+.gg 38;5;213 # rom
+.desktop 38;5;54
+.sublime-workspace 1 # config
+.ps 38;5;99
+.sublime-settings 1 # config
+.sublime-project 1 # config
+.mng 38;5;215 # image
+.zsh 38;5;113 # zsh
+.hidden-color-scheme  1 # config
+.sublime 38;5;166
+.wma 38;5;137;1 # audio
+.sublime-keymap 1 # config
+.pyd 38;5;240 # python
+.stl 38;5;216
+.lrz 38;5;40
+.state 38;5;248
+.BAT 38;5;172
+.mi 38;5;7
+.srt 38;5;117
+.bmp 38;5;140
+.nds 38;5;213 # rom
+.in 38;5;242
+.spec.tsx 38;5;26
+.png 38;5;140
+.sparseimage 38;5;124
+.sol 38;5;74
+.socket 38;5;45
+.sms 38;5;213
+.ttf 38;5;66 # Fonts
+.slim 38;5;196
+.zig 38;5;172
+.signature 38;5;192;3
+.ipa 38;5;215
+.sid 38;5;137;1 # audio
+.sh 38;5;108
+.cue 38;5;116
+.pyc 38;5;240 # python
+.scss 38;5;204
+.scala 38;5;167
+.sc 38;5;41
+.sav 38;5;213 # rom
+.nib 38;5;57
+.cljw 38;5;41
+.pcm 38;5;136;1 # audio
+.j64 38;5;213 # rom
+.s3m 38;5;137;1 # audio
+.log 38;5;231 # log
+.s 38;5;152
+.ru 38;5;88
+.rstheme 1 # config
+.rst 1 # Document
+.kak 38;5;172
+.rm 38;5;202 # video
+.tfvars 38;5;93
+.resi 38;5;204
+.res 38;5;167
+.ssa 38;5;117
+.rb 38;5;160
+.rar 38;5;124 # archive
+.R 38;5;49
+.qt 38;5;202 # video
+.storyboard 38;5;196 # xcode
+.service 38;5;45
+.m4 38;5;242
+.psm1 38;5;68
+.psf 1 # config
+.psb 38;5;74
+.mp4a 38;5;137;1 # audio
+.sublime-snippet 1 # config
+.org 38;5;73
+.asm 38;5;152
+.timer 38;5;45
+.lagda.md 38;5;81
+.pfm 38;5;66 # Fonts
+.cr 38;5;251
+.rkt 38;5;81
+.accdr 38;5;60
+.prisma 38;5;231
+.ppt 38;5;214
+.ppm 38;5;215 # image
+.pot 38;5;7
+.zshrc 1 # zsh
+.spec.ts 38;5;74
+.sample 38;5;114 # video
+.DS_store 38;5;239 # macos
+.plt 38;5;7
+.patch 38;5;197
+.pages 38;5;111
+.csv 38;5;113
+.asc 38;5;192;3
+.pid 38;5;248
+.fcm 38;5;137;1 # audio
+.msql 38;5;222
+.graphql 38;5;199
+.pi 38;5;7
+.libsonnet 38;5;142
+.wvc 38;5;136;1 # audio
+.ps1 38;5;68
+.pfa 38;5;66 # Fonts
+.cdr 38;5;97
+.PFA 38;5;66 # Fonts
+.jl 38;5;133
+.diff 38;5;167
+.ply 38;5;216
+.pcf 1 # config
+.pcb 38;5;7
+.bin 38;5;124
+.orig 38;5;241
+.aria2 38;5;241
+.erb 38;5;214
+.vapi 38;5;81
+.sz 38;5;40
+.ogv 38;5;115 # video
+.mde 38;5;60
+.pacnew 38;5;33
+.out 38;5;243 # transient
+.cbl 38;5;25
+.pcap 38;5;29
+.opus 38;5;208
+.old 38;5;242
+.ogm 38;5;202 # video
+.m 38;5;110
+.bazel 38;5;113
+.oga 38;5;137;1 # audio
+.mfasl 38;5;7
+.webloc 38;5;116
+.odb 38;5;111
+.suo 38;5;98
+.adoc 1 # Document
+.nrg 38;5;124
+.pgm 38;5;215 # image
+.xbm 38;5;215 # image
+.nim 38;5;220
+.sassc 38;5;244
+.3ga 38;5;137;1 # audio
+.ndjson 38;5;178 # Data
+.mp4v 38;5;202 # video
+.npmignore 38;5;197 # nodejs
+.jsonl 38;5;178
+.m4a 38;5;166 # audio
+.twig 38;5;113
+.xla 38;5;76 # data
+.sublime-build 1 # config
+.properties 38;5;116
+.mli 38;5;166
+.norg 1 # Document
+.mint 38;5;108
+.mid 38;5;166 # audio
+.docx 38;5;26
+.asf 38;5;202 # video
+.rdb 38;5;243 # transient
+.tmTheme 1 # config
+.merged-ca-bundle 1 # config
+.fs 38;5;74
+.moon 38;5;81
+.gif 38;5;140
+.cp 38;5;74
+.map 38;5;7
+.pxd 38;5;97
+.dart 38;5;25
+.m2v 38;5;202 # video
+.M 38;5;110
+.zprofile 1 # zsh
+.luau 38;5;69
+.stderr 38;5;160;1 # dump
+.a78 38;5;213 # rom
+.allow 38;5;112
+.localized 38;5;239
+.webm 38;5;202 # video
+.pgsql 38;5;222
+.ctp 38;5;81
+.ico 38;5;185
+.last-run 1 # config
+.svelte 38;5;196
+.rproj 38;5;29
+.jsp 38;5;74;1
+.jsonc 38;5;178 # Data
+.hin 38;5;242
+.gs 38;5;81
+.ipk 38;5;213 # rom
+.pem 38;5;192;3
+.import 38;5;255
+.jar 38;5;124 # archive
+.fli 38;5;202 # video
+.jpg 38;5;140
+.cache 38;5;243 # transient
+.cobol 38;5;25
+.sig 38;5;166
+.info 38;5;5 # Document
+.incomplete 38;5;243 # transient
+.sqlite 38;5;188 # sql
+.xlsx 38;5;29
+.hushlogin 38;5;242 # config
+.a64 38;5;213 # rom
+.hidden-tmTheme 1 # config
+.hrl 38;5;163
+.hjson 38;5;178 # Data
+.MOV 38;5;114 # video
+.a52 38;5;213 # rom
+.toc 38;5;243 # transient
+.heex 38;5;140
+.gvimrc 38;5;28 # disk
+.json 38;5;185
+.gp3 38;5;115 # video
+.go 38;5;80
+.accde 38;5;60
+.32x 38;5;213 # rom
+.xib 38;5;208
+.md5 38;5;116
+.deb 38;5;124 # archive
+.ggl 38;5;213 # rom
+.gba 38;5;213 # rom
+.bsp 38;5;215
+.exs 38;5;140
+.mdump 38;5;241
+.eln 38;5;241
+.ipynb 38;5;208
+.A64 38;5;213 # rom
+.flac 38;5;166 # audio
+.f90 38;5;97
+.gb 38;5;213 # rom
+.am 38;5;242
+.epub 38;5;141
+.svh 38;5;28
+.edn 38;5;74
+.eml 38;5;125;1 # XML
+.ear 38;5;215
+.z 38;5;124 # archive
+.pcx 38;5;215 # image
+.db 38;5;188
+.dockerignore 38;5;68 # docker
+.PL 38;5;160
+.cbr 38;5;141
+.cob 38;5;25
+.cs 38;5;141 # csharp
+.cpp 38;5;74 # C++
+.class 38;5;243 # transient
+.cljs 38;5;74
+.cab 38;5;215
+.car 38;5;57
+.cgm 38;5;215 # image
+.bashrc 1 # bash
+.bash_login 1 # bash
+.arj 38;5;40
+.gitlab-ci.yml 38;5;166 # github
+
+
+# Filenames
+*cmakelists.txt 38;5;66 # cmake
+*docker-compose.yaml 38;5;68 # docker
+*gemfile$ 38;5;160 # ruby
+*COPYRIGHT.txt  38;5;245 # documentation
+*gulpfile 38;5;167
+*AUTHORS 38;5;246 # documentation
+*procfile 38;5;140
+*lock 38;5;248 # lockfile
+*core 38;5;241 # dump
+*_gvimrc 38;5;28 # disk
+*Procfile 38;5;244
+*docker-compose.yml 38;5;68 # docker
+*.settings.json 38;5;98
+*COPYRIGHT 38;5;245 # documentation
+*favicon.ico 38;5;185 # web
+*HISTORY 38;5;245 # documentation
+*_test.go 38;5;80 # go
+*mix.lock 38;5;140
+*NOTICE 38;5;245 # documentation
+*Readme* 1 # documentation
+*commit_editmsg 38;5;167 # git
+*_vimrc 38;5;28 # disk
+*CODEOWNERS 38;5;246 # documentation
+*config.local 38;5;67 # config
+*brewfile 38;5;160 # brew
+*bash_logout 38;5;248 # bash
+*CHANGELOG 38;5;246 # documentation
+*COPYING 38;5;185 # documentation
+*PATENTS 38;5;245 # documentation
+*CHANGES 38;5;246 # documentation
+*config 38;5;67 # config
+*@.service 38;5;45
+*CONTRIBUTING.md 38;5;246 # documentation
+*copying.lesser 38;5;185 # documentation
+*id_ed25519 38;5;192;3 # ssh
+*rakefile 38;5;160
+*MANIFEST 38;5;243
+*id_dsa 38;5;192;3 # ssh
+*CodeResources 38;5;239
+*CHANGELOG.md 38;5;246 # documentation
+*Gemfile 38;5;160 # ruby
+*vagrantfile$ 38;5;27 # vagrant
+*workspace 38;5;113
+*webpack 38;5;74
+*VERSION 38;5;220;1 # documentation
+*id_rsa 38;5;192;3 # ssh
+*rmd 38;5;74
+*requirements*.txt 38;5;252 # python
+*copying 38;5;185 # documentation
+*authorized_keys 1 # ssh
+*Gopkg.toml 38;5;3 # Go
+*readme* 1 # documentation
+*rc 38;5;67
+*Cargo.lock 38;5;243 # rust
+*poetry.lock 38;5;243
+*Gemfile.lock 38;5;243 # ruby
+*Rakefile 38;5;160
+*Dockerfile 38;5;68 # docker
+*pm_to_blib 38;5;240
+*PkgInfo 38;5;239
+*node_modules 38;5;197 # nodejs
+*message 38;5;67
+*Makefile 38;5;66 # make
+*docker-compose* 38;5;68 # Docker
+*id_ecdsa 38;5;192;3 # ssh
+*build 38;5;113
+*lockfile 38;5;248 # lockfile
+*containerfile 38;5;68
+*CONTRIBUTORS 38;5;246 # documentation
+*Gopkg.lock 38;5;243 # Go
+*license* 38;5;185 # documentation
+*gnumakefile 38;5;66 # GnuMake
+*known_hosts 1 # ssh
+*makefile 38;5;66 # make
+*INSTALL 38;5;245 # documentation
+*gruntfile 38;5;166
+*COPYRIGHT.md 38;5;245 # documentation
+*LICENSE* 38;5;245 # documentation
+*r 38;5;29 # R
+*Dockerfile* 04;36 # Docker
+*README* 1 # documentation
+*aliases 38;5;67 # sh
+
+
+# Terminals
 TERM ansi
 TERM color-xterm
 TERM con132x25
@@ -23,6 +894,7 @@ TERM cons25
 TERM console
 TERM cygwin
 TERM dtterm
+TERM Eterm
 TERM eterm-color
 TERM gnome
 TERM gnome-256color
@@ -35,15 +907,21 @@ TERM mach-color
 TERM mlterm
 TERM putty
 TERM rxvt
+TERM rxvt-256color
 TERM rxvt-cygwin
 TERM rxvt-cygwin-native
 TERM rxvt-unicode
+TERM rxvt-unicode-256color
+TERM rxvt-unicode256
 TERM screen
 TERM screen-256color
 TERM screen-256color-bce
 TERM screen-bce
 TERM screen-w
 TERM screen.linux
+TERM screen.rxvt
+TERM terminator
+TERM tmux-256color
 TERM vt100
 TERM xterm
 TERM xterm-16color
@@ -51,142 +929,4 @@ TERM xterm-256color
 TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
-# Below are the color init strings for the basic file types. A color init
-# string consists of one or more of the following numeric codes:
-# Attribute codes:
-# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
-# Text color codes:
-# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
-# Background color codes:
-# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
-#NORMAL 00 # no color code at all
-#FILE 00 # regular file: use no color at all
-RESET 0 # reset to "normal" color
-DIR 01;34 # directory
-LINK 01;36 # symbolic link. (If you set this to 'target' instead of a
- # numerical value, the color is as for the file pointed to.)
-MULTIHARDLINK 00 # regular file with more than one link
-FIFO 40;33 # pipe
-SOCK 01;35 # socket
-DOOR 01;35 # door
-BLK 40;33;01 # block device driver
-CHR 40;33;01 # character device driver
-ORPHAN 40;31;01 # symlink to nonexistent file, or non-stat'able file
-SETUID 37;41 # file that is setuid (u+s)
-SETGID 30;43 # file that is setgid (g+s)
-CAPABILITY 30;41 # file with capability
-STICKY_OTHER_WRITABLE 34;40 # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 34;40 # dir that is other-writable (o+w) and not sticky
-STICKY 37;44 # dir with the sticky bit set (+t) and not other-writable
-# This is for files with execute permission:
-EXEC 01;32
-# List any file extensions like '.gz' or '.tar' that you would like ls
-# to colorize below. Put the extension, a space, and the color init string.
-# (and any comments you want to add after a '#')
-# If you use DOS-style suffixes, you may want to uncomment the following:
-#.cmd 01;32 # executables (bright green)
-#.exe 01;32
-#.com 01;32
-#.btm 01;32
-#.bat 01;32
-# Or if you want to colorize scripts even if they do not have the
-# executable bit actually set.
-#.sh 01;32
-#.csh 01;32
- # archives or compressed (bright red)
-.tar 01;31
-.tgz 01;31
-.arj 01;31
-.taz 01;31
-.lzh 01;31
-.lzma 01;31
-.tlz 01;31
-.txz 01;31
-.zip 01;31
-.z 01;31
-.Z 01;31
-.dz 01;31
-.gz 01;31
-.lz 01;31
-.xz 01;31
-.bz2 01;31
-.bz 01;31
-.tbz 01;31
-.tbz2 01;31
-.tz 01;31
-.deb 01;31
-.rpm 01;31
-.jar 01;31
-.rar 01;31
-.ace 01;31
-.zoo 01;31
-.cpio 01;31
-.7z 01;31
-.rz 01;31
-# image formats
-.jpg 01;35
-.jpeg 01;35
-.gif 01;35
-.bmp 01;35
-.pbm 01;35
-.pgm 01;35
-.ppm 01;35
-.tga 01;35
-.xbm 01;35
-.xpm 01;35
-.tif 01;35
-.tiff 01;35
-.png 01;35
-.svg 01;35
-.svgz 01;35
-.mng 01;35
-.pcx 01;35
-.mov 01;35
-.mpg 01;35
-.mpeg 01;35
-.m2v 01;35
-.mkv 01;35
-.ogm 01;35
-.mp4 01;35
-.m4v 01;35
-.mp4v 01;35
-.vob 01;35
-.qt 01;35
-.nuv 01;35
-.wmv 01;35
-.asf 01;35
-.rm 01;35
-.rmvb 01;35
-.flc 01;35
-.avi 01;35
-.fli 01;35
-.flv 01;35
-.gl 01;35
-.dl 01;35
-.xcf 01;35
-.xwd 01;35
-.yuv 01;35
-.cgm 01;35
-.emf 01;35
-# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
-.axv 01;35
-.anx 01;35
-.ogv 01;35
-.ogx 01;35
-# audio formats
-.aac 00;36
-.au 00;36
-.flac 00;36
-.mid 00;36
-.midi 00;36
-.mka 00;36
-.mp3 00;36
-.mpc 00;36
-.ogg 00;36
-.ra 00;36
-.wav 00;36
-# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
-.axa 00;36
-.oga 00;36
-.spx 00;36
-.xspf 00;36
+TERM xterm-kitty
