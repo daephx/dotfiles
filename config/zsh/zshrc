@@ -35,17 +35,6 @@ unsetopt LIST_AMBIGUOUS
 unsetopt MENU_COMPLETE # do not auto select the first completion entry
 
 
-### Source ###
-
-source "$ZDOTDIR/completions.zsh"
-source "$ZDOTDIR/bindings.zsh"
-
-# Dynamically source user configurations
-for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
-  source "$file"
-done
-
-
 ### Plugins ###
 
 # Zap: a minimal zsh plugin manager
@@ -66,6 +55,18 @@ plug 'jeffreytse/zsh-vi-mode'
 plug 'zsh-users/zsh-autosuggestions'
 plug 'zsh-users/zsh-completions'
 plug 'zsh-users/zsh-syntax-highlighting'
+
+
+### Source ###
+
+# Dynamically source user configurations
+for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
+  source "$file"
+done
+
+# Zshrc library
+source "$ZDOTDIR/completions.zsh"
+source "$ZDOTDIR/bindings.zsh"
 
 # Output startup time
 function {
