@@ -1,27 +1,41 @@
 # Ripgrep config
 
-# --- Settings ---
-
-# Don't le ripgrep vomit really long lines to my terminal, and show a preview.
---max-columns=150
---max-columns-preview
-
-# Because who cares about case!?
---smart-case
+# Search hidden files and directories.
+--hidden
 
 # follow symlinks
 --follow
 
-# Set the colors.
---colors=line:none
+# Because who cares about case!?
+--smart-case
+
+# Sort by file path.
+--sort=path
+
+# Don't print lines longer than this limit.
+--max-columns-preview
+--max-columns=150
+
+# Configure color settings and styles.
+--colors=line:fg:0xf2,0xc2,0x60
 --colors=line:style:bold
+--colors=match:bg:0x2b,0x83,0xa6
+--colors=match:fg:0xff,0xff,0xff
+--colors=match:style:nobold
+--colors=path:bg:0x3b,0x3b,0x3b
+--colors=path:fg:white
 
-# --- Filters ---
+# Exclude directories.
+--glob=!.venv
+--glob=!Trash
+--glob=!__pycache__
+--glob=!node_modules
+--glob=!tealdeer
+--glob=!vendor
+--glob=!{.git,.svn,.hg}
 
-# Using glob patterns to include/exclude files or folders
---glob=!git/*
-
-# --- Types ---
+# Exclude file types.
+--glob=!*.{lock}
 
 # Add my 'web' type.
 --type-add
