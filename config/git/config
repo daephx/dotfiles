@@ -39,6 +39,9 @@
 [push]
   default = matching
 
+[fetch]
+  prune = true
+
 [rebase]
   autoSquash = true
   autoStash = true
