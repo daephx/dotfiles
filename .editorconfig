@@ -1,10 +1,13 @@
 [*]
 charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[{*.{sh,bash,zsh},.bash*,.zsh*,.profile}]
 indent_size = 2
 indent_style = space
 max_line_length = 80
-insert_final_newline = true
-trim_trailing_whitespace = true
+tab_width = 4
 
 # shfmt
 binary_next_line = true
@@ -14,14 +17,18 @@ space_redirects = true
 switch_case_indent = true
 
 [*.{bat,ps1}]
-max_line_length = 102
 indent_size = 4
+indent_style = space
+max_line_length = 120
 tab_width = 4
 
 [*.md]
+indent_size = 2
+indent_style = space
+max_line_length = 80
 trim_trailing_whitespace = false
 
 [{Makefile,**/Makefile}]
-indent_style = tab
 indent_size = 4
+indent_style = tab
 tab_width = 4
