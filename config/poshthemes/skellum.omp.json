@@ -126,7 +126,7 @@
           "properties": {
             "display_id": true,
             "display_name": true,
-            "info_separator": " @ "
+            "info_separator": "  "
           }
         },
         {
