@@ -1,0 +1,23 @@
+# Macchina: Fast, minimal and customizable system information frontend.
+# https://github.com/Macchina-CLI/macchina
+
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- create:
+    - ~/.config/macchina/
+    - ~/.config/macchina/ascii/
+    - ~/.config/macchina/themes/
+
+- clean:
+    ~/.config/macchina/:
+
+- link:
+    ~/.config/macchina/macchina.toml: config/macchina/macchina.toml
+    ~/.config/macchina/ascii/magneton.ascii: config/macchina/ascii/magneton.ascii
+    ~/.config/macchina/ascii/Neodymium.toml: config/macchina/themes/Neodymium.toml
+
+- shell:
+    - [cargo install macchina]

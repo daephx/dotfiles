@@ -1,0 +1,50 @@
+# Neodymium
+
+hide_ascii = false
+key_color = "Cyan"
+padding = 0
+separator = "-"
+separator_color = "White"
+spacing = 1
+
+[custom_ascii]
+path = "~/.config/macchina/ascii/magneton.ascii"
+
+[palette]
+glyph = "███"
+type = "Full"
+visible = true
+
+[box]
+border = "plain"
+visible = false
+
+[box.inner_margin]
+x = 1
+y = 0
+
+[randomize]
+key_color = false
+separator_color = false
+
+[keys]
+host = "Host"
+kernel = "Kernel"
+battery = "Battery"
+os = "OS"
+de = "DE"
+wm = "WM"
+distro = "Distro"
+terminal = "Terminal"
+shell = "Shell"
+packages = "Packages"
+uptime = "Uptime"
+memory = "Memory"
+machine = "Machine"
+local_ip = "IP"
+backlight = "Brightness"
+resolution = "Resolution"
+cpu_load = "CPU Load"
+cpu = "CPU"
+gpu = "GPU"
+disk_space = "Disk Space"
