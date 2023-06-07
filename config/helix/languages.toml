@@ -1,0 +1,34 @@
+# Language support configuration.
+# See the languages documentation: https://docs.helix-editor.com/master/languages.html
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+injection-regex = "rust"
+file-types = ["rs"]
+roots = ["Cargo.toml", "Cargo.lock"]
+auto-format = true
+comment-token = "//"
+language-server = { command = "rust-analyzer" }
+indent = { tab-width = 4, unit = "    " }
+rulers = [100]
+
+[[language]]
+name = "java"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]                     
+name = "tsx"
+auto-format = true
+
+[[language]]
+name = "toml"
+scope = "source.toml"
+injection-regex = "toml"
+file-types = ["toml"]
+auto-format = true
+roots = []
+comment-token = "#"
+language-server = { command = "taplo", args = ["lsp", "stdio"] }
+indent = { tab-width = 2, unit = "  " }
+

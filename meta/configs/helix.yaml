@@ -1,0 +1,29 @@
+# Helix: A post-modern modal text editor.
+# https://github.com/helix-editor/helix
+
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean:
+    ~/.config/helix:
+
+- create:
+    - ~/.config/helix/
+    - ~/.config/helix/themes/
+
+- link:
+    ~/.config/helix/config.toml: config/helix/config.toml
+    ~/.config/helix/languages.toml: config/helix/languages.toml
+    ~/.config/helix/themes:
+      glob: true
+      path: config/helix/themes/*
+
+- shell:
+    - [
+        sudo add-apt-repository ppa:maveonair/helix-editor
+        sudo apt update
+        sudo apt install helix,
+        "Installing PPA package: Helix",
+      ]

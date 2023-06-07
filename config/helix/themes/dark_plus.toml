@@ -1,0 +1,30 @@
+inherits = "dark_plus"
+
+"ui.background" = {}
+"ui.background.separator" = { bg = "white", fg = "black" }
+
+"ui.bufferline.active" = { fg = "blue", bg = "dark_gray4" }
+"ui.bufferline.inactive" = { fg = "dark_gray4", bg = "background" }
+
+"ui.statusline" = { bg = "dark_gray3", fg = "white" }
+"ui.statusline.inactive" = { bg = "dark_gray3", fg = "white" }
+"ui.statusline.insert" = { bg = "teal", fg = "background" }
+"ui.statusline.normal" = { bg = "blue", fg = "background" }
+"ui.statusline.select" = { bg = "gold", fg = "background" }
+"ui.statusline.separator" = { fg = "dark_gray4" }
+
+"ui.window" = { fg = "widget" }
+"ui.help" = { fg = "text" }
+"ui.menu" = { fg = "text" }
+"ui.popup" = { fg = "text" }
+
+"diff.plus" = { fg = "pale_green" }
+"diff.delta" = { fg = "blue" }
+"diff.minus" = { fg = "red" }
+
+[palette]
+gold = "#ffaf00"
+teal = "#57d5bb"
+red = "#ff4a4a"
+
+cursor = "#ffd100"
