@@ -1,0 +1,4 @@
+# GNU Readline: provides in-line editing and history for interactive programs
+
+- link:
+    ~/.inputrc: config/readline/inputrc
