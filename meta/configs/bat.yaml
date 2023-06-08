@@ -1,0 +1,15 @@
+# Bat: A cat(1) clone with wings.
+# https://github.com/sharkdp/bat
+
+- create:
+    - ~/.config/bat/
+
+- link:
+    ~/.config/bat/config: config/bat/config
+
+- shell:
+    - [sudo sh -c "apt install -y batcat", Install package; batcat]
+    - [
+        sudo sh -c "ln -s /usr/bin/batcat /usr/local/bin/bat",
+        SymLink 'batcat' binary to 'bat',
+      ]
