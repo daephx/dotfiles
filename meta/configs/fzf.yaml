@@ -1,0 +1,19 @@
+# Fzf: A command-line fuzzy finder
+# https://github.com/junegunn/fzf
+
+- defaults:
+    shell:
+      stderr: true
+      stdout: true
+
+- create:
+    - ~/.config/fzf/
+
+- link:
+    ~/.config/fzf/:
+      force: true
+      glob: true
+      path: config/fzf/*
+
+- shell:
+    - [meta/scripts/install-fzf.sh, "Running install script: fzf"]

@@ -1,23 +1,8 @@
 # FZF Configuration
-if [[ ! -d "$HOME/.fzf" ]]; then
-  return
-fi
+# shellcheck disable=SC1091
 
-if [[ ! "$PATH" == *$HOME/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
-fi
-
-[[ -n $BASH_VERSION ]] && {
-  [[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.bash" 2> /dev/null
-  source "$HOME/.fzf/shell/key-bindings.bash"
-}
-
-[[ -n $ZSH_VERSION ]] && {
-  [[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
-  source "$HOME/.fzf/shell/key-bindings.zsh"
-}
-
-# ---
+[ -n "$BASH_VERSION" ] && source "$XDG_CONFIG_HOME/fzf/fzf.bash"
+[ -n "$ZSH_VERSION" ] && source "$XDG_CONFIG_HOME/fzf/fzf.zsh"
 
 # Movement Bindings
 FZF_MOVEMENT=" \
