@@ -23,4 +23,3 @@
 - shell:
     - [git submodule sync --recursive -- meta/dotbot]
     - [git submodule update --recursive -- meta/dotbot]
-    - [sudo apt update, Updating package index]
