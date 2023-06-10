@@ -6,11 +6,11 @@
       relink: true
 
 - create:
-    - ~/.config/bash
+    - ~/.config/bash/
 
 - clean:
-    ~/.config/bash:
+    ~/.config/bash/:
 
 - link:
-    ~/.bashrc: config/bash/bashrc
-    ~/.bash_logout: config/bash/bash_logout
+    ~/.bashrc: config/bash/bashrc.bash
+    ~/.bash_logout: config/bash/bash_logout.bash
