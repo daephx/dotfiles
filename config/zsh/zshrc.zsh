@@ -65,7 +65,7 @@ for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
 done
 
 # Zshrc library
-source "$ZDOTDIR/completions.zsh"
+source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/bindings.zsh"
 
 # Output startup time

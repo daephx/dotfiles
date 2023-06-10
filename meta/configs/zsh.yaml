@@ -6,24 +6,43 @@
       relink: true
 
 - create:
+    - ~/.cache/zsh/
     - ~/.config/zsh/
+    - ~/.local/share/zsh/
+    - ~/.local/share/zsh/completion/
+    - ~/.local/share/zsh/plugins/
+    - ~/.local/state/zsh/
 
 - clean:
     ~/.config/zsh:
+    ~/.local/share/zsh:
 
 - link:
-    ~/.zshenv: config/zsh/zshenv
-    ~/.config/zsh/.zshrc: config/zsh/zshrc
-    ~/.config/zsh/.zlogout: config/zsh/zlogout
-    ~/.config/zsh/.zprofile: config/zsh/zprofile
-    ~/.config/zsh/plugins: config/zsh/plugins
+    ~/.zshenv: config/zsh/zshenv.zsh
+    ~/.config/zsh/.zshenv: config/zsh/zshenv.zsh
+
+    ~/.config/zsh/.zlogout: config/zsh/zlogout.zsh
+    ~/.config/zsh/.zprofile: config/zsh/zprofile.zsh
+    ~/.config/zsh/.zshrc: config/zsh/zshrc.zsh
+
     ~/.config/zsh/:
       glob: true
       path: config/zsh/*.zsh
 
+    ~/.local/share/zsh/completion:
+      glob: true
+      path: config/zsh/completion/*
+
+    ~/.local/share/zsh/plugins:
+      glob: true
+      path: config/zsh/plugins/*
+
 - shell:
     - [
-        sh -c "if ! command -v zsh; then sudo apt install -y zsh; fi",
-        Installing Package; 'zsh',
+        "command -v zsh > /dev/null || sudo apt install -y zsh",
+        "Installing package: zsh",
       ]
-    - [sudo usermod -s $(which zsh) $USER, Set zsh as default for $USER]
+    - [
+        "[ $SHELL = '/usr/bin/zsh' ] || sudo usermod -s $(which zsh) $USER",
+        "Set zsh as default for $USER",
+      ]
