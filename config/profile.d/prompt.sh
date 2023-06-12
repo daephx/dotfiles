@@ -1,6 +1,4 @@
 # ~/.prompt: initialize basic prompt for posix shells
-# shellcheck shell=sh
-# vim: ft=sh:
 
 parse_git_dirty() {
   [ "$(git status --porcelain 2> /dev/null)" ] && echo "*"
@@ -24,7 +22,6 @@ bash_prompt() {
 }
 
 zsh_prompt() {
-  # shellcheck disable=3003
   NEWLINE=$'\n'
   user="%F{cyan}${USER}"
   git="%F{yellow}$(parse_git_branch)"
@@ -50,5 +47,5 @@ initalize_prompt() {
   [ "$shell" = "zsh" ] && zsh_prompt
 }
 
-# Finally, initalize prompt
+# Finally, initialize prompt
 initalize_prompt
