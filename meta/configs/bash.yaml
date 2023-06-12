@@ -15,3 +15,7 @@
 - link:
     ~/.bashrc: config/bash/bashrc.bash
     ~/.bash_logout: config/bash/bash_logout.bash
+
+    ~/.config/bash/:
+      glob: true
+      path: config/bash/*.bash
