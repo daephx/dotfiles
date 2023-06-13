@@ -40,5 +40,9 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "$key[Up]" up-line-or-beginning-search
-bindkey "$key[Down]" down-line-or-beginning-search
+
+bindkey "^[[A" up-line-or-beginning-search # Arrow up
+bindkey "^[[B" down-line-or-beginning-search # Arrow down
+
+bindkey "^N" up-line-or-beginning-search # Ctrl-p
+bindkey "^P" down-line-or-beginning-search # Ctrl-n
