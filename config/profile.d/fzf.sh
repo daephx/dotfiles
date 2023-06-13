@@ -73,6 +73,7 @@ unset FZF_OPTIONS
 # Extra options
 export FZF_DEFAULT_COMMAND="rg -uu --files -H"
 export FZF_ALT_COMMAND="fd -uu -t f"
+export FZF_COMPLETION_TRIGGER="**"
 
 # CTRL-/ | Toggle small preview window to see the full command
 # CTRL-Y | Copy the command into clipboard using pbcopy
