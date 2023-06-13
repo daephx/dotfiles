@@ -1,4 +1,7 @@
-### Bindings ###
+# zsh/bindings: Keyboard binding options for zsh(1)
+
+# Make Vi mode transitions faster (hundredths of a second)
+export KEYTIMEOUT=1
 
 # Disable stty bindings
 stty quit ""
