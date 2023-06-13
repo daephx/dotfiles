@@ -50,7 +50,7 @@ FZF_OPTIONS=" \
 --info=inline \
 --layout=reverse \
 --margin=0,1 \
---preview-window border-vertical \
+--preview-window border-left \
 --pointer='❯' \
 --prompt='❯ '"
 
