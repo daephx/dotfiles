@@ -27,10 +27,8 @@ zle -N zle-line-init
 echo -ne "\e[5 q" # Use beam shape cursor on startup.
 preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
 
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-
-bindkey "\e" kill-whole-line
+# Fix backspace after vi escape
+bindkey "^?" backward-delete-char
 
 bindkey "^j" down-line-or-beginning-search # Down
 bindkey "^k" up-line-or-beginning-search   # Up
