@@ -30,6 +30,13 @@ preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
 # Fix backspace after vi escape
 bindkey "^?" backward-delete-char
 
+# Fix home and end key in vim terminal
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+bindkey -M vicmd "^[[H" beginning-of-line
+bindkey -M vicmd "^[[F" end-of-line
+
 # Fix vim emulate Ctrl-key mappings
 bindkey "^H" backward-delete-char
 bindkey "^U" backward-kill-line
