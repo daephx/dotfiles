@@ -1,7 +1,10 @@
 ### Bindings ###
 
+# Disable stty bindings
+stty quit ""
 stty start undef # Disable Ctrl-q closing terminal
-stty stop undef # Disable Ctrl-s to freeze terminal
+stty stop undef  # Disable Ctrl-s to freeze terminal
+stty susp undef  # Disable Ctrl-Z to suspect process
 
 # Set Vim-like binding mode
 bindkey -v
