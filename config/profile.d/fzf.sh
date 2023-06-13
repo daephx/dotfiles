@@ -24,6 +24,10 @@ FZF_COLORS=" \
 --color=hl+:3 \
 --color=hl:6"
 
+# Event based bindings
+FZF_EVENTS=" \
+--bind='change:first'"
+
 # Movement keyboard bindings
 FZF_KEYS=" \
 --bind='alt-a:toggle-all' \
@@ -57,11 +61,13 @@ FZF_OPTIONS=" \
 # Assemble and export default options
 export FZF_DEFAULT_OPTS=" \
 $FZF_COLORS \
+$FZF_EVENTS \
 $FZF_KEYS \
 $FZF_OPTIONS"
 
 # Cleanup temp variables
 unset FZF_COLORS
+unset FZF_EVENTS
 unset FZF_KEYS
 unset FZF_OPTIONS
 
