@@ -42,6 +42,11 @@ bindkey "^H" backward-delete-char
 bindkey "^U" backward-kill-line
 bindkey "^W" backward-kill-word
 
+# Bindings for `v` is already mapped to visual mode, use `ctrl-v` to open Vim
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd "^V" edit-command-line
+
 # Cycle through history based on characters already typed on the line
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
