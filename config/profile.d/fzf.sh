@@ -8,7 +8,7 @@
 # Color definitions
 FZF_COLORS=" \
 --color=dark \
---color=border:8 \
+--color=border:238 \
 --color=gutter:-1 \
 --color=header:3 \
 --color=info:5 \
