@@ -30,10 +30,10 @@ preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
 # Fix backspace after vi escape
 bindkey "^?" backward-delete-char
 
-bindkey "^j" down-line-or-beginning-search # Down
-bindkey "^k" up-line-or-beginning-search   # Up
-bindkey "^n" down-line-or-beginning-search # Down
-bindkey "^p" up-line-or-beginning-search   # Up
+# Fix vim emulate Ctrl-key mappings
+bindkey "^H" backward-delete-char
+bindkey "^U" backward-kill-line
+bindkey "^W" backward-kill-word
 
 # Cycle through history based on characters already typed on the line
 autoload -U up-line-or-beginning-search
