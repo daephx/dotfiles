@@ -31,23 +31,22 @@ FZF_EVENTS=" \
 # Movement keyboard bindings
 FZF_KEYS=" \
 --bind='alt-a:toggle-all' \
---bind='alt-d:page-down+refresh-preview' \
+--bind='alt-d:preview-half-page-down' \
 --bind='alt-g:ignore' \
 --bind='alt-h:backward-char+refresh-preview' \
 --bind='alt-l:forward-char+refresh-preview' \
 --bind='alt-p:toggle-preview' \
 --bind='alt-s:toggle-sort' \
---bind='alt-u:page-up+refresh-preview' \
+--bind='alt-u:preview-half-page-up' \
 --bind='alt-y:yank' \
---bind='ctrl-d:half-page-down+refresh-preview' \
---bind='ctrl-g:top' \
+--bind='ctrl-d:preview-half-page-down' \
 --bind='ctrl-l:clear-screen' \
---bind='ctrl-s:preview-page-up' \
 --bind='ctrl-u:half-page-up+refresh-preview' \
---bind='ctrl-x:preview-page-down' \
---bind='ctrl-y:kill-line' \
---bind='esc:unix-line-discard' \
---bind='home:top'"
+--bind='ctrl-u:unix-line-discard' \
+--bind='end:last' \
+--bind='home:first' \
+--bind='pgdn:half-page-down+refresh-preview' \
+--bind='pgup:half-page-up+refresh-preview'"
 
 # General options
 FZF_OPTIONS=" \
