@@ -110,6 +110,7 @@
 
 [merge]
   conflictstyle = diff3
+  log = true # Include summaries of merged commits in new merge commit messages
   tool = nvimdiff
 
 [mergetool]
