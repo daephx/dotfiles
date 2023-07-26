@@ -57,6 +57,13 @@
 [color]
   ui = auto
 
+[color "decorate"]
+  HEAD = yellow
+  branch = green
+  remoteBranch = magenta
+  stash = magenta
+  tag = yellow bold
+
 [color "diff"]
   commit = cyan bold
   frag = magenta bold
