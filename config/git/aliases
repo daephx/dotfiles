@@ -4,56 +4,76 @@
 [alias]
 
   # Shorthands
-  b = branch
+  br = branch
+  ci = commit
   co = checkout
-  del = branch -D
-  s = status
+  cp = cherry-pick
+  f = fetch
+  mb = merge-base
+  r = remote
+  sm = submodule
   st = status
-  up = fetch --all
   wt = worktree
 
-  # Styling output
-  br = branch
-  gf = log --color --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%C(bold blue) <%an>%C(yellow)%d %Creset' --abbrev-commit
-  lg = log --graph --date=relative --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit
-  lm = log -n 1 # <CommitID>
-  ls = log --oneline --graph
-  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-  lsa = config --get-regexp alias
+  # Information
+  sh = show -w
+  ss = show --stat
 
-  # Either this requires a rework or platform depended aliases will have to be sorted
-  # FIXME: git alias depends on sed, ! this is not os portable
-  alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  # Lists
+  l = log --graph --stat=120,80 --pretty=tformat:\"%C(cyan)%h %C(reset)%s%C(blue) <%cn>%C(yellow)%d\"
+  la = log --all
+  ls = log --graph --pretty=format:\"%C(cyan)%h%Creset - %<(72,trunc)%s %Cgreen(%cr)%C(bold blue) <%an>%C(yellow)%d %Creset\" --abbrev-commit
+  rs = log --oneline -30 --simplify-by-decoration --first-parent
+  sl = stash list --pretty=format:\"%C(cyan)%h%C(reset) %<(10,trunc)%C(bold magenta)%gd%C(reset) - %<(72,trunc)%s %C(green)(%ad)%C(reset)\"
+
+  # Diff
+  dc = diff --cached --ignore-all-space
+  dh = diff HEAD~1
+  di = diff --ignore-all-space
+  ds = diff --staged
+  dw = diff --color-words
+
+  conflicts = diff --name-only --diff-filter=U
+  stat = diff --stat=160,120
 
   # Operations
+  bD = branch -D
+  ba = branch -a
+  cob = checkout -b
+  fa = fetch --all
+  ff = merge --ff-only
+  noff = merge --no-ff
+  up = fetch --all
+
   abort = rebase --abort
-  amend = commit -a --amend
-  conflicts = diff --name-only --diff-filter=U
-  count-commits = rev-list --count HEAD
-  done = !git push origin HEAD
-  initial = !git rev-list HEAD | tail -n 1 # Get the root commit
-  recommit = commit --amend -C@@{0}
-  res = !git reset --hard
-  reup = fetch --all && git reset --hard origin/master
-  save = !git add -A && git commit -m "chore: commit save point"
-  undo = reset HEAD~1 --mixed
-  unstage = reset HEAD --
-
-  # branch operations
-  main = checkout main
-  feat = "!f() { git checkout -b feat/$1; }; f"
-  fix = "!f() { git checkout -b fix/$1; }; f"
-  refactor = "!f() { git checkout -b refactor/$1; }; f"
-
-  # Create ignore file from Toptal.io
-  ignore = "!f() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; f"
-
-  hash = "!f() { git rev-parse $1 | cut -c1-7; }; f"
+  alias = config --get-regexp alias
+  amend = commit --amend
+  authors = shortlog -nse
+  count = rev-list --count HEAD
+  desc = describe --tags
   find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+  first = rev-list --max-parents=0 HEAD
+  hash = "rev-parse"
+  head = log -1
+  hist = log --
+  hooks = rev-parse --git-path hooks
+  hreset = reset --hard HEAD
+  patch = format-patch --stdout
+  recommit = commit --amend -C@@{0}
+  root = rev-parse --show-toplevel
+  sup = submodule update --init --recursive
+  uncommit = reset --soft HEAD^
+  unstage = reset HEAD --
+  wip = commit --no-verify -m WIP
 
-  whoami-user = !git config user.name
-  whoami-email = !git config user.email
+  # Scripted aliases
+  # NOTE: These command aliases utilize ksh/bash syntax, as a result they are
+  # not supported on windows without the git-bash emulator.
 
-  # FIXME: Failed execution for full git whoami string
-  whoami = "!f() { printf '$(git config user.name) <$(git config user.email)>'; }; f"
+  dm = !git diff --ignore-all-space $(git merge-base HEAD origin/$(git main)) HEAD
+  dms = !git diff --name-status $(git merge-base HEAD origin/$(git main)) HEAD
+
+  cleanup = "!git remote prune origin && git gc && git clean -df && git stash clear"
+  mine = !git log --author=$(git config --get user.email)
+  sclean = !git submodule update --init --recursive && git submodule foreach --recursive "git reset --hard" && git submodule foreach --recursive "git clean -fd"
+  whoami = "!git config user.name && git config user.email"
