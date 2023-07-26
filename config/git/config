@@ -102,6 +102,10 @@
 ### Difftools ###
 
 [diff]
+  algorithm = histogram
+  colorMoved = default
+  navigate = true # Use `n` and `N` to move between diff sections.
+  renames = copies # Detect copies as well as renames.
   tool = nvimdiff
 
 [difftool]
