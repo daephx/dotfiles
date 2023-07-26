@@ -147,6 +147,25 @@
   cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\Preview\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
 
 
+### URL ###
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "git://github.com/"
+  pushInsteadOf = "github:"
+
+[url "git://github.com/"]
+  insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
+
+
 ### Includes ###
 
 [include]
