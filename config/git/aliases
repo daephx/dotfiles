@@ -1,4 +1,6 @@
-# vim: set ft=gitconfig
+# git/aliases: Command aliases for git version control
+# vim: set ft=gitconfig:
+
 [alias]
 
   # Shorthands

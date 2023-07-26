@@ -1,5 +1,5 @@
 # ~/.config/git/ignore: Global gitignore file
-# vim: set ft=gitignore
+# vim: set ft=gitignore:
 
 # System
 *.swp
