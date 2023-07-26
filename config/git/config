@@ -6,9 +6,9 @@
   defaultBranch = main
 
 [core]
+  attributesfile = ~/.config/git/attributes
   autocrlf = input
   excludesfile = ~/.config/git/ignore
-  attributesfile = ~/.config/git/attributes
   pager = less -S
 
   # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -61,19 +61,19 @@
   whitespace = red reverse
 
 [color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = yellow bold 52
-  newNormal = green bold
   newHighlight = cyan bold 22
+  newNormal = green bold
+  oldHighlight = yellow bold 52
+  oldNormal = red bold
 
 
 ### LFS ###
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+  smudge = git-lfs smudge -- %f
 
 
 ### Difftools ###
@@ -82,17 +82,17 @@
   tool = nvimdiff
 
 [difftool]
-  trustExitCode = true
   prompt = true
+  trustExitCode = true
 
 [merge]
-  tool = nvimdiff
   conflictstyle = diff3
+  tool = nvimdiff
 
 [mergetool]
-  trustExitCode = true
   keepBackup = false
   prompt = false
+  trustExitCode = true
 
 # Neovim
 
