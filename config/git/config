@@ -10,7 +10,7 @@
   attributesfile = ~/.config/git/attributes
   autocrlf = input
   excludesfile = ~/.config/git/ignore
-  pager = less -S
+  pager = delta
 
   # Speed up commands involving untracked files such as `git status`.
   # https://git-scm.com/docs/git-update-index#_untracked_cache
@@ -61,6 +61,20 @@
   # If a command is mistyped, make Git automatically
   # run the command it thinks the user wanted to type.
   autocorrect = immediate
+
+
+### Delta ###
+
+[delta]
+  decorations = true
+  line-numbers = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
 
 
 ### Colors ###
