@@ -51,6 +51,8 @@
   autoSquash = true
   autoStash = true
 
+[branch]
+  sort = -committerdate # Show most recently changed branches first.
 
 ### Colors ###
 
