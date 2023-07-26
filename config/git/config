@@ -57,6 +57,11 @@
 [stash]
   showPatch = true
 
+[help]
+  # If a command is mistyped, make Git automatically
+  # run the command it thinks the user wanted to type.
+  autocorrect = immediate
+
 
 ### Colors ###
 
