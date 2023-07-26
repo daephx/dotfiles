@@ -54,6 +54,10 @@
 [branch]
   sort = -committerdate # Show most recently changed branches first.
 
+[stash]
+  showPatch = true
+
+
 ### Colors ###
 
 [color]
