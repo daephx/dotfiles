@@ -37,7 +37,7 @@
   rebase = false
 
 [push]
-  default = matching
+  default = current
 
 [fetch]
   prune = true
