@@ -203,6 +203,14 @@
           "template": " \ue77f {{if .Unsupported}}\uf071{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
         },
         {
+          "type": "unity",
+          "style": "powerline",
+          "foreground": "15",
+          "properties": {
+            "http_timeout": 2000
+          }
+        },
+        {
           "type": "shell",
           "style": "powerline",
           "foreground": "15",
