@@ -182,6 +182,12 @@
           "template": " \ue718 {{if .PackageManagerIcon}}{{.PackageManagerIcon}} {{end}}{{.Full}}<8> \ue0b3</>"
         },
         {
+          "type": "perl",
+          "style": "powerline",
+          "foreground": "15",
+          "template": " \ue769 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
           "type": "python",
           "style": "powerline",
           "foreground": "214",
