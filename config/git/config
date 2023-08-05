@@ -63,6 +63,8 @@
   # run the command it thinks the user wanted to type.
   autocorrect = immediate
 
+[rerere]
+  enabled = true
 
 ### Delta ###
 
