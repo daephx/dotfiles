@@ -1,3 +1,4 @@
+# Git global/user configuration
 # vim: set ft=gitconfig:
 
 ### Core ###
@@ -182,6 +183,15 @@
 
 ### Includes ###
 
+# Unix
+
 [include]
   path = ~/.config/git/aliases
   path = ~/.config/git/config.local
+
+# Windows
+
+[include]
+  path = ~/AppData/Local/git/aliases
+  path = ~/AppData/Local/git/config.local
+  path = ~/AppData/Local/git/config.windows
