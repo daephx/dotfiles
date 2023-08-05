@@ -126,7 +126,7 @@
           "properties": {
             "display_id": true,
             "display_name": true,
-            "info_separator": "  "
+            "info_separator": " \uf1fa "
           }
         },
         {
@@ -219,7 +219,7 @@
           "style": "plain",
           "foreground": "2",
           "foreground_templates": ["{{if gt .Code 0}}1{{end}}"],
-          "template": "❯",
+          "template": "\u276F",
           "properties": {
             "always_enabled": true
           }
