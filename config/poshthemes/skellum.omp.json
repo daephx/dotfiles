@@ -215,7 +215,7 @@
           "template": "\u2514"
         },
         {
-          "type": "exit",
+          "type": "status",
           "style": "plain",
           "foreground": "2",
           "foreground_templates": ["{{if gt .Code 0}}1{{end}}"],
