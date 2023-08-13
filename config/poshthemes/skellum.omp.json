@@ -149,7 +149,7 @@
           "type": "terraform",
           "style": "powerline",
           "foreground": "93",
-          "template": " {{ .WorkspaceName }}{{ if .Version }} {{ .Version }}{{ end }} "
+          "template": " {{ .WorkspaceName }}{{ if .Version }} {{ .Version }}{{ end }}<8> \ue0b3</>"
         },
         {
           "type": "unity",
