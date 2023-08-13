@@ -122,6 +122,12 @@
           }
         },
         {
+          "type": "docker",
+          "style": "powerline",
+          "background": "26",
+          "template": " \uf308 {{ .Context }}<8> \ue0b3</>"
+        },
+        {
           "type": "kubectl",
           "style": "powerline",
           "foreground": "62",
