@@ -140,6 +140,12 @@
           "template": " \udb82\udc33 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}<8> \ue0b3</>"
         },
         {
+          "type": "project",
+          "style": "powerline",
+          "foreground": "227",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }}\uf487 {{.Version}}{{ end }} {{ if .Name }}{{ .Name }}{{ end }}{{ end }}<8> \ue0b3</>"
+        },
+        {
           "type": "terraform",
           "style": "powerline",
           "foreground": "93",
