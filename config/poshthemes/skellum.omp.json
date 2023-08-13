@@ -233,7 +233,7 @@
           "type": "shell",
           "style": "powerline",
           "foreground": "15",
-          "template": " \udb81\udfb7 {{.Name}}"
+          "template": " \udb81\udfb7 {{.Name}} "
         }
       ]
     },
