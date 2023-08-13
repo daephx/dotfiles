@@ -155,6 +155,7 @@
           "type": "unity",
           "style": "powerline",
           "foreground": "15",
+          "template": " \ue721 {{ .UnityVersion }}{{ if .CSharpVersion }} {{ .CSharpVersion }}{{ end }}<8> \ue0b3</>",
           "properties": {
             "http_timeout": 2000
           }
