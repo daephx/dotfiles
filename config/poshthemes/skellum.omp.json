@@ -95,24 +95,6 @@
       "alignment": "right",
       "segments": [
         {
-          "type": "terraform",
-          "style": "powerline",
-          "foreground": "93",
-          "template": " {{ .WorkspaceName }}{{ if .Version }} {{ .Version }}{{ end }} "
-        },
-        {
-          "type": "lua",
-          "style": "powerline",
-          "foreground": "74",
-          "template": " \ue620 {{.Full}}<8> \ue0b3</>"
-        },
-        {
-          "type": "kubectl",
-          "style": "powerline",
-          "foreground": "62",
-          "template": " \udb82\udc33 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}<8> \ue0b3</>"
-        },
-        {
           "type": "aws",
           "style": "powerline",
           "foreground": "214",
@@ -140,28 +122,36 @@
           }
         },
         {
+          "type": "kubectl",
+          "style": "powerline",
+          "foreground": "62",
+          "template": " \udb82\udc33 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}<8> \ue0b3</>"
+        },
+        {
+          "type": "terraform",
+          "style": "powerline",
+          "foreground": "93",
+          "template": " {{ .WorkspaceName }}{{ if .Version }} {{ .Version }}{{ end }} "
+        },
+        {
+          "type": "unity",
+          "style": "powerline",
+          "foreground": "15",
+          "properties": {
+            "http_timeout": 2000
+          }
+        },
+        {
           "type": "dart",
           "style": "powerline",
           "foreground": "25",
           "template": " \ue798 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
         },
         {
-          "type": "julia",
+          "type": "dotnet",
           "style": "powerline",
-          "foreground": "133",
-          "template": " \ue624 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
-        },
-        {
-          "type": "rust",
-          "style": "powerline",
-          "foreground": "166",
-          "template": " \ue7a8 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
-        },
-        {
-          "type": "java",
-          "style": "powerline",
-          "foreground": "208",
-          "template": " \ue738 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+          "foreground": "69",
+          "template": " \ue77f {{if .Unsupported}}\uf071{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
         },
         {
           "type": "go",
@@ -170,10 +160,22 @@
           "template": " \udb81\udfd3 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
         },
         {
-          "type": "ruby",
+          "type": "julia",
           "style": "powerline",
-          "foreground": "160",
-          "template": " \ue791 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+          "foreground": "133",
+          "template": " \ue624 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+        },
+        {
+          "type": "java",
+          "style": "powerline",
+          "foreground": "208",
+          "template": " \ue738 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+        },
+        {
+          "type": "lua",
+          "style": "powerline",
+          "foreground": "74",
+          "template": " \ue620 {{.Full}}<8> \ue0b3</>"
         },
         {
           "type": "node",
@@ -197,18 +199,16 @@
           }
         },
         {
-          "type": "dotnet",
+          "type": "ruby",
           "style": "powerline",
-          "foreground": "69",
-          "template": " \ue77f {{if .Unsupported}}\uf071{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+          "foreground": "160",
+          "template": " \ue791 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
         },
         {
-          "type": "unity",
+          "type": "rust",
           "style": "powerline",
-          "foreground": "15",
-          "properties": {
-            "http_timeout": 2000
-          }
+          "foreground": "166",
+          "template": " \ue7a8 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
         },
         {
           "type": "shell",
