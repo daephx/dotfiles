@@ -35,7 +35,7 @@ window:
   dynamic_title: true
   opacity: 0.9
   decorations: none
-  startup_mode: Fullscreen
+  startup_mode: Maximized
 
   # When true, bold text is drawn using the bright variant of colors.
   # draw_bold_text_with_bright_colors: true
@@ -217,5 +217,6 @@ key_bindings:
   - { key: PageDown, mods: Shift, action: ScrollPageDown, mode: ~Alt }
   - { key: Home, mods: Shift, action: ScrollToTop, mode: ~Alt }
   - { key: End, mods: Shift, action: ScrollToBottom, mode: ~Alt }
+
 
 
