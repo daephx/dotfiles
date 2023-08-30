@@ -4,7 +4,9 @@
     - ~/.config/alacritty/
 
 - link:
-    ~/.config/alacritty/alacritty.yml: config/alacritty/alacritty.yml
+    ~/.config/alacritty/:
+      glob: true
+      path: config/alacritty/*.yml
 
 - shell:
     - [sudo apt install -y alacritty, "Installing package: alacritty"]

@@ -1,0 +1,34 @@
+# Alacritty Colorschemes
+
+schemes:
+  darkpastel: &darkpastel
+    primary:
+      background: "#000000"
+      foreground: "#ffffff"
+
+    cursor:
+      text: "#d4d4d4"
+      cursor: "#bbbbbb"
+
+    normal:
+      black: "#000000"
+      red: "#ff5555"
+      green: "#55ff55"
+      yellow: "#ffff55"
+      blue: "#5555ff"
+      magenta: "#c678dd"
+      cyan: "#55ffff"
+      white: "#d4d4d4"
+
+    bright:
+      black: "#545454"
+      red: "#ff5555"
+      green: "#55ff55"
+      yellow: "#ffff55"
+      blue: "#5555ff"
+      magenta: "#c678dd"
+      cyan: "#55ffff"
+      white: "#ffffff"
+
+# Set your desired color scheme!
+colors: *darkpastel

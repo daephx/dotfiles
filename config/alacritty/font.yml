@@ -1,0 +1,33 @@
+# Font configuration (changes require restart)
+
+font:
+  # The normal (roman) font face to use.
+  normal:
+    family: FiraCode Nerd Font Mono
+    style: Regular
+
+  # The bold font face
+  bold:
+    family: FiraCode Nerd Font Mono
+    style: Bold
+
+  # The italic font face
+  italic:
+    family: FiraCode Nerd Font Mono
+    style: Regular Italic
+
+  # Point size of the font
+  size: 11.0
+
+  # Offset is the extra space around each character. offset.y can be thought of
+  # as modifying the line spacing, and offset.x as modifying the letter spacing.
+  offset:
+    x: 0
+    y: 0
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increase the x offset to move the glyph to
+  # the right, increase the y offset to move the glyph upward.
+  glyph_offset:
+    x: 0
+    y: 0
