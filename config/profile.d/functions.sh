@@ -8,6 +8,8 @@ extract() {
     case $1 in
       *.tar.bz2) tar xjf "$1" ;;
       *.tar.gz) tar xzf "$1" ;;
+      *.tar.xz) tar xf "$1" ;;
+      *.tar.zst) unzstd "$1" ;;
       *.bz2) bunzip2 "$1" ;;
       *.rar) unrar x "$1" ;;
       *.gz) gunzip "$1" ;;
@@ -18,8 +20,6 @@ extract() {
       *.Z) uncompress "$1" ;;
       *.7z) 7z x "$1" ;;
       *.deb) ar x "$1" ;;
-      *.tar.xz) tar xf "$1" ;;
-      *.tar.zst) unzstd "$1" ;;
       *) echo "Extraction method cannot be resolved for file: '$1'" ;;
     esac
   else
@@ -62,3 +62,4 @@ fbr() {
   )
   git switch "$choice"
 }
+
