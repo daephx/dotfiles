@@ -20,10 +20,10 @@ extract() {
       *.Z) uncompress "$1" ;;
       *.7z) 7z x "$1" ;;
       *.deb) ar x "$1" ;;
-      *) echo "Extraction method cannot be resolved for file: '$1'" ;;
+      *) printf "\e[31mE\e[0m: Unsupported filetype: '%s'\n" "$1" ;;
     esac
   else
-    echo "Invalid file: '$1'"
+    printf "\e[31mE\e[0m: Invalid file: '%s'\n" "$1"
   fi
 }
 
