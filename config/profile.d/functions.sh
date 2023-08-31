@@ -5,7 +5,7 @@
 # Usage: extract <path/to/file>
 extract() {
   if [ -f "$1" ]; then
-    case $1 in
+    case "$1" in
       *.tar.bz2) tar xjf "$1" ;;
       *.tar.gz) tar xzf "$1" ;;
       *.tar.xz) tar xf "$1" ;;
