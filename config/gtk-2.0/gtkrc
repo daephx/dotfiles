@@ -1,0 +1,13 @@
+# gtkrc-2.0
+
+gtk-can-change-accels = 1
+
+gtk-icon-theme-name = "Papirus"
+gtk-theme-name = "Adwaita-dark"
+
+style "user-font"
+{
+    font_name="Terminus 12"
+}
+widget_class "*" style "user-font"
+gtk-font-name = "Terminus 12"

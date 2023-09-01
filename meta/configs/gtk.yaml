@@ -1,0 +1,21 @@
+# gtk: gtk configuration
+
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- create:
+    - ~/.config/gtk-2.0/
+    - ~/.config/gtk-3.0/
+    - ~/.config/gtk-4.0/
+
+- clean:
+    ~/.config/gtk-2.0/:
+    ~/.config/gtk-3.0/:
+    ~/.config/gtk-4.0/:
+
+- link:
+    ~/.config/gtk-2.0/gtkrc: config/gtk-2.0/gtkrc
+    ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
+    ~/.config/gtk-4.0/settings.ini: config/gtk-4.0/settings.ini
