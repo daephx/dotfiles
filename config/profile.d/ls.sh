@@ -45,7 +45,7 @@ __set_strategy_ls() {
   done
 }
 
-# Override and extend command: ls
+# Set command aliases: ls
 # shellcheck disable=SC2139
 __set_alias_ls() {
   local args=" \
@@ -65,7 +65,7 @@ __set_alias_ls() {
   unalias tree 2>&/dev/null
 }
 
-# Override and extend command: lsd
+# Set command aliases: lsd
 # shellcheck disable=SC2139
 __set_alias_lsd() {
   local args=" \
@@ -79,7 +79,7 @@ __set_alias_lsd() {
   alias tree="$cmd --tree"
 }
 
-# Override and extend command: exa | eza
+# Set command aliases: exa | eza
 # shellcheck disable=SC2139
 __set_alias_exa() {
   local args=" \
