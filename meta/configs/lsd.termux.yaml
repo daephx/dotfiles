@@ -1,0 +1,14 @@
+# lsd: The next gen ls command
+# https://github.com/lsd-rs/lsd
+
+- create:
+    - ~/.config/lsd/
+
+- clean:
+  ~/.config/lsd/:
+
+- link:
+    ~/config/lsd/config.yaml: config/lsd/config.yaml
+
+- shell:
+    - [pkg install lsd, Installing package; lsd]
