@@ -62,6 +62,7 @@ __set_alias_ls() {
   alias la="$cmd -A"
   alias ll="$cmd -alF"
   alias lt="tree"
+  unalias tree 2>&/dev/null
 }
 
 # Override and extend command: lsd
