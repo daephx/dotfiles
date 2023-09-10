@@ -1,9 +1,11 @@
 # ls: Conditionally set users ls utility
 
 # Detect which `ls` flavor is in use
-if command ls --color > /dev/null; then # GNU `ls`
+if command ls --color > /dev/null; then
+  # GNU: ls
   colorflag="--color=auto"
-else # MacOS `ls`
+else
+  # MacOS: ls
   colorflag="-G"
   export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
