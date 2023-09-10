@@ -20,4 +20,4 @@
     ~/.config/profile.d:
       force: true
       glob: true
-      path: config/profile.d/*
+      path: config/profile/profile.d/*
