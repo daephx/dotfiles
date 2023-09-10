@@ -13,6 +13,7 @@
 
 - clean:
     ~/.config/macchina/:
+      recursive: true
 
 - link:
     ~/.config/macchina/macchina.toml: config/macchina/macchina.toml
