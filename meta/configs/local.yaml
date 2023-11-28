@@ -4,6 +4,9 @@
     - ~/.local/bin/
     - ~/.local/lib/
 
+- clean:
+    ~/.local/bin:
+
 - link:
     ~/.local/bin:
       force: true
