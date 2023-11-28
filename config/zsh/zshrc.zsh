@@ -10,7 +10,7 @@
 integer t0=$(($(date +%s%N)/1000000))
 
 # Set history file if not exists
-HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh_history"
 
 
 ### Options ###

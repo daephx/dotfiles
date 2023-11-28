@@ -11,7 +11,6 @@
     - ~/.local/share/zsh/
     - ~/.local/share/zsh/completion/
     - ~/.local/share/zsh/plugins/
-    - ~/.local/state/zsh/
 
 - clean:
     ~/.config/zsh:
