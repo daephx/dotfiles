@@ -1,0 +1,22 @@
+# The most customisable and low-latency cross platform/shell prompt renderer
+# https://github.com/jandedobbeleer/oh-my-posh
+
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- create:
+    - ~/.config/poshthemes/
+
+- link:
+    ~/.config/poshthemes:
+      glob: true
+      path: config/poshthemes/*
+
+- shell:
+    - [
+        curl -s https://ohmyposh.dev/install.sh | sudo bash -s,
+        Installing oh-my-posh,
+      ]
+    - [oh-my-posh disable notice, Disable update notice]

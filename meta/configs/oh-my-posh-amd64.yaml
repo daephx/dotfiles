@@ -1,9 +1,0 @@
-- shell:
-    - [
-        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh,
-        Installing oh-my-posh from repository.,
-      ]
-    - [
-        sudo chmod +x /usr/local/bin/oh-my-posh,
-        Giving 'oh-my-posh' executable privilege.,
-      ]
