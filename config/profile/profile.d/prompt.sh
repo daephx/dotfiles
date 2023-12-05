@@ -1,4 +1,4 @@
-# ~/.prompt: initialize basic prompt for posix shells
+# .prompt: Initialize user prompt for posix shells.
 
 parse_git_dirty() {
   [ "$(git status --porcelain 2> /dev/null)" ] && echo "*"
@@ -8,8 +8,7 @@ parse_git_branch() {
   git branch --no-color 2> /dev/null \
     | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
-
-bash_prompt() {
+__init_prmpt_bash() {
   RESET=$(tput sgr0)
   YELLOW=$(tput setaf 3)
   BLUE=$(tput setaf 4)
@@ -21,7 +20,7 @@ bash_prompt() {
   PS2="\[$GREY\] > \[$RESET\]"
 }
 
-zsh_prompt() {
+__init_prmpt_zsh() {
   NEWLINE=$'\n'
   user="%F{cyan}${USER}"
   git="%F{yellow}$(parse_git_branch)"
@@ -29,7 +28,8 @@ zsh_prompt() {
   PS2="%F{244} > %F{reset}"
 }
 
-oh_my_posh() {
+__init_prompt_omp() {
+  command -v oh-my-posh > /dev/null || return
   shell="$1"
   theme_name="skellum"
   theme_file="$theme_name.omp.json"
@@ -37,15 +37,24 @@ oh_my_posh() {
   eval "$(oh-my-posh init "$shell" --config "$theme_path")"
 }
 
-# shellcheck disable=2317
-# fall-through to default prompt, prefer special case
-initalize_prompt() {
-  [ -n "$BASH_VERSION" ] && shell="bash"
-  [ -n "$ZSH_VERSION" ] && shell="zsh"
-  command -v oh-my-posh > /dev/null && oh_my_posh "$shell" && return
-  [ "$shell" = "bash" ] && bash_prompt
-  [ "$shell" = "zsh" ] && zsh_prompt
+__init_prompt_starship() {
+  command -v starship > /dev/null || return
+  shell="$1"
+  export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+  eval "$(starship init "$shell")"
 }
 
-# Finally, initialize prompt
-initalize_prompt
+# Determine prompt shell
+[ -n "$BASH_VERSION" ] && shell="bash"
+[ -n "$ZSH_VERSION" ] && shell="zsh"
+
+# Custom prompt providers, return if function completes without error
+__init_prompt_omp "$shell" && return
+__init_prompt_starship "$shell" && return
+
+# Basic backup prompts for each shell
+[ "$shell" = "bash" ] && __init_prmpt_bash
+[ "$shell" = "zsh" ] && __init_prmpt_zsh
+
+# Cleanup temp variables
+unset shell

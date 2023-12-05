@@ -1,0 +1,26 @@
+# The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+# https://github.com/starship/starship
+
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stdout: true
+      stderr: true
+
+- create:
+    - ~/.config/starship/
+
+- clean:
+    ~/.config/starship/:
+
+- link:
+    ~/.config/starship/starship.toml:
+      path: config/starship/starship.toml
+
+- shell:
+    - [
+        curl -sS https://starship.rs/install.sh | sh -s -- --force,
+        "Run installation script",
+      ]

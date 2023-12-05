@@ -1,0 +1,277 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# A continuation prompt that displays two filled in arrows
+continuation_prompt = ' [❯](bright-black) '
+
+# Define the format of the prompt
+format = """
+[┌](bright-black)\
+$os\
+[](bright-black)\
+$directory\
+$git_branch\
+$git_state\
+$git_commit\
+$git_status\
+$git_metrics\
+$hg_branch\
+$cmd_duration\
+\n[└](bright-black)\
+$character\
+"""
+
+# Right aligned prompt which renders on the same line
+right_format = """
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$gradle
+$java\
+$kotlin\
+$julia\
+$nim\
+$nodejs\
+$bun\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$ruby\
+$rust\
+$swift\
+$terraform\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$crystal\
+$jobs\
+$status\
+$shell\
+$battery\
+$time
+"""
+
+[character]
+format = "$symbol "
+success_symbol = "[\u276F](green)"
+error_symbol = "[\u276F](red)"
+
+[username]
+format = "[ $user]($style)[@](8)"
+style_user = "bold green"
+style_root = "bold red"
+show_always = true
+
+[hostname]
+style = "bold dimmed blue"
+format = "[$hostname ]($style)"
+trim_at = ".companyname.com"
+ssh_only = false
+disabled = false
+
+[directory]
+format = " [$path]($style)[$read_only]($read_only_style) "
+style = "fg:blue"
+home_symbol = '~'
+read_only = ""
+truncate_to_repo = true
+truncation_length = 8
+truncation_symbol = "…/"
+
+[git_branch]
+format = "[](bright-black)[ $symbol$branch]($style)"
+style = "fg:yellow"
+symbol = ""
+always_show_remote = true
+
+[git_commit]
+style = "fg:yellow"
+tag_disabled = false
+
+[git_metrics]
+added_style = 'bold green'
+deleted_style = 'bold red'
+format = '\[[+$added]($added_style) [-$deleted]($deleted_style)\] '
+disabled = true
+
+[git_status]
+format = '([$ahead_behind  $untracked$conflicted$modified$renamed$deleted$staged$stashed]($style) )'
+style = "bold yellow"
+ahead = " ↑${count}"
+behind = "[ ↓${count}](red)"
+deleted = "[ -${count}](red)"
+diverged = "↑${ahead_count}↓${behind_count}"
+modified = "[ ~${count}](red)"
+staged = " |  [~${count}](green)"
+stashed = " 󰆓 ${count}"
+untracked = "[?${count}](red)"
+
+[cmd_duration]
+min_time = 3000
+style = "248"
+show_notifications = true
+format = '[](bright-black) [](cyan) [$duration]($style) '
+
+[time]
+disabled = true
+format = "[ $time ]($style)"
+style = "fg:white"
+
+[shell]
+disabled = false
+style = 'red bold'
+format = "[$indicator](style) "
+bash_indicator = "[󱆃](green) bash"
+cmd_indicator = "[](bright-black) cmd"
+elvish_indicator = "[󱡁](green) esh"
+fish_indicator = '[󰈺](orange) fish'
+ion_indicator = "[](cyan) ion"
+nu_indicator = "[>](green) nu"
+powershell_indicator = '[󰨊](blue)pwsh'
+tcsh_indicator = "[󱆃](red) tsh"
+unknown_indicator = '󱆃 ???'
+xonsh_indicator = "󱔎 xsh"
+zsh_indicator = "[󱆃](orange) zsh"
+
+[os]
+format = "[ $symbol ]($style)"
+style = "bold blue"
+disabled = false
+
+[os.symbols]
+Alpaquita = "🔔 "
+Alpine = "[\uf300](#0f5779)"
+Amazon = "[](orange)"
+Android = "[](#71b337)"
+Arch = "[\uf303](#1b90c8)"
+Artix = "[](cyan)"
+CentOS = "[\uf304](#fafafa)"
+Debian = "[\uf306](#d70a53)"
+DragonFly = "🐉 "
+Emscripten = "🔗 "
+EndeavourOS = "[](#fafafa)"
+Fedora = "[\uf30a](#52a5d8)"
+FreeBSD = "[](#fafafa)"
+Garuda = "[\uf337](#fafafa)"
+Gentoo = "[\uf30d](#918ccb)"
+HardenedBSD = "[](#fafafa)"
+Illumos = "[](#fafafa)"
+Linux = "[\uf17c](#fafafa)"
+Mabox = "📦 "
+Macos = "[\uf179](#fafafa)"
+Manjaro = "[\uf312](#39b860)"
+Mariner = "🌊 "
+MidnightBSD = "🌘 "
+Mint = "[\uf30e](#83b74d)"
+NetBSD = "🚩 "
+NixOS = "[\uf313](#5075ba)"
+OpenBSD = "[](#fafafa)"
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
+openSUSE = "[](#71b337)"
+OracleLinux = "🦴 "
+Pop = "[\uf32a](#fafafa)"
+Raspbian = "[\uf315](#bc1a48)"
+Redhat = "[󱄛](red)"
+RedHatEnterprise = "[󱄛](red)"
+Redox = "🧪 "
+Solus = "[](#fafafa)"
+SUSE = "[\uf314](#71b337)"
+Ubuntu = "[\uf31b](#E95420)"
+Unknown = "[](#fafafa)"
+Windows = "[\ue62a](#26C6DA)"
+
+[dart]
+format = "[  $version](bold blue)"
+
+[golang]
+format = "[  $version ](bold cyan)"
+
+[helm]
+format = "[ ⎈ $version ](bold white)"
+
+[java]
+symbol = " "
+
+[kotlin]
+symbol = " "
+# kotlin_binary = "kotlinc"
+
+[lua]
+format = "[ 󰢱 $version](bold blue)"
+
+[kubernetes]
+format = '[ 󱃾 $context \($namespace\) ](dimmed green)'
+disabled = false
+
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+".*/openshift-cluster/.*" = "openshift"
+"gke_.*_(?P<cluster>[\\w-]+)" = "gke-$cluster"
+
+[docker_context]
+format = "[ 󰡨 $context ](blue bold)"
+
+[nodejs]
+format = "[ 󰎙 $version](bold green)"
+
+[nix_shell]
+symbol = "[\uf313](cyan) "
+
+[package]
+disabled = false
+display_private = true
+format = "[  $version]($style)"
+
+[python]
+symbol = " "
+pyenv_version_name = true
+python_binary = "python3"
+
+[rust]
+format = "[  $version](red bold)"
+
+[scala]
+format = "[  $version](red bold)"
+
+[swift]
+format = "[  $version](red bold)"
+
+[terraform]
+format = "[ 󱁢 $version$workspace]($style)"
+
+[dotnet]
+format = "[$symbol($version )(🎯 $tfm )]($style)"
+symbol = " "
+style = "cyan"
+
+[elixir]
+symbol = " "
+
+[elm]
+format = "[  $version](cyan bold) "
+
+[erlang]
+format = "[  $version](bold red) "
+
+[gcloud]
+format = '[ 󱇶 $symbol$account(@$domain)(\($project\))]($style) '
