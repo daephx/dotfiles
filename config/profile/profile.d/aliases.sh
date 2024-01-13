@@ -192,13 +192,6 @@ if command -v bat > /dev/null; then
   alias logf="_batlog"
 fi
 
-# If fd-find is installed
-if command -v fdfind > /dev/null; then
-  if ! alias fd > /dev/null 2>&1; then
-    alias fd="fdfind"
-  fi
-fi
-
 # Shorthand for python
 alias py="/usr/bin/env python"
 if command -v ipython > /dev/null; then

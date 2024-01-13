@@ -3,3 +3,7 @@
 
 - shell:
     - [sudo sh -c "apt install -y fd-find", Installing package; fd-find]
+    - [
+        sudo sh -c "ln -s /usr/bin/fdfind /usr/local/bin/fd",
+        Create symbolic link for binary fdfind -> fd,
+      ]
