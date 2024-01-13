@@ -179,22 +179,17 @@ if command -v docker > /dev/null; then
   alias dcup="docker compose pull && docker compose ps --format '{{.Names}}'"
 fi
 
-# Bat | Cat w/ wings
-# HACK: alias bat command if batcat is installed
-# execute the following command to ignore this fix:
-# sudo ln -s /usr/bin/batcat /usr/local/bin/bat
-if command -v batcat > /dev/null; then
+# bat: Replacement command for cat
+if command -v bat > /dev/null; then
   _batlog() {
     tail -f "$1" | bat -l=log --theme base16 --pager=never --color=always --decorations=never
   }
-  alias logf="_batlog"
   _bathelp() {
     "$@" --help 2>&1 | bat --plain --language=help
   }
+  alias cat="bat"
   alias help='_bathelp'
-  if ! command -v bat > /dev/null; then
-    alias bat="batcat"
-  fi
+  alias logf="_batlog"
 fi
 
 # If fd-find is installed
