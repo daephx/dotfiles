@@ -16,4 +16,4 @@ else
 fi
 
 # Create symbolic link to script
-ln -sfn "$INSTALL_PATH/xdg-ninja.sh" "$BIN_DIR/xdg-ninja"
+ln -sfn "$INSTALL_DIR/xdg-ninja.sh" "$BIN_DIR/xdg-ninja"
