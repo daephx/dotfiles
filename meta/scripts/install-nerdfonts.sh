@@ -3,6 +3,7 @@
 set -e
 
 FONTS="${XDG_DATA_HOME:-$HOME/.local/share}/fonts"
+[ -d $FONTS ] || mkdir -p "$FONTS"
 
 echo "download nerdfonts..."
 
