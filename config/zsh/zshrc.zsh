@@ -39,7 +39,7 @@ unsetopt MENU_COMPLETE # Do not auto select the first completion entry
 
 # Zap: a minimal zsh plugin manager
 # https://github.com/zap-zsh/zap
-ZAP_DIR="$XDG_DATA_HOME/zap"
+ZAP_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zap"
 [ -f "$ZAP_DIR/zap.zsh" ] && source "$ZAP_DIR/zap.zsh" || {
   git clone --depth 1 -b "master" "https://github.com/zap-zsh/zap.git" "$ZAP_DIR" > /dev/null 2>&1 || {
     echo "E: Failed to install Zap"
