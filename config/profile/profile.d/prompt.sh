@@ -8,7 +8,7 @@ parse_git_branch() {
   git branch --no-color 2> /dev/null \
     | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
-__init_prmpt_bash() {
+__init_prompt_bash() {
   RESET=$(tput sgr0)
   YELLOW=$(tput setaf 3)
   BLUE=$(tput setaf 4)
@@ -20,7 +20,7 @@ __init_prmpt_bash() {
   PS2="\[$GREY\] > \[$RESET\]"
 }
 
-__init_prmpt_zsh() {
+__init_prompt_zsh() {
   NEWLINE=$'\n'
   user="%F{cyan}${USER}"
   git="%F{yellow}$(parse_git_branch)"
@@ -53,8 +53,8 @@ __init_prompt_omp "$shell" && return
 __init_prompt_starship "$shell" && return
 
 # Basic backup prompts for each shell
-[ "$shell" = "bash" ] && __init_prmpt_bash
-[ "$shell" = "zsh" ] && __init_prmpt_zsh
+[ "$shell" = "bash" ] && __init_prompt_bash
+[ "$shell" = "zsh" ] && __init_prompt_zsh
 
 # Cleanup temp variables
 unset shell
