@@ -31,7 +31,7 @@ setopt SHARE_HISTORY # Append and imports commands from histfile
 unsetopt AUTO_REMOVE_SLASH # Remove completed slash after delimiter character
 unsetopt BEEP # Turn off terminal bells
 unsetopt EXTENDED_HISTORY # Save command timestamps to histfile
-unsetopt LIST_AMBIGUOUS
+unsetopt LIST_AMBIGUOUS # Auto-listing behaviour only works when nothing would be inserted.
 unsetopt MENU_COMPLETE # Do not auto select the first completion entry
 
 
