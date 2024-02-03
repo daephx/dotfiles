@@ -1,0 +1,36 @@
+# VSCode Wezterm Colors
+# Style: vscode
+[colors]
+foreground = "#dedede"
+background = "#000000"
+compose_cursor = "#f0d399"
+cursor_bg = "#bbbbbb"
+cursor_border = "#dedede"
+cursor_fg = "#000000"
+selection_bg = "#274372"
+ansi = [
+    "#000000",
+    "#ff5555",
+    "#55ff55",
+    "#ffff55",
+    "#5555ff",
+    "#c678dd",
+    "#55ffff",
+    "#d4d4d4",
+]
+brights = [
+    "#545454",
+    "#ff5555",
+    "#55ff55",
+    "#ffff55",
+    "#5555ff",
+    "#c678dd",
+    "#55ffff",
+    "#ffffff",
+]
+
+[colors.indexed]
+
+[metadata]
+name = "vscode"
+origin_url = "https://github.com/Mofiqul/vscode.nvim/raw/main/extra/wezterm/vscode-dark.toml"
