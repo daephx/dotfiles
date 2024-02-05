@@ -1,7 +1,8 @@
-local M = {}
 local wezterm = require("wezterm")
 local act = wezterm.action
 local utils = require("utils")
+
+local M = {}
 
 function M.create_keybinds()
   local keybinds = {}
@@ -11,9 +12,12 @@ function M.create_keybinds()
   return keybinds
 end
 
+-- M.leader = { key = "Space", mods = "CTRL|SHIFT" }
+M.leader = {key = "b", mods = "CTRL", timeout_milliseconds = 1000}
+
 M.default_keybinds = {
   { key = "c", mods = "CTRL|SHIFT", action = act({ CopyTo = "Clipboard" }) },
-  { key = "r", mods = "CTRL|SHIFT", action = "ReloadConfiguration" },
+  { key = "r", mods = "ALT|SHIFT", action = "ReloadConfiguration" },
   { key = "v", mods = "CTRL|SHIFT", action = act({ PasteFrom = "Clipboard" }) },
   { key = "Insert", mods = "SHIFT", action = act({ PasteFrom = "PrimarySelection" }) },
   { key = "=", mods = "CTRL", action = "ResetFontSize" },
@@ -109,6 +113,7 @@ M.tmux_keybinds = {
 
 M.user_keybinds = {
   { key = "w", mods = "CTRL|SHIFT", action = wezterm.action.CloseCurrentTab({ confirm = true }) },
+  { key = "r", mods = "CTRL|SHIFT", action = "ReloadConfiguration" },
 }
 
 M.key_tables = {

@@ -1,11 +1,24 @@
+local bindings = require("bindings")
 local io = require("io")
-local keybinds = require("keybinds")
 local os = require("os")
 local utils = require("utils")
 local wezterm = require("wezterm")
-local scheme = wezterm.get_builtin_color_schemes()["nord"]
+local scheme = wezterm.get_builtin_color_schemes()["Dark Pastel"]
 local act = wezterm.action
+local mux = wezterm.mux
 
+-- Maximize terminal on startup
+wezterm.on("gui-startup", function(cmd)
+  -- selene: allow(unused_variable)
+  ---@diagnostic disable-next-line: unused-local
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
+
+-- This function returns the suggested title for a tab.
+-- It prefers the title that was set via `tab:set_title()`
+-- or `wezterm cli set-tab-title`, but falls back to the
+-- title of the active pane in that tab.
 -- selene: allow(unused_variable)
 ---@diagnostic disable-next-line: unused-local
 local function create_tab_title(tab, tabs, panes, config, hover, max_width)
@@ -32,17 +45,17 @@ local function create_tab_title(tab, tabs, panes, config, hover, max_width)
   return copy_mode .. tab.tab_index + 1 .. ":" .. title
 end
 
+-- Solid angle bracket symbols
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local title = create_tab_title(tab, tabs, panes, config, hover, max_width)
 
-  -- selene: allow(undefined_variable)
   local solid_left_arrow = utf8.char(0x2590)
-  -- selene: allow(undefined_variable)
   local solid_right_arrow = utf8.char(0x258c)
-  -- https://github.com/wez/wezterm/issues/807
-  -- local edge_background = scheme.background
-  -- https://github.com/wez/wezterm/blob/61f01f6ed75a04d40af9ea49aa0afe91f08cb6bd/config/src/color.rs#L245
-  local edge_background = "#2e3440"
+
+  local edge_background = scheme.background
   local background = scheme.ansi[1]
   local foreground = scheme.ansi[5]
 
@@ -76,8 +89,8 @@ local function update_window_background(window, pane)
   -- If there's no foreground process, assume that we are "wezterm connect" or "wezterm ssh"
   -- and use a different background color
   -- if pane:get_foreground_process_name() == nil then
-  -- 	-- overrides.colors = { background = "blue" }
-  -- 	overrides.color_scheme = "Red Alert"
+  --  -- overrides.colors = { background = "blue" }
+  --  overrides.color_scheme = "Red Alert"
   -- end
 
   if overrides.color_scheme == nil then
@@ -150,10 +163,10 @@ wezterm.on("toggle-tmux-keybinds", function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if not overrides.window_background_opacity then
     overrides.window_background_opacity = 0.95
-    overrides.keys = keybinds.default_keybinds
+    overrides.keys = bindings.default_keybinds
   else
     overrides.window_background_opacity = nil
-    overrides.keys = utils.merge_lists(keybinds.default_keybinds, keybinds.tmux_keybinds)
+    overrides.keys = utils.merge_lists(bindings.default_keybinds, bindings.tmux_keybinds)
   end
   window:set_config_overrides(overrides)
 end)

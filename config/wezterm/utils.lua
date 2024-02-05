@@ -70,4 +70,15 @@ function M.split_from_url(dir)
   return hostname, cwd
 end
 
+-- selene: allow(unused_variable)
+---@diagnostic disable-next-line: unused-function, unused-local
+M.enable_wayland = function()
+  local session = os.getenv("DESKTOP_SESSION")
+  local wayland = os.getenv("XDG_SESSION_TYPE")
+  if wayland == "wayland" or session == "hyprland" then
+    return true
+  end
+  return false
+end
+
 return M
