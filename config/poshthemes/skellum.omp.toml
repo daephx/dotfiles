@@ -1,0 +1,240 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+console_title_template = "{{if .Segments.Git.RepoName}} {{.Segments.Git.RepoName}} {{else}} {{.Folder}} {{end}}"
+final_space = true
+version = 2.0
+
+[[blocks]]
+alignment = "left"
+type = "prompt"
+
+[[blocks.segments]]
+foreground = "8"
+style = "plain"
+template = "\u250c"
+type = "text"
+
+[[blocks.segments]]
+foreground = "#fafafa"
+style = "plain"
+template = " {{.Icon}}<8> \ue0b1</>"
+type = "os"
+[blocks.segments.properties]
+alpine = "<#0f5779>\uf300</>"
+aosc = "<#fafafa>\uf301</>"
+arch = "<#1b90c8>\uf303</>"
+centos = "<#fafafa>\uf304</>"
+coreos = "<#fafafa>\uf305</>"
+debian = "<#d70a53>\uf306</>"
+devuan = "<#fafafa>\uf307</>"
+elementary = "<#526ec8>\uf309</>"
+fedora = "<#52a5d8>\uf30a</>"
+gentoo = "<#918ccb>\uf30d</>"
+linux = "<#fafafa>\uf17c</>"
+macos = "<#fafafa>\uf179</>"
+mageia = "<#425979>\uf310</>"
+manjaro = "<#39b860>\uf312</>"
+mint = "<#83b74d>\uf30e</>"
+nixos = "<#5075ba>\uf313</>"
+opensuse = "<#71b337>\uf314</>"
+raspbian = "<#bc1a48>\uf315</>"
+sabayon = "<#fafafa>\uf317</>"
+slackware = "<#556fb3>\uf319</>"
+ubuntu = "<#E95420>\uf31b</>"
+windows = "<#26C6DA>\ue62a</>"
+
+[[blocks.segments]]
+foreground = "lightYellow"
+style = "powerline"
+template = " \uf0e7<8> \ue0b1</>"
+type = "root"
+[blocks.segments.properties]
+root_icon = "\uf0e7"
+
+[[blocks.segments]]
+foreground = "lightBlue"
+style = "powerline"
+template = " {{.Path}}{{if not .Writable}}<1> \uf023</>{{end}}"
+type = "path"
+[blocks.segments.properties]
+folder_icon = "\u2026"
+home_icon = "~"
+style = "agnoster_short"
+
+[[blocks.segments]]
+foreground = "yellow"
+foreground_templates = [
+  "{{if or (.Working.Changed) (.Staging.Changed)}}yellow{{end}}",
+  "{{if and (gt .Ahead 0) (gt .Behind 0)}}red{{end}}",
+  "{{if gt .Ahead 0}}magenta{{end}}",
+  "{{if gt .Behind 0}}cyan{{end}}",
+]
+style = "powerline"
+template = " <8>\ue0b1 </>{{.UpstreamIcon}}{{.HEAD}}{{.BranchStatus}}{{if .Working.Changed}} \uf044 <red>{{.Working.String}}</>{{end}}{{if and (.Staging.Changed) (.Working.Changed)}} |{{end}}{{if .Staging.Changed}} \uf046 <#2FDA4E>{{.Staging.String}}</>{{end}}{{if gt .StashCount 0}} \ue240 {{.StashCount}}{{end}}{{if gt .WorktreeCount 0}} \uf1bb {{.WorktreeCount}}{{end}}"
+type = "git"
+[blocks.segments.properties]
+fetch_stash_count = true
+fetch_status = true
+fetch_upstream_icon = true
+
+[[blocks]]
+alignment = "right"
+type = "prompt"
+
+[[blocks.segments]]
+foreground = "214"
+style = "powerline"
+template = " \ue7ad {{.Profile}}{{if .Region}}@{{.Region}}{{end}}<8> \ue0b3</>"
+type = "aws"
+
+[[blocks.segments]]
+foreground = "153"
+style = "powerline"
+template = " \ufd03 {{.Name}}<8> \ue0b3</>"
+type = "az"
+[blocks.segments.properties]
+display_id = true
+display_name = true
+info_separator = " \uf1fa "
+
+[[blocks.segments]]
+foreground = "214"
+style = "powerline"
+template = " \uf0e7 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "azfunc"
+[blocks.segments.properties]
+display_mode = "files"
+fetch_version = true
+
+[[blocks.segments]]
+foreground = "29"
+style = "powerline"
+template = " \ue649\ue673 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "cmake"
+
+[[blocks.segments]]
+background = "26"
+style = "powerline"
+template = " \uf308 {{.Context}}<8> \ue0b3</>"
+type = "docker"
+
+# NOTE: Disabled due to slow startup time
+# [[blocks.segments]]
+# template = " \uf10fe {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}<8> \ue0b3</>"
+# foreground = "62"
+# style = "powerline"
+# type = "kubectl"
+
+[[blocks.segments]]
+foreground = "227"
+style = "powerline"
+template = " {{if .Error}}{{.Error}}{{else}}{{if .Version}}\uf487 {{.Version}}{{end}} {{if .Name}}{{.Name}}{{end}}{{end}}<8> \ue0b3</>"
+type = "project"
+
+# NOTE: Disabled due to slow startup time
+# [[blocks.segments]]
+# foreground = "93"
+# style = "powerline"
+# template = " {{.WorkspaceName}}{{if .Version}} {{.Version}}{{end}}<8> \ue0b3</>"
+# type = "terraform"
+
+[[blocks.segments]]
+foreground = "15"
+style = "powerline"
+template = " \ue721 {{.UnityVersion}}{{if .CSharpVersion}} {{.CSharpVersion}}{{end}}<8> \ue0b3</>"
+type = "unity"
+[blocks.segments.properties]
+http_timeout = 2000.0
+
+[[blocks.segments]]
+foreground = "25"
+style = "powerline"
+template = " \ue798 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "dart"
+
+[[blocks.segments]]
+foreground = "69"
+style = "powerline"
+template = " \ue77f {{if .Unsupported}}\uf071{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "dotnet"
+
+[[blocks.segments]]
+template = " \ue627 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+foreground = "74"
+style = "powerline"
+type = "go"
+
+[[blocks.segments]]
+foreground = "133"
+style = "powerline"
+template = " \ue624 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "julia"
+
+[[blocks.segments]]
+foreground = "208"
+style = "powerline"
+template = " \ue738 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "java"
+
+[[blocks.segments]]
+foreground = "74"
+style = "powerline"
+template = " \ue620 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "lua"
+
+[[blocks.segments]]
+foreground = "71"
+style = "powerline"
+template = " \ue718 {{if .PackageManagerIcon}}{{.PackageManagerIcon}} {{end}}{{.Full}}<8> \ue0b3</>"
+type = "node"
+
+[[blocks.segments]]
+foreground = "15"
+style = "powerline"
+template = " \ue769 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "perl"
+
+[[blocks.segments]]
+foreground = "214"
+style = "powerline"
+template = " \ue235 {{if .Error}}{{.Error}}{{else}}{{if .Venv}}{{.Venv}} {{end}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "python"
+[blocks.segments.properties]
+display_mode = "context"
+
+[[blocks.segments]]
+foreground = "160"
+style = "powerline"
+template = " \ue791 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "ruby"
+
+[[blocks.segments]]
+foreground = "166"
+style = "powerline"
+template = " \ue7a8 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}}<8> \ue0b3</>"
+type = "rust"
+
+[[blocks.segments]]
+foreground = "15"
+style = "powerline"
+template = " \ue7a2 {{.Name}}"
+type = "shell"
+
+[[blocks]]
+alignment = "left"
+newline = true
+type = "prompt"
+
+[[blocks.segments]]
+foreground = "8"
+style = "plain"
+template = "\u2514"
+type = "text"
+
+[[blocks.segments]]
+foreground = "2"
+foreground_templates = ["{{if gt .Code 0}}1{{end}}"]
+style = "plain"
+template = "\u276F"
+type = "status"
+[blocks.segments.properties]
+always_enabled = true

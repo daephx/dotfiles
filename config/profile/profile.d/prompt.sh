@@ -32,7 +32,7 @@ __init_prompt_omp() {
   command -v oh-my-posh > /dev/null || return
   shell="$1"
   theme_name="skellum"
-  theme_file="$theme_name.omp.json"
+  theme_file="$theme_name.omp.toml"
   theme_path="$XDG_CONFIG_HOME/poshthemes/$theme_file"
   eval "$(oh-my-posh init "$shell" --config "$theme_path")"
 }
