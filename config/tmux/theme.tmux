@@ -134,7 +134,7 @@ tmux_set status-right-bg "$BG"
 tmux_set status-right-fg "$G12"
 tmux_set status-right-length 150
 user=$(whoami)
-identity="#[fg=cyan,bg=$BG]$user#[fg=$G12,bg=$BG]#[fg=blue,bg=$BG]#h#[fg=$TC,bg=$BG] #[fg=$user_icon_fg,bg=$BG,bold]$user_icon"
+identity="#[fg=cyan,bg=$BG]$user#[fg=$G12,bg=$BG]@#[fg=blue,bg=$BG]#h#[fg=$TC,bg=$BG] #[fg=$user_icon_fg,bg=$BG,bold]$user_icon"
 date="$date_format #[fg=$date_icon_fg,bg=$BG]$date_icon"
 time="#[fg=$TC,bg=$BG]$time_format #[fg=$time_icon_fg,bg=$BG]$time_icon"
 RS="$identity #[fg=$TC,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$BG] $time #[fg=$TC,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$BG] $date "
