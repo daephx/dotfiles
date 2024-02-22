@@ -8,16 +8,16 @@ alignment = "left"
 type = "prompt"
 
 [[blocks.segments]]
-foreground = "#242424"
+foreground = "black"
 style = "plain"
 template = "\ue0c7\u2593"
 type = "text"
 
 [[blocks.segments]]
-background = "#242424"
-foreground = "#fafafa"
+background = "black"
+foreground = "7"
 style = "diamond"
-template = "{{.Icon}}<8> \ue0b1</>"
+template = "{{.Icon}} <8>\ue0b1</>"
 type = "os"
 [blocks.segments.properties]
 alpine = "<#0f5779>\uf300</>"
@@ -44,18 +44,8 @@ ubuntu = "<#E95420>\uf31b</>"
 windows = "<#26C6DA>\ue62a</>"
 
 [[blocks.segments]]
-template = "{{if .SSHSession}}\uf0318 {{end}}<6>{{.UserName}}</><8>\uf1fa</><4>{{.HostName}}</> <8>\ue0b1</>"
-background = "#242424"
-foreground = "#fafafa"
-powerline_symbol = "\ue0b0"
-style = "powerline"
-type = "session"
-[blocks.segments.properties]
-display_default = false
-
-[[blocks.segments]]
-background = "#242424"
-foreground = "#ffff66"
+background = "black"
+foreground = "lightYellow"
 powerline_symbol = "\ue0b0"
 style = "powerline"
 template = " \uf0e7 <8>\ue0b1</>"
@@ -64,31 +54,20 @@ type = "root"
 root_icon = "\uf0e7"
 
 [[blocks.segments]]
-background = "#242424"
-foreground = "#fafafa"
+background = "black"
+foreground = "lightBlue"
 powerline_symbol = "\ue0b0"
 style = "powerline"
-template = "{{.Path}} {{if not .Writable}}<1>\uf023 </>{{end}}"
+template = " {{.Path}} {{if not .Writable}}<1>\uf023</>{{end}}"
 type = "path"
 [blocks.segments.properties]
 folder_icon = "\u2026"
-folder_separator_icon = " \ue0bf "
-home_icon = "\uf015"
+home_icon = "~"
 style = "agnoster_short"
-[blocks.segments.properties.mapped_locations]
-"~/Desktop" = "\uf108 Desktop"
-"~/Documents" = "\uf719 Documents"
-"~/Downloads" = "\uf019 Downloads"
-"~/Music" = "\uf001 Music"
-"~/Pictures" = "\uf03e Pictures"
-"~/Projects" = "\uf121 Projects"
-"~/Public" = "\uf0ac Public"
-"~/Templates" = "\uebbf Templates"
-"~/Videos" = "\uf03d Videos"
 
 [[blocks.segments]]
-template = "<8>\ue0b1 </>{{.UpstreamIcon}}{{.HEAD}}{{.BranchStatus}}{{if .Working.Changed}} \uf044 <red>{{.Working.String}}</>{{end}}{{if and (.Staging.Changed) (.Working.Changed)}} |{{end}}{{if .Staging.Changed}} \uf046 <#2FDA4E>{{.Staging.String}}</>{{end}}{{if gt .StashCount 0}} \ue240 {{.StashCount}}{{end}}{{if gt .WorktreeCount 0}} \uf1bb {{.WorktreeCount}}{{end}} "
-background = "#242424"
+template = "<8>\ue0b1</> {{.UpstreamIcon}}{{.HEAD}}{{.BranchStatus}}{{if .Working.Changed}} \uf044 <red>{{.Working.String}}</>{{end}}{{if and (.Staging.Changed) (.Working.Changed)}} |{{end}}{{if .Staging.Changed}} \uf046 <lightGreen>{{.Staging.String}}</>{{end}}{{if gt .StashCount 0}} \ue240 {{.StashCount}}{{end}}{{if gt .WorktreeCount 0}} \uf1bb {{.WorktreeCount}}{{end}} "
+background = "black"
 foreground = "yellow"
 foreground_templates = [
   "{{if or (.Working.Changed) (.Staging.Changed)}}yellow{{end}}",
@@ -109,17 +88,8 @@ alignment = "right"
 type = "prompt"
 
 [[blocks.segments]]
-background = "#242424"
-foreground = "#576eff"
-invert_powerline = true
-powerline_symbol = "\ue0b2"
-style = "powerline"
-template = " \ue620 {{.Full}} <8>\ue0b3</>"
-type = "lua"
-
-[[blocks.segments]]
-background = "#242424"
-foreground = "#FFA400"
+background = "black"
+foreground = "214"
 invert_powerline = true
 powerline_symbol = "\ue0b2"
 style = "powerline"
@@ -127,8 +97,8 @@ template = " \ue7ad {{.Profile}}{{if .Region}}@{{.Region}}{{end}} <8>\ue0b3</>"
 type = "aws"
 
 [[blocks.segments]]
-background = "#242424"
-foreground = "#9ec3f0"
+background = "black"
+foreground = "153"
 invert_powerline = true
 powerline_symbol = "\ue0b2"
 style = "powerline"
@@ -140,8 +110,8 @@ display_name = true
 info_separator = " @ "
 
 [[blocks.segments]]
-background = "#242424"
-foreground = "#FEAC19"
+background = "black"
+foreground = "214"
 invert_powerline = true
 powerline_symbol = "\ue0b2"
 style = "powerline"
@@ -152,8 +122,54 @@ display_mode = "files"
 fetch_version = true
 
 [[blocks.segments]]
-background = "#242424"
-foreground = "#06A4CE"
+background = "black"
+foreground = "29"
+style = "powerline"
+template = " \ue649\ue673 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
+type = "cmake"
+
+[[blocks.segments]]
+background = "black"
+foreground = "26"
+style = "powerline"
+template = " \uf308 {{.Context}} <8>\ue0b3</>"
+type = "docker"
+
+# NOTE: Disabled due to slow startup time
+# [[blocks.segments]]
+# template = " \uf10fe {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} <8>\ue0b3</>"
+# background = "black"
+# foreground = "62"
+# style = "powerline"
+# type = "kubectl"
+
+[[blocks.segments]]
+background = "black"
+foreground = "227"
+style = "powerline"
+template = " {{if .Error}}{{.Error}}{{else}}{{if .Version}}\uf487 {{.Version}}{{end}} {{if .Name}}{{.Name}}{{end}}{{end}} <8>\ue0b3</>"
+type = "project"
+
+# NOTE: Disabled due to slow startup time
+# [[blocks.segments]]
+# background = "black"
+# foreground = "93"
+# style = "powerline"
+# template = " {{.WorkspaceName}}{{if .Version}} {{.Version}}{{end}} <8>\ue0b3</>"
+# type = "terraform"
+
+[[blocks.segments]]
+background = "black"
+foreground = "15"
+style = "powerline"
+template = " \ue721 {{.UnityVersion}}{{if .CSharpVersion}} {{.CSharpVersion}}{{end}} <8>\ue0b3</>"
+type = "unity"
+[blocks.segments.properties]
+http_timeout = 2000.0
+
+[[blocks.segments]]
+background = "black"
+foreground = "25"
 invert_powerline = true
 powerline_symbol = "\ue0b2"
 style = "powerline"
@@ -161,73 +177,8 @@ template = " \ue798 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>
 type = "dart"
 
 [[blocks.segments]]
-background = "#242424"
-foreground = "#4063D8"
-invert_powerline = true
-powerline_symbol = "\ue0b2"
-style = "powerline"
-template = " \ue624 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
-type = "julia"
-
-[[blocks.segments]]
-background = "#242424"
-foreground = "#B7410E"
-invert_powerline = true
-powerline_symbol = "\ue0b2"
-style = "powerline"
-template = " \ue7a8 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
-type = "rust"
-
-[[blocks.segments]]
-background = "#242424"
-foreground = "#f89820"
-invert_powerline = true
-powerline_symbol = "\ue0b2"
-style = "powerline"
-template = " \ue738 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
-type = "java"
-
-[[blocks.segments]]
-template = " \ue627 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
-background = "#242424"
-foreground = "#7FD5EA"
-invert_powerline = true
-powerline_symbol = "\ue0b2"
-style = "powerline"
-type = "go"
-
-[[blocks.segments]]
-background = "#242424"
-foreground = "#EC0000"
-invert_powerline = true
-powerline_symbol = "\ue0b2"
-style = "powerline"
-template = " \ue791 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
-type = "ruby"
-
-[[blocks.segments]]
-background = "#242424"
-foreground = "#6CA35E"
-invert_powerline = true
-powerline_symbol = "\ue0b2"
-style = "powerline"
-template = " \ue718 {{if .PackageManagerIcon}}{{.PackageManagerIcon}} {{end}}{{.Full}} <8>\ue0b3</>"
-type = "node"
-
-[[blocks.segments]]
-background = "#242424"
-foreground = "#96E072"
-invert_powerline = true
-powerline_symbol = "\ue0b2"
-style = "powerline"
-template = " \ue235 {{if .Error}}{{.Error}}{{else}}{{if .Venv}}{{.Venv}} {{end}}{{.Full}}{{end}} <8>\ue0b3</>"
-type = "python"
-[blocks.segments.properties]
-display_mode = "files"
-
-[[blocks.segments]]
-background = "#242424"
-foreground = "#3891A6"
+background = "black"
+foreground = "69"
 invert_powerline = true
 powerline_symbol = "\ue0b2"
 style = "powerline"
@@ -235,25 +186,117 @@ template = " \ue77f {{if .Unsupported}}\uf071{{else}}{{.Full}}{{end}} <8>\ue0b3<
 type = "dotnet"
 
 [[blocks.segments]]
-template = " \ue7a2 {{.Name}} <8>\ue0b3</>"
-background = "#242424"
-foreground = "#ffffff"
+template = " \ue627 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
+background = "black"
+foreground = "74"
 invert_powerline = true
 powerline_symbol = "\ue0b2"
 style = "powerline"
-type = "shell"
+type = "go"
 
 [[blocks.segments]]
-template = " {{.CurrentDate | date .Format}} <lightBlue>\ue641</>"
-background = "#242424"
-foreground = "#fafafa"
-style = "diamond"
-type = "time"
+background = "black"
+foreground = "208"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+template = " \ue738 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
+type = "java"
+
+[[blocks.segments]]
+background = "black"
+foreground = "133"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+template = " \ue624 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
+type = "julia"
+
+[[blocks.segments]]
+background = "black"
+foreground = "74"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+template = " \ue620 {{.Full}} <8>\ue0b3</>"
+type = "lua"
+
+[[blocks.segments]]
+background = "black"
+foreground = "71"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+template = " \ue718 {{if .PackageManagerIcon}}{{.PackageManagerIcon}} {{end}}{{.Full}} <8>\ue0b3</>"
+type = "node"
+
+[[blocks.segments]]
+background = "black"
+foreground = "15"
+style = "powerline"
+template = " \ue769 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
+type = "perl"
+
+[[blocks.segments]]
+background = "black"
+foreground = "214"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+template = " \ue235 {{if .Error}}{{.Error}}{{else}}{{if .Venv}}{{.Venv}} {{end}}{{.Full}}{{end}} <8>\ue0b3</>"
+type = "python"
 [blocks.segments.properties]
-time_format = "15:04:05"
+display_mode = "context"
 
 [[blocks.segments]]
-foreground = "#242424"
+background = "black"
+foreground = "160"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+template = " \ue791 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
+type = "ruby"
+
+[[blocks.segments]]
+background = "black"
+foreground = "166"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+template = " \ue7a8 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
+type = "rust"
+
+[[blocks.segments]]
+type = "executiontime"
+foreground = "7"
+background = "black"
+template = " <6>\ueba2</> {{ .FormattedMs }} <8>\ue0b3</>"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+[properties]
+threshold = 500
+style = "austin"
+always_enabled = false
+
+[[blocks.segments]]
+template = " \uf120"
+background = "black"
+foreground = "7"
+invert_powerline = true
+powerline_symbol = "\ue0b2"
+style = "powerline"
+type = "text"
+
+[[blocks.segments]]
+template = "{{.Name}}"
+background = "black"
+foreground = "7"
+type = "shell"
+style = "diamond"
+
+[[blocks.segments]]
+foreground = "black"
 style = "plain"
 template = "\u2593\ue0c4"
 type = "text"
@@ -267,11 +310,11 @@ type = "prompt"
 foreground = "2"
 foreground_templates = ["{{if gt .Code 0}}1{{end}}"]
 style = "plain"
-template = "\u276F"
+template = " \u276F"
 type = "status"
 [blocks.segments.properties]
 always_enabled = true
 
 [secondary_prompt]
 foreground = "8"
-template = "\u276F "
+template = " \u276F "
