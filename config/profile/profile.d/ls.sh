@@ -30,7 +30,7 @@ da=38;5;240:"
 # on the builtin ls command which is almost guaranteed to be available.
 __set_strategy_ls() {
   # Loop default arguments
-  set -- eza lsd ls
+  set -- eza exa lsd ls
   while [ "$#" -gt 0 ]; do
     cmd="$1" # Set value to temp variable
     shift 1  # Shift to next variable in array
@@ -39,7 +39,7 @@ __set_strategy_ls() {
     [ "$cmd" = '' ] && continue # Ignore empty string
     test -x "$(command which "$cmd" 2> /dev/null)" || continue
     case "$cmd" in
-      eza) __set_alias_eza ;;
+      eza | exa) __set_alias_eza ;;
       lsd) __set_alias_lsd ;;
       ls) __set_alias_ls ;;
     esac
@@ -91,10 +91,10 @@ __set_alias_lsd() {
 __set_alias_eza() {
   local args=" \
   --classify \
-  --git \
   --group-directories-first \
   --icons \
   --time-style=long-iso"
+  [ "$cmd" = "eza" ] && args+=" --git"
   local cmd="$cmd $args"
   alias l.="$cmd -adl .*"
   alias l="$cmd -l"
