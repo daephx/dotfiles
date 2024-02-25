@@ -58,7 +58,7 @@ background = "black"
 foreground = "lightBlue"
 powerline_symbol = "\ue0b0"
 style = "powerline"
-template = " {{.Path}} {{if not .Writable}}<1>\uf023</>{{end}}"
+template = " {{.Path}}{{if not .Writable}} <1>\uf023</>{{end}}"
 type = "path"
 [blocks.segments.properties]
 folder_icon = "\u2026"
