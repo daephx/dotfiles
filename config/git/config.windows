@@ -2,20 +2,20 @@
 # vim: set ft=gitconfig:
 
 [init]
-  templatedir = ~/AppData/Local/git/templates
+	templatedir = ~/AppData/Local/git/templates
 
 [core]
-  attributesfile = ~/AppData/Local/git/attributes
-  excludesfile = ~/AppData/Local/git/ignore
-  attributesfile = ~/AppData/Local/git/attributes
+	attributesfile = ~/AppData/Local/git/attributes
+	excludesfile = ~/AppData/Local/git/ignore
+	attributesfile = ~/AppData/Local/git/attributes
 
 [commit]
-  template = ~/AppData/Local/git/message
+	template = ~/AppData/Local/git/message
 
 [credential]
-  guiPrompt = false
-  helper = store
-  modalprompt = false
+	guiPrompt = false
+	helper = store
+	modalprompt = false
 
 [safe]
-  directory = *
+	directory = *

@@ -3,77 +3,77 @@
 
 [alias]
 
-  # Shorthands
-  br = branch
-  ci = commit
-  co = checkout
-  cp = cherry-pick
-  f = fetch
-  mb = merge-base
-  r = remote
-  sm = submodule
-  st = status
-  wt = worktree
+	# Shorthands
+	br = branch
+	ci = commit
+	co = checkout
+	cp = cherry-pick
+	f = fetch
+	mb = merge-base
+	r = remote
+	sm = submodule
+	st = status
+	wt = worktree
 
-  # Information
-  sh = show -w
-  ss = show --stat
+	# Information
+	sh = show -w
+	ss = show --stat
 
-  # Lists
-  l = log --graph --stat=120,80 --pretty=tformat:\"%C(cyan)%h %C(reset)%s%C(blue) <%cn>%C(yellow)%d\"
-  la = log --all
-  ls = log --graph --pretty=format:\"%C(cyan)%h%Creset - %<(72,trunc)%s %Cgreen(%cr)%C(bold blue) <%an>%C(yellow)%d %Creset\" --abbrev-commit
-  rs = log --oneline -30 --simplify-by-decoration --first-parent
-  sl = stash list --pretty=format:\"%C(cyan)%h%C(reset) %<(10,trunc)%C(bold magenta)%gd%C(reset) - %<(72,trunc)%s %C(green)(%ad)%C(reset)\"
+	# Lists
+	l = log --graph --stat=120,80 --pretty=tformat:\"%C(cyan)%h %C(reset)%s%C(blue) <%cn>%C(yellow)%d\"
+	la = log --all
+	ls = log --graph --pretty=format:\"%C(cyan)%h%Creset - %<(72,trunc)%s %Cgreen(%cr)%C(bold blue) <%an>%C(yellow)%d %Creset\" --abbrev-commit
+	rs = log --oneline -30 --simplify-by-decoration --first-parent
+	sl = stash list --pretty=format:\"%C(cyan)%h%C(reset) %<(10,trunc)%C(bold magenta)%gd%C(reset) - %<(72,trunc)%s %C(green)(%ad)%C(reset)\"
 
-  # Diff
-  dc = diff --cached --ignore-all-space
-  dh = diff HEAD~1
-  di = diff --ignore-all-space
-  ds = diff --staged
-  dw = diff --color-words
+	# Diff
+	dc = diff --cached --ignore-all-space
+	dh = diff HEAD~1
+	di = diff --ignore-all-space
+	ds = diff --staged
+	dw = diff --color-words
 
-  conflicts = diff --name-only --diff-filter=U
-  stat = diff --stat=160,120
+	conflicts = diff --name-only --diff-filter=U
+	stat = diff --stat=160,120
 
-  # Operations
-  bD = branch -D
-  ba = branch -a
-  cob = checkout -b
-  fa = fetch --all
-  ff = merge --ff-only
-  noff = merge --no-ff
-  up = fetch --all
+	# Operations
+	bD = branch -D
+	ba = branch -a
+	cob = checkout -b
+	fa = fetch --all
+	ff = merge --ff-only
+	noff = merge --no-ff
+	up = fetch --all
 
-  abort = rebase --abort
-  alias = config --get-regexp alias
-  amend = commit --amend
-  authors = shortlog -nse
-  count = rev-list --count HEAD
-  desc = describe --tags
-  find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
-  first = rev-list --max-parents=0 HEAD
-  hash = "rev-parse"
-  head = log -1
-  hist = log --
-  hooks = rev-parse --git-path hooks
-  hreset = reset --hard HEAD
-  patch = format-patch --stdout
-  recommit = commit --amend -C@@{0}
-  root = rev-parse --show-toplevel
-  sup = submodule update --init --recursive
-  uncommit = reset --soft HEAD^
-  unstage = reset HEAD --
-  wip = commit --no-verify -m WIP
+	abort = rebase --abort
+	alias = config --get-regexp alias
+	amend = commit --amend
+	authors = shortlog -nse
+	count = rev-list --count HEAD
+	desc = describe --tags
+	find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+	first = rev-list --max-parents=0 HEAD
+	hash = "rev-parse"
+	head = log -1
+	hist = log --
+	hooks = rev-parse --git-path hooks
+	hreset = reset --hard HEAD
+	patch = format-patch --stdout
+	recommit = commit --amend -C@@{0}
+	root = rev-parse --show-toplevel
+	sup = submodule update --init --recursive
+	uncommit = reset --soft HEAD^
+	unstage = reset HEAD --
+	wip = commit --no-verify -m WIP
 
-  # Scripted aliases
-  # NOTE: These command aliases utilize ksh/bash syntax, as a result they are
-  # not supported on windows without the git-bash emulator.
+	# Scripted aliases
+	# NOTE: These command aliases utilize ksh/bash syntax, as a result they are
+	# not supported on windows without the git-bash emulator.
 
-  dm = !git diff --ignore-all-space $(git merge-base HEAD origin/$(git main)) HEAD
-  dms = !git diff --name-status $(git merge-base HEAD origin/$(git main)) HEAD
+	dm = !git diff --ignore-all-space $(git merge-base HEAD origin/$(git main)) HEAD
+	dms = !git diff --name-status $(git merge-base HEAD origin/$(git main)) HEAD
 
-  cleanup = "!git remote prune origin && git gc && git clean -df && git stash clear"
-  mine = !git log --author=$(git config --get user.email)
-  sclean = !git submodule update --init --recursive && git submodule foreach --recursive "git reset --hard" && git submodule foreach --recursive "git clean -fd"
-  whoami = "!git config user.name && git config user.email"
+	cleanup = "!git remote prune origin && git gc && git clean -df && git stash clear"
+	mine = !git log --author=$(git config --get user.email)
+	sclean = !git submodule update --init --recursive && git submodule foreach --recursive "git reset --hard" && git submodule foreach --recursive "git clean -fd"
+	whoami = "!git config user.name && git config user.email"

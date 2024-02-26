@@ -4,183 +4,183 @@
 ### Core ###
 
 [init]
-  defaultBranch = main
-  templatedir = ~/.config/git/templates
+	defaultBranch = main
+	templatedir = ~/.config/git/templates
 
 [core]
-  attributesfile = ~/.config/git/attributes
-  autocrlf = input
-  excludesfile = ~/.config/git/ignore
-  pager = delta
+	attributesfile = ~/.config/git/attributes
+	autocrlf = input
+	excludesfile = ~/.config/git/ignore
+	pager = delta
 
-  # Speed up commands involving untracked files such as `git status`.
-  # https://git-scm.com/docs/git-update-index#_untracked_cache
-  untrackedCache = true
+	# Speed up commands involving untracked files such as `git status`.
+	# https://git-scm.com/docs/git-update-index#_untracked_cache
+	untrackedCache = true
 
-  # Treat spaces before tabs and all kinds of trailing whitespace as an error
-  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
 [commit]
-  template = ~/.config/git/message
+	template = ~/.config/git/message
 
 [credential]
-  helper = cache --timeout=600
+	helper = cache --timeout=600
 
 [pager]
-  branch = true
-  status = true
+	branch = true
+	status = true
 
 [log]
-  date = relative
+	date = relative
 
 [status]
-  showUntrackedFiles = all
+	showUntrackedFiles = all
 
 [fetch]
-  prune = true
+	prune = true
 
 [pull]
-  rebase = false
+	rebase = false
 
 [push]
-  default = current
+	default = current
 
 [fetch]
-  prune = true
+	prune = true
 
 [rebase]
-  autoSquash = true
-  autoStash = true
+	autoSquash = true
+	autoStash = true
 
 [branch]
-  sort = -committerdate # Show most recently changed branches first.
+	sort = -committerdate # Show most recently changed branches first.
 
 [stash]
-  showPatch = true
+	showPatch = true
 
 [help]
-  # If a command is mistyped, make Git automatically
-  # run the command it thinks the user wanted to type.
-  autocorrect = immediate
+	# If a command is mistyped, make Git automatically
+	# run the command it thinks the user wanted to type.
+	autocorrect = immediate
 
 [rerere]
-  enabled = true
+	enabled = true
 
 ### Delta ###
 
 [delta]
-  decorations = true
-  line-numbers = true
+	decorations = true
+	line-numbers = true
 
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 
 [delta "decorations"]
-  commit-decoration-style = bold yellow box ul
-  file-style = bold yellow ul
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
 
 
 ### Colors ###
 
 [color]
-  ui = auto
+	ui = auto
 
 [color "decorate"]
-  HEAD = yellow
-  branch = green
-  remoteBranch = magenta
-  stash = magenta
-  tag = yellow bold
+	HEAD = yellow
+	branch = green
+	remoteBranch = magenta
+	stash = magenta
+	tag = yellow bold
 
 [color "diff"]
-  commit = cyan bold
-  frag = magenta bold
-  meta = yellow bold
-  new = green bold
-  old = red bold
-  whitespace = red reverse
+	commit = cyan bold
+	frag = magenta bold
+	meta = yellow bold
+	new = green bold
+	old = red bold
+	whitespace = red reverse
 
 [color "diff-highlight"]
-  newHighlight = cyan bold 22
-  newNormal = green bold
-  oldHighlight = yellow bold 52
-  oldNormal = red bold
+	newHighlight = cyan bold 22
+	newNormal = green bold
+	oldHighlight = yellow bold 52
+	oldNormal = red bold
 
 
 ### LFS ###
 
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  process = git-lfs filter-process
-  required = true
-  smudge = git-lfs smudge -- %f
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f
 
 
 ### Difftools ###
 
 [diff]
-  algorithm = histogram
-  colorMoved = default
-  navigate = true # Use `n` and `N` to move between diff sections.
-  renames = copies # Detect copies as well as renames.
-  tool = nvimdiff
+	algorithm = histogram
+	colorMoved = default
+	navigate = true # Use `n` and `N` to move between diff sections.
+	renames = copies # Detect copies as well as renames.
+	tool = nvimdiff
 
 [difftool]
-  prompt = true
-  trustExitCode = true
+	prompt = true
+	trustExitCode = true
 
 [merge]
-  conflictstyle = diff3
-  log = true # Include summaries of merged commits in new merge commit messages
-  tool = nvimdiff
+	conflictstyle = diff3
+	log = true # Include summaries of merged commits in new merge commit messages
+	tool = nvimdiff
 
 [mergetool]
-  keepBackup = false
-  prompt = false
-  trustExitCode = true
+	keepBackup = false
+	prompt = false
+	trustExitCode = true
 
 # Neovim
 
 [difftool "nvimdiff"]
-  cmd = "nvim -d $MERGED $BASE $LOCAL $REMOTE -c 'wincmd J | wincmd ='"
+	cmd = "nvim -d $MERGED $BASE $LOCAL $REMOTE -c 'wincmd J | wincmd ='"
 
 [mergetool "nvimdiff"]
-  cmd = "nvim -d $MERGED $BASE $LOCAL $REMOTE -c 'wincmd J | wincmd ='"
+	cmd = "nvim -d $MERGED $BASE $LOCAL $REMOTE -c 'wincmd J | wincmd ='"
 
 # Visual Studio Code
 
 [difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+	cmd = code --wait --diff $LOCAL $REMOTE
 
 [mergetool "vscode"]
-  cmd = code --wait $MERGED
+	cmd = code --wait $MERGED
 
 # Visual Studio IDE
 
 [difftool "visualstudio"]
-  cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\Preview\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\Preview\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
 
 [mergetool "visualstudio"]
-  cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\Preview\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
+	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\Preview\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
 
 
 ### URL ###
 
 [url "git@github.com:"]
-  insteadOf = "gh:"
-  pushInsteadOf = "git://github.com/"
-  pushInsteadOf = "github:"
+	insteadOf = "gh:"
+	pushInsteadOf = "git://github.com/"
+	pushInsteadOf = "github:"
 
 [url "git://github.com/"]
-  insteadOf = "github:"
+	insteadOf = "github:"
 
 [url "git@gist.github.com:"]
-  insteadOf = "gst:"
-  pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
 
 [url "git://gist.github.com/"]
-  insteadOf = "gist:"
+	insteadOf = "gist:"
 
 
 ### Includes ###
@@ -188,12 +188,12 @@
 # Unix
 
 [include]
-  path = ~/.config/git/aliases
-  path = ~/.config/git/config.local
+	path = ~/.config/git/aliases
+	path = ~/.config/git/config.local
 
 # Windows
 
 [include]
-  path = ~/AppData/Local/git/aliases
-  path = ~/AppData/Local/git/config.local
-  path = ~/AppData/Local/git/config.windows
+	path = ~/AppData/Local/git/aliases
+	path = ~/AppData/Local/git/config.local
+	path = ~/AppData/Local/git/config.windows
