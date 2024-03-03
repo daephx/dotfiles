@@ -88,8 +88,6 @@ local config = {
     },
   },
   disable_default_key_bindings = true,
-  -- Separate <Tab> <C-i>
-  enable_csi_u_key_encoding = true,
   exit_behavior = "CloseOnCleanExit",
   key_tables = keybinds.key_tables,
   keys = keybinds.create_keybinds(),
@@ -190,3 +188,4 @@ config.hyperlink_rules = {
 local local_config = load_local_config("local")
 local merged_config = utils.merge_tables(config, local_config)
 return utils.merge_tables(merged_config, create_ssh_domain_from_ssh_config(merged_config.ssh_domains))
+
