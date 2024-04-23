@@ -29,7 +29,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' menu select
 
 # Allow for autocomplete to be case insensitive
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
 
 # Highlight the current autocomplete option
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
