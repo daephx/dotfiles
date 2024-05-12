@@ -1,9 +1,9 @@
-local keybinds = require("keybinds")
+local bindings = require("bindings")
 local utils = require("utils")
 local wezterm = require("wezterm")
 local scheme = wezterm.get_builtin_color_schemes()["Dark Pastel"]
 local gpus = wezterm.gui.enumerate_gpus()
-require("on")
+require("events")
 
 -- /etc/ssh/sshd_config
 -- AcceptEnv TERM_PROGRAM_VERSION COLORTERM TERM TERM_PROGRAM WEZTERM_REMOTE_PANE
@@ -89,10 +89,10 @@ local config = {
   },
   disable_default_key_bindings = true,
   exit_behavior = "CloseOnCleanExit",
-  key_tables = keybinds.key_tables,
-  keys = keybinds.create_keybinds(),
+  key_tables = bindings.key_tables,
+  keys = bindings.create_keybinds(),
   leader = { key = "Space", mods = "CTRL|SHIFT" },
-  mouse_bindings = keybinds.mouse_bindings,
+  mouse_bindings = bindings.mouse_bindings,
   tab_bar_at_bottom = false,
   use_fancy_tab_bar = false,
   window_close_confirmation = "AlwaysPrompt",

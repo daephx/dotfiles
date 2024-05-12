@@ -1,5 +1,5 @@
 local io = require("io")
-local keybinds = require("keybinds")
+local bindings = require("bindings")
 local os = require("os")
 local utils = require("utils")
 local wezterm = require("wezterm")
@@ -150,10 +150,10 @@ wezterm.on("toggle-tmux-keybinds", function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if not overrides.window_background_opacity then
     overrides.window_background_opacity = 0.95
-    overrides.keys = keybinds.default_keybinds
+    overrides.keys = bindings.default_keybinds
   else
     overrides.window_background_opacity = nil
-    overrides.keys = utils.merge_lists(keybinds.default_keybinds, keybinds.tmux_keybinds)
+    overrides.keys = utils.merge_lists(bindings.default_keybinds, bindings.tmux_keybinds)
   end
   window:set_config_overrides(overrides)
 end)
