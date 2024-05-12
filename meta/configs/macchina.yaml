@@ -18,7 +18,7 @@
 - link:
     ~/.config/macchina/macchina.toml: config/macchina/macchina.toml
     ~/.config/macchina/ascii/magneton.ascii: config/macchina/ascii/magneton.ascii
-    ~/.config/macchina/ascii/Neodymium.toml: config/macchina/themes/Neodymium.toml
+    ~/.config/macchina/themes/Neodymium.toml: config/macchina/themes/Neodymium.toml
 
 - shell:
     - [cargo install macchina]
