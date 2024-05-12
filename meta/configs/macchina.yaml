@@ -5,6 +5,9 @@
     link:
       create: true
       relink: true
+    shell:
+      stdout: true
+      stderr: true
 
 - create:
     - ~/.config/macchina/
