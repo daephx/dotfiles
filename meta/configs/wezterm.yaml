@@ -1,5 +1,10 @@
 # Wezterm | A GPU-accelerated cross-platform terminal emulator and multiplexer
 # https://github.com/wez/wezterm
 
+- defaults:
+    shell:
+      stderr: true
+      stdout: true
+
 - link:
     ~/.config/wezterm: config/wezterm/
