@@ -1,9 +1,14 @@
 local M = {}
 
+---@param s string
+---@return string, integer
 function M.basename(s)
   return string.gsub(s, "(.*[/\\])(.*)", "%2")
 end
 
+---@param t1 table
+---@param t2 table
+---@return table
 function M.merge_tables(t1, t2)
   for k, v in pairs(t2) do
     if (type(v) == "table") and (type(t1[k] or false) == "table") then
@@ -15,6 +20,9 @@ function M.merge_tables(t1, t2)
   return t1
 end
 
+---@param t1 table
+---@param t2 table
+---@return table
 function M.merge_lists(t1, t2)
   local result = {}
   for _, v in pairs(t1) do
@@ -26,6 +34,9 @@ function M.merge_lists(t1, t2)
   return result
 end
 
+---@param tab table
+---@param element table
+---@return boolean
 function M.exists(tab, element)
   for _, v in pairs(tab) do
     if v == element then
@@ -37,6 +48,8 @@ function M.exists(tab, element)
   return false
 end
 
+---@param path string
+---@return string
 function M.convert_home_dir(path)
   local cwd = path
   local home = os.getenv("HOME")
@@ -47,11 +60,15 @@ function M.convert_home_dir(path)
   return cwd
 end
 
+---@param dir string
+---@return string, integer
 function M.convert_useful_path(dir)
   local cwd = M.convert_home_dir(dir)
   return M.basename(cwd)
 end
 
+---@param dir string
+---@return string, string
 function M.split_from_url(dir)
   local cwd = ""
   local hostname = ""
@@ -68,6 +85,16 @@ function M.split_from_url(dir)
     cwd = M.convert_useful_path(cwd)
   end
   return hostname, cwd
+end
+
+---@return boolean
+function M.enable_wayland()
+  local session = os.getenv("DESKTOP_SESSION")
+  local wayland = os.getenv("XDG_SESSION_TYPE")
+  if wayland == "wayland" or session == "hyprland" then
+    return true
+  end
+  return false
 end
 
 return M
