@@ -128,7 +128,7 @@ untracked = "[?${count}](red)"
 [cmd_duration]
 min_time = 3000
 style = "248"
-show_notifications = true
+show_notifications = false
 format = '[](bright-black) [](cyan) [$duration]($style) '
 
 [time]
