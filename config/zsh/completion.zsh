@@ -37,7 +37,14 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 # Force prefix matching
 zstyle ':completion:*' accept-exact '*(N)'
 
-# partial completion suggestions
+# List directories first
+zstyle ':completion:*' list-dirs-first true
+
+# Group matches
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*' group-name ''
+
+# Partial completion suggestions
 # Allow complete path via fragments: /p/t/dir
 zstyle ':completion:*' list-suffixes
 zstyle ':completion:*' expand prefix suffix 
