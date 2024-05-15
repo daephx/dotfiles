@@ -25,8 +25,8 @@ zle_highlight=('paste:none')
 zstyle ':completion:*' cache-path "$zcachedir"
 zstyle ':completion:*' use-cache on
 
-# Navigate completion menu using “hjkl”
-zstyle ':completion:*' menu select
+# Always show the auto-completion list if ambiguous
+zstyle ':completion:::::default' menu yes select
 
 # Allow for autocomplete to be case insensitive
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
