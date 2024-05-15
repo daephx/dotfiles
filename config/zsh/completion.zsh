@@ -4,10 +4,8 @@
 zcachedir="${XDG_CACH_HOME:-$HOME/.cache}/zsh/cache"
 [ -d "$zcachedir" ] || mkdir -p "$zcachedir" > /dev/null
 
-# Load/Initialize completion modules
-autoload -Uz compinit && compinit -d "$zcachedir/zcompdump"
-autoload -Uz colors && colors
-zmodload zsh/complist
+# Include hidden files in completion
+_comp_options+=(globdots)
 
 # Set cdpath for easy location list
 cdpath=("." "$HOME")
@@ -15,11 +13,13 @@ cdpath=("." "$HOME")
 # Add local completions to fpath
 fpath=("$XDG_DATA_HOME/zsh/completion" $fpath)
 
-# Include hidden files in completion
-_comp_options+=(globdots)
-
 # Display highlight of pasted text
 zle_highlight=('paste:none')
+
+# Load/Initialize completion modules
+autoload -Uz colors && colors
+autoload -Uz compinit && compinit -d "$zcachedir/zcompdump"
+zmodload zsh/complist
 
 # Enable caching for completion items
 zstyle ':completion:*' cache-path "$zcachedir"
