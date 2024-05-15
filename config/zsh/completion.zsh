@@ -45,11 +45,9 @@ zstyle ':completion:*' expand prefix suffix 
 # Set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 
-# List directories first
-zstyle ':completion:*' list-dirs-first true
-
-# Join double slashes in completion
-zstyle ':completion:*' squeeze-slashes true
+# Completion messages
+zstyle ':completion:*:messages' format $'\e[01;35m[%d]\e[0m'
+zstyle ':completion:*:warnings' format $'\e[01;31m[No Matches Found]\e[0m'
 
 # Better SSH/Rsync/SCP Autocomplete
 zstyle ':completion:*:(scp|rsync):*' tag-order ' hosts:-ipaddr:ip\ address hosts:-host:host files'
