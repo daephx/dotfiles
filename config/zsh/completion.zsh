@@ -73,10 +73,10 @@ zstyle ':completion::complete:make::' tag-order targets variables
 # Switch between completion groups with vim style bindings
 zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l'
 
-# Preview directory's content with ls/exa when completing cd
+# Preview directory's content with ls/eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
-command -v exa > /dev/null && {
-  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -l --color=always $realpath'
-} || {
+if command -v eza > /dev/null; then
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -l --color=always $realpath'
+else
   zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -l --color=always $realpath'
-}
+fi
