@@ -73,6 +73,10 @@ zstyle ':completion::complete:make::' tag-order targets variables
 # Switch between completion groups with vim style bindings
 zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l'
 
+# HACK: Query highlight not being applied from FZF_DEFAULT_OPTS
+# This explicitly sets the highlight color but this feels like a bug.
+zstyle ':fzf-tab:*' fzf-flags '--color=hl:6'
+
 # Set group prefix character
 zstyle ':fzf-tab:*' prefix ''
 
