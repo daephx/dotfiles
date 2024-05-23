@@ -30,9 +30,3 @@ __pycache__/
 
 # Worktree directory
 .worktrees/
-
-# Project notes
-TODO.md
-notes.md
-notes/
-todo.md
