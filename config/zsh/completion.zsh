@@ -71,6 +71,13 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*:messages' format $'\e[01;35m[%d]\e[0m'
 zstyle ':completion:*:warnings' format $'\e[01;31m[No Matches Found]\e[0m'
 
+# Completion options for kill/processes
+compdef pkill=kill
+compdef pkill=killall
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:processes' command 'ps -au$USER'
+
 # Better SSH/Rsync/SCP Autocomplete
 zstyle ':completion:*:(scp|rsync):*' tag-order ' hosts:-ipaddr:ip\ address hosts:-host:host files'
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
