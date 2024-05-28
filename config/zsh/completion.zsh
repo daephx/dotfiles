@@ -19,6 +19,7 @@ zle_highlight=('paste:none')
 # Load/Initialize completion modules
 autoload -Uz colors && colors
 autoload -Uz compinit && compinit -d "$zcachedir/zcompdump"
+autoload -U +X bashcompinit && bashcompinit
 zmodload zsh/complist
 
 # Enable caching for completion items
