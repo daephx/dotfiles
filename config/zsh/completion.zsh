@@ -104,6 +104,9 @@ zstyle ':fzf-tab:*' fzf-flags '--color=hl:6'
 # Set group prefix character
 zstyle ':fzf-tab:*' prefix ''
 
+# Show preview for systemd unit status
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+
 # Preview directory's content with ls/eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
 if command -v eza > /dev/null; then
