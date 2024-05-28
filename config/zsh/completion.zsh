@@ -60,6 +60,10 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-suffixes
 zstyle ':completion:*' expand prefix suffix 
 
+# Join double slashes in completion
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion::complete:*' '\\'
+
 # Set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 
