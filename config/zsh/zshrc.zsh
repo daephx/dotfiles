@@ -12,7 +12,6 @@ integer t0=$(($(date +%s%N)/1000000))
 # Set history file if not exists
 HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh_history"
 
-
 ### Options ###
 
 # Enable
@@ -34,7 +33,6 @@ unsetopt EXTENDED_HISTORY # Save command timestamps to histfile
 unsetopt LIST_AMBIGUOUS # Auto-listing behaviour only works when nothing would be inserted.
 unsetopt MENU_COMPLETE # Do not auto select the first completion entry
 
-
 ### Plugins ###
 
 # Zap: a minimal zsh plugin manager
@@ -54,7 +52,6 @@ plug 'chitoku-k/fzf-zsh-completions'
 plug 'zsh-users/zsh-autosuggestions'
 plug 'zsh-users/zsh-completions'
 plug 'zsh-users/zsh-syntax-highlighting'
-
 
 ### Source ###
 
