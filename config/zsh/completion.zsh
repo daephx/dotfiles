@@ -2,6 +2,7 @@
 
 # Create cache directory
 zcachedir="${XDG_CACH_HOME:-$HOME/.cache}/zsh/cache"
+zcompdump="$zcachedir/zcompdump"
 [ -d "$zcachedir" ] || mkdir -p "$zcachedir" > /dev/null
 
 # Include hidden files in completion
@@ -17,10 +18,19 @@ fpath=("$XDG_DATA_HOME/zsh/completion" $fpath)
 zle_highlight=('paste:none')
 
 # Load/Initialize completion modules
-autoload -Uz colors && colors
-autoload -Uz compinit && compinit -d "$zcachedir/zcompdump"
 autoload -U +X bashcompinit && bashcompinit
+autoload -Uz colors && colors
+autoload -Uz compinit
 zmodload zsh/complist
+
+# On slow systems, checking the cached .zcompdump file to see if it must be
+# regenerated adds a noticeable delay to zsh startup.  This little hack restricts
+# it to once a day.  It should be pasted into your own completion file.
+if [[ -n ${zcompdump}(#qN.mh+24) ]]; then
+  compinit -d "$zcompdump"
+else
+  compinit -C -d "$zcompdump"
+fi
 
 # Enable caching for completion items
 zstyle ':completion:*' cache-path "$zcachedir"
