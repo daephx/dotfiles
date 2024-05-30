@@ -64,6 +64,7 @@ for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
 done
 
 # Zshrc library
+source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/bindings.zsh"
 
