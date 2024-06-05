@@ -9,6 +9,12 @@ stty start undef # Disable Ctrl-q closing terminal
 stty stop undef  # Disable Ctrl-s to freeze terminal
 stty susp undef  # Disable Ctrl-Z to suspect process
 
+# Cycle through history based on characters already typed on the line
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 # Set Vim-like binding mode
 bindkey -v
 
@@ -30,8 +36,18 @@ zle -N zle-line-init
 echo -ne "\e[5 q" # Use beam shape cursor on startup.
 preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
 
+# Edit command buffer in EDITOR using `ctrl-v`
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd "^V" edit-command-line
+
 # Fix backspace after vi escape
 bindkey "^?" backward-delete-char
+
+# Fix vim emulate Ctrl-key mappings
+bindkey "^H" backward-delete-char
+bindkey "^U" backward-kill-line
+bindkey "^W" backward-kill-word
 
 # Fix home and end key in vim terminal
 bindkey "^[[H" beginning-of-line
@@ -40,31 +56,17 @@ bindkey "^[[F" end-of-line
 bindkey -M vicmd "^[[H" beginning-of-line
 bindkey -M vicmd "^[[F" end-of-line
 
-# Fix vim emulate Ctrl-key mappings
-bindkey "^H" backward-delete-char
-bindkey "^U" backward-kill-line
-bindkey "^W" backward-kill-word
-
-# Bindings for `v` is already mapped to visual mode, use `ctrl-v` to open Vim
-autoload edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd "^V" edit-command-line
-
-# Cycle through history based on characters already typed on the line
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-bindkey "^[[A" up-line-or-beginning-search # Arrow up
-bindkey "^[[B" down-line-or-beginning-search # Arrow down
-
-bindkey "^N" up-line-or-beginning-search # Ctrl-p
-bindkey "^P" down-line-or-beginning-search # Ctrl-n
-
 # Ctrl-Arrow to jump words
 bindkey "^[[1;5C" forward-word # Arrow right
 bindkey "^[[1;5D" backward-word # Arrow left
+
+# Cycle command history with Ctrl-up/down
+bindkey "^[[A" up-line-or-beginning-search # Arrow up
+bindkey "^[[B" down-line-or-beginning-search # Arrow down
+
+# Cycle command history with Ctrl-n/p
+bindkey "^N" up-line-or-beginning-search
+bindkey "^P" down-line-or-beginning-search
 
 # Navigate completion menu using “hjkl”
 bindkey -M menuselect "h" vi-backward-char
