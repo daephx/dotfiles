@@ -63,6 +63,10 @@ bindkey "^[[B" down-line-or-beginning-search # Arrow down
 bindkey "^N" up-line-or-beginning-search
 bindkey "^P" down-line-or-beginning-search
 
+# Use ctrl-j/k to navigate history
+bindkey "^k" up-line-or-beginning-search
+bindkey "^j" down-line-or-beginning-search
+
 # Navigate completion menu using “hjkl”
 bindkey -M menuselect "h" vi-backward-char
 bindkey -M menuselect "j" vi-down-line-or-history
