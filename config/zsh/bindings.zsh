@@ -40,9 +40,21 @@ bindkey -M vicmd "^V" edit-command-line
 bindkey "^?" backward-delete-char
 
 # Fix vim emulate Ctrl-key mappings
-bindkey "^H" backward-delete-char
-bindkey "^U" backward-kill-line
-bindkey "^W" backward-kill-word
+# HACK: After pasting in vi mode, the default binding doesn't work
+bindkey '^U' backward-kill-line
+bindkey -M vicmd '^H' backward-char
+bindkey -M viins '^H' backward-delete-char
+
+# Fix vim emulate Ctrl-arrow mappings
+bindkey -M vicmd "^[[1;5C" forward-word
+bindkey -M vicmd "^[[1;5D" backward-word
+
+# Yank to end-of-line
+bindkey -M vicmd 'Y' vi-yank-eol
+
+# Better undo/redo bindings
+bindkey -M vicmd "^r" redo
+bindkey -M vicmd "u" undo
 
 # Fix home and end key in vim terminal
 bindkey "^[[H" beginning-of-line
