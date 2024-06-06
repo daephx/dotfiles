@@ -67,9 +67,6 @@ zstyle ':completion::complete:make::' tag-order targets variables
 
 # Fzf-Tab
 
-# Use tmux-pane for completion list
-# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
 # Switch between completion groups with vim style bindings
 zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l'
 
