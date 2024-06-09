@@ -34,10 +34,10 @@ fi
 
 # Enable caching for completion items
 zstyle ':completion:*' cache-path "$zcachedir"
-zstyle ':completion:*' use-cache on
+zstyle ':completion:*' use-cache true
 
 # Always show the auto-completion list if ambiguous
-zstyle ':completion:::::default' menu yes select
+zstyle ':completion:::::default' menu true select
 
 # Allow for autocomplete to be case insensitive
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
@@ -52,7 +52,7 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' list-dirs-first true
 
 # Group matches
-zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:matches' group true
 zstyle ':completion:*' group-name ''
 
 # Partial completion suggestions
@@ -74,7 +74,7 @@ zstyle ':completion:*:warnings' format $'\e[01;31m[No Matches Found]\e[0m'
 # Completion options for kill/processes
 compdef pkill=kill
 compdef pkill=killall
-zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:kill:*' menu true select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:processes' command 'ps -au$USER'
 
