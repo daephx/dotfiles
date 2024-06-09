@@ -31,10 +31,9 @@ __init_prompt_zsh() {
 __init_prompt_omp() {
   command -v oh-my-posh > /dev/null || return
   shell="$1"
-  theme_name="skellum"
-  theme_file="$theme_name.omp.toml"
-  theme_path="$XDG_CONFIG_HOME/poshthemes/$theme_file"
-  eval "$(oh-my-posh init "$shell" --config "$theme_path")"
+  theme_file="skellum.omp.toml"
+  theme_dir="$XDG_CONFIG_HOME/oh-my-posh/themes"
+  eval "$(oh-my-posh init "$shell" --config "$theme_dir/$theme_file")"
 }
 
 __init_prompt_starship() {

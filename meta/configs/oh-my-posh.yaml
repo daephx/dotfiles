@@ -10,12 +10,13 @@
       stdout: true
 
 - create:
-    - ~/.config/poshthemes/
+    - ~/.config/oh-my-posh/
+    - ~/.config/oh-my-posh/themes/
 
 - link:
-    ~/.config/poshthemes:
+    ~/.config/oh-my-posh/themes:
       glob: true
-      path: config/poshthemes/*
+      path: config/oh-my-posh/themes/*
 
 - shell:
     - [
