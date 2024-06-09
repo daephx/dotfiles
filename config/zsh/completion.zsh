@@ -43,7 +43,7 @@ zstyle ':completion:::::default' menu yes select
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
 
 # Highlight the current autocomplete option
-zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+[[ -n "$LS_COLORS" ]] && zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Force prefix matching
 zstyle ':completion:*' accept-exact '*(N)'
