@@ -48,7 +48,6 @@ ZAP_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zap"
 plug 'Aloxaf/fzf-tab'
 plug 'MenkeTechnologies/zsh-dotnet-completion'
 plug 'MichaelAquilina/zsh-autoswitch-virtualenv'
-plug 'chitoku-k/fzf-zsh-completions'
 plug 'zsh-users/zsh-autosuggestions'
 plug 'zsh-users/zsh-completions'
 plug 'zsh-users/zsh-syntax-highlighting'
