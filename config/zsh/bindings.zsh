@@ -1,7 +1,7 @@
 # zsh/bindings: Keyboard binding options for zsh(1)
 
 # Make Vi mode transitions faster (hundredths of a second)
-export KEYTIMEOUT=1
+export KEYTIMEOUT=15
 
 # Load the complist module to enable enhanced scrollable menus
 # NOTE: This is required for menuselect bindings to function properly.
