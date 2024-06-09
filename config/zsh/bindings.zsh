@@ -49,10 +49,6 @@ bindkey '^U' backward-kill-line
 bindkey -M vicmd '^H' backward-char
 bindkey -M viins '^H' backward-delete-char
 
-# Fix vim emulate Ctrl-arrow mappings
-bindkey -M vicmd "^[[1;5C" forward-word
-bindkey -M vicmd "^[[1;5D" backward-word
-
 # Yank to end-of-line
 bindkey -M vicmd 'Y' vi-yank-eol
 
@@ -70,6 +66,9 @@ bindkey -M vicmd "^[[F" end-of-line
 # Ctrl-Arrow to jump words
 bindkey "^[[1;5C" forward-word # Arrow right
 bindkey "^[[1;5D" backward-word # Arrow left
+
+bindkey -M vicmd "^[[1;5C" forward-word # Arrow right
+bindkey -M vicmd "^[[1;5D" backward-word # Arrow left
 
 # Cycle command history with Ctrl-up/down
 bindkey "^[[A" up-line-or-beginning-search # Arrow up
