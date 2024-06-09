@@ -3,6 +3,10 @@
 # Make Vi mode transitions faster (hundredths of a second)
 export KEYTIMEOUT=1
 
+# Load the complist module to enable enhanced scrollable menus
+# NOTE: This is required for menuselect bindings to function properly.
+zmodload zsh/complist
+
 # Disable stty bindings
 stty quit ""
 stty start undef # Disable Ctrl-q closing terminal

@@ -61,8 +61,8 @@ done
 
 # Zshrc library
 source "$ZDOTDIR/aliases.zsh"
-source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/bindings.zsh"
+source "$ZDOTDIR/completion.zsh"
 
 # Output startup time
 function {
