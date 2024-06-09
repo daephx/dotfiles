@@ -1,4 +1,4 @@
-# ~/.zshrc: executed by zsh(1) for non-login shells.
+# zshrc: executed by zsh(1) for non-login shells.
 # shellcheck disable=SC1090
 # shellcheck disable=SC1091
 # shellcheck shell=zsh
@@ -6,7 +6,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Profile loading timer init
+# Start profile startup timer
 integer t0=$(($(date +%s%N)/1000000))
 
 # Set history file if not exists
@@ -14,24 +14,24 @@ HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh_history"
 
 ### Options ###
 
-# Enable
-setopt GLOB_COMPLETE # Enable glob matching for competition
-setopt HIST_APPEND # Append new commands to histfile
-setopt HIST_EXPIRE_DUPS_FIRST # Delete dupes when histfile exceeds histsize
-setopt HIST_FIND_NO_DUPS # Don't display duplicates when searching histfile
-setopt HIST_IGNORE_ALL_DUPS # Overwrite duplicate commands in histfile
-setopt HIST_IGNORE_DUPS # Ignore duplicated commands history list
-setopt HIST_IGNORE_SPACE # Ignore commands that start with space
-setopt HIST_SAVE_NO_DUPS # Ignore duplicates when saving to histfile
-setopt INTERACTIVE_COMMENTS # Allow comments in interactive shells
-setopt SHARE_HISTORY # Append and imports commands from histfile
+# Names are case insensitive and underscores are ignored.
+# https://zsh.sourceforge.io/Doc/Release/Options.html
 
-# Disable
-unsetopt AUTO_REMOVE_SLASH # Remove completed slash after delimiter character
-unsetopt BEEP # Turn off terminal bells
-unsetopt EXTENDED_HISTORY # Save command timestamps to histfile
-unsetopt LIST_AMBIGUOUS # Auto-listing behaviour only works when nothing would be inserted.
-unsetopt MENU_COMPLETE # Do not auto select the first completion entry
+setopt GLOB_COMPLETE          # Enable glob matching for competition.
+setopt HIST_APPEND            # Append new commands to histfile.
+setopt HIST_EXPIRE_DUPS_FIRST # Delete dupes when histfile exceeds histsize.
+setopt HIST_FIND_NO_DUPS      # Don't display duplicates when searching histfile.
+setopt HIST_IGNORE_ALL_DUPS   # Overwrite duplicate commands in histfile.
+setopt HIST_IGNORE_DUPS       # Ignore duplicated commands history list.
+setopt HIST_IGNORE_SPACE      # Ignore commands that start with space.
+setopt HIST_SAVE_NO_DUPS      # Ignore duplicates when saving to histfile.
+setopt INTERACTIVE_COMMENTS   # Allow comments in interactive shells.
+setopt SHARE_HISTORY          # Append and imports commands from histfile.
+unsetopt AUTO_REMOVE_SLASH    # Remove completed slash after delimiter character.
+unsetopt BEEP                 # Turn off terminal bells.
+unsetopt EXTENDED_HISTORY     # Save command timestamps to histfile.
+unsetopt LIST_AMBIGUOUS       # Auto-listing behaviour only works when nothing would be inserted.
+unsetopt MENU_COMPLETE        # Do not auto select the first completion entry.
 
 ### Plugins ###
 
