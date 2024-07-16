@@ -51,6 +51,9 @@ zstyle ':completion:*' accept-exact '*(N)'
 # List directories first
 zstyle ':completion:*' list-dirs-first true
 
+# Disable completion for special directories . and ..
+zstyle ':completion:*' special-dirs false
+
 # Group matches
 zstyle ':completion:*:matches' group true
 zstyle ':completion:*' group-name ''
