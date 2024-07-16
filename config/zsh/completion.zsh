@@ -115,6 +115,10 @@ zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion::complete:make::' tag-order targets variables
 
 # Fzf-Tab
+# https://github.com/Aloxaf/fzf-tab
+# Set options for this plugin for fzf interop with zsh completions.
+# NOTE: fzf-tab needs to be loaded after compinit, but before plugins which will
+# wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
 
 # Switch between completion groups with vim style bindings
 zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l'
