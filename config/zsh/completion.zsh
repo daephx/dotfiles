@@ -85,6 +85,13 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
   rpc rpcuser rpm rtkit scard shutdown squid sshd statd svn sync tftp \
   usbmux uucp vcsa wwwrun xfs '_*'
 
+# Set process completion for Solaris OS
+if [[ "$OSTYPE" = solaris* ]]; then
+  zstyle ':completion:*:*:*:*:processes' command "ps -u $USERNAME -o pid,user,comm"
+else
+  zstyle ':completion:*:*:*:*:processes' command "ps -u $USERNAME -o pid,user,comm -w -w"
+fi
+
 # Completion options for kill/processes
 compdef pkill=kill
 compdef pkill=killall
