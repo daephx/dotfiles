@@ -12,6 +12,16 @@ integer t0=$(($(date +%s%N)/1000000))
 # Set history file if not exists
 HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh_history"
 
+# Autosuggestion options
+export AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+
+# Dynamically source user configurations
+for file in "${XDG_CONFIG_HOME:-$HOME/.config}"/profile.d/*.sh; do
+  source "$file"
+done
+
 ### Options ###
 
 # Names are case insensitive and underscores are ignored.
@@ -51,13 +61,6 @@ plug 'MichaelAquilina/zsh-autoswitch-virtualenv'
 plug 'zsh-users/zsh-autosuggestions'
 plug 'zsh-users/zsh-completions'
 plug 'zsh-users/zsh-syntax-highlighting'
-
-### Source ###
-
-# Dynamically source user configurations
-for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
-  source "$file"
-done
 
 # Zshrc library
 source "$ZDOTDIR/aliases.zsh"
