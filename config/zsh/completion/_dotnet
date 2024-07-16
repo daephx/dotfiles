@@ -1,0 +1,23 @@
+#compdef dotnet
+# zsh parameter completion for the dotnet CLI
+# shellcheck shell=zsh
+_dotnet_zsh_complete() {
+  local completions=("$(dotnet complete "$words")")
+
+  # If the completion list is empty, just continue with filename selection
+  if [ -z "$completions" ]
+  then
+    _arguments '*::arguments: _normal'
+    return
+  fi
+
+  compadd ${(ps:\n:)completions}
+}
+
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+  # autoload from fpath, call function directly
+  _dotnet_zsh_complete "$@"
+else
+  # eval/source/. command, register function for later
+  compdef _dotnet_zsh_complete dotnet
+fi
