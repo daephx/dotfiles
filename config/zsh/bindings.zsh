@@ -87,3 +87,34 @@ bindkey -M menuselect "h" vi-backward-char
 bindkey -M menuselect "j" vi-down-line-or-history
 bindkey -M menuselect "k" vi-up-line-or-history
 bindkey -M menuselect "l" vi-forward-char
+
+# Prepend sudo to the current command buffer.
+function prepend-sudo() {
+  if [[ $BUFFER != "sudo "* ]]; then
+    BUFFER="sudo $BUFFER"; CURSOR+=5
+  fi
+}
+zle -N prepend-sudo
+bindkey "^x^s" prepend-sudo
+bindkey -M vicmd "^x^s" prepend-sudo
+
+# Insert the output from last command into the command buffer.
+zmodload -i zsh/parameter
+function insert-last-command-output() {
+  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output
+bindkey "^[l" insert-last-command-output
+bindkey -M vicmd "^[l" insert-last-command-output
+
+# Insert the output from the last commands in a new $EDITOR instance.
+function edit-last-command-output() {
+  local last_output=$(eval "$history[$((HISTCMD-1))]")
+  local temp_file=$(mktemp /tmp/last_command_output.XXXXXX)
+  echo "$last_output" > "$temp_file"
+  ${EDITOR:-vi} "$temp_file"
+  rm -f "$temp_file" &>/dev/null
+}
+zle -N edit-last-command-output
+bindkey "^[L" edit-last-command-output
+bindkey -M vicmd "^[L" edit-last-command-output
