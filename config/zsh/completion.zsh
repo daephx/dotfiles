@@ -104,11 +104,12 @@ zstyle ':completion:*:(scp|rsync):*' tag-order ' hosts:-ipaddr:ip\ address hosts
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
 
+# Disable named-directories autocompletion
+zstyle ':completion:*:(cd|pushd):*' tag-order \
+  local-directories directory-stack path-directories
+
 # Disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
-
-# Show only local folders while cdpath is defined
-zstyle ':completion:*:complete:(cd|pushd):*' tag-order 'local-directories named-directories'
 
 # Show Makefile targets
 zstyle ':completion::complete:make::' tag-order targets variables
