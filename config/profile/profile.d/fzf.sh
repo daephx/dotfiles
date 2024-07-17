@@ -2,8 +2,18 @@
 # https://github.com/junegunn/fzf
 # shellcheck disable=SC1091
 
-[ -n "$BASH_VERSION" ] && source "$XDG_CONFIG_HOME/fzf/fzf.bash"
-[ -n "$ZSH_VERSION" ] && source "$XDG_CONFIG_HOME/fzf/fzf.zsh"
+# Add fzf/bin directory to PATH
+if [[ -d $XDG_DATA_HOME/fzf/bin ]] \
+  && [[ ! "$PATH" == *$XDG_DATA_HOME/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}$XDG_DATA_HOME/fzf/bin"
+fi
+
+# Do nothing if application is not available.
+[ ! -x "$(command -v fzf)" ] && return
+
+# Initialize fzf shell integrations
+[ -n "$BASH_VERSION" ] && eval "$(fzf --bash)"
+[ -n "$ZSH_VERSION" ] && eval "$(fzf --zsh)"
 
 # Color definitions
 FZF_COLORS=" \

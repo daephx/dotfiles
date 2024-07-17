@@ -2,18 +2,20 @@
 # https://github.com/junegunn/fzf
 
 - defaults:
+    link:
+      force: true
     shell:
       stderr: true
       stdout: true
 
 - create:
-    - ~/.config/fzf/
+    - ~/.config/profile.d/
+
+- clean:
+    ~/.config/profile.d/:
 
 - link:
-    ~/.config/fzf/:
-      force: true
-      glob: true
-      path: config/fzf/*
+    ~/.config/profile.d/fzf.sh: config/profile/profile.d/fzf.sh
 
 - shell:
     - [meta/scripts/install-fzf.sh, "Running install script: fzf"]
