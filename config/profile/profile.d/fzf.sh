@@ -21,7 +21,7 @@ export FZF_ALT_COMMAND="fd -uu -t f"
 export FZF_COMPLETION_TRIGGER="**"
 
 export FZF_DEFAULT_OPTS="
---info=inline
+--info=inline-right
 --layout=reverse
 --margin=0,1
 --pointer='❯'
