@@ -27,6 +27,7 @@ export FZF_DEFAULT_OPTS="
 --pointer='❯'
 --preview-window border-left
 --prompt='❯ '
+--separator=''
 --color=dark
 --color=bg+:234
 --color=bg:-1
