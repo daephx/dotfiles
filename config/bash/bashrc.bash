@@ -18,11 +18,7 @@ done
 
 ### Options ###
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-shopt -s cmdhist
-shopt -u lithist
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+shopt -s checkwinsize # Check the window size and update after each command.
+shopt -s cmdhist      # Save all lines of a multiple-line commands to history.
+shopt -s histappend   # Append to the history file, don't overwrite it.
+shopt -u lithist      # Save multi-line commands to history with embedded newlines.
