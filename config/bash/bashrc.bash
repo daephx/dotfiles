@@ -6,13 +6,17 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+### Environment ###
+
+# Set history file path
+HISTFILE="$XDG_STATE_HOME/bash_history"
+
 # Dynamically source user configurations
 for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
   source "$file"
 done
 
-# Set history file path
-export HISTFILE="$XDG_STATE_HOME/bash_history"
+### Options ###
 
 # append to the history file, don't overwrite it
 shopt -s histappend
