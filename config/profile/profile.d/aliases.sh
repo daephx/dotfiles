@@ -192,24 +192,10 @@ if command -v bat > /dev/null; then
   alias logf="_batlog"
 fi
 
-# Shorthand for python
-alias py="/usr/bin/env python"
-if command -v ipython > /dev/null; then
-  alias ipy="ipython"
-fi
-
 # Ensure NCDU utility starts with colors
 if command -v ncdu > /dev/null; then
   alias ncdu='ncdu --color dark'
   alias du='ncdu --color dark'
-fi
-
-# Python based syntax highlight like cat
-if command -v pygmentize > /dev/null; then
-  _pygmentize() {
-    pygmentize -l "$1" "$2" | less -R
-  }
-  alias pygmentize="_pygmentize"
 fi
 
 # Xclip commands
