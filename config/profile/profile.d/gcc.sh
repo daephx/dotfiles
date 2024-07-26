@@ -1,4 +1,6 @@
-# Compilation flags
+# GCC(1): GNU project C and C++ compiler
+
+# Set global build architecture
 # export ARCHFLAGS="-arch x86_64"
 
 # colored GCC warnings and errors
