@@ -1,50 +1,78 @@
-# Less: Opposite of more - Linux terminal pager
+# less: Opposite of more - Linux terminal pager LESS(1)
 # shellcheck disable=SC2155
+# shellcheck shell=sh
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Set less command options
+# Set environment variables for terminal emulators
+# such as KDE-Konsole and Gnome-terminal.
+export GROFF_NO_SGR=1
+
+# Configure general less command options to improve control over
+# text display, navigation, and overall pager behavior.
 export LESSCHARSET='utf-8'
 export LESSEDIT='nvim -RM ?lm+%lm. %f'
 export LESSHISTFILE=-
-
 export LESS="-QRiFSMn~ \
-  --mouse \
-  --wheel-lines=3"
+--mouse \
+--wheel-lines=3"
 
-export GROFF_NO_SGR=1 # For Konsole and Gnome-terminal
-
+# Begin blinking mode
 export LESS_TERMCAP_mb="$(
   tput bold
   tput setaf 6
-)" # begin blinking
+)"
+
+# Begin bold mode
 export LESS_TERMCAP_md="$(
   tput bold
   tput setaf 2
-)"                                    # begin bold
-export LESS_TERMCAP_me="$(tput sgr0)" # mode end
+)"
+
+# End mode
+export LESS_TERMCAP_me="$(tput sgr0)"
+
+# Begin dim text
 export LESS_TERMCAP_mh="$(tput dim)"
+
+# Begin reverse mode
 export LESS_TERMCAP_mr="$(tput rev)"
+
+# End standout-mode
 export LESS_TERMCAP_se="$(
   tput rmso
   tput sgr0
-)" # standout-mode end
+)"
+
+# Begin standout-mode
 export LESS_TERMCAP_so="$(
   tput bold
   tput setaf 3
   tput setab 0
-)" # begin standout-mode
+)"
+
+# End underline mode
 export LESS_TERMCAP_ue="$(
   tput rmul
   tput sgr0
-)" # underline end
+)"
+
+# Begin underline mode
 export LESS_TERMCAP_us="$(
   tput smul
   tput bold
   tput setaf 7
-)" # underline start
+)"
+
+# Begin subscript mode
 export LESS_TERMCAP_ZN="$(tput ssubm)"
+
+# Begin superscript mode
 export LESS_TERMCAP_ZO="$(tput ssupm)"
+
+# End subscript mode
 export LESS_TERMCAP_ZV="$(tput rsubm)"
+
+# End superscript mode
 export LESS_TERMCAP_ZW="$(tput rsupm)"
