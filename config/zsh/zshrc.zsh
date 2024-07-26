@@ -41,6 +41,7 @@ setopt HIST_IGNORE_SPACE      # Ignore commands that start with space.
 setopt HIST_SAVE_NO_DUPS      # Ignore duplicates when saving to histfile.
 setopt HIST_VERIFY            # Expand command history for user before running.
 setopt INTERACTIVE_COMMENTS   # Allow comments in interactive shells.
+setopt PROMPT_SUBST           # Enable prompt expansion for dynamic updates.
 setopt PUSHD_IGNORE_DUPS      # Do not store duplicates in the stack.
 setopt PUSHD_SILENT           # Do not print the directory after pushd or popd.
 setopt PUSHD_TO_HOME          # Have pushd with no arguments act like ‘pushd $HOME’.

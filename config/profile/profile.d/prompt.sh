@@ -19,20 +19,24 @@ __init_prompt_bash() {
   RESET=$(tput sgr0)
   YELLOW=$(tput setaf 3)
   BLUE=$(tput setaf 4)
-  CYAN=$(tput setaf 6)
   GREY=$(tput setaf 244)
-  user="\[$CYAN\]$USER"
-  git="\[$YELLOW\]$(__git_parse_branch)"
-  PS1="\[$GREY\]┌ $user\[$GREY\]:\[$BLUE\]\w $git\n\[$GREY\]└$ \[$RESET\]"
-  PS2="\[$GREY\] > \[$RESET\]"
+  __build_prompt_bash() {
+    git="\[$YELLOW\]$(__git_parse_branch)"
+    PS1="\[$GREY\]┌ \[$BLUE\]\w $git\n\[$GREY\]└$ \[$RESET\]"
+    PS2="\[$GREY\] > \[$RESET\]"
+  }
+  PROMPT_COMMAND='__build_prompt_bash'
 }
 
 # Initialize the prompt for Zsh with colors and Git information.
+# NOTE: Requires setopt PROMPT_SUBST to be enabled in zshrc.
+# shellcheck disable=SC2016
+# shellcheck disable=SC3003
+# shellcheck disable=SC3043
 __init_prompt_zsh() {
-  NEWLINE=$'\n'
-  user="%F{cyan}${USER}"
-  git="%F{yellow}$(__git_parse_branch)"
-  PS1="%F{244}┌ %F{244}$user%F{244}:%F{blue}%~ $git${NEWLINE}%F{244}└%F{244}$ %F{reset}"
+  local NEWLINE=$'\n'
+  local git='%F{yellow}$(__git_parse_branch)'
+  PS1="%F{244}┌ %F{blue}%~ $git${NEWLINE}%F{244}└%F{244}$ %F{reset}"
   PS2="%F{244} > %F{reset}"
 }
 
