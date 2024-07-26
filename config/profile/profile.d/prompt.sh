@@ -1,13 +1,20 @@
-# .prompt: Initialize user prompt for posix shells.
+# Prompt: Initialize user prompt for POSIX-compliant shells.
+# This script sets up shell prompts with colors and Git information,
+# and initializes custom prompt providers if available.
+# shellcheck shell=sh
 
+# Check for uncommitted changes in Git repository.
 parse_git_dirty() {
   [ "$(git status --porcelain 2> /dev/null)" ] && echo "*"
 }
 
+# Retrieve the current Git branch and append dirty status.
 parse_git_branch() {
   git branch --no-color 2> /dev/null \
     | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
+
+# Initialize the prompt for Bash with colors and Git information.
 __init_prompt_bash() {
   RESET=$(tput sgr0)
   YELLOW=$(tput setaf 3)
@@ -20,6 +27,7 @@ __init_prompt_bash() {
   PS2="\[$GREY\] > \[$RESET\]"
 }
 
+# Initialize the prompt for Zsh with colors and Git information.
 __init_prompt_zsh() {
   NEWLINE=$'\n'
   user="%F{cyan}${USER}"
@@ -28,6 +36,7 @@ __init_prompt_zsh() {
   PS2="%F{244} > %F{reset}"
 }
 
+# Initialize Oh-My-Posh prompt with custom theme.
 __init_prompt_omp() {
   command -v oh-my-posh > /dev/null || return
   shell="$1"
@@ -36,6 +45,7 @@ __init_prompt_omp() {
   eval "$(oh-my-posh init "$shell" --config "$theme_dir/$theme_file")"
 }
 
+# Initialize Starship prompt with custom theme.
 __init_prompt_starship() {
   command -v starship > /dev/null || return
   shell="$1"
@@ -43,17 +53,17 @@ __init_prompt_starship() {
   eval "$(starship init "$shell")"
 }
 
-# Determine prompt shell
+# Determine the type of shell in use.
 [ -n "$BASH_VERSION" ] && shell="bash"
 [ -n "$ZSH_VERSION" ] && shell="zsh"
 
-# Custom prompt providers, return if function completes without error
+# Initialize custom prompt providers if available.
 __init_prompt_omp "$shell" && return
 __init_prompt_starship "$shell" && return
 
-# Basic backup prompts for each shell
+# Set basic backup prompts for Bash and Zsh if custom providers are not used.
 [ "$shell" = "bash" ] && __init_prompt_bash
 [ "$shell" = "zsh" ] && __init_prompt_zsh
 
-# Cleanup temp variables
+# Clean up temporary variables.
 unset shell
