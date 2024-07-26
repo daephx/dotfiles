@@ -1,8 +1,15 @@
-# Disable telemetry
+# dotnet(1): The generic driver for the .NET CLI.
+# shellcheck shell=sh
+
+# Disable telemetry for .NET CLI
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# Dotnet creates it's own directory in the users home folder.
-# The dotnet binary path is: ~/.dotnet/dotnet
+# Set the configuration directory for OmniSharp
+export OMNISHARPHOME="${XDG_CONFIG_HOME:-$HOME/.config}/omnisharp"
+
+# Add .NET binary directory to PATH if it exists
+# .NET creates its own directory in the user's home folder
+# Default path: ~/.dotnet/dotnet
 if [ -d "$DOTNET_DIR" ]; then
-  PATH="${PATH:+${PATH}:}$HOME/.dotnet"
+  export PATH="${PATH:+${PATH}:}$HOME/.dotnet"
 fi
