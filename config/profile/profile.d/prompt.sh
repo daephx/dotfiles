@@ -4,14 +4,14 @@
 # shellcheck shell=sh
 
 # Check for uncommitted changes in Git repository.
-parse_git_dirty() {
+__git_parse_dirty() {
   [ "$(git status --porcelain 2> /dev/null)" ] && echo "*"
 }
 
 # Retrieve the current Git branch and append dirty status.
-parse_git_branch() {
+__git_parse_branch() {
   git branch --no-color 2> /dev/null \
-    | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+    | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(__git_parse_dirty)/"
 }
 
 # Initialize the prompt for Bash with colors and Git information.
@@ -22,7 +22,7 @@ __init_prompt_bash() {
   CYAN=$(tput setaf 6)
   GREY=$(tput setaf 244)
   user="\[$CYAN\]$USER"
-  git="\[$YELLOW\]$(parse_git_branch)"
+  git="\[$YELLOW\]$(__git_parse_branch)"
   PS1="\[$GREY\]┌ $user\[$GREY\]:\[$BLUE\]\w $git\n\[$GREY\]└$ \[$RESET\]"
   PS2="\[$GREY\] > \[$RESET\]"
 }
@@ -31,7 +31,7 @@ __init_prompt_bash() {
 __init_prompt_zsh() {
   NEWLINE=$'\n'
   user="%F{cyan}${USER}"
-  git="%F{yellow}$(parse_git_branch)"
+  git="%F{yellow}$(__git_parse_branch)"
   PS1="%F{244}┌ %F{244}$user%F{244}:%F{blue}%~ $git${NEWLINE}%F{244}└%F{244}$ %F{reset}"
   PS2="%F{244} > %F{reset}"
 }
