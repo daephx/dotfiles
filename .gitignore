@@ -17,7 +17,7 @@ secrets.*
 .[Tt]emp/
 
 # Git sensitive config files
-config/git/credential
+config/git/credentials
 
 # Local notes
 TODO.md
