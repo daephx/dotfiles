@@ -1,5 +1,11 @@
-# Node config
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+# node.js: javascript interpreter and package manager
+# shellcheck disable=SC1091
+# shellcheck shell=bash
+
+# Set node package manager config file path.
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
+
+# Add npm/bin to PATH.
 if [ -f "$NPM_CONFIG_USERCONFIG" ]; then
-  export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
+  PATH="${PATH:+${PATH}:}${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin"
 fi
