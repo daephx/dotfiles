@@ -10,7 +10,7 @@ export DOOMDIR="$XDG_CONFIG_HOME/emacs.doom"
 
 # Add Emacs binary directory to PATH if it exists.
 if [ -d "$EMACSDIR/bin" ]; then
-  export PATH="$PATH:${EMACSDIR}/bin"
+  PATH="${PATH:+${PATH}:}$EMACSDIR/bin"
 fi
 
 # Define aliases for Emacs commands.
