@@ -1,8 +1,8 @@
 # Ignore all tags files, just remember to rebuild them every once in a while:
-tags
 doc/tags
 doc/tags-*
 spell/*.spl
+tags/
 
 # Netrw history
 .netrwhist
