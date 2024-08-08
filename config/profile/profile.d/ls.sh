@@ -1,4 +1,5 @@
 # ls: Conditionally set users ls utility
+# shellcheck shell=bash
 
 # Detect which `ls` flavor is in use
 if command ls --color > /dev/null; then
@@ -113,4 +114,3 @@ unset -f __set_alias_eza
 unset -f __set_alias_ls
 unset -f __set_alias_lsd
 unset -f __set_strategy_ls
-
