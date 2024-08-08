@@ -10,6 +10,6 @@
 - shell:
     - [sudo sh -c "apt install -y bat", Install package; bat]
     - [
-        sudo sh -c "ln -s /usr/bin/batcat /usr/local/bin/bat",
+        sudo sh -c "ln -sf /usr/bin/batcat /usr/local/bin/bat",
         Create symbolic link for binary batcat -> bat,
       ]
