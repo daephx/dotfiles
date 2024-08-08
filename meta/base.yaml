@@ -1,3 +1,6 @@
+# base: default configuration applied before all dotbot commands.
+# Manages creation and cleaning of XDG directories and synchronizing submodules.
+
 - defaults:
     clean:
       force: true
@@ -11,14 +14,29 @@
       stdout: true
 
 - create:
-    - ~/.cache
-    - ~/.config
-    - ~/.local
+    # XDG Standard directories
+    - $HOME/.cache/
+    - $HOME/.config/
+    - $HOME/.local/
+    - $HOME/.local/share/
+    - $HOME/.local/state/
+
+    # Unsupported XDG directories
+    - $HOME/.local/bin/
+    - $HOME/.local/lib/
 
 - clean:
-    ~/: # Home directory
-    ~/.config:
-      recursive: true
+    $HOME/:
+
+    # XDG Standard directories
+    $HOME/.cache/:
+    $HOME/.config/:
+    $HOME/.local/share/:
+    $HOME/.local/state/:
+
+    # Unsupported XDG directories
+    $HOME/.local/bin/:
+    $HOME/.local/lib/:
 
 - shell:
     - [git submodule sync --recursive -- meta/dotbot]
