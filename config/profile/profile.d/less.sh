@@ -2,8 +2,8 @@
 # shellcheck disable=SC2155
 # shellcheck shell=sh
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# Make less more friendly for non-text input files, see lesspipe(1)
+[ -x "/usr/bin/lesspipe" ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Set environment variables for terminal emulators
 # such as KDE-Konsole and Gnome-terminal.
@@ -14,9 +14,23 @@ export GROFF_NO_SGR=1
 export LESSCHARSET='utf-8'
 export LESSEDIT='nvim -RM ?lm+%lm. %f'
 export LESSHISTFILE=-
-export LESS="-QRiFSMn~ \
+export LESS=" \
+--LONG-PROMPT \
+--QUIET \
+--RAW-CONTROL-CHARS \
+--chop-long-lines \
+--ignore-case \
+--jump-target=0.5 \
+--line-numbers \
 --mouse \
---wheel-lines=3"
+--quit-if-one-screen \
+--squeeze-blank-lines \
+--tilde \
+--wheel-lines=3 \
+"
+
+# Configure text attributes for the less pager using tput to ensure
+# compatibility with various terminal types.
 
 # Begin blinking mode
 export LESS_TERMCAP_mb="$(
@@ -49,7 +63,7 @@ export LESS_TERMCAP_se="$(
 export LESS_TERMCAP_so="$(
   tput bold
   tput setaf 3
-  tput setab 0
+  tput setab 236
 )"
 
 # End underline mode
