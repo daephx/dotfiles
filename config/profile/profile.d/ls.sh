@@ -38,7 +38,7 @@ __set_strategy_ls() {
 
     # Handle command exceptions
     [ "$cmd" = '' ] && continue # Ignore empty string
-    test -x "$(command which "$cmd" 2> /dev/null)" || continue
+    test -x "$(which "$cmd" 2> /dev/null)" || continue
     case "$cmd" in
       eza | exa) __set_alias_eza ;;
       lsd) __set_alias_lsd ;;
