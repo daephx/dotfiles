@@ -2,35 +2,28 @@
 # assign EDITOR/VISUAL variables based on priority list and context!
 # This script will apply a default editor and expose the editor function for
 # temporarily overriding the associated variables.
+# shellcheck shell=bash
 #
 # Default editor order: nvim, vim, vi, nano
 
-__editor_emacs() {
-  VISUAL="emacsclient -c"
-  # Initialize emacs daemon if not running
-  if ! emacsclient -e 0 > /dev/null; then
-    emacs --daemon > /dev/null
-  fi
-}
-
-__editor_nvim() {
+__editor_init_nvim() {
   VISUAL="nvim"
   PATH="$PATH:$XDG_DATA_HOME/nvim/mason/bin"
-  [ -n "$NVIM" ] && {
-    VISUAL="nvim --server \$NVIM --remote-tab"
-    # Use neovim-remote if available
-    if command -v nvr > /dev/null; then
-      VISUAL="nvr -cc '1windo e'"
-      GIT_EDITOR="nvr -cc 'top sp' --remote-wait"
-    else
-      printf "\e[031mE\e[0m: Command could not be located: nvr (neovim-remote)\n"
-      printf "This is recommended for better integration between nvim terminal and git.\n"
-      printf "Install command: 'pip3 install neovim-remote'\n\n"
-    fi
-  }
+  # Use neovim-remote if available
+  if [ -n "$NVIM" ] && command -v nvr > /dev/null; then
+    GIT_EDITOR="nvr -cc 'top sp' --remote-wait"
+    VISUAL="nvr -cc '1windo e'"
+  fi
+  # shellcheck disable=SC2139
+  alias vi="$VISUAL"
 }
 
-editor() {
+__editor_init_vim() {
+  VISUAL="vim"
+  alias vi="vim"
+}
+
+__editor_init() {
   # Define editor list if no argument supplied
   [ $# -eq 0 ] && set -- nvim vim nano
   # Loop available arguments
@@ -40,9 +33,9 @@ editor() {
     # Skip apps that are not in PATH
     command -v "$cmd" > /dev/null || continue
     case "$cmd" in
-      emacs) __editor_emacs ;;
-      nvim) __editor_nvim ;;
-      vi*) VISUAL=$(if command -v vim > /dev/null; then echo "vim"; else echo "vi"; fi) ;;
+      nvim) __editor_init_nvim ;;
+      vim) __editor_init_vim ;;
+      vi) VISUAL="vi" ;;
       nano) VISUAL="nano" ;;
       *?) printf "Unknown editor selected\n" ;;
     esac
@@ -55,7 +48,7 @@ editor() {
 # Example: prefer to work within vscode from the integrated terminal
 case "$TERM_PROGRAM" in
   vscode) VISUAL="code -w" ;;
-  *) editor "$@" ;;
+  *) __editor_init "$@" ;;
 esac
 
 # Overrides for SSH
@@ -63,13 +56,8 @@ esac
 [ -n "$SSH_CONNECTION" ] && VISUAL="${VISUAL:-vim}"
 
 # Override for Vim terminal
-[ -n "$VIM_TERMINAL" ] && VISUAL="vim"
-
-# Assign variables to themselves or visual
-EDITOR="${VISUAL}"
-GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
+[ -n "$VIM_TERMINAL" ] && __editor_init:vim
 
 # Export variables
-export EDITOR
-export GIT_EDITOR
+export GIT_EDITOR="${GIT_EDITOR:-$VISUAL}"
 export VISUAL
