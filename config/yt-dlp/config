@@ -1,0 +1,13 @@
+# Downloadthe best file format available.
+--format best
+
+# Do not use the Last-modified header to set the file modification time.
+--no-mtime
+
+# Download English subtitle.
+--write-sub
+--sub-lang en
+--convert-subs srt
+
+# Save to user downloads directory.
+--output "$XDG_DOWNLOAD_DIR/YouTube/%(title)s.%(ext)s"
