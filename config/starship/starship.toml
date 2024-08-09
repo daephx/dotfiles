@@ -72,8 +72,8 @@ $time
 
 [character]
 format = "$symbol "
-success_symbol = "[\u276F](green)"
-error_symbol = "[\u276F](red)"
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
 
 [username]
 format = "[ $user]($style)[@](8)"
@@ -140,17 +140,17 @@ style = "fg:white"
 disabled = false
 style = 'red bold'
 format = "[$indicator](style) "
-bash_indicator = "[󱆃](green) bash"
+bash_indicator = "[](white) bash"
 cmd_indicator = "[](bright-black) cmd"
 elvish_indicator = "[󱡁](green) esh"
-fish_indicator = '[󰈺](orange) fish'
+fish_indicator = '[󰈺](green) fish'
 ion_indicator = "[](cyan) ion"
 nu_indicator = "[>](green) nu"
-powershell_indicator = '[󰨊](blue)pwsh'
-tcsh_indicator = "[󱆃](red) tsh"
-unknown_indicator = '󱆃 ???'
-xonsh_indicator = "󱔎 xsh"
-zsh_indicator = "[󱆃](orange) zsh"
+powershell_indicator = '[󰨊](blue) pwsh'
+tcsh_indicator = "[](red) tsh"
+unknown_indicator = '[](white) ???'
+xonsh_indicator = "[󱔎](green) xsh"
+zsh_indicator = "[](white) zsh"
 
 [os]
 format = "[ $symbol ]($style)"
@@ -158,47 +158,47 @@ style = "bold blue"
 disabled = false
 
 [os.symbols]
-Alpaquita = "🔔 "
-Alpine = "[\uf300](#0f5779)"
-Amazon = "[](orange)"
+Alpaquita = "[󰂚](#84d18a)"
+Alpine = "[](#0f5779)"
+Amazon = "[](#f59326)"
 Android = "[](#71b337)"
-Arch = "[\uf303](#1b90c8)"
+Arch = "[](#1b90c8)"
 Artix = "[](cyan)"
-CentOS = "[\uf304](#fafafa)"
-Debian = "[\uf306](#d70a53)"
-DragonFly = "🐉 "
-Emscripten = "🔗 "
-EndeavourOS = "[](#fafafa)"
-Fedora = "[\uf30a](#52a5d8)"
-FreeBSD = "[](#fafafa)"
-Garuda = "[\uf337](#fafafa)"
-Gentoo = "[\uf30d](#918ccb)"
-HardenedBSD = "[](#fafafa)"
-Illumos = "[](#fafafa)"
-Linux = "[\uf17c](#fafafa)"
-Mabox = "📦 "
-Macos = "[\uf179](#fafafa)"
-Manjaro = "[\uf312](#39b860)"
-Mariner = "🌊 "
-MidnightBSD = "🌘 "
-Mint = "[\uf30e](#83b74d)"
-NetBSD = "🚩 "
-NixOS = "[\uf313](#5075ba)"
-OpenBSD = "[](#fafafa)"
-OpenCloudOS = "☁️ "
-openEuler = "🦉 "
-openSUSE = "[](#71b337)"
-OracleLinux = "🦴 "
-Pop = "[\uf32a](#fafafa)"
-Raspbian = "[\uf315](#bc1a48)"
-Redhat = "[󱄛](red)"
+CentOS = "[](white)"
+Debian = "[](#d70a53)"
+DragonFly = "[](#e41728)"
+Emscripten = "[](#b0cb3c)"
+EndeavourOS = "[](#7a42b5)"
+Fedora = "[](#52a5d8)"
+FreeBSD = "[](white)"
+Garuda = "[](white)"
+Gentoo = "[](#918ccb)"
+HardenedBSD = "[󰞀](#3385b8)"
+Illumos = "[](#f53f1e)"
+Linux = "[](white)"
+Mabox = "[󰏖](#bb9167)"
+Macos = "[](white)"
+Manjaro = "[](#39b860)"
+Mariner = "[󱪁](#008fb9)"
+MidnightBSD = "[](#ffc83d)"
+Mint = "[](#83b74d)"
+NetBSD = "[󰈿](red)"
+NixOS = "[](#5075ba)"
+OpenBSD = "[](white)"
+OpenCloudOS = "[](white)"
+OracleLinux = "[](red)"
+Pop = "[](#4ab8c2)"
+Raspbian = "[](#bc1a48)"
 RedHatEnterprise = "[󱄛](red)"
-Redox = "🧪 "
-Solus = "[](#fafafa)"
-SUSE = "[\uf314](#71b337)"
-Ubuntu = "[\uf31b](#E95420)"
-Unknown = "[](#fafafa)"
-Windows = "[\ue62a](#26C6DA)"
+Redhat = "[󱄛](red)"
+Redox = "[󰰠](#109fe6)"
+SUSE = "[](#71b337)"
+Solus = "[](white)"
+Ubuntu = "[](#E95420)"
+Unknown = "[](white)"
+Windows = "[](#26C6DA)"
+openEuler = "[󰏒](#f7894a)"
+openSUSE = "[](#71b337)"
 
 [dart]
 format = "[  $version](bold blue)"
@@ -235,7 +235,7 @@ format = "[ 󰡨 $context ](blue bold)"
 format = "[ 󰎙 $version](bold green)"
 
 [nix_shell]
-symbol = "[\uf313](cyan) "
+symbol = "[](cyan) "
 
 [package]
 disabled = false
@@ -260,7 +260,7 @@ format = "[  $version](red bold)"
 format = "[ 󱁢 $version$workspace]($style)"
 
 [dotnet]
-format = "[$symbol($version )(🎯 $tfm )]($style)"
+format = "[$symbol($version )(󰓾 $tfm )]($style)"
 symbol = " "
 style = "cyan"
 
