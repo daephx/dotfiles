@@ -1,6 +1,14 @@
+- defaults:
+    shell:
+      stderr: true
+      stdout: true
+
 - create:
     - ~/.local/share/fonts/
 
 - shell:
-    - [cp -a config/fonts/. ~/.local/share/fonts/]
-    - [fc-cache -f -v, Installing fonts...]
+    - [
+        meta/scripts/install-nerdfonts.sh NerdFontsSymbolsOnly,
+        "Installing fonts: NerdFonts",
+      ]
+    - [meta/scripts/install-monocraft.sh, "Installing fonts: Monocraft"]
