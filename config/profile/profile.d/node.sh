@@ -1,6 +1,8 @@
 # node.js: javascript interpreter and package manager
-# shellcheck disable=SC1091
-# shellcheck shell=bash
+# shellcheck shell=sh
+
+# Change node repl history path
+export NODE_REPL_HISTORY="${XDG_STATE_HOME:-$HOME/.loca/state}/node_repl_history"
 
 # Set node package manager config file path.
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
