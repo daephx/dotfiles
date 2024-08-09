@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+message=$1                                 # Get commit message
+branch=$(git symbolic-ref --short -q HEAD) # Get the current branch name
+
+if [ -n "$message" ]; then
+	git add .
+	git commit -m "$message"
+	git push origin "$branch"
+else
+	echo "E: Commit message not provided."
+fi

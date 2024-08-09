@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+script_name=$(basename "$0")
+
+confirm() {
+	read -r -p "Do you wish to contiue? [y/N]: " choice
+	case "$choice" in
+	[yY][eE][sS] | [yY]) true ;;
+	*) false ;;
+	esac
+}
+
+repo=$(git ls-remote --get-url)
+branch=$(git rev-parse --abbrev-ref HEAD)
+commit_count=$(git rev-list --count HEAD)
+printf "%s: reset a repository while keeping it's current state.\n\n" "$script_name"
+printf "This will delete ALL history! File content will not be touched.\n\n"
+printf "  Directory:   %s\n" "$PWD"
+printf "  Repository:  %s\n" "$repo"
+printf "  Branch:      %s\n" "$branch"
+printf "\nReplacing (%s) commits with a new initial commit.\n" "$commit_count"
+if confirm; then
+	new_trunk=$(git commit-tree "HEAD^{tree}" -m "initial commit")
+	git reset "$new_trunk"
+else
+	echo "User canceled operation, closing script."
+fi
