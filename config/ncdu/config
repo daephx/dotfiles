@@ -1,0 +1,12 @@
+# vi: ft=gitconfig
+# Always enable extended mode
+-e
+
+# Always display color theme 'dark'
+--color dark
+
+# Disable file deletion
+--disable-delete
+
+# Exclude .git directories
+--exclude .git
