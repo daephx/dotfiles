@@ -1,9 +1,18 @@
-# ~/.inputrc: user configuration file for GNU readline
+# .inputrc: user configuration file for GNU readline
+
+# Carries over site-wide readline configuration
+$include /etc/inputrc
+
+# Uncomment to enable vi-like command line editing mode.
+set editing-mode vi
+
+# Filetype colors in completion lists
+set colored-stats on
 
 # Make sure we don't output everything on the 1 line
 set horizontal-scroll-mode Off
 
-# do not make noise
+# Suppress bell noise
 set bell-style none
 
 # Make Tab autocomplete regardless of filename case
@@ -11,6 +20,21 @@ set completion-ignore-case on
 
 # Treat hyphens and underscores as equivalent
 set completion-map-case on
+
+# With multiple matches, only show the remaining part.
+# Unsupported in editline  >:-(
+set completion-prefix-display-length 2
+
+# Try to avoid accidental multi-line pastes being interpreted as commands
+set enable-bracketed-paste on
+
+# Completion when in middle of word doesn't duplicate existing input.
+# Like many useful GNU things, seems unsupported in editline.
+set skip-completed-text On
+
+# Automatically complete directory symlinks with ending /
+# Also offers them for `complete -d` like cd & pushd
+set mark-symlinked-directories on
 
 # List all matches in case multiple possible completions are possible
 set show-all-if-ambiguous on
@@ -21,7 +45,7 @@ set mark-symlinked-directories on
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
 
-# how all autocomplete results at once
+# Show all autocomplete results at once
 set page-completions off
 
 # If there are more than 200 possible completions for a word, ask to show them all
@@ -42,6 +66,10 @@ set input-meta on
 set output-meta on
 set convert-meta off
 
+# Ctrl-n/p history navigation
+"\C-n":history-search-forward
+"\C-p":history-search-backward
+
 # Use text that has already been typed as the prefix for searching through
 # commands (i.e. more intelligent Up/Down behavior)
 "\e[B": history-search-forward
@@ -53,14 +81,50 @@ set convert-meta off
 "\e[1;5C": forward-word   # ctrl + right
 "\e[1;5D": backward-word  # ctrl + left
 
-# "\e[1;2d": backward-word  # ctrl + left
+"\C-_": unix-word-rubout
+"\e[_": backward-word
 
+$if mode=emacs
+  # Readline specific functions
+  "\e[1~": beginning-of-line           # CTRL + A
+  "\e[4~": end-of-line                 # CTRL + E
+  "\e[5C": forward-word                # Control + Right
+  "\e[5D": backward-word               # Control + Left
+  "\e[3~": delete-char                 # Delete
+  "\e[2~": quoted-insert               # CTRL + v
+  "\e[5~": history-search-backward     # Page Up
+  "\e[6~": history-search-forward      # Page Down
+  #"\t": menu-complete                 # Tab cycles through completions
 
-# "\e":kill-whole-line
-# Escape: unix-line-discard
+  # If the above prevents Left and Right from working, try this:
+  #"\e[C": forward-char                # Move forward one character.
+  #"\e[D": backward-char               # Move backwards one character.
+$endif
 
-# "\e[1;5C": forward-word
-# "\e[1;5D": backward-word
+# Avoid binding ^J, ^M,  ^C, ^?, ^S, ^Q, etc.
+$if mode=vi
+  set keymap vi-command
+  "gg": beginning-of-history
+  "G": end-of-history
+  "k": history-search-backward
+  "j": history-search-forward
+  "?": reverse-search-history
+  "/": forward-search-history
 
-# do history expansion when space entered
-# Space: magic-space
+  set keymap vi-insert
+  "\C-l": clear-screen
+  "\C-w": backward-kill-word
+  "\C-a": beginning-of-line
+  "\C-e": end-of-line
+$endif
+
+$if Bash
+  Space: magic-space
+$endif
+
+$if Python
+$endif
+
+# IPython needs this to appear at the bottom of the
+# file for clear-screen to work
+set keymap vi
