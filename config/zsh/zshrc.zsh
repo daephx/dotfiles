@@ -13,9 +13,9 @@ integer t0=$(($(date +%s%N)/1000000))
 HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh_history"
 
 # Autosuggestion options
-export AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-export ZSH_AUTOSUGGEST_USE_ASYNC=1
+AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # Dynamically source user configurations
 for file in "${XDG_CONFIG_HOME:-$HOME/.config}"/profile.d/*.sh; do
