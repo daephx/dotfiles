@@ -5,7 +5,7 @@
 
 [init]
 	defaultBranch = main
-	templatedir = ~/.config/git/templates
+	# templatedir = ~/.config/git/templates
 
 [core]
 	attributesfile = ~/.config/git/attributes
