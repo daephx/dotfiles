@@ -20,7 +20,7 @@ export LESS=" \
 --RAW-CONTROL-CHARS \
 --chop-long-lines \
 --ignore-case \
---jump-target=0.5 \
+--jump-target=2 \
 --line-numbers \
 --mouse \
 --quit-if-one-screen \
