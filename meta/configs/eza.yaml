@@ -1,5 +1,12 @@
 # eza | A modern replacement for ‘ls’.
 # https://github.com/eza-community/eza
 
+- defaults:
+    link:
+      force: true
+    shell:
+      stderr: true
+      stdout: true
+
 - shell:
     - [meta/scripts/install-eza.sh, Installing package; eza]

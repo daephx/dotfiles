@@ -1,4 +1,24 @@
+# tmux: a terminal multiplexer.
+# https://github.com/tmux/tmux
+
+- defaults:
+    link:
+      force: true
+    shell:
+      stderr: true
+      stdout: true
+
+- create:
+    - ~/.config/tmux/
+
 - link:
-    ~/.config/tmux: config/tmux/
+    ~/.config/tmux/:
+      path: config/tmux/*
+      glob: true
+
 - shell:
+    - [
+        git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm,
+        Installing tmux plugin manager 'tpm',
+      ]
     - [sudo sh -c "apt install -y tmux", Installing package; tmux]

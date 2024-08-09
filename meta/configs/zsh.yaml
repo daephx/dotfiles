@@ -45,3 +45,7 @@
         "[ $SHELL = '/usr/bin/zsh' ] || sudo usermod -s $(which zsh) $USER",
         "Set zsh as default for $USER",
       ]
+    - [
+        sudo chmod -R 755 ~/.local/share/zsh/completion
+        "Ensure executable permissions for custom zsh completions",
+      ]

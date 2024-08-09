@@ -1,24 +1,26 @@
-# ~/.local: Setup environment
+# local: setup local xdg directories
+
+- defaults:
+    link:
+      force: true
+      glob: true
+    shell:
+      stderr: true
+      stdout: true
 
 - create:
     - ~/.local/bin/
     - ~/.local/lib/
 
 - clean:
-    ~/.local/bin:
+    ~/.local/bin/:
+    ~/.local/lib/:
 
 - link:
-    ~/.local/bin:
-      force: true
-      glob: true
-      path: local/bin/*
-    ~/.local/lib:
-      force: true
-      glob: true
-      path: local/lib/*
+    ~/.local/bin: local/bin/*
 
 - shell:
     - [
-        sudo chmod 755 local/bin/*,
-        Give '~/.local/bin/*' scripts executable privileges,
+        sudo chmod +x local/bin/*,
+        "Set executable privilege for all local/bin scripts.",
       ]
