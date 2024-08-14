@@ -28,8 +28,8 @@ alias gr="__git_root_dir"
 if [ -x "$(command -v fzf)" ]; then
   alias gb="__fzf_git_branches"
   alias gd="__fzf_git_diff"
-  alias gh="__fzf_git_hashes"
   alias gl="__fzf_git_log"
+  alias gl2="__fzf_git_log2"
   alias gwt="__git_select_worktree"
 
   alias gitignore="__git_new_gitignore"
@@ -104,7 +104,7 @@ __fzf_git_diff() {
 }
 
 # List commit graph by hash and display a preview of the commit message.
-__fzf_git_hashes() {
+__fzf_git_log2() {
   __fzf_git_check || return
   git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always \
     | fzf \
