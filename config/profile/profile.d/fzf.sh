@@ -3,10 +3,14 @@
 # shellcheck disable=SC1091
 
 # Add fzf/bin directory to PATH
-if [[ -d $XDG_DATA_HOME/fzf/bin ]] \
-  && [[ ! "$PATH" == *$XDG_DATA_HOME/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}$XDG_DATA_HOME/fzf/bin"
-fi
+setup_path() {
+  local install_dir="${XDG_SRC_HOME:-$HOME/.local/src}/fzf"
+  if [[ -d "$install_dir/bin" ]] \
+    && [[ ! "$PATH" == *$install_dir/bin* ]]; then
+    export PATH="${PATH:+${PATH}:}$install_dir/bin"
+  fi
+}
+setup_path
 
 # Do nothing if application is not available.
 [ ! -x "$(command -v fzf)" ] && return

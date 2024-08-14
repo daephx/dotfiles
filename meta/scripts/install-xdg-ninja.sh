@@ -3,8 +3,12 @@
 set -e
 
 REPO_URL="https://github.com/b3nj5m1n/xdg-ninja.git"
-INSTALL_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/xdg-ninja"
+INSTALL_DIR="${XDG_SRC_HOME:-$HOME/.local/src}/xdg-ninja"
 BIN_DIR="${XDG_LOCAL_HOME:-$HOME/.local/}/bin"
+
+# Ensure parent directory path exists
+mkdir -p "$BIN_DIR" > /dev/null
+mkdir -p "$(dirname "$INSTALL_DIR")" > /dev/null
 
 # Clone latest repository version
 if [ ! -d "$INSTALL_DIR" ]; then

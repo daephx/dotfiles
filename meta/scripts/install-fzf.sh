@@ -3,7 +3,10 @@
 set -e
 
 REPO_URL="https://github.com/junegunn/fzf.git"
-INSTALL_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/fzf"
+INSTALL_DIR="${XDG_SRC_HOME:-$HOME/.local/src}/fzf"
+
+# Ensure parent directory path exists
+mkdir -p "$(dirname "$INSTALL_DIR")" > /dev/null
 
 # Clone latest repository version
 if [ ! -d "$INSTALL_DIR" ]; then
