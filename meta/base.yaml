@@ -24,6 +24,7 @@
     # Unsupported XDG directories
     - $HOME/.local/bin/
     - $HOME/.local/lib/
+    - $HOME/.local/src/
 
 - clean:
     $HOME/:
@@ -37,6 +38,7 @@
     # Unsupported XDG directories
     $HOME/.local/bin/:
     $HOME/.local/lib/:
+    $HOME/.local/src/:
 
 - shell:
     - [git submodule sync --recursive -- meta/dotbot]
