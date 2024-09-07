@@ -114,6 +114,11 @@ zstyle ':completion:*:git-checkout:*' sort false
 # Show Makefile targets
 zstyle ':completion::complete:make::' tag-order targets variables
 
+# When bat is installed as batcat, ie. ubuntu set completion definitions.
+if [ -f "/usr/bin/batcat" ]; then
+  compdef bat=batcat
+fi
+
 # Fzf-Tab
 # https://github.com/Aloxaf/fzf-tab
 # Set options for this plugin for fzf interop with zsh completions.
