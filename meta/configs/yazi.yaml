@@ -1,0 +1,25 @@
+# yazi: Blazing fast terminal file manager written in rust...
+# https://github.com/sxyazi-CLI/yazi
+
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stdout: true
+      stderr: true
+
+- create:
+    - ~/.config/yazi/
+
+- clean:
+    ~/.config/yazi/:
+      recursive: true
+
+- link:
+    ~/.config/yazi/:
+      glob: true
+      path: config/yazi/*
+
+- shell:
+    - [cargo install --locked yazi-fm yazi-cli]
