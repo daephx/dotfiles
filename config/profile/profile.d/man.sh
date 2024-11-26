@@ -1,5 +1,5 @@
+#!/usr/bin/env sh
 # man: an interface to the system reference manuals
-# shellcheck shell=sh
 
 # Define how to display man pages.
 # export MANPAGER="less -sMJ +Gg"

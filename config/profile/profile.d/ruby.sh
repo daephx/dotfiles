@@ -1,5 +1,5 @@
+#!/usr/bin/env sh
 # Ruby: a language focusing on simplicity and productivity
-# shellcheck shell=bash
 
 # Exit if Ruby is not installed
 [ ! -x "$(command -v ruby)" ] && return

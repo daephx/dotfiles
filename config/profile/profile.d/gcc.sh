@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # GCC(1): GNU project C and C++ compiler
 
 # Set global build architecture

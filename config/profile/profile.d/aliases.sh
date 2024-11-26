@@ -1,7 +1,6 @@
+#!/usr/bin/env bash
 # aliases: user aliases for interactive POSIX shells
-# shellcheck disable=1001
-# shellcheck disable=2148
-# shellcheck shell=bash
+# shellcheck disable=SC1001
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

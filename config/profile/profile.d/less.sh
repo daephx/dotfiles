@@ -1,6 +1,7 @@
+#!/usr/bin/env sh
+# Description of the script.
 # less: Opposite of more - Linux terminal pager LESS(1)
 # shellcheck disable=SC2155
-# shellcheck shell=sh
 
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x "/usr/bin/lesspipe" ] && eval "$(SHELL=/bin/sh lesspipe)"

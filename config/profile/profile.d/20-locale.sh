@@ -1,5 +1,7 @@
+#!/usr/bin/env sh
 # Copyright (c) 2017 Victorien Elvinger
 # Licensed under the zlib license (https://opensource.org/licenses/zlib).
+# shellcheck disable=SC2148
 
 if test -r "${XDG_CONFIG_HOME:-"$HOME/.config"}/locale.conf"; then
   # shellcheck source=/dev/null
