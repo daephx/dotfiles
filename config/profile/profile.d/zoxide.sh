@@ -1,4 +1,8 @@
-# shellcheck shell=sh
+#!/usr/bin/env sh
+# zoxide: A smarter cd command. Supports all major shells.
+# https://github.com/ajeetdsouza/zoxide
+
+# Do nothing if zoxide is not installed
 if ! command -v zoxide > /dev/null; then
   return 0
 fi

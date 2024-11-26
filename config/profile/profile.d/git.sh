@@ -1,5 +1,6 @@
+#!/usr/bin/env bash
 # Git: Define aliases and functions for git version control.
-# shellcheck shell=bash
+# shellcheck disable=SC2039
 
 # Do nothing if application is not available.
 [ ! -x "$(command -v git)" ] && return

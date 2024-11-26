@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # Go: Managing Golang environment
 
 # Set preferred directory for GOPATH

@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # Emacs configuration: Initializes environment for Emacs editor.
 # Last updated by You on 2023-05-05. Refactored to relocate user shell config.
 

@@ -1,5 +1,5 @@
+#!/usr/bin/env bash
 # python: an interpreted, interactive, object-oriented programming language.
-# shellcheck shell=bash
 
 # Exit if neither Python 2 nor Python 3 is installed
 [ ! -x "$(command -v python)" ] && [ ! -x "$(command -v python3)" ] && return

@@ -1,5 +1,6 @@
+#!/usr/bin/env sh
+# Description of the script.
 # docker: configuration and utility settings
-# shellcheck shell=sh
 
 # Set the Docker configuration directory using XDG Base directory specification.
 export DOCKER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/docker"

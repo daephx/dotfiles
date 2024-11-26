@@ -1,7 +1,7 @@
+#!/usr/bin/env sh
 # fabric: a modular framework for AI prompts.
 # https://github.com/danielmiessler/fabric
 # shellcheck disable=SC1091
-# shellcheck shell=sh
 
 # Do nothing if application is not available.
 [ ! -x "$(command -v fabric)" ] && return

@@ -1,5 +1,6 @@
+#!/usr/bin/env bash
 # tmux: Auto-launch tmux on shell login.
-# shellcheck shell=bash
+# shellcheck disable=SC2148
 #
 # Call this function at the end of your rc file to auto-start a tmux session.
 # Multiple guard clauses ensure tmux doesn't attach in specific situations,

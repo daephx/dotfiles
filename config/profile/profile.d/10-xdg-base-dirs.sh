@@ -1,5 +1,7 @@
+#!/usr/bin/env sh
 # XDG: Follow the XDG Base Directory Specification
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+# shellcheck disable=SC2148
 
 # NOTE: $XDG_RUNTIME_DIR should be set by the system.
 # Its access mode MUST be 0700 for security purposes.

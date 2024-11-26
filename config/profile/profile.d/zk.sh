@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # zk: Plain text note-taking assistant
 # https://github.com/zk-org/zk
 

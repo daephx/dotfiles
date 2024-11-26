@@ -1,6 +1,7 @@
+#!/usr/bin/env bash
 # Fzf: A command-line fuzzy finder
 # https://github.com/junegunn/fzf
-# shellcheck disable=SC1091
+# shellcheck disable=SC2016
 
 # Add fzf/bin directory to PATH
 setup_path() {

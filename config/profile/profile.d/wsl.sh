@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+# WSL: Environment configuration for Windows Subsystem for Linux (WSL).
+# Add extra commands and improve performance by removing unnecessary interop.
+
 # WSL: Enabled in windows subsystem
 read -r var &> /dev/null < /proc/version
 if test "${var#*microsoft}" = "$var"; then

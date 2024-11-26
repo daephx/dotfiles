@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # Lua Settings: Configure Lua and Luarocks paths.
 
 # Add custom Lua library path to the Lua search paths.

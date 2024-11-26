@@ -1,5 +1,5 @@
+#!/usr/bin/env sh
 # node.js: javascript interpreter and package manager
-# shellcheck shell=sh
 
 # Change node repl history path
 export NODE_REPL_HISTORY="${XDG_STATE_HOME:-$HOME/.loca/state}/node_repl_history"

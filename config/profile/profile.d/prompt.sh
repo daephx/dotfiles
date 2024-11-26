@@ -1,7 +1,7 @@
+#!/usr/bin/env sh
 # Prompt: Initialize user prompt for POSIX-compliant shells.
 # This script sets up shell prompts with colors and Git information,
 # and initializes custom prompt providers if available.
-# shellcheck shell=sh
 
 # Check for uncommitted changes in Git repository.
 __git_parse_dirty() {

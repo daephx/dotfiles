@@ -1,5 +1,5 @@
+#!/usr/bin/env bash
 # ls: Conditionally set users ls utility
-# shellcheck shell=bash
 
 # Detect which `ls` flavor is in use
 if command ls --color > /dev/null; then

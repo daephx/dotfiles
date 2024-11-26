@@ -1,8 +1,9 @@
+#!/usr/bin/env sh
 # editor: Conditionally set users default editor
+#
 # assign EDITOR/VISUAL variables based on priority list and context!
 # This script will apply a default editor and expose the editor function for
 # temporarily overriding the associated variables.
-# shellcheck shell=bash
 #
 # Default editor order: nvim, vim, vi, nano
 

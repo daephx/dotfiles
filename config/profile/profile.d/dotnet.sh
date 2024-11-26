@@ -1,5 +1,5 @@
+#!/usr/bin/env sh
 # dotnet(1): The generic driver for the .NET CLI.
-# shellcheck shell=sh
 
 # Disable telemetry for .NET CLI
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
