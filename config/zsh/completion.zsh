@@ -114,8 +114,8 @@ zstyle ':completion:*:git-checkout:*' sort false
 # Show Makefile targets
 zstyle ':completion::complete:make::' tag-order targets variables
 
-# When bat is installed as batcat, ie. ubuntu set completion definitions.
-if [ -f "/usr/bin/batcat" ]; then
+# When bat is installed as batcat, ie. Ubuntu set completion definitions.
+if [ -f "/usr/bin/batcat" ] && declare -f _batcat > /dev/null; then
   compdef bat=batcat
 fi
 
