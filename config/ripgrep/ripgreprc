@@ -1,7 +1,7 @@
-# Ripgrep config
+# ripgrep config: options for search behavior and output customization.
 
 # Search hidden files and directories.
---hidden
+# --hidden
 
 # follow symlinks
 --follow
@@ -17,15 +17,18 @@
 --max-columns=150
 
 # Configure color settings and styles.
-# --colors=line:fg:0xf2,0xc2,0x60
-# --colors=line:style:bold
-# --colors=match:bg:0x2b,0x83,0xa6
-# --colors=match:fg:0xff,0xff,0xff
-# --colors=match:style:nobold
-# --colors=path:bg:0x0,0x0,0x0
-# --colors=path:fg:white
+--colors=line:fg:0x5A,0x5A,0x5A
+--colors=line:style:bold
+--colors=match:bg:0x2b,0x83,0xa6
+--colors=match:fg:0xff,0xff,0xff
+--colors=match:style:nobold
+--colors=path:bg:0x3b,0x3b,0x3b
+--colors=path:fg:white
 
 # Exclude directories.
+--glob=!*.{lock}
+--glob=!.bundle
+--glob=!.cache
 --glob=!.venv
 --glob=!Trash
 --glob=!__pycache__
@@ -34,9 +37,6 @@
 --glob=!vendor
 --glob=!{.git,.svn,.hg}
 
-# Exclude file types.
---glob=!*.{lock}
-
-# Add my 'web' type.
+# Add custom file type groups.
 --type-add
 web:*.{html,css,js}*
