@@ -21,7 +21,6 @@ $git_commit\
 $git_status\
 $git_metrics\
 $hg_branch\
-$cmd_duration\
 \n[└](bright-black)\
 $character\
 """
@@ -92,7 +91,7 @@ disabled = false
 format = " [$path]($style)[$read_only]($read_only_style) "
 style = "fg:blue"
 home_symbol = '~'
-read_only = ""
+read_only = " "
 truncate_to_repo = true
 truncation_length = 8
 truncation_symbol = "…/"
@@ -201,7 +200,7 @@ openEuler = "[󰏒](#f7894a)"
 openSUSE = "[](#71b337)"
 
 [dart]
-format = "[  $version](bold blue)"
+format = "[  $version ](bold blue)"
 
 [golang]
 format = "[  $version ](bold cyan)"
@@ -217,7 +216,7 @@ symbol = " "
 # kotlin_binary = "kotlinc"
 
 [lua]
-format = "[ 󰢱 $version](bold blue)"
+format = "[ 󰢱 $version ](bold blue)"
 
 [kubernetes]
 format = '[ 󱃾 $context \($namespace\) ](dimmed green)'
@@ -232,7 +231,7 @@ disabled = false
 format = "[ 󰡨 $context ](blue bold)"
 
 [nodejs]
-format = "[ 󰎙 $version](bold green)"
+format = "[ 󰎙 $version ](bold green)"
 
 [nix_shell]
 symbol = "[](cyan) "
@@ -240,7 +239,7 @@ symbol = "[](cyan) "
 [package]
 disabled = false
 display_private = true
-format = "[  $version]($style)"
+format = "[  $version ]($style)"
 
 [python]
 symbol = " "
@@ -248,13 +247,13 @@ pyenv_version_name = true
 python_binary = "python3"
 
 [rust]
-format = "[  $version](red bold)"
+format = "[  $version ](red bold)"
 
 [scala]
-format = "[  $version](red bold)"
+format = "[  $version ](red bold)"
 
 [swift]
-format = "[  $version](red bold)"
+format = "[  $version ](red bold)"
 
 [terraform]
 format = "[ 󱁢 $version$workspace]($style)"
@@ -268,10 +267,10 @@ style = "cyan"
 symbol = " "
 
 [elm]
-format = "[  $version](cyan bold) "
+format = "[  $version ](cyan bold)"
 
 [erlang]
-format = "[  $version](bold red) "
+format = "[  $version ](bold red)"
 
 [gcloud]
 format = '[ 󱇶 $symbol$account(@$domain)(\($project\))]($style) '
