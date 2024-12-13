@@ -214,15 +214,15 @@ style = "powerline"
 template = " \ue7a8 {{if .Error}}{{.Error}}{{else}}{{.Full}}{{end}} <8>\ue0b3</>"
 type = "rust"
 
-[[blocks.segments]]
-type = "executiontime"
-foreground = "7"
-template = " <6>\ueba2</> {{ .FormattedMs }} <8>\ue0b3</>"
-style = "powerline"
-[properties]
-threshold = 500
-style = "austin"
-always_enabled = false
+# [[blocks.segments]]
+# type = "executiontime"
+# foreground = "7"
+# template = " <6>\ueba2</> {{ .FormattedMs }} <8>\ue0b3</>"
+# style = "powerline"
+# [properties]
+# threshold = 500
+# style = "austin"
+# always_enabled = false
 
 [[blocks.segments]]
 foreground = "15"
