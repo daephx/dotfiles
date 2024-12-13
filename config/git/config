@@ -70,15 +70,29 @@
 
 [delta]
 	decorations = true
+	features = theme
 	line-numbers = true
+	navigate = true
 
 [interactive]
 	diffFilter = delta --color-only
 
 [delta "decorations"]
 	commit-decoration-style = bold yellow box ul
-	file-style = bold yellow ul
 
+[delta "theme"]
+	dark = true
+	commit-decoration-style = 8 ol
+	file-decoration-style = 8 box ul
+	file-style = white bold
+	hunk-header-decoration-style = 8 box ul
+	hunk-header-style = omit
+	line-numbers-left-format = " {nm:>3} │"
+	line-numbers-left-style = 234
+	line-numbers-right-format = " {np:>3} │"
+	line-numbers-right-style = 234
+	line-numbers-zero-style = gray
+	zero-style = syntax
 
 ### Colors ###
 
