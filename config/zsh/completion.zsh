@@ -125,6 +125,9 @@ fi
 # NOTE: fzf-tab needs to be loaded after compinit, but before plugins which will
 # wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
 
+# Use users default FZF options
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
 # Switch between completion groups with vim style bindings
 zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l'
 
