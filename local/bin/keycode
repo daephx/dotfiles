@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'io/console'
+
+loop do
+  chars = $stdin.getch + begin
+    $stdin.read_nonblock(1024)
+  rescue StandardError
+    ''
+  end
+  break if [3, 4, 26].map(&:chr).include?(chars)
+
+  p chars
+end
