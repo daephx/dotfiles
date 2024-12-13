@@ -40,7 +40,7 @@ function contrast_colour {
     # And: http://itu.int/rec/R-REC-BT.601
     # Luminance is in range 0..5000 as each value is 0..5
     luminance=$(((r * 299) + (g * 587) + (b * 114)))
-    (($luminance > 2500)) && printf "0" || printf "15"
+    ((luminance > 2500)) && printf "0" || printf "15"
   else
     # If luminance is bright, print number in black, white otherwise.
     # Green contributes 587/1000 to human perceived luminance - ITU R-REC-BT.601
