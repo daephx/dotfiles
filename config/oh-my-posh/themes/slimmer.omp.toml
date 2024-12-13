@@ -247,6 +247,7 @@ template = " \ue235 {{if .Error}}{{.Error}}{{else}}{{if .Venv}}{{.Venv}} {{end}}
 type = "python"
 [blocks.segments.properties]
 display_mode = "context"
+folder_name_fallback = false
 
 [[blocks.segments]]
 background = "black"
