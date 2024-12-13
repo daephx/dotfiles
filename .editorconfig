@@ -1,20 +1,9 @@
+root=true
+
 [*]
 charset = utf-8
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-[{*.{sh,bash,zsh},.bash*,.zsh*,.profile}]
-indent_size = 2
-indent_style = space
-max_line_length = 80
-tab_width = 4
-
-# shfmt
-binary_next_line = true
-function_next_line = false
-keep_padding = false
-space_redirects = true
-switch_case_indent = true
 
 [*.{bat,ps1}]
 indent_size = 4
@@ -32,3 +21,29 @@ trim_trailing_whitespace = false
 indent_size = 4
 indent_style = tab
 tab_width = 4
+
+[[bash]]
+indent_size = 2
+indent_style = space
+max_line_length = 80
+tab_width = 2
+
+# shfmt
+binary_next_line = false
+function_next_line = false
+keep_padding = false
+space_redirects = true
+switch_case_indent = true
+
+[[shell]]
+indent_size = 2
+indent_style = space
+max_line_length = 80
+tab_width = 2
+
+# shfmt
+binary_next_line = false
+function_next_line = false
+keep_padding = false
+space_redirects = true
+switch_case_indent = true
