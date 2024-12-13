@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# tmux-sessionizer: open project directories in new tmux session
+
+# Query commands
+find_query="find \"$HOME\" -maxdepth 3 -exec test -e '{}/.git' ';' -print -prune | sort"
+zoxide_query="zoxide query -l -s | sed -e 's/^[[:space:]]*//g' | cut -d ' ' -f2"
+
+header="TMUX Sessionizer - Select a project directory!"
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  if [ -x "$(command -v zoxide)" ]; then
+    selected=$(
+      eval "$zoxide_query" | fzf \
+        --height=100% \
+        --header="$header" \
+        --bind="ctrl-d:execute(zoxide remove '{}')+reload:(eval \"$zoxide_query\")"
+    )
+  else
+    selected=$(
+      eval "$find_query" | fzf \
+        --height=100% \
+        --header="$header"
+    )
+  fi
+fi
+
+# Close if nothing was selected
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+session_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+  tmux new-session -s "$session_name" -c "$selected"
+  exit 0
+fi
+
+# Create new tmux session if not exists
+if ! tmux has-session -t="$session_name" 2> /dev/null; then
+  tmux new-session -ds "$session_name" -c "$selected"
+fi
+
+# Switch to new tmux session
+tmux switch-client -t "$session_name"
