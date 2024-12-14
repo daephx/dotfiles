@@ -4,6 +4,9 @@
 # Display height relative to the terminal size
 --height=~100%
 
+# Highlight the whole line for current selection
+--highlight-line
+
 # Display info text on the right side of the prompt
 --info=inline-right
 
