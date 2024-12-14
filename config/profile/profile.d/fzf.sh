@@ -33,5 +33,4 @@ export FZF_CTRL_R_OPTS="
 --color header:italic
 --bind 'ctrl-/:toggle-preview'
 --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
---preview 'echo {}' --preview-window up:3:hidden:wrap
 "
