@@ -72,3 +72,4 @@
 # Key bindings for navigating through items
 --bind='pgdn:half-page-down+refresh-preview'
 --bind='pgup:half-page-up+refresh-preview'
+--bind='tab:down,btab:up'
