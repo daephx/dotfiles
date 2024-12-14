@@ -70,7 +70,5 @@
 --bind='ctrl-u:unix-line-discard'
 
 # Key bindings for navigating through items
---bind='end:last'
---bind='home:first'
 --bind='pgdn:half-page-down+refresh-preview'
 --bind='pgup:half-page-up+refresh-preview'
