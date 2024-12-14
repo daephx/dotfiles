@@ -23,7 +23,7 @@
 --pointer='❯'
 
 # Preview window settings: border on the left side
---preview-window="sharp"
+--preview-window="sharp,<80(down,50%)"
 
 # Set the prompt character
 --prompt='❯ '
