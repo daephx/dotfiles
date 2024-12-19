@@ -1,31 +1,47 @@
-# 256 color theme for the color GNU ls utility.
-# Used and tested with dircolors (GNU coreutils) 8.13
+# 256-Color Theme Configuration for GNU `ls` Utility
 #
-# @author  daephx
-# @license http://opensource.org/licenses/MIT The MIT License (MIT)
+# This file defines a color scheme for the GNU `ls` command, enabling
+# vibrant 256-color output. It is designed for use with `dircolors`,
+# a utility included in GNU Coreutils, and tested with version 8.13 -> 9.4.
 #
+# Author: daephx
+# License: MIT License (http://opensource.org/licenses/MIT)
 #
-# Standard colors
+# ----------------------------------------------------------------------
+# Color Configuration Guide
 #
-# Below are the color init strings for the basic file types. A color init
-# string consists of one or more of the following numeric codes:
-# Attribute codes:
-# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
-# Text color codes:
-# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
-# Background color codes:
-# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+# Colors in this file are defined using numeric codes in a "color init" string,
+# which specify text attributes, foreground colors, and background colors.
+# The following codes are supported:
 #
+# Attribute Codes:
+# - 00: None       - 01: Bold       - 04: Underscore
+# - 05: Blink      - 07: Reverse    - 08: Concealed
 #
-# 256 color support
-# see here: http://www.mail-archive.com/bug-coreutils@gnu.org/msg11030.html)
+# Foreground (Text) Color Codes:
+# - 30: Black      - 31: Red        - 32: Green      - 33: Yellow
+# - 34: Blue       - 35: Magenta    - 36: Cyan       - 37: White
 #
-# Text 256 color coding:
-# 38;5;COLOR_NUMBER
-# Background 256 color coding:
-# 48;5;COLOR_NUMBER
+# Background Color Codes:
+# - 40: Black      - 41: Red        - 42: Green      - 43: Yellow
+# - 44: Blue       - 45: Magenta    - 46: Cyan       - 47: White
+#
+# ----------------------------------------------------------------------
+# 256-Color Support
+#
+# For extended 256-color mode, the following conventions are used:
+# - Foreground (Text): 38;5;<COLOR_NUMBER>
+# - Background:        48;5;<COLOR_NUMBER>
+#
+# For more details on 256-color support, refer to:
+# http://mail-archive.com/bug-coreutils@gnu.org/msg11030.html
+#
+# ----------------------------------------------------------------------
+# Usage:
+# - Load this theme by running: `dircolors <this-file>`
+# - Customize file type colors in the section below according to your preferences.
 
-# Terminals
+### Terminals ###
 
 TERM ansi
 TERM color-xterm
@@ -80,7 +96,7 @@ TERM xterm-color
 TERM xterm-debian
 TERM xterm-kitty
 
-# Settings
+### Settings ###
 
 BLK ;4;230;38;5;142;1
 CAPABILITY 30;41
@@ -104,8 +120,6 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 
 ### Unsorted ###
 
-# Extensions
-
 .1p 38;5;7
 .3p 38;5;7
 .82p 38;5;121
@@ -113,20 +127,6 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .8eu 38;5;121
 .8xe 38;5;121
 .8xp 38;5;121
-.BUP 38;5;242
-.CFUserTextEncoding 38;5;239
-.F 38;5;81
-.F03 38;5;81
-.F08 38;5;81
-.F90 38;5;81
-.F95 38;5;81
-.M 38;5;110
-.PL 38;5;160
-.R 38;5;49 # RStudio
-.Rdata 38;5;178
-.Rproj 38;5;11
-.SKIP 38;5;244
-.WARC 38;5;40
 .a 38;5;40
 .accdb 38;5;60
 .accde 38;5;60
@@ -149,6 +149,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .bfe 38;5;192;3
 .bib 38;5;178
 .bsp 38;5;215
+.BUP 38;5;242
 .bzl 38;5;113
 .cab 38;5;215
 .cap 38;5;29
@@ -157,6 +158,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .cc 38;5;204
 .cdr 38;5;97
 .cfg 38;5;66 # Generic Config
+.CFUserTextEncoding 38;5;239
 .chm 38;5;141
 .cjs 38;5;185
 .cl 38;5;81
@@ -225,10 +227,15 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .eslintrc 38;5;56 # eslint
 .ex 38;5;140
 .exs 38;5;140
+.F 38;5;81
 .f 38;5;81
+.F03 38;5;81
 .f03 38;5;81
+.F08 38;5;81
 .f08 38;5;81
+.F90 38;5;81
 .f90 38;5;97
+.F95 38;5;81
 .f95 38;5;81
 .feature 38;5;7
 .flif 38;5;97
@@ -300,6 +307,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .lz 38;5;40
 .lzma 38;5;40
 .lzo 38;5;40
+.M 38;5;110
 .m 38;5;110
 .m4 38;5;242
 .map 38;5;7
@@ -352,6 +360,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .php 38;5;140 # php
 .pi 38;5;7
 .pid 38;5;248
+.PL 38;5;160
 .pl 38;5;74
 .plt 38;5;7
 .ply 38;5;216
@@ -373,7 +382,9 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .qcow 38;5;124
 .query 38;5;107
 .r 38;5;29 # RStudio
+.R 38;5;49 # RStudio
 .r[0-9]{0,2} 38;5;239
+.Rdata 38;5;178
 .rdata 38;5;178
 .res 38;5;167
 .resi 38;5;204
@@ -382,6 +393,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .rmd 38;5;74
 .rnc 38;5;178
 .rng 38;5;178
+.Rproj 38;5;11
 .rproj 38;5;29
 .rss 38;5;215
 .rtf 38;5;111
@@ -405,6 +417,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .sig 38;5;166
 .signature 38;5;192;3
 .sis 38;5;7
+.SKIP 38;5;244
 .slim 38;5;196
 .sml 38;5;166
 .sms 38;5;213
@@ -468,6 +481,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .vpk 38;5;215 # Valve Pak
 .vue 38;5;113
 .war 38;5;215
+.WARC 38;5;40
 .warc 38;5;40
 .wasm 38;5;62 # Web Assembly
 .webloc 38;5;116
@@ -535,29 +549,104 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .DS_store 38;5;239
 .ds_store 38;5;239
 
-# Documents
-.adoc 1
-.asciidoc 1
-.docx 38;5;26
-.etx 38;5;128
-.info 38;5;245
-.markdown 38;5;74 # Markdown
-.md 38;5;74 # Markdown
-.mdx 38;5;74 # Markdown extended
-.mkd 1
-.nfo 38;5;128
-.norg 38;5;62 # Neorg
-.org 38;5;108 # Orgmode
-.pdf 38;5;142 # Portable document format
-.PDF 38;5;142 # Portable document format
-.pod 38;5;184
-.rdf 38;5;166 # Resource Description Framework
-.rst 1 # reStructuredText document
-.txt 1 # Plain-text
+# Archives
+.7z 38;5;197 # 7Zip Archive
+.ace 38;5;197
+.alz 38;5;197
+.apk 38;5;197 # Android app package
+.arc 38;5;197
+.arj 38;5;197
+.bz 38;5;197 # BZIP Archive
+.bz2 38;5;197 # BZIP2 Archive
+.cab 38;5;197
+.cbr 38;5;197 # Comic/Manga Archive
+.cbz 38;5;197 # Comic/Manga Archive
+.cpio 38;5;197
+.crate 38;5;197
+.deb 38;5;197 # Debian package
+.drpm 38;5;197
+.dwm 38;5;197
+.dz 38;5;197
+.ear 38;5;197
+.egg 38;5;197
+.esd 38;5;197
+.gz 38;5;197 # GnuZip Archive
+.jar 38;5;197 # Java Archive
+.lha 38;5;197
+.lrz 38;5;197
+.lz 38;5;197
+.lz4 38;5;197
+.lzh 38;5;197 # Lempel-Ziv/Haruyasu
+.lzma 38;5;197
+.lzo 38;5;197
+.pyz 38;5;197
+.rar 38;5;197 # WinRAR Archive
+.rpm 38;5;197 # Red Hat package
+.rz 38;5;197
+.sar 38;5;197
+.swm 38;5;197
+.t7z 38;5;197
+.tar 38;5;197 # Tape Archive File
+.taz 38;5;197
+.tbz 38;5;197
+.tbz2 38;5;197
+.tgz 38;5;197 # GZIP Archive
+.tlz 38;5;197
+.txz 38;5;197
+.tz 38;5;197
+.tzo 38;5;197
+.tzst 38;5;197
+.udeb 38;5;197
+.war 38;5;197
+.whl 38;5;197
+.wim 38;5;197
+.xz 38;5;197
+.Z 38;5;197 # UNIX Archive
+.z 38;5;197 # UNIX Archive
+.zip 38;5;197 # ZIP archive
+.zoo 38;5;197
+.zst 38;5;197
 
-# Latex
-.textile 38;5;106
-.tex 38;5;22
+# Binary
+.bin 1 # Generic binary format
+.bson 38;5;201
+.ggl 38;5;213 # Unknown binary format
+.pb 38;5;201
+.proto 38;5;201
+.rom 38;5;213 # Generic Read-only Memory
+.sav 38;5;213 # Generic save format
+
+# ROMs
+.32x 38;5;213 # Sega 32X
+.a00 38;5;213 # ARJ/ALZip archive
+.a52 38;5;213 # Atari 5200
+.A64 38;5;213 # Nintendo 64 mempak
+.a64 38;5;213 # Nintendo 64 mempak
+.a78 38;5;213 # Atari 7800
+.adf 38;5;213 # Amiga Disk File
+.atr 38;5;213 # Atari
+.cdi 38;5;213 # Philips CDi
+.d64 38;5;213 # n64mdisk (SDK)
+.fm2 38;5;213 # Famicom/NES
+.gb 38;5;213 # Gameboy
+.gba 38;5;213 # Gameboy advanced
+.gbc 38;5;213 # Gameboy color
+.gel 38;5;213
+.gg 38;5;213 # GameGear
+.ipk 38;5;213 # Game assets
+.j64 38;5;213 # Atari Jaguar
+.N64 38;5;213 # Nintendo 64
+.n64 38;5;213 # Nintendo 64
+.nds 38;5;213 # Nintendo DS
+.nes 38;5;213 # Famicom/NES
+.st 38;5;213 # Atari ST
+.V64 38;5;213 # Nintendo 64
+.v64 38;5;213 # Nintendo 64
+.Z64 38;5;213 # Nintendo 64
+.z64 38;5;213 # Nintendo 64
+
+.pk3 38;5;215 # Compressed game data
+.wad 38;5;215 # Doom engine data
 
 # Data
 .csv 38;5;113 # Comma-separated values
@@ -578,64 +667,29 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .xltm 38;5;73;4
 .xltx 38;5;73
 
-# Binary
-.bin 38;5;70 # Generic binary format
-.bson 38;5;201
-.ggl 38;5;213 # Unknown binary format
-.pb 38;5;201
-.proto 38;5;201
-.rom 38;5;213 # Generic Read-only Memory
-.sav 38;5;213 # Generic save format
+# Documents
+.adoc 1
+.asciidoc 1
+.docx 38;5;32
+.etx 38;5;134
+.info 38;5;245
+.markdown 38;5;74 # Markdown
+.md 38;5;74 # Markdown
+.mdx 38;5;74 # Markdown extended
+.mkd 1
+.nfo 38;5;38
+.norg 38;5;69 # Neorg
+.org 38;5;108 # Orgmode
+.PDF 38;5;142 # Portable document format
+.pdf 38;5;142 # Portable document format
+.pod 38;5;184
+.rdf 38;5;166 # Resource Description Framework
+.rst 38;5;166 # reStructuredText document
+.txt 1 # Plain-text
 
-# Emulation ROMs
-.32x 38;5;213 # Sega 32X
-.a00 38;5;213 # ARJ/ALZip archive
-.a52 38;5;213 # Atari 5200
-.A64 38;5;213 # Nintendo 64 mempak
-.a64 38;5;213 # Nintendo 64 mempak
-.a78 38;5;213 # Atari 7800
-.adf 38;5;213 # Amiga Disk File
-.atr 38;5;213 # Atari
-.cdi 38;5;213 # Philips CDi
-.d64 38;5;213 # n64mdisk (SDK)
-.fm2 38;5;213 # Famicom/NES
-.gb 38;5;213 # Gameboy
-.gba 38;5;213 # Gameboy advanced
-.gbc 38;5;213 # Gameboy color
-.gel 38;5;213
-.gg 38;5;213 # GameGear
-.ipk 38;5;213 # Game assets
-.j64 38;5;213 # Atari Jaguar
-.n64 38;5;213 # Nintendo 64
-.N64 38;5;213 # Nintendo 64
-.nds 38;5;213 # Nintendo DS
-.nes 38;5;213 # Famicom/NES
-.st 38;5;213 # Atari ST
-.v64 38;5;213 # Nintendo 64
-.z64 38;5;213 # Nintendo 64
-
-.pk3 38;5;215 # Compressed game data
-.wad 38;5;215 # Doom engine data
-
-# Compressed Archives
-.7z 38;5;197 # 7Zip Archive
-.apk 38;5;197 # Android app package
-.bz 38;5;197 # BZIP Archive
-.bz2 38;5;197 # BZIP2 Archive
-.deb 38;5;197 # Debian package
-.gz 38;5;197 # GnuZip Archive
-.jar 38;5;197 # Java Archive
-.lzh 38;5;197 # Lempel-Ziv/Haruyasu
-.rar 38;5;197 # WinRAR Archive
-.rpm 38;5;197 # Red Hat package
-.tar 38;5;197 # Tape Archive File
-.tgz 38;5;197 # GZIP Archive
-.Z 38;5;197 # UNIX Archive
-.z 38;5;197 # UNIX Archive
-.zip 38;5;197 # ZIP archive
-
-.cbr 38;5;141 # Comic/Manga Archive
-.cbz 38;5;141 # Comic/Manga Archive
+# Latex
+.tex 38;5;106
+.textile 38;5;106
 
 # Audio
 .3ga 38;5;137;1
@@ -652,15 +706,19 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .fcm 38;5;137;1
 .flac 38;5;166 # Free Lossless Audio Codec
 .m4a 38;5;166
+.mid 38;5;166
 .mid 38;5;166 # Music Instrument Interface
+.midi 38;5;166
 .midi 38;5;166 # Music Instrument Interface
 .mka 38;5;166
 .mod 38;5;137;1
 .mp3 38;5;166
 .mp4a 38;5;137;1
+.mpc 38;5;166
 .oga 38;5;137;1
 .ogg 38;5;166
 .pcm 38;5;136;1
+.ra 38;5;166
 .S3M 38;5;137;1
 .s3m 38;5;137;1
 .sid 38;5;137;1
@@ -669,89 +727,93 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .wv 38;5;136;1
 .wvc 38;5;136;1
 
-# Images
-.bmp 38;5;140 # Bitmap image format
+# Graphics
 .BMP 38;5;140 # Bitmap image format
-.cgm 38;5;215
+.bmp 38;5;140 # Bitmap image format
+.cgm 38;5;215 # Computer Graphics Metafile
 .CR2 38;5;215
-.dl 38;5;215
-.emf 38;5;215
+.cr2 38;5;215
+.dl 38;5;215 # Dave Lowe Module
+.emf 38;5;215 # Enhanced Metafile
 .eps 38;5;215
-.gif 38;5;199 # Graphics Interchange Format
+.flc 38;5;215 # Autodesk animation format
+.fli 38;5;215 # Autodesk animation format
+.flic 38;5;215 # Autodesk animation format
 .GIF 38;5;199 # Graphics Interchange Format
-.ico 38;5;185 # Computer icon images
+.gif 38;5;199 # Graphics Interchange Format
+.gl 38;5;215 # GRASP animation
 .ICO 38;5;185 # Computer icon images
-.jpeg 38;5;140 # JPEG image format
+.ico 38;5;185 # Computer icon images
 .JPEG 38;5;140 # JPEG image format
-.jpg 38;5;140 # JPEG image format
+.jpeg 38;5;140 # JPEG image format
 .JPG 38;5;140 # JPEG image format
-.mng 38;5;215
-.pbm 38;5;215
-.pcx 38;5;215
-.pgm 38;5;215
-.png 38;5;147 # Portable Network Graphic
+.jpg 38;5;140 # JPEG image format
+.mjpeg 38;5;104 # Motion JPEG image format
+.mjpg 38;5;104 # Motion JPEG image format
+.mng 38;5;215 # Multiple-image Network Graphics
+.pbm 38;5;215 # Portable Bitmap
+.pcx 38;5;215 # Picture Exchange format
+.pgm 38;5;215 # Portable Graymap
 .PNG 38;5;147 # Portable Network Graphic
-.ppm 38;5;215
+.png 38;5;147 # Portable Network Graphic
+.ppm 38;5;215 # Portable Pixmap Format
 .pxm 38;5;215
-.svg 38;5;214 # XML
 .SVG 38;5;214 # XML
-.svgz 38;5;215
-.tga 38;5;215
-.tif 38;5;215
-.TIF 38;5;215
-.tiff 38;5;215
-.TIFF 38;5;215
-.webp 38;5;149
+.svg 38;5;214 # XML
+.svgz 38;5;215 # Compressed SVG
+.tga 38;5;215 # Raster graphics format
+.TIF 38;5;215 # Tagged Image Format
+.tif 38;5;215 # Tagged Image Format
+.TIFF 38;5;215 # Tagged Image Format
+.tiff 38;5;215 # Tagged Image Format
 .WEBP 38;5;149
-.xbm 38;5;215
-.xcf 38;5;215
-.xpm 38;5;215
-.xwd 38;5;215
-.yuv 38;5;215
+.webp 38;5;149
+.xbm 38;5;215 # Monochrome bitmap image
+.xcf 38;5;215 # GIMP image format
+.xpm 38;5;215 # X PixMap
+.xwd 38;5;215 # GIMP X window dump
+.yuv 38;5;215 # Color/Pixel format
 
 # Video
 .3g2 38;5;115
 .3gp 38;5;115
-.asf 38;5;202
-.avi 38;5;202
+.asf 38;5;202 # Microsoft Advanced Systems Format
 .AVI 38;5;202
+.avi 38;5;202
 .divx 38;5;67
 .f4v 38;5;115
-.flc 38;5;202
-.fli 38;5;202
-.flv 38;5;202
 .FLV 38;5;202
-.gl 38;5;202
+.flv 38;5;202
 .gp3 38;5;115
 .gp4 38;5;115
 .IFO 38;5;114
 .ifo 38;5;114
 .m2ts 38;5;202
-.m2v 38;5;202
+.m2v 38;5;202 # MPEG-2 video stream
 .m4v 38;5;202
-.mkv 38;5;202 # Matroska Video
 .MKV 38;5;202 # Matroska Video
+.mkv 38;5;202 # Matroska Video
 .MOV 38;5;39 # QuickTime
 .mov 38;5;39 # QuickTime
-.mp4 38;5;202
 .MP4 38;5;202
+.mp4 38;5;202
 .mp4v 38;5;202
 .mpeg 38;5;173
 .mpg 38;5;173
-.nuv 38;5;202
-.ogm 38;5;202
-.ogv 38;5;115
+.nuv 38;5;202 # NuppelVideo format
+.ogm 38;5;202 # Compressed video format
+.ogv 38;5;115 # OGG  Video container
 .qt 38;5;202
 .rm 38;5;202
-.rmvb 38;5;202
+.rmvb 38;5;202 # RealMedia Variable Bitrate
 .sample 38;5;114
 .ts 38;5;202
 .VOB 38;5;115;1
-.vob 38;5;202
-.webm 38;5;113
-.WEBM 38;5;113
-.wmv 38;5;202
-.WMV 38;5;202
+.vob 38;5;115;1
+.WEBM 38;5;113 # Web Media Video
+.webm 38;5;113 # Web Media Video
+.WMV 38;5;202 # Windows Media Video
+.wmv 38;5;202 # Windows Media Video
 
 # Playlist
 .m3u 38;5;116
@@ -778,6 +840,9 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .woff2 38;5;66
 
 # Configuration
+*.settings 38;5;66
+*config 38;5;66
+*config.* 38;5;66
 .conf 38;5;66
 .config* 38;5;66
 .editorconfig 38;5;66
@@ -788,6 +853,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .ini 38;5;66
 .last-run 1
 .merged-ca-bundle 1
+.motd_shown 38;5;242
 .pcf 1
 .plist 1
 .psf 1
@@ -796,6 +862,7 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .tmTheme 1
 .toml 38;5;66
 .user-ca-bundle 1
+.wget-hsts 38;5;242
 .yaml 38;5;66 # YAML
 .yml 38;5;66 # YAML
 
@@ -829,27 +896,27 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .pgp 38;5;192;3
 
 # Databases
-.db 38;5;227;4
-.sqlite 38;5;227;4
-.sqlite3 38;5;227;4
+.db 38;5;222
+.sqlite 38;5;222
+.sqlite3 38;5;222
 
 # SQL
-.sql 38;5;222
-.msql 38;5;222
-.mysql 38;5;222
-.pgsql 38;5;222 # Postgres SQL
+.msql 38;5;204
+.mysql 38;5;204
+.pgsql 38;5;204 # Postgres SQL
+.sql 38;5;204
 
 # Assembly
-.asm 38;5;152
 .ASM 38;5;152
+.asm 38;5;152
 .NASM 38;5;152
 .nasm 38;5;152
-.s 38;5;152
 .S 38;5;152
+.s 38;5;152
 
 # C/C++
-.c 38;5;110 # C Source
 .C 38;5;110 # C Source
+.c 38;5;110 # C Source
 .c++ 38;5;204 # C++ Source
 .cpp 38;5;204 # C++ Source
 .H 38;5;140 # C Header
@@ -1001,6 +1068,8 @@ STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 .patch 38;5;197
 
 *commit_editmsg 38;5;167;4
+*credentials 38;5;67
+.credentials 38;5;67
 
 .github 38;5;243;3
 .gitlab 38;5;243;3
