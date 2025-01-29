@@ -1,15 +1,10 @@
-#!/usr/bin/env bash
-# ls: Conditionally set users ls utility
-
-# Detect which `ls` flavor is in use
-if command ls --color > /dev/null; then
-  # GNU: ls
-  colorflag="--color=auto"
-else
-  # MacOS: ls
-  colorflag="-G"
-  export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-fi
+#!/usr/bin/env sh
+# ls alias setup: Configure common 'ls' aliases (e.g., ls, ll, lt)
+# to use preferred 'ls' command providers with customized output options.
+#
+# This script sets up aliases like `ls`, `ll`, and `lt` to use tools such as eza,
+# exa, lsd, or the built-in `ls`, depending on availability. It embeds specific
+# flags and arguments for customizing output (e.g., sorting, file size, timestamp).
 
 # Exa color definitions
 # https://the.exa.website/docs/colour-themes
@@ -20,18 +15,11 @@ ue=32:ue=36:un=33:ur=34:\
 uu=36:xa=36:uw=35:ux=32:\
 da=38;5;240:"
 
-# Assign ls strategy using basic conditions
-#
-# This sets a default list of potential tools, first has highest priority!
-# Loop through list of command until a valid one is found within $PATH
-#
-# Command can be overwritten by passing an argument directly to this function/script.
-# Or, by setting an environment variable with your preferred command: LS_TOOL=ls
-# If the command is invalid, then it will keep going down the list, and settle
-# on the builtin ls command which is almost guaranteed to be available.
+# Check available 'ls' commands and set up aliases for the first one found.
 __set_strategy_ls() {
-  # Loop default arguments
+  # Default list of ls commands, in order of priority
   set -- eza exa lsd ls
+
   while [ "$#" -gt 0 ]; do
     cmd="$1" # Set value to temp variable
     shift 1  # Shift to next variable in array
@@ -45,14 +33,24 @@ __set_strategy_ls() {
       ls) __set_alias_ls ;;
     esac
     alias ls > /dev/null 2>&1 && break # Break if alias is successfully set
-    printf "\e[031mE\e[0m: ls aliases failed to be applied using the command: '%s'\n" "$cmd"
+    printf "\e[031mE\e[0m: command '%s' exists but failed to apply aliases.\n" "$cmd"
   done
 }
 
-# Set command aliases: ls
+# Setup command aliases: ls
 # shellcheck disable=SC2139
 __set_alias_ls() {
-  local args=" \
+  # Detect which `ls` flavor is in use
+  if command ls --color > /dev/null; then
+    # GNU: ls
+    colorflag="--color=auto"
+  else
+    # MacOS: ls
+    colorflag="-G"
+    export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+  fi
+
+  args=" \
   $colorflag \
   --classify \
   --group-directories-first \
@@ -62,54 +60,56 @@ __set_alias_ls() {
   --show-control-chars \
   --sort=version \
   --time-style=long-iso"
-  local cmd="command ls $args"
-  alias l.="$cmd -Adl .*"
-  alias l="$cmd -l"
-  alias la="$cmd -Al"
-  alias ll="$cmd -Al"
-  alias ls="$cmd"
-  alias lt="tree -L 2"
-  unalias tree 2>&/dev/null
+
+  alias l.="$cmd $args -Adl .*"
+  alias l="$cmd $args -l"
+  alias la="$cmd $args -Al"
+  alias ll="$cmd $args -Al"
+  alias ls="$cmd $args"
+  alias lt="\tree -L 2"
+  alias tree="\tree -L 2"
 }
 
-# Set command aliases: lsd
+# Setup command aliases: lsd
 # shellcheck disable=SC2139
 __set_alias_lsd() {
-  local args=" \
+  args=" \
   --group-directories-first"
-  local cmd="lsd $args"
-  alias l.="$cmd -ald .*"
-  alias l="$cmd -l"
-  alias la="$cmd -al"
-  alias ll="$cmd -al"
-  alias ls="$cmd"
-  alias lt="$cmd --tree"
-  alias tree="$cmd --tree"
+
+  alias l.="$cmd $args -ald .*"
+  alias l="$cmd $args -l"
+  alias la="$cmd $args -al"
+  alias ll="$cmd $args -al"
+  alias ls="$cmd $args"
+  alias lt="$cmd $args --tree"
+  alias tree="$cmd $args --tree"
 }
 
-# Set command aliases: eza
+# Setup command aliases: eza
 # shellcheck disable=SC2139
 __set_alias_eza() {
-  local args=" \
+  args=" \
   --classify \
   --group-directories-first \
   --icons \
   --time-style=long-iso"
-  [ "$cmd" = "eza" ] && args+=" --git"
-  local cmd="$cmd $args"
-  alias l.="$cmd -adl .*"
-  alias l="$cmd -l"
-  alias la="$cmd -al"
-  alias ll="$cmd -al"
-  alias ls="$cmd --icons=never"
-  alias lt="$cmd --tree --level=2"
-  alias tree="$cmd --tree"
+
+  # Append --git if supported
+  $cmd --git >/dev/null 2>&1 && args="$args --git"
+
+  alias l.="$cmd $args -adl .*"
+  alias l="$cmd $args -l"
+  alias la="$cmd $args -al"
+  alias ll="$cmd $args -al"
+  alias ls="$cmd $args --icons=never"
+  alias lt="$cmd $args --tree --level=2"
+  alias tree="$cmd $args --tree"
 }
 
-# Determine user preferred ls strategy
+# Call the main function to configure aliases
 __set_strategy_ls
 
-# Cleanup functions
+# Remove helper functions to clean up environment
 unset -f __set_alias_eza
 unset -f __set_alias_ls
 unset -f __set_alias_lsd
