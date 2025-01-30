@@ -8,34 +8,6 @@ endif
 
 " Plugins
 
-" Only load plugins if vim-plug file detected
-if filereadable(expand("~/.vim/autoload/plug.vim"))
-  call plug#begin($XDG_DATA_HOME . '/vim/plugins')
-  Plug 'Yggdroot/indentLine'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'editorconfig/editorconfig-vim'
-  Plug 'liuchengxu/vim-which-key'
-  Plug 'machakann/vim-highlightedyank'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-  Plug 'tpope/vim-vinegar'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-
-  " Fzf - fuzzy search
-  if isdirectory('/usr/local/opt/fzf')
-    Plug '/usr/local/opt/fzf'
-    Plug 'junegunn/fzf.vim'
-  else
-    Plug 'junegunn/fzf', { 'dir': $XDG_LOCAL_HOME . '/src/fzf', 'do': './install --bin' }
-    Plug 'junegunn/fzf.vim'
-  endif
-
-  call plug#end()
-endif
-
 " Install vim-plug
 function! InstallVimplug()
   " Dependency Validation
@@ -63,30 +35,57 @@ function! InstallVimplug()
   endif
 endfunction
 
+" Only load plugins if vim-plug file detected
+if filereadable(expand("~/.vim/autoload/plug.vim"))
+  call plug#begin($XDG_DATA_HOME . '/vim/plugins')
+
+  Plug 'Yggdroot/indentLine'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'liuchengxu/vim-which-key'
+  Plug 'machakann/vim-highlightedyank'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'tpope/vim-vinegar'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+
+  " Fzf - fuzzy search
+  if isdirectory('/usr/local/opt/fzf')
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
+  else
+    Plug 'junegunn/fzf', { 'dir': $XDG_LOCAL_HOME . '/src/fzf', 'do': './install --bin' }
+    Plug 'junegunn/fzf.vim'
+  endif
+
+  call plug#end()
+endif
+
 " vim-airline
 if &runtimepath =~? "vim-airline"
   " disable insert text if plugins available
   set noshowmode
 endif
 
-" let g:airline_theme = g:colors_name
-let g:airline_theme = 'dark'
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline_skip_empty_sections = 1
-let g:airline_powerline_fonts = 1
-
+let g:airline_theme = 'term'
 let g:airline_detect_spell=0
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
+
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_count = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_tabpages = 1
+let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#tab_min_count = 1
 
 " fzf.vim
@@ -104,12 +103,13 @@ let g:indentLine_enabled = 1
 let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'
 let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_fileTypeExclude = ['help']
 
 " set highlight to 1000 ms
 let g:highlightedyank_highlight_duration = 1000
 
 " Session-saver
-let g:session_autosave = 'no'
+let g:session_autosave = 'yes'
 
 let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_set_sign_backgrounds = 1
@@ -139,16 +139,16 @@ set noautochdir " Disable auto cd to open file
 set splitbelow " Open new splits below
 set splitright " Open new splits to the right
 
-set expandtab " Replace tabs with spaces
-set number " Show absolute line numbers
 set cmdheight=1 " Make command-line only one row high
 set colorcolumn=+1 " Textwidth column ruler
-set foldcolumn=0 " Column shown in the window indicating open/closed folds
 set conceallevel=0 " Prevent conceal
+set expandtab " Replace tabs with spaces
+set foldcolumn=0 " Column shown in the window indicating open/closed folds
 set history=100 " Command history
 set icon " Enable icon support
 set list " Enable list chars
 set nowrap " Disable line wrapping
+set number " Show absolute line numbers
 set relativenumber " Show relative line numbers
 set ruler " Show position on in bottom right
 set scrolloff=8 " Keep cursor centered on screen
@@ -160,23 +160,29 @@ set ttimeoutlen=0 " Timeout for key code sequence
 set updatetime=1000 " Timeout idle before CursorHold or updating swapfile
 
 set textwidth=80 " Limit length of characters per line
-set shiftwidth=4 " Number of spaces for expandtab indent
-set softtabstop=4 " Number of spaces for tabs during edit operations
+set shiftwidth=2 " Number of spaces for expandtab indent
+set softtabstop=2 " Number of spaces for tabs during edit operations
 set tabstop=4 " Number of spaces to represent tab characters
 set encoding=utf-8 " Default file encoding
 
 set backspace=indent,eol,start " More powerful backspacing
 set diffopt+=vertical " Start diff mode with vertical splits
-set spellsuggest=fast,10
 set linebreak
+set spellsuggest=fast,10
 
 " Popup Menu
 set pumheight=20 " Control popup menu length
 set pumwidth=15 " Control popup menu thickness
 
-set shortmess+=I " No intro message
-set shortmess+=c " No more pattern not found
-set shortmess+=f " Shorter quickfix/search count
+" Configure 'shortmess' to suppress common messages and make output more concise
+set shortmess+=O  " Suppress 'empty file' message on open
+set shortmess+=T  " Suppress 'press ENTER' for temporary messages
+set shortmess+=a  " Suppress 'File A' and 'File B' in diff mode
+set shortmess+=c  " Suppress 'pattern not found' message
+set shortmess+=f  " Shorten quickfix/search count message
+set shortmess+=o  " Suppress 'only one file' message on open
+set shortmess+=t  " Suppress 'Hit ENTER to continue' after errors
+set shortmess-=I  " Suppress intro message (version info)
 
 " set editor background style
 set background=dark
@@ -185,7 +191,9 @@ set background=dark
 set number
 set relativenumber
 set signcolumn="yes"
-set lazyredraw
+
+" Disable visual bell
+set belloff=all noerrorbells novisualbell t_vb=
 
 " turn col and row position on in bottom right
 set ruler
@@ -198,11 +206,6 @@ set laststatus=2
 set showtabline=2
 set signcolumn=yes
 
-" More risky, but cleaner
-set nobackup
-set noswapfile
-set nowritebackup
-
 " Enable list chars
 set list
 
@@ -214,7 +217,7 @@ set scrolloff=8
 
 " Cursorline settings
 set cursorline
-set cursorlineopt=number
+set cursorlineopt=both
 
 " Highlight search
 set hlsearch " Highlight search
@@ -230,9 +233,6 @@ set foldnestmax=9 " Max fold nest levels
 " Virtual fill characters for UI elements
 set fillchars+=fold:\ ,vert:│
 
-" Avoid most of the 'Hit Enter ...' messages
-set shortmess+=aoOtTI
-
 " Enhanced command-line completion
 " Insert mode completion
 set completeopt=menuone,noinsert,noselect
@@ -240,37 +240,47 @@ set completeopt=menuone,noinsert,noselect
 set wildmenu " Enable wild menu by default
 set wildignorecase
 set wildmode=full:lastused
+set wildoptions=pum
 
 " Ignore files
-set wildignore+=*.db
-set wildignore+=*.o
-set wildignore+=*.obj
-set wildignore+=*.pyc " Python cache
-set wildignore+=*.rbc
-set wildignore+=*.so
-set wildignore+=*.sqlite
-set wildignore+=*.swp
-set wildignore+=*.zip
-set wildignore+=*/tmp/*
-set wildignore+=*_build/*
-set wildignore+=*node_modules/ " Node module environment
-set wildignore+=.git/ " Git Version control
-set wildignore+=__pycache__
-set wildignore+=android/
+set wildignore+=*.db " Database files
+set wildignore+=*.o " Object files
+set wildignore+=*.obj " Object files (Windows)
+set wildignore+=*.pyc " Python cache files
+set wildignore+=*.rbc " Ruby bytecode files
+set wildignore+=*.so " Shared object files
+set wildignore+=*.sqlite " SQLite database files
+set wildignore+=*.swp " Swap files (Vim)
+set wildignore+=*.zip " Zip archives
+set wildignore+=*/tmp/* " Temporary files in tmp directories
+set wildignore+=*_build/* " Build directories
+set wildignore+=*node_modules/ " Node.js dependencies
+set wildignore+=.git/ " Git version control metadata
+set wildignore+=__pycache__ " Python cache directory
+set wildignore+=android/ " Android project directory
 set wildignore+=build/ " Common build directory
-set wildignore+=coverage/
-set wildignore+=ios/
+set wildignore+=coverage/ " Code coverage data
+set wildignore+=ios/ " iOS project directory
+
+" Set additional options (optional) to disable in the working directory
+set nobackup " Don't create backups in the current directory
+set nowritebackup " Don't create write-backups in the current directory
+set noswapfile " Don't create swap files in the current directory
+
+" Resistant undo
+set undofile
+
+" Set Vim directories for backup, swap, and undo using the variable
+set backupdir^=~/.vim/backups//
+set directory^=~/.vim/swaps//
+set undodir^=~/.vim/undo//
 
 " Prevents truncated yanks, deletes, etc.
 set viminfo+=n~/.cache/vim/.viminfo
 set viminfo='20,<1000,s1000
 
 " Format Options
-" Just the defaults, these are changed per filetype by plugins.
-" Most of the utility of all of this has been superseded by the use of
-" modern simplified pandoc for capturing knowledge source instead of
-" arbitrary raw text files.
-
+" Control how Vim formats text, including line breaks, comments, and special characters.
 set fo+=1 " Don't break a line after a one-letter word
 set fo+=M " Don't add space before or after multi-byte char
 set fo+=j " Delete comment prefix when joining
@@ -289,115 +299,119 @@ set fo-=t " Don't auto-wrap text using text width
 set fo-=v " Don't use broken 'vi-compatible auto-wrapping'
 set fo-=w " Don't use trailing whitespace for paragraphs
 
-" Use a line cursor within insert mode and a block cursor everywhere else.
-"
-
-" Cursor configs
-
-fun! UpdateTermCursor()
-
-    " Cursor in terminal:
-    " Link: https://vim.fandom.com/wiki/Configuring_the_cursor
-    " 0 -> blinking block not working in wsl
-    " 1 -> blinking block
-    " 2 -> solid block
-    " 3 -> blinking underscore
-    " 4 -> solid underscore
-    " Recent versions of xterm (282 or above) also support
-    " 5 -> blinking vertical bar
-    " 6 -> solid vertical bar
-
-  if &term =~ "xterm\\|rxvt"
-    fun! s:cologet(gr)
-      let cc = execute('hi ' . a:gr)
-      let color = matchstr(cc, 'guifg=\zs[^ ]*')
-      if color == 'bg'
-        let color = matchstr(cc, 'guibg=\zs[^ ]*')
-      endif
-      if color == ''
-        let color = matchstr(cc, 'ctermfg=\zs[^ ]*')
-      endif
-      if color[0] == '#'
-        let color = 'rgb:' . substitute(color[1:-1], '..', '\0\/', 'g')[0:-2]
-      endif
-      return color
-    endfun
-    let cur = s:cologet('Cursor')
-    " You can change group, for example CursorLineNr, Special, NonText etc.
-    let curb = s:cologet('Type')
-    let &t_SI="\<Esc>[5 q\<Esc>]12;" . curb . "\x7"
-    let &t_EI="\<Esc>[1 q\<Esc>]12;" . cur . "\x7"
-    " Redraw
-    :call feedkeys("i\<C-O>:stopinsert\<CR>")
-    " silent! exe ':redraw!'
-    " :call feedkeys("i\<Esc>l")
-    " Restore cursor to I when leaving vim
-    augroup TermCursorLeave
-      autocmd!
-      autocmd VimLeave * silent !echo -ne "\e[5 q"
-    augroup END
-    augroup windows_term
-      autocmd!
-      autocmd VimEnter * silent !echo -ne "\e[1 q"
-      autocmd VimLeave * silent !echo -ne "\e[5 q"
-    augroup END
-  endif
-endfun
-
-
-if &term =~ '^xterm'
-  " enter vim
-  autocmd VimEnter * silent !echo -ne "\e[3 q"
-  " oherwise
-  let &t_EI .= "\<Esc>[3 q"
-  " insert mode
-  let &t_SI .= "\<Esc>[5 q"
-  " 1 or 0 -> blinking block
-  " 2 -> solid block
-  " 3 -> blinking underscore
-  " 4 -> solid underscore
-  " Recent versions of xterm (282 or above) also support
-  " 5 -> blinking vertical bar
-  " 6 -> solid vertical bar
-  " leave vim
-
-  let &t_SI.="\e[5 q"
-  let &t_SR.="\e[4 q"
-  let &t_EI.="\e[1 q"
-
-  autocmd VimLeave * silent !echo -ne "\e[5 q"
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
 endif
 
-if &term == 'win32'
-  let &t_ti.=" \e[1 q"
-  let &t_SI.=" \e[5 q-- INSERT --"
-  let &t_EI.=" \e[1 q"
-  let &t_te.=" \e[0 q"
+" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+if has('termguicolors')
+  set t_Co=256 " Enable 256 colors
+  set termguicolors " Enable GUI colors for the terminal to get truecolor
+endif
+
+" Customize cursor appearance for different modes with unique shapes, sizes,
+" and blink settings for a more intuitive visual distinction while editing.
+set guicursor=n-v-c:block-nCursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+
+" Cursor options:
+" Use a line cursor in insert mode and a block cursor elsewhere.
+" Cursor style reference (used across various terminal modes):
+" 0 -> blinking block
+" 1 -> blinking block (default)
+" 2 -> solid block
+" 3 -> blinking underscore
+" 4 -> solid underscore
+" 5 -> blinking vertical bar (xterm)
+" 6 -> steady vertical bar (xterm)
+
+if &term =~ "^xterm"
+  let &t_SI .= "\e[5 q"
+  let &t_SR .= "\e[4 q"
+  let &t_EI .= "\e[1 q"
+elseif &term == "win32"
+  let &t_ti .= "\e[1 q"
+  let &t_SI .= "\e[5 q-- INSERT --"
+  let &t_EI .= "\e[1 q"
+  let &t_te .= "\e[0 q"
 else
-  let &t_ti.="\e[1 q"
-  let &t_SI.="\e[5 q"
-  let &t_EI.="\e[1 q"
-  let &t_te.="\e[0 q"
+  let &t_EI .= "\e[1 q"
+  let &t_SI .= "\e[5 q"
+  let &t_te .= "\e[0 q"
+  let &t_ti .= "\e[1 q"
 endif
 
-" Restore cursor when leaving vim -- Windows Powershell
-autocmd VimLeave * silent !echo -ne "\e[5 q"
+" Restore cursor when leaving Vim (for Windows Powershell)
+if has("autocmd")
+  augroup cursor_au
+    autocmd!
+    autocmd VimEnter * silent !echo -ne "\e[3 q"
+    autocmd VimLeave * silent !echo -ne "\e[5 q"
+  augroup END
+endif
 
-" Reference chart of values:
-" Ps = 0  -> blinking block.
-" Ps = 1  -> blinking block (default).
-" Ps = 2  -> steady block.
-" Ps = 3  -> blinking underline.
-" Ps = 4  -> steady underline.
-" Ps = 5  -> blinking bar (xterm).
-" Ps = 6  -> steady bar (xterm).
+" Enable syntax highlighting and configure spell checking
+if has("syntax")
+  if !g:syntax_on
+    set spell " Enable spell checking for comments/strings
+    set syntax=on " Enable syntax highlighting
+    syntax spell toplevel " Apply spell highlighting to top-level syntax
+  endif
+  set nospell " Disable spell checking globally by default
+  syntax enable
+  syntax spell toplevel " Apply spell highlighting for specific contexts
+endif
 
-" Change cursor in normal/insert mode
-" let &t_EI="\e[2 q" "EI = NORMAL mode (ELSE)
-" let &t_SI="\e[6 q" "SI = INSERT mode
-" let &t_SR="\e[4 q" "SR = REPLACE mode
+" Vim8 Conditions
+if v:version >= 800
+  " Stop vim from silently messing with files that it shouldn't
+  set nofixendofline
+  " Better ascii friendly listchars
+  set listchars=extends:»,nbsp:␣,precedes:«,space:\ ,tab:\ »,trail:·
+endif
 
-" set guicursor=n-v-c:block-nCursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+" Mark trailing spaces as errors
+if has("match")
+  match ErrorMsg '\s\+$'
+endif
+
+" Set default shell
+if exists('$SHELL')
+  set shell=$SHELL
+else
+  set shell=/bin/sh
+endif
+
+" Commands
+
+" Mistake abbreviations
+cnoreabbrev BD :bd
+cnoreabbrev Bd :bd
+cnoreabbrev E  :e
+cnoreabbrev Q  :q
+cnoreabbrev QA :qa
+cnoreabbrev Qa :qa
+cnoreabbrev SO :so
+cnoreabbrev So :so
+cnoreabbrev W  :w
+cnoreabbrev WQ :wq
+cnoreabbrev Wq :wq
+cnoreabbrev XA :xa
+cnoreabbrev Xa :xa
+cnoreabbrev bD :bd
+cnoreabbrev qA :qa
+cnoreabbrev sO :so
+cnoreabbrev wQ :wq
+cnoreabbrev xA :xa
+
+" Remove trailing whitespace
+command! FixWhitespace :%s/\s\+$//e | :%s/\($\n\s*\)\+\%$//e
+
+" Mappings
 
 " Fix ctrl-arrow keys in screen/tmux
 " Enable modified arrow keys, see  :help xterm-modifier-keys
@@ -408,96 +422,8 @@ if &term =~ '^\%(screen\|tmux\)'
   execute "silent! set <xLeft>=\<Esc>[@;*D"
 endif
 
-" Enable syntax highlighting
-if has("syntax") && !g:syntax_on
-  set spell " Apply spell highlight to comments/strings
-  set syntax=on
-  syntax spell toplevel
-endif
-
-" Vim8 Conditionals
-if v:version >= 800
-  " Stop vim from silently messing with files that it shouldn't
-  set nofixendofline
-
-  " Better ascii friendly listchars
-  set listchars=extends:»,nbsp:␣,precedes:«,space:\ ,tab:\ »,trail:·
-endif
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-  " Enable file type detection.
-  filetype plugin indent on
-else
-  " Automatically indent new lines
-  set autoindent
-endif
-
-" Mark trailing spaces as errors
-if has("match")
-  match ErrorMsg '\s\+$'
-endif
-
-" Set default shell
-if exists('$SHELL')
-    set shell=$SHELL
-else
-    set shell=/bin/sh
-endif
-
-" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
-
-" Visual
-
-" Disable visual bell
-set belloff=all noerrorbells novisualbell t_vb=
-
-" Here because plugins and stuff need it
-if has("syntax")
-  syntax enable
-  " Apply spell highlight to comments/strings
-  set nospell
-  syntax spell toplevel
-endif
-
-if has('termguicolors')
-  set t_Co=256       " Enable 256 colors
-  set termguicolors  " Enable GUI colors for the terminal to get truecolor
-endif
-
-" Commands
-
-" Mistake abbreviations
-cnoreabbrev BD :bd
-cnoreabbrev Bd :bd
-cnoreabbrev Q  :q
-cnoreabbrev QA :qa
-cnoreabbrev Qa :qa
-cnoreabbrev W  :w
-cnoreabbrev WQ :wq
-cnoreabbrev Wq :wq
-cnoreabbrev XA :xa
-cnoreabbrev Xa :xa
-cnoreabbrev bD :bd
-cnoreabbrev qA :qa
-cnoreabbrev wQ :wq
-cnoreabbrev xA :xa
-
-" Remove trailing whitespace
-command! FixWhitespace :%s/\s\+$//e | :%s/\($\n\s*\)\+\%$//e
-
-" --- Mappings ---
-
 " Enable whichkey bindings
-if !empty("g:loaded_vim_which_key")
+if exists("g:loaded_vim_which_key")
 
   " This plugin requires timeout and a recommend length not too big/small
   " You should set this in your init file, If not set we will set it here | default = 1000
@@ -521,54 +447,52 @@ if !empty("g:loaded_vim_which_key")
   let g:which_key_use_floating_win = 0
 
   let g:which_key_map =  {}
-  " let g:which_key_map['h'] = [ '<C-W>s', 'split below']
-  " let g:which_key_map['v'] = [ '<C-W>v', 'split right']
 
   let g:which_key_map.f = {
-    \ 'name' : '+fuzzy',
-    \ '/' : [':History/' , 'history'],
-    \ ';' : [':Commands' , 'commands'],
-    \ 'B' : [':Buffers'  , 'open buffers'],
-    \ 'C' : [':BCommits' , 'buffer commits'],
-    \ 'G' : [':GFiles?'  , 'modified git files'],
-    \ 'H' : [':History:' , 'command history'],
-    \ 'M' : [':Maps'     , 'normal maps'] ,
-    \ 'P' : [':Tags'     , 'project tags'],
-    \ 'S' : [':Colors'   , 'color schemes'],
-    \ 'T' : [':BTags'    , 'buffer tags'],
-    \ 'a' : [':Ag'       , 'text Ag'],
-    \ 'b' : [':BLines'   , 'current buffer'],
-    \ 'c' : [':Commits'  , 'commits'],
-    \ 'f' : [':Files'    , 'files'],
-    \ 'g' : [':GFiles'   , 'git files'],
-    \ 'l' : [':Lines'    , 'lines'] ,
-    \ 'm' : [':Marks'    , 'marks'] ,
-    \ 'p' : [':Helptags' , 'help tags'] ,
-    \ 'r' : [':History'  , 'recent files'],
-    \ 's' : [':Snippets' , 'snippets'],
-    \ 't' : [':Rg'       , 'text Rg'],
-    \ 'w' : [':Windows'  , 'search windows'],
-    \ 'y' : [':Filetypes', 'file types'],
-    \ 'z' : [':FZF'      , 'FZF'],
+    \ 'name': '+fuzzy',
+    \ '/': [':History/', 'history'],
+    \ ';': [':Commands', 'commands'],
+    \ 'B': [':Buffers', 'open buffers'],
+    \ 'C': [':BCommits', 'buffer commits'],
+    \ 'G': [':GFiles?', 'modified git files'],
+    \ 'H': [':History:', 'command history'],
+    \ 'M': [':Maps', 'normal maps'],
+    \ 'P': [':Tags', 'project tags'],
+    \ 'S': [':Colors', 'color schemes'],
+    \ 'T': [':BTags', 'buffer tags'],
+    \ 'a': [':Ag', 'text Ag'],
+    \ 'b': [':BLines', 'current buffer'],
+    \ 'c': [':Commits', 'commits'],
+    \ 'f': [':Files', 'files'],
+    \ 'g': [':GFiles', 'git files'],
+    \ 'l': [':Lines', 'lines'],
+    \ 'm': [':Marks', 'marks'],
+    \ 'p': [':Helptags', 'help tags'],
+    \ 'r': [':History', 'recent files'],
+    \ 's': [':Snippets', 'snippets'],
+    \ 't': [':Rg', 'text Rg'],
+    \ 'w': [':Windows', 'search windows'],
+    \ 'y': [':Filetypes', 'file types'],
+    \ 'z': [':FZF', 'FZF'],
     \ }
 
   let g:which_key_map.g = {
-    \ 'name' : '+git',
-    \ 'R' : [':Git remote'        , 'show remote'],
-    \ 'c' : [':Git commit<CR>'    , 'commit'],
-    \ 'd' : [':Gdiffsplit'        , 'diffthis'],
-    \ 'g' : [':Git'               , 'show status'],
-    \ 'o' : [':.GBrowse<CR>'      , 'open browser'],
-    \ 'r' : [':GitGutterUndoHunk' , 'unstage hunk'],
-    \ 's' : [':GitGutterStageHunk', 'stage hunk'],
+    \ 'name': '+git',
+    \ 'R': [':Git remote', 'show remote'],
+    \ 'c': [':Git commit<CR>', 'commit'],
+    \ 'd': [':Gdiffsplit', 'diffthis'],
+    \ 'g': [':Git', 'show status'],
+    \ 'o': [':.GBrowse<CR>', 'open browser'],
+    \ 'r': [':GitGutterUndoHunk', 'unstage hunk'],
+    \ 's': [':GitGutterStageHunk', 'stage hunk'],
     \ }
 
   let g:which_key_map.s = {
-    \ 'name' : '+session',
-    \ 'c' : [':CloseSession'  , 'close session'],
-    \ 'd' : [':DeleteSession' , 'delete session'],
-    \ 'o' : [':OpenSession'   , 'open session'],
-    \ 's' : [':SaveSession'   , 'save session'],
+    \ 'name': '+session',
+    \ 'c': [':CloseSession', 'close session'],
+    \ 'd': [':DeleteSession', 'delete session'],
+    \ 'o': [':OpenSession', 'open session'],
+    \ 's': [':SaveSession', 'save session'],
     \ }
 
   " Register which key map
@@ -620,6 +544,12 @@ nnoremap <silent> <C-PageDown> :bp<CR>
 vnoremap <Tab> :m '>+1<CR>gv=gv
 vnoremap <S-Tab> :m '<-2<CR>gv=gv
 
+" Visual indentation
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
+vnoremap <silent> <S-Tab> <gv
+vnoremap <silent> <Tab> >gv
+
 " Remove highlight after search with ESCAPE
 nnoremap <silent> <esc> :nohlsearch<cr><esc>
 
@@ -631,9 +561,12 @@ nnoremap <leader>gc :Git commit<CR>
 nnoremap <leader>go :.GBrowse<CR>
 
 " Git Gutter
-nnoremap  <leader>gd :Gdiffsplit<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
 xnoremap <leader>gs :GitGutterStageHunk<CR>
 xnoremap <leader>gr :GitGutterUndoHunk<CR>
+
+nnoremap ]h :GitGutterNextHunk<CR>
+nnoremap [h :GitGutterPrevHunk<CR>
 
 " session management
 nnoremap <leader>so :OpenSession<Space>
@@ -650,68 +583,157 @@ nnoremap <leader>fr :History<CR>
 " Terminal
 
 function TerminalSettings()
+  " Skip terminal settings for fzf buffers
+  if &filetype == 'fzf'
+    return
+  endif
+
   setlocal colorcolumn=0
+  setlocal nocursorline
   setlocal nonumber
   setlocal norelativenumber
   setlocal nospell
   setlocal scrolloff=0
   setlocal sidescrolloff=0
+  setlocal signcolumn=no
   setlocal winfixheight
+
+  " Replace fill/list chars with &nbsp
+  setlocal fillchars=eob: 
+  setlocal listchars=trail: 
+
+  " Set QOL keymap for escaping terminal
+  tnoremap <buffer> <Esc><Esc> <C-\><C-n>
 endfunction
 
-nnoremap <silent> <C-\> :execute 'terminal' \| wincmd J \| resize 20<CR>
-" tnoremap <silent> <C-\> <C-\><C-n>:call MonkeyTerminalToggle()<CR>
-tnoremap <silent> term:\\* <esc><esc> <C-\><C-n>
+function! ToggleTerminal()
+  " Check if terminal buffer exists
+  if exists('g:terminal_bufnr') && bufexists(g:terminal_bufnr)
+    " Check if terminal is already open in any window
+    let l:terminal_exists = 0
+    let l:terminal_winid = -1
+
+    " Loop through all windows in the current tabpage
+    for l:winid in range(1, winnr('$'))
+      if winbufnr(l:winid) == g:terminal_bufnr
+        let l:terminal_exists = 1
+        let l:terminal_winid = l:winid
+        break
+      endif
+    endfor
+
+    " If terminal exists in any window
+    if l:terminal_exists
+      " If it's the current buffer, quit
+      if bufnr('%') == g:terminal_bufnr
+        quit
+      else
+        " Otherwise, focus the terminal window
+        silent! execute l:terminal_winid . "wincmd w"
+        silent! normal i
+      endif
+    else
+      " If terminal buffer is not open, open it in a new split
+      silent! execute 'botright split | buffer ' . g:terminal_bufnr
+      silent! normal i
+    endif
+  else
+    " If no terminal buffer exists, create one
+    silent! botright term
+    let g:terminal_bufnr = bufnr('%')
+    silent! normal i
+
+    " No need for 'split' here as 'term' already creates a split
+  endif
+endfunction
+
+" Map <C-\> to toggle terminal visibility
+nnoremap <silent> <C-\> :call ToggleTerminal()<CR>
+tnoremap <silent> <C-\> <C-\><C-n>:call ToggleTerminal()<CR>
 tnoremap <silent> <C-w> <C-\><C-n><C-w>
 
 " Global Highlight overrides
 function! ColorschemeGlobalOverride()
-
-  if &background != "light"
-    highlight Normal    ctermbg=NONE guibg=NONE
+  if g:colors_name == "evening"
+    hi Visual ctermfg=Black guifg=Black
   endif
 
-  highlight ColorColumn    cterm=NONE ctermbg=NONE guibg=gray8
-  highlight CursorLineNr   cterm=NONE ctermbg=NONE guibg=NONE
-  highlight CursorLineSign cterm=NONE ctermbg=NONE guibg=NONE
-  highlight VertSplit      cterm=NONE ctermbg=NONE guibg=NONE guifg=gray22
+  if &background == "dark"
+    hi Normal ctermbg=NONE guibg=NONE
+    hi GitGutterAdd ctermbg=NONE guibg=NONE
+    hi GitGutterChange ctermbg=NONE guibg=NONE
+    hi GitGutterDelete ctermbg=NONE guibg=NONE
+    hi! link GitGutterChangeDelete GitGutterDelete
+  endif
 
-  highlight Comment       ctermbg=NONE guibg=NONE guifg=gray46
-  highlight EndOfBuffer   ctermbg=NONE guibg=NONE
-  highlight FoldColumn    ctermbg=NONE guibg=NONE
-  highlight SignColumn    ctermbg=NONE guibg=NONE
+  hi CursorLine cterm=NONE guifg=NONE guibg=Grey17
+  hi CursorLineNr cterm=bold ctermbg=NONE gui=bold guibg=NONE guifg=Gold
+  hi CursorLineSign cterm=NONE ctermbg=NONE guibg=NONE
+  hi EndOfBuffer ctermbg=NONE guibg=NONE
+  hi EndOfBuffer guibg=NONE guifg=gray32
+  hi FoldColumn ctermbg=NONE guibg=NONE
+  hi LineNr guibg=NONE guifg=gray32
+  hi SignColumn ctermbg=NONE guibg=NONE
+  hi VertSplit cterm=NONE ctermbg=NONE guibg=NONE guifg=Grey22
+  hi! Pmenu guibg=Grey22
+  hi! PmenuSel guifg=Black
 
-  highlight EndOfBuffer   guibg=NONE   guifg=gray32
-  highlight LineNr        guibg=NONE   guifg=gray32
-
-  highlight Visual        ctermbg=238  ctermfg=NONE guibg=NONE guibg=Grey27
-
-  highlight! link PMenu Normal
-
-  highlight! GitGutterAdd           ctermfg=2 guibg=NONE guifg=Green
-  highlight! GitGutterChange        ctermfg=3 guibg=NONE guifg=Yellow
-  highlight! GitGutterDelete        ctermfg=1 guibg=NONE guifg=Red
-  highlight! GitGutterChangeDelete  ctermfg=4 guibg=NONE guifg=Blue
+  hi link CurSearch IncSearch
 endfunction
 
-" Autocmds
+" Only do this part when compiled with support for autocommands.
 if has('autocmd')
+  " Enable file type detection.
+  filetype plugin indent on
+  " Group for general document-related autocommands
   augroup document_au
     autocmd!
     " Trim trailing whitespace
-    autocmd BufWritePre * :%s/\s\+$//e
-    autocmd BufWritePre * :%s/\($\n\s*\)\+\%$//e
-    " Minimal implementations of autosave
+    autocmd BufWritePre * :FixWhitespace
+    " Minimal autosave (updates on CursorHold)
     autocmd CursorHold,CursorHoldI * silent! update
-    autocmd FocusLost * :update | redraw<CR>
+    " Update on focus lost and redraw
+    autocmd FocusLost * update | redraw
   augroup END
+
+  " Group for colorscheme overrides
   augroup colorscheme_au
     autocmd!
-    autocmd VimEnter,ColorScheme * :call ColorschemeGlobalOverride()
+    autocmd VimEnter,ColorScheme * call ColorschemeGlobalOverride()
   augroup END
+
+  " Group for terminal buffer-specific settings
   augroup terminal_au
     autocmd!
-    " Disable terminal buffer settings
-    autocmd FileType term://* :call TerminalSettings()<CR>
+    " Auto-enter insert mode for terminal buffers and apply settings
+    autocmd BufWinEnter,TerminalOpen * if &buftype == 'terminal' | silent! call TerminalSettings() | endif
+    " Enter insert mode when entering a terminal window
+    autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
   augroup END
+
+  " Ensure help buffers open at the top
+  augroup help_au
+    autocmd!
+    autocmd FileType help nmap <buffer> q :quit<CR>
+    autocmd FileType help wincmd K
+  augroup END
+
+  " Group for fugitive.vim buffer-specific settings
+  augroup fugitive_au
+    autocmd!
+    autocmd FileType fugitive nmap <buffer> <tab> =
+    autocmd FileType fugitive nmap <buffer> q gq
+    autocmd FileType fugitive setlocal nonumber norelativenumber
+  augroup END
+else
+  " Automatically indent new lines
+  set autoindent
+endif
+
+" Check if retrobox colorscheme is available
+if filereadable(globpath(&runtimepath, 'colors/retrobox.vim'))
+  colorscheme retrobox
+else
+  " Fall back to the default colorscheme if retrobox is not available
+  colorscheme torte
 endif
