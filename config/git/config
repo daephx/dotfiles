@@ -11,7 +11,7 @@
 	attributesfile = ~/.config/git/attributes
 	autocrlf = input
 	excludesfile = ~/.config/git/ignore
-	pager = delta
+	# pager = delta
 
 	# Speed up commands involving untracked files such as `git status`.
 	# https://git-scm.com/docs/git-update-index#_untracked_cache
@@ -19,6 +19,9 @@
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+# [interactive]
+# 	diffFilter = delta --color-only
 
 [commit]
 	template = ~/.config/git/message
@@ -73,9 +76,6 @@
 	features = theme
 	line-numbers = true
 	navigate = true
-
-[interactive]
-	diffFilter = delta --color-only
 
 [delta "decorations"]
 	commit-decoration-style = bold yellow box ul
