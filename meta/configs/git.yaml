@@ -1,5 +1,16 @@
 # Git: Version Control
 
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stderr: true
+      stdout: true
+
+- create:
+    - ~/.config/git/
+
 - link:
     ~/.config/git/aliases: config/git/aliases
     ~/.config/git/config.local: config/git/config.local
