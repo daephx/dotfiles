@@ -6,8 +6,8 @@
 [ ! -x "$(command -v emacs)" ] && return
 
 # Set directories for Emacs and Doom configurations.
-export EMACSDIR="$XDG_CONFIG_HOME/emacs"
-export DOOMDIR="$XDG_CONFIG_HOME/emacs.doom"
+export EMACSDIR="${XDG_CONFIG_HOME:-$HOME/.config}/emacs"
+export DOOMDIR="${XDG_CONFIG_HOME:-$HOME/.config}/emacs.doom"
 
 # Add Emacs binary directory to PATH if it exists.
 if [ -d "$EMACSDIR/bin" ]; then

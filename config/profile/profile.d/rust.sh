@@ -3,8 +3,8 @@
 # shellcheck disable=SC1091
 
 # Define custom directories for Rust tools.
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rustup"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 
 # Load Cargo environment if the configuration file exists.
 if [ -f "$CARGO_HOME/env" ]; then

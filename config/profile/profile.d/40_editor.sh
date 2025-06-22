@@ -9,7 +9,7 @@
 
 __editor_init_nvim() {
   VISUAL="nvim"
-  PATH="$PATH:$XDG_DATA_HOME/nvim/mason/bin"
+  PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/nvim/mason/bin"
   # Use neovim-remote if available
   if [ -n "$NVIM" ] && command -v nvr > /dev/null; then
     GIT_EDITOR="nvr -cc 'top sp' --remote-wait"

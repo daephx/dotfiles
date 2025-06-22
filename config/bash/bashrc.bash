@@ -12,7 +12,7 @@
 HISTFILE="$XDG_STATE_HOME/bash_history"
 
 # Dynamically source user configurations
-for file in "$XDG_CONFIG_HOME"/profile.d/*.sh; do
+for file in "${XDG_CONFIG_HOME:-$HOME/.config}"/profile.d/*.sh; do
   source "$file"
 done
 

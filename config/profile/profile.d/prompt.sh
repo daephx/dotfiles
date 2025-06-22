@@ -45,7 +45,7 @@ __init_prompt_omp() {
   command -v oh-my-posh > /dev/null || return
   shell="$1"
   theme_file="skellum.omp.toml"
-  theme_dir="$XDG_CONFIG_HOME/oh-my-posh/themes"
+  theme_dir="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-posh/themes"
   eval "$(oh-my-posh init "$shell" --config "$theme_dir/$theme_file")"
 }
 
@@ -53,7 +53,7 @@ __init_prompt_omp() {
 __init_prompt_starship() {
   command -v starship > /dev/null || return
   shell="$1"
-  export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+  export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/starship.toml"
   eval "$(starship init "$shell")"
 }
 
