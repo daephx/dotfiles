@@ -1,5 +1,0 @@
-# You might need this command:
-# `sudo dpkg --configure -a`
-
-- shell:
-    - [sudo apt install -y guake, Installing guake terminal.]
