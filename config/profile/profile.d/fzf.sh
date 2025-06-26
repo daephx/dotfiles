@@ -20,9 +20,17 @@ setup_path
 [ -n "$BASH_VERSION" ] && eval "$(fzf --bash)"
 [ -n "$ZSH_VERSION" ] && eval "$(fzf --zsh)"
 
-# Extra options
-export FZF_DEFAULT_COMMAND="rg -uu --files -H"
-export FZF_ALT_COMMAND="fd -uu -t f"
+# Prefer ripgrep, then fd, then find as fallback
+if command -v rg >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND="rg --files -uu -H"
+elif command -v fd >/dev/null 2>&1; then
+  # For fd, use -uu for unrestricted search, -t f for files only
+  export FZF_DEFAULT_COMMAND="fd -uu -t f"
+else
+  # Portable fallback
+  export FZF_DEFAULT_COMMAND="find . -type f"
+fi
+
 export FZF_COMPLETION_TRIGGER="**"
 export FZF_DEFAULT_OPTS_FILE"=${XDG_CONFIG_HOME:-$HOME/.config}/fzf/config"
 
