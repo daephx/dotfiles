@@ -46,6 +46,6 @@
         "Set zsh as default for $USER",
       ]
     - [
-        sudo chmod -R 755 ~/.local/share/zsh/completion
-        "Ensure executable permissions for custom zsh completions",
+        sudo chmod -R 755 ~/.local/share/zsh/
+        "Ensure executable permissions for zsh completions",
       ]
