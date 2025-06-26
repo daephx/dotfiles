@@ -1,3 +1,19 @@
+# Docker: Container platform
+
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stderr: true
+      stdout: true
+
+- create:
+    - ~/.config/docker/
+
+- link:
+    ~/.config/docker/config.json: config/docker/config.json
+
 - shell:
     - [sudo apt install -y docker docker-compose]
     - [sudo groupadd docker, Creating 'docker' group]
