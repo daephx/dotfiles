@@ -1,0 +1,29 @@
+# i3: A tiling window manager for X11
+# https://github.com/i3/i3
+
+- defaults:
+    shell:
+      stderr: true
+      stdout: true
+
+- create:
+    - ~/.config/i3/
+
+- clean:
+    - ~/.config/i3/
+
+- link:
+    # Create symlink for i3 config
+    ~/.config/i3/:
+      force: true
+      glob: true
+      path: config/i3/*
+
+    # Create symlink for picom compositor
+    ~/.config/picom/:
+      force: true
+      glob: true
+      path: config/picom/*
+
+- shell:
+    - [meta/scripts/install-i3.sh, "Running install script: i3"]
