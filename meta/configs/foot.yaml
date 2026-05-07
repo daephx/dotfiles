@@ -1,0 +1,9 @@
+# Install foot terminal
+
+- create:
+    - ~/.config/foot/
+
+- link:
+    ~/.config/foot/:
+      glob: true
+      path: config/foot/foot.ini
