@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Find files with fzf. Preview contents with bat. Edit File.
+#
+# Dependencies:
+#   1. fzf | command-line fuzzy finder
+#   2. bat | a cat clone with syntax highlighting and Git integration
+#   3. fd (optional) | faster file finding
+#   4. $EDITOR | Exported environment variable referring to your editor.
+
+# Determine file finding command (local to this script's execution)
+if command -v fd &> /dev/null; then
+  FIND_CMD="fd --type f --color=always"
+else
+  FIND_CMD="find . -type f -not -path '*/\.*'"
+fi
+
+FZF_DEFAULT_COMMAND="$FIND_CMD" \
+  fzf --ansi --cycle \
+  --preview 'bat --color=always {}' \
+  --preview-window='~3,right,60%,border-left' \
+  --bind "enter:become(${EDITOR:-vi} {})"
