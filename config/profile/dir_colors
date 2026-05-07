@@ -44,6 +44,8 @@
 ### Terminals ###
 
 TERM ansi
+TERM foot
+TERM alacritty
 TERM color-xterm
 TERM con132x25
 TERM con132x30
