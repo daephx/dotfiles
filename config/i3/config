@@ -1,0 +1,356 @@
+# i3: An improved dynamic, tiling window manager
+# Documentation: https://i3wm.org/docs/userguide.html
+# Copyright (C) 2022 daephx
+
+# Set mod
+set $alt Mod1
+set $mod Mod4
+
+# Workspaces names
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+
+# Set font
+font pango:Open sans 11
+
+# Don't steal focus
+focus_on_window_activation smart
+
+# Disable focus follows mouse
+focus_follows_mouse no
+
+### Running apps in background ###
+
+# Run picom
+exec_always --no-startup-id picom &
+
+# Run mpd
+exec_always --no-startup-id mpd &
+
+# Run dunst
+exec_always --no-startup-id dunst &
+
+# Set wallpaper
+# exec_always feh --no-fehbg --bg-scale $HOME/Media/Images/Wallpapers/*
+exec_always --no-startup-id nitrogen --restore
+
+# Launch polybar
+# exec_always --no-startup-id killall -q
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Run battery low warning
+# exec_always --no-startup-id battery&
+
+# Launch autotiling script if available
+# https://github.com/nwg-piotr/autotiling
+exec_always --no-startup-id autotiling
+
+# Start i3 components
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color 000000
+exec --no-startup-id nm-applet
+
+# Terminal scratchpad
+# exec --no-startup-id i3-sensible-terminal --name dropdown &
+# bindsym $mod+i [instance="dropdown"] scratchpad show, move position center
+# for_window [instance="dropdown"] floating enable, resize set 800 600, move scratchpad
+
+### Shortcuts ###
+
+# Use Mouse+floating_modifier to drag floating windows
+floating_modifier $alt
+
+# Start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+shift+h move left
+bindsym $mod+shift+j move down
+bindsym $mod+shift+k move up
+bindsym $mod+shift+l move right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# Split in horizontal orientation
+# bindsym $mod+h split h
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+q layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+p layout toggle split
+
+bindsym $mod+e exec xdg-open $HOME
+
+# Save and restore layout with i3-resurrect
+bindsym $mod+t exec --no-startup-id i3-resurrect restore
+bindsym $mod+y exec --no-startup-id i3-resurrect save
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Run lockscreen
+bindsym $mod+ctrl+l exec lock
+
+# Monitor settings
+bindsym $mod+n exec xrandr --auto --output eDP-1 --mode 1920x1080 --right-of HDMI-1 && i3-msg restart &
+bindsym $mod+m exec xrandr --auto --output HDMI-1 --off && i3-msg restart &
+
+# Toggle polybar
+bindsym $mod+o exec $HOME/.config/polybar/launch.sh
+# bindsym $mod+p exec killall -q polybar
+
+# Move workspaces between monitors
+bindsym $mod+b move workspace to output right
+
+# Focus the parent container
+#bindsym $mod+a focus parent
+
+# Focus the child container
+#bindsym $mod+d focus child
+
+# Run rofi programs
+bindcode 133 --release exec "rofi -show drun"
+
+bindsym $alt+Tab exec --no-startup-id "rofi -show window -config ~/.config/rofi/window_switcher.rasi"
+# bindsym $alt+Tab exec --no-startup-id "rofi -show window -window-thumbnail -no-default-config -config ~/.config/rofi/window_switcher.rasi"
+# bindsym $alt+Tab exec --no-startup-id "rofi -show window -window-thumbnail -show-icon -no-default-config"
+
+bindsym $mod+c exec "rofi-screenshot"
+bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/full_screen.rasi"
+bindsym $mod+x exec "rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu"
+
+# Take a screenshot
+bindsym Pause exec screenshot -sa
+bindsym Print exec screenshot -sf
+
+# Brightness control
+exec_always --no-startup-id light -I
+bindsym XF86MonBrightnessUp exec light -A 2 && light -O && brightness &
+bindsym XF86MonBrightnessDown exec light -U 2 && light -O && brightness &
+
+# Brightness control hdmi
+bindsym Ctrl+F7 exec brightness_hdmi down
+bindsym Ctrl+F8 exec brightness_hdmi up
+
+# Audio control
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && volume &
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && volume &
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && mute &
+#bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Master 5%+ && volume &
+
+# Turn off screen
+bindsym XF86ScreenSaver exec xset dpms force off
+
+# Function keys
+bindsym ctrl + F1 exec --no-startup-id alacritty
+bindsym ctrl + F2 exec --no-startup-id dmenu_run
+bindsym ctrl + F3 exec amixer set Capture nocap && dunstify -a "Microphone" "Microphone" "Microphone is muted" -r 100 -i /usr/local/bin/icons/mic-off.svg
+bindsym ctrl + F4 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone" "Microphone is unmuted" -r 100 -i /usr/local/bin/icons/mic.svg
+bindsym ctrl + F9 exec xinput set-prop $(xinput list | grep -oP 'Touchpad.*id=\K\d+') "Device Enabled" 0 && dunstify -a "Touchpad" "Touchpad" "Touchpad is disabled" -r 100
+bindsym ctrl + F10 exec xinput set-prop $(xinput list | grep -oP 'Touchpad.*id=\K\d+') "Device Enabled" 1 && dunstify -a "Touchpad" "Touchpad" "Touchpad is enabled" -r 100
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 in-place (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+
+    # Same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # Back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+equal mode "resize"
+
+
+# Toggle split direction for each window
+default_orientation vertical
+for_window [class="^"] split toggle
+
+### Borders ###
+
+# Border width
+default_border pixel 2
+
+# Intelligently hide borders
+hide_edge_borders smart
+
+# Border colors
+# class                 border  bg.     fg.     indicator
+client.focused          #343746 #343746 #F8F8F2 #343746 #343746
+client.focused_inactive #343746 #343746 #F8F8F2 #21222C #21222C
+client.unfocused        #343746 #343746 #F8F8F2 #21222C #21222C
+
+# Set per-application border
+for_window [instance="urxvt"] border pixel 1
+for_window [class="Chromium" title=" - Chromium$"] border pixel 0
+for_window [class="Firefox"] border pixel 0
+for_window [class="Spotify"] border pixel 0
+
+### Windows ###
+
+# Open windows on specific workspace
+assign [class="alacritty"] 1
+assign [class="kitty"] 1
+assign [class="wezterm"] 1
+assign [class="xfce4-terminal"] 1
+assign [class="Chromium"] 2
+assign [class="Firefox"] 2
+assign [class="Spotify"] 4
+
+# Enable or disable floating
+for_window [class="Gmrun"] floating enable
+for_window [class="Gnome-screenshot"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+
+### i3bar ###
+
+bar {
+    mode hide
+    position top
+    hidden_state hide
+    modifier $mod
+    tray_output none
+}
+
+### i3-gaps ###
+
+# Set inner/outer gaps
+gaps inner 0
+gaps outer 0
+
+# Only show gaps for multiple windows
+smart_gaps on
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+# smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+#smart_borders on
+
+# Press $mod+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
